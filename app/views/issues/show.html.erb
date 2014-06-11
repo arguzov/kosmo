@@ -1,0 +1,36 @@
+<div id="issue">
+  <div class="page-header">
+    <h1><%=@issue.name%></h1>
+  </div>
+  <% if @issue.content.length > 5 %>
+  <div id="author">
+    <% expert = (@services.length > 0)? @services.first.experts.last : nil%>
+    <%if expert.nil? %>
+        <% expert = Expert.first%>
+    <% end %>
+    <div class="thumbnail">
+      <%=image_tag expert.photo.url(:medium)%>
+      <div class="caption">
+        <%=link_to expert.name, expert_path(expert)%>
+        <p><%=expert.profession%></p>
+      </div>
+    </div>
+  </div>
+  <%=@issue.content.html_safe%>
+  <div class="page-header">
+    <h2>Как лечим</h2>
+  </div>
+  <% end %>
+  <table id="solutions">
+    <%@issue.services.each do |service|%>
+        <tr>
+          <td class="i" style="border-width: 0px;"><%= image_tag service.photo.url(:medium),:class=>'img-rounded' %></td>
+          <td class="t" style="border-width: 0px;">
+            <%=link_to service.name, service_path(id:service.id, url:service.url)%>
+            <p><%=service.anounce.truncate(250)%></p>
+          </td>
+          <td class="p" style="border-width: 0px;">от <%=service.price%> <span class="rouble">Р</span></td>
+        </tr>
+    <% end %>
+  </table>
+</div>

@@ -1,0 +1,19 @@
+<div class="medicaments-horizontal">
+  <div class="page-header">
+    <h2>Виды услуги</h2>
+  </div>
+  <div id="medicaments-horizontal">
+      <div class="wrap"><table><tr>
+      <%services.each_with_index do |child,index|%>
+        <%if index > 0 && index%3 == 0%>
+            </tr><tr>
+        <% end %>
+        <td width="33%">
+          <strong><%=link_to child.name,service_path(id:child.id, url:child.url)%></strong>
+          <%=link_to service_path(id:child.id, url:child.url) do %><%= image_tag child.photo.url(:medium),:class=>'img-rounded' %><% end %>
+          <p><%=child.anounce%></p>
+        </td>
+      <% end %>
+      </tr></table></div>
+  </div>
+</div>

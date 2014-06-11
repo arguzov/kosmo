@@ -1,0 +1,19 @@
+<div class="medicaments-horizontal">
+  <div class="page-header">
+    <h2>Используемые препараты</h2>
+  </div>
+  <div id="medicaments-horizontal">
+      <div class="wrap"><table><tr>
+      <%medicaments.each_with_index do |medicament,index|%>
+        <%if index > 0 && index%3 == 0%>
+            </tr><tr>
+        <% end %>
+        <td width="33%">
+          <strong><%=link_to medicament.name,medicament_path(medicament)%></strong>
+          <%= image_tag medicament.photo.url(:medium),:class=>'img-rounded' %>
+          <p><%=medicament.anounce%></p>
+        </td>
+      <% end %>
+      </tr></table></div>
+  </div>
+</div>

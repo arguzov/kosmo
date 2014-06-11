@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  content: MyText
+  banner: MyText
+  fl_active: false
+  fl_top: false
+  due: 2014-06-05 15:55:52
+
+two:
+  name: MyString
+  content: MyText
+  banner: MyText
+  fl_active: false
+  fl_top: false
+  due: 2014-06-05 15:55:52

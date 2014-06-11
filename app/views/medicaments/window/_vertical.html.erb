@@ -1,0 +1,20 @@
+<div class="medicaments">
+  <div class="page-header">
+    <h2>Используемые препараты</h2>
+  </div>
+  <div id="medicaments" data-items="3">
+    <ul class="content">
+      <%medicaments.each do |medicament|%>
+      <li>
+        <strong><%=link_to medicament.name, medicament_path(medicament)%></strong>
+        <%= image_tag medicament.photo.url(:medium) %>
+        <p><%=medicament.anounce%></p>
+      </li>
+      <% end %>
+    </ul>
+    <% if medicaments.count > 4 %>
+    <div class="page_navigation"></div>
+    <div style="clear:both"></div><br>
+    <% end %>
+  </div>
+</div>

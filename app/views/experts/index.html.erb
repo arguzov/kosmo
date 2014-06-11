@@ -1,0 +1,17 @@
+<div id="experts">
+<div class="page-header">
+  <h1>Наши специалисты</h1>
+</div>
+  <%@experts.each do |expert|%>
+  <div style="float:left;width: 210px;padding-left: 20px;">
+    <div class="thumbnail">
+      <img src="<%=expert.photo%>" style="width: 180px;height:270px">
+      <div class="caption">
+        <%=link_to expert.name, expert_path(expert)%>
+        <p><%=expert.profession%></p>
+        <!--<p><%=link_to expert_path(expert), :class=>"btn btn-primary" do %>Досье специалиста</a><%end%></p>-->
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>

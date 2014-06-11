@@ -1,0 +1,119 @@
+#experts{
+  padding: 10px;
+  .page-header{
+    margin-top: 0px;
+    margin-bottom: 10px;
+    h1{
+      font-size: 1.5em;
+      padding: 0px 0px 0px 0px;
+      margin: 0px;
+    }
+    h2{
+      font-size: 1.2em;
+      padding: 0px 0px 0px 0px;
+      margin: 20px 0px 0px 0px;
+      color: #38678B;
+    }
+  }
+}
+#expert{
+  width: 100%;
+  td{
+    vertical-align: top;
+  }
+  .descr{
+    padding: 10px 20px;
+    width: 70%;
+    img.ava{
+      float: left;
+      width: 200px;
+      margin-right: 10px;
+    }
+    .timetable{
+      th{
+        text-align: center;
+      }
+      td{
+        font-size: 12px;
+      }
+    }
+    #gallery{
+      margin-top:5px;
+      .thumbnail {
+        width: 185px;
+        float:left;
+        img {
+          width: 185px;
+        }
+      }
+    }
+  }
+
+  .side{
+    width: 30%;
+    padding: 0px 0px;
+    ul{
+      padding-left: 20px;
+      li{
+        padding-bottom: 5px;
+        a{
+          color: #38678b;
+          text-decoration: underline;
+        }
+      }
+    }
+    #diplomas{
+      ul{
+        padding: 0px;
+        li{
+          list-style: none;
+          text-align: center;
+          img {
+            width: 150px;
+            display: block;
+            margin: 5px auto;
+            box-shadow: 0px 0px 10px #555;
+          }
+          a {
+            text-decoration: underline;
+            display: block;
+          }
+          p{
+            font-size: 12px;
+          }
+        }
+      }
+      .page_navigation{
+        text-align: center;
+        a{
+          display: block;
+          float: left;
+          padding: 10px;
+          background-color: #f0f0f0;
+          color: #000;
+          margin-left: 5px;
+        }
+        a.active_page{
+          font-weight: bold;
+          color: #fff;
+          background-color: #666666;
+        }
+      }
+    }
+  }
+  .page-header{
+    margin-top: 0px;
+    margin-bottom: 10px;
+    h1{
+      font-size: 1.5em;
+      padding: 0px 0px 0px 0px;
+      margin: 0px;
+    }
+    h2{
+      font-size: 1.2em;
+      padding: 0px 0px 0px 0px;
+      margin: 20px 0px 0px 0px;
+      color: #38678B;
+    }
+  }
+}

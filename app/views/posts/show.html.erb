@@ -1,0 +1,27 @@
+<div id="post">
+<div class="page-header">
+  <h1><%=@post.name%></h1>
+</div>
+<div class="content">
+  <div class="photo"><%=image_tag @post.photo.url(:medium)%></div>
+  <%=@post.content.html_safe%>
+</div>
+</div>
+<div id="news">
+  <div class="page-header">
+    <h1>Похожие записи</h1>
+  </div>
+  <table class="table">
+    <%@more.each do |news|%>
+        <tr>
+          <td class="img">
+            <%=image_tag news.photo.url(:medium), :class=>'img-rounded'%>
+          </td>
+          <td>
+            <div><%=link_to news.name, post_path(news), :class=>'caption'%></div>
+            <%=news.anounce.html_safe%>
+          </td>
+        </tr>
+    <% end %>
+  </table>
+</div>

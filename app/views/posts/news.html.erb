@@ -1,0 +1,19 @@
+<div id="news">
+  <div class="page-header">
+    <h1>Новости Центра эпиляции и косметологии</h1>
+  </div>
+  <table class="table">
+    <%@news.each do |news|%>
+        <tr>
+          <td class="img">
+            <%=image_tag news.photo.url(:medium), :class=>'img-rounded'%>
+          </td>
+          <td>
+            <div class="date"><%= news.created_at.strftime("%d.%m") %></div>
+            <div><%=link_to news.name, post_path(news), :class=>'caption'%></div>
+            <%=news.anounce.html_safe%>
+          </td>
+        </tr>
+    <% end %>
+  </table>
+</div>

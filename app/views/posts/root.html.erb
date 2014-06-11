@@ -1,0 +1,158 @@
+<div class="row">
+  <div class="col-md-9">
+    <div class="row" id="services">
+      <div class="col-md-4">
+        <%=image_tag 'main/epil.jpg', :class=>'img-rounded'%>
+        <%=link_to 'Эпиляция' %>
+        <div class="price">от 450 руб.</div>
+      </div>
+      <div class="col-md-4">
+        <%=image_tag 'main/omolozenie.jpg', :class=>'img-rounded'%>
+        <%=link_to 'Омоложение' %>
+        <div class="price">от 550 руб.</div>
+      </div>
+      <div class="col-md-4">
+        <%=image_tag 'main/celul.jpg', :class=>'img-rounded'%>
+        <%=link_to 'Борьба с целюллитом' %>
+        <div class="price">от 550 руб.</div>
+      </div>
+      <div class="col-md-4">
+        <%=image_tag 'main/massage.png', :class=>'img-rounded'%>
+        <%=link_to 'Массаж' %>
+        <div class="price">от 550 руб.</div>
+      </div>
+      <div class="col-md-4">
+        <%=image_tag 'main/manik.png', :class=>'img-rounded'%>
+        <%=link_to 'Лечебный маникюр' %>
+        <div class="price">от 550 руб.</div>
+      </div>
+      <div class="col-md-4">
+        <div class="more img-rounded">
+          и ещё
+          <div class="num">100+</div>
+          процедур
+        </div>
+        <%=link_to 'Все услуги', prices_services_path %>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div id="news">
+      <div class="page-header">
+        <h2>Новости</h2>
+      </div>
+      <ul>
+        <%@news.each do |news|%>
+            <li>
+              <%=link_to news.name%>
+              <%=news.anounce%>
+            </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <div id="reasons">
+      <div class="page-header">
+        <h2>5 фактов о нашем центре</h2>
+      </div>
+      <table class="table table-striped">
+        <tr>
+          <td><i class="glyphicon glyphicon-ok-circle"></i></td>
+          <td>Качественный и бережный сервис. У нас работают специалисты с научными степенями в области медицины.</td>
+        </tr>
+        <tr>
+          <td><i class="glyphicon glyphicon-ok-circle"></i></td>
+          <td>Удобный график работы. Мы работаем без обеда и выходных,<br> с 9 утра до 9 часов вечера</td>
+        </tr>
+        <tr>
+          <td><i class="glyphicon glyphicon-ok-circle"></i></td>
+          <td>Список наших услуг постоянно расширяется и модернизируется. Мы несколько раз в год закупаем новое оборудование.</td>
+        </tr>
+        <tr>
+          <td><i class="glyphicon glyphicon-ok-circle"></i></td><!---->
+          <td>У нас внедрена и работает действительно гибкая система скидок. К примеру, абонемент на процедуры до 30% дешевле разовых посещений.</td>
+        </tr>
+        <tr>
+          <td><i class="glyphicon glyphicon-ok-circle"></i></td>
+          <td>Наши цены очень добрые и совсем не кусаются</td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <p>Не верите? Все так говорят? Тогда просто приходите, звоните или давайте <nobr><a href="javascript://" data-toggle="modal" data-target="#myModalCall" style="text-decoration: underline;">мы вам перезвоним</a></nobr> и c удовольствием всё расскажем, покажем и докажем.</p>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="col-md-6" id="doctors">
+    <div class="page-header">
+      <h2>Знакомьтесь, это наши специалисты</h2>
+    </div>
+    <div class="row">
+      <%@experts.each do |expert|%>
+      <div class="col-md-4">
+        <div class="thumbnail">
+          <%=image_tag "main/experts/#{expert.id}.png"%>
+          <div class="caption">
+            <%=link_to expert.name, expert_path(expert)%>
+            <div class="spec"><%=expert.profession%></div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+      <div class="col-md-4">
+        <div class="thumbnail">
+          <div class="more img-rounded" style="width: 150px;height: 165px;padding-top: 30px;">
+            всего
+            <div class="num" style="font-size: 30px;padding: 0px;">10+</div>
+            экспертов
+          </div>
+          <div class="caption" style="padding: 24px 0px;">
+            <%=link_to "Все специалисты", experts_path %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row" id="saloon">
+  <%@saloon.each do |image|%>
+  <div class="thumbnail">
+    <%=link_to image.gsub('public',''), :class=> 'photos', :data => {:rel=>'photos'} do %><%= image_tag image.gsub('public','') %><% end %>
+  </div>
+  <% end %>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <div id="reviews" style="padding-top:0px;">
+      <div class="page-header">
+        <h1>Отзывы о Центре</h1>
+      </div>
+      <table class="table">
+        <%@reviews.each do |review|%>
+            <tr>
+              <td class="img">
+                <div class="author"><%=review.person%></div>
+                <%=image_tag review.photo.url(:medium), :class=>'img-rounded'%>
+              </td>
+              <td>
+                <%=review.content.html_safe%>
+                <%if review.anounce.length > 5%>
+                    <p><a class='youtube btn btn-sm btn-info' href="<%=review.anounce.gsub('watch?v=','embed/') + '?rel=0&wmode=transparent'%>">Посмотреть видео</a></p>
+                <% end %>
+              </td>
+            </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <%=render :partial => 'app/order'%>
+  </div>
+</div>
+<div class="row" style="overflow-x:hidden;margin-bottom: 0px;padding-bottom: 0px;">
+  <script type="text/javascript" charset="utf-8" src="//api-maps.yandex.ru/services/constructor/1.0/js/?sid=QuDnq8KdfdSfG-bTrDsCw-Ki4D3nXGtn&width=1170&height=360"></script>
+</div>

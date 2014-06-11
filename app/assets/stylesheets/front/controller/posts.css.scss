@@ -1,0 +1,75 @@
+#post{
+  padding: 20px;
+  .photo{
+    float: right;
+    margin-left: 10px;
+  }
+}
+#reviews{
+  padding: 20px;
+  table{
+    tr:first-child{
+      td{
+        border-width: 0px;
+      }
+    }
+    td{
+      padding: 10px;
+    }
+  }
+  .img{
+    img{
+      width: 150px;
+    }
+    .author{
+      font-size: 12px;
+      font-weight: bold;
+      text-align: center;
+      padding-bottom: 3px;
+    }
+  }
+}
+#news{
+  padding: 20px;
+  table{
+    tr:first-child{
+      td{
+        border-width: 0px;
+      }
+    }
+    td{
+      padding: 10px;
+    }
+  }
+  .img{
+    img{
+      margin-top: 5px;
+      width: 150px;
+    }
+  }
+  .caption{
+    font-size: 1.4em;
+    text-decoration: underline;
+    color: #000;
+  }
+  .date{
+    float:right;
+    padding: 15px;
+    box-shadow: 0px 0px 10px #ccc;
+    font-size: 1.2em;
+    margin-left: 10px;
+    margin-top: 10px;
+    background-color: #f0f0f0;
+  }
+}
+#contacts{
+  padding: 20px;
+  .view{
+    width: 100%;
+    td{
+      img{
+        width: 700px;
+      }
+    }
+  }
+}

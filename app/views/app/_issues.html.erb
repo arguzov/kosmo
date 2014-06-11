@@ -1,0 +1,13 @@
+<%
+  @issues = Issue.where('parent_id = 0').order('id ASC')
+%>
+<ul class="list-group" id="menu">
+  <%@issues.each do |issue|%>
+      <a class="list-group-item active"><%=issue.name%></a>
+      <%Issue.where('fl_show = 1 AND parent_id = ?',issue.id).each_with_index do |issue,index|%>
+          <%=link_to issue_path(url:issue.url), :class=>"list-group-item" do %>
+            <%=issue.name%>
+          <% end %>
+      <% end %>
+  <% end %>
+</ul>

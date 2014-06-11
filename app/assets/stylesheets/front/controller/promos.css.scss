@@ -1,0 +1,85 @@
+@mixin promo-banner{
+  text-align: center;
+  .offer{
+    color: #d45f53;
+    font-weight: bold;
+    padding: 0px;
+    margin: 0px;
+  }
+  h1{
+    font-size: 1.5em;
+    margin: 5px;
+  }
+  h2{
+    font-size: 1.3em;
+    margin: 10px;
+  }
+  h3{
+    font-size: 1.1em;
+    margin: 5px;
+  }
+  .btn{
+    margin-top: 10px;
+  }
+}
+#promos-top{
+  background: #d9e4ec;
+  height: 220px;
+  margin: 15px 10px 0px 30px;
+  box-shadow: 0px 0px 10px #fff;
+  border: 10px solid #FAFAFA;
+  table{
+    margin-bottom:10px;
+    width: 100%;
+    .i{
+      img{
+        height: 200px;
+      }
+    }
+    .t{
+      padding-right: 10px;
+      @include promo-banner;
+    }
+  }
+}
+#promos-list{
+  padding: 20px;
+  table{
+    tr:first-child{
+      td{
+        border-width: 0px;
+      }
+    }
+    td{
+      padding: 10px;
+    }
+  }
+  .banner{
+    width: 50%;
+    @include promo-banner;
+    .wr{
+      box-shadow: 0px 0px 10px #ccc;
+      padding: 20px 0px;
+    }
+  }
+  .page-header{
+    h2 {
+      font-size: 1.4em;
+    }
+  }
+}
+#promo{
+  padding: 20px 20px 0px 20px;
+  .order-form{
+    padding: 0px;
+    box-shadow: none;
+    margin-top: 20px;
+    margin-bottom: 0px;
+  }
+  .acts{
+    td{
+      vertical-align: top;
+      padding: 0px;
+    }
+  }
+}

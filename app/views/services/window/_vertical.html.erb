@@ -1,0 +1,20 @@
+<div class="medicaments">
+  <div class="page-header">
+    <h2>Виды услуги</h2>
+  </div>
+  <div id="medicaments" data-items="3">
+    <ul class="content">
+      <%services.each do |child|%>
+      <li>
+        <strong><%=link_to child.name, service_path(id:child.id, url:child.url) %></strong>
+        <%= image_tag child.photo.url(:medium) %>
+        <p><%=child.anounce%></p>
+      </li>
+      <% end %>
+    </ul>
+    <% if services.count > 3 %>
+    <div class="page_navigation"></div>
+    <div style="clear:both"></div><br>
+    <% end %>
+  </div>
+</div>

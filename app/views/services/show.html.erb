@@ -1,0 +1,38 @@
+<div id="service">
+  <div class="page-header">
+    <h1><%=@service.name%></h1>
+  </div>
+  <%=@service.content.html_safe%>
+  <table id="solution">
+    <tr>
+      <td class="left">
+        <div id="price">
+          <div class="page-header">
+            <h2>Прайс лист</h2>
+          </div>
+          <%=render :partial => 'app/pricelist', :locals => {:pricelist=>@pricelist}%>
+        </div>
+        <br>
+        <%=render :partial => 'app/order'%>
+      </td>
+      <td class="right">
+        <%experts = @service.experts.limit(2)%>
+        <%if experts.nil? %>
+            <% experts = Expert.limit(2)%>
+        <% end %>
+        <div class="page-header">
+          <h2>Специалист<%if experts.count > 1%>ы<% end %></h2>
+        </div>
+        <%experts.each do |expert|%>
+        <div class="thumbnail">
+          <%=image_tag expert.photo.url(:medium)%>
+          <div class="caption">
+            <%=link_to expert.name, expert_path(expert)%>
+            <p><%=expert.profession%></p>
+          </div>
+        </div>
+        <% end %>
+      </td>
+    </tr>
+  </table>
+</div>

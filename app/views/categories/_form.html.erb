@@ -1,0 +1,33 @@
+<%= form_for(@gategory) do |f| %>
+  <% if @gategory.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@gategory.errors.count, "error") %> prohibited this gategory from being saved:</h2>
+
+      <ul>
+      <% @gategory.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :fl_status %><br>
+    <%= f.number_field :fl_status %>
+  </div>
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

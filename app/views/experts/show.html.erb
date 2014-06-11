@@ -1,0 +1,59 @@
+<table id="expert">
+  <tr>
+    <td class="descr">
+      <div class="page-header">
+        <h1><%=@expert.name%></h1>
+      </div>
+      <% if @expert.content.length > 0 %>
+      <img class="ava" src="<%=@expert.photo.url(:medium)%>">
+      <%=@expert.content.html_safe%>
+      <% end %>
+      <div style="clear: both"></div>
+      <div id="gallery">
+          <% @gallery.each do |image| %>
+            <div class="thumbnail">
+              <%=link_to image.gsub('public',''), :class=> 'photos', :data => {:rel=>'photos'} do %><%= image_tag image.gsub('public','') %><% end %>
+            </div>
+          <% end %>
+      </div>
+      <div style="clear: both"></div>
+      <%=render :partial => 'app/order'%>
+    </td>
+    <td class="side">
+      <div class="page-header">
+        <h2>Образование</h2>
+      </div>
+      <%=@expert.education.html_safe%>
+      <% if @expert.experience.length > 5%>
+      <div class="page-header">
+        <h2>Стаж работы</h2>
+      </div>
+      <%=@expert.experience.html_safe%>
+      <% end %>
+      <div class="page-header">
+        <h2>Специализация</h2>
+      </div>
+        <ul>
+          <%@expert.services.each do |service|%>
+            <li><%=link_to service.name, service_path(id:service.id, url:service.url)%></li>
+          <% end %>
+        </ul>
+      <% if @diplomas.length > 0 %>
+      <div class="page-header">
+        <h2>Дипломы и сертификаты</h2>
+      </div>
+      <div id="diplomas" data-items="4">
+        <ul class="content">
+        <% @diplomas.each do |image| %>
+            <li><%=link_to image.gsub('public',''), :class=> 'diplomas', :data => {:rel=>'diplomas'} do %><%= image_tag image.gsub('public','') %><% end %></li>
+        <% end %>
+        </ul>
+        <% if @diplomas.count > 4 %>
+            <div class="page_navigation"></div>
+            <div style="clear:both"></div><br>
+        <% end %>
+      </div>
+      <% end %>
+    </td>
+  </tr>
+</table>

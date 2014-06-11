@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Kosmo</title>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+  <%= stylesheet_link_tag    "application", media: "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<%=render 'app/header'%>
+<%=render 'app/navbar'%>
+<div class="container" id="content-wrapper">
+  <div class="row">
+    <div class="col-md-12" style="padding-left: 0px;">
+      <table width="100%">
+        <tr>
+          <td class="left">
+              <%=render :partial => 'app/issues'%>
+          </td>
+          <td class="main"><%= yield %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <%=render 'app/footer' %>
+</div>
+<div class="modal fade" id="recall" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Обратный звонок</h4>
+      </div>
+      <div class="modal-body">
+        <%=render 'app/order'%>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Отправить</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+</body>
+</html>

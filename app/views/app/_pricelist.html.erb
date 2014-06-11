@@ -1,0 +1,21 @@
+<table class="table pricelist">
+  <%pricelist.each do |item|%>
+      <tr>
+        <% if /#/.match(item) %>
+            <%if /:/.match(item)%>
+              <%item.gsub('#','').split(/:/).each do |th|%>
+                <th><%=th.html_safe%></th>
+              <% end %>
+            <% else %>
+              <td colspan="5" class="subcap"><h3><%=item.gsub('#','')%></h3></td>
+            <% end %>
+        <% else %>
+            <%a = item.split(/:/)%>
+            <td><%=a[0]%></td>
+            <%a.slice(1,a.length).each do |price|%>
+              <td class="cost"><%=price%> <span class="rouble">Р</span></td>
+            <% end %>
+        <% end %>
+      </tr>
+  <% end %>
+</table>

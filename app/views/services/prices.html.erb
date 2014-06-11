@@ -1,0 +1,29 @@
+<div class="panel-group" id="global-pricelist" style="margin: 20px;">
+  <div class="page-header">
+    <h1>Прайс лист Центра эпиляции и косметологии</h1>
+  </div>
+  <p>Ниже представлен перечень актуальных цен на наши услуги. Кликните на интересующую вас услугу и раскроется блок с подробной информацией.</p>
+  <p>Обратите внимание, что даны цены без учёта возможных дополнительных скидок и акций, т.е. посещение нашего салона может обойтись вам <strong>ещё дешевле</strong>.</p>
+  <p>Просто позвоните нам и узнайте свою выгоду!</p>
+  <%@services.each do |service|%>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#global-pricelist" href="#collapse<%=service.id%>">
+              <%=service.name%>
+              <div style="float:right">от <%=service.price%> <span class="rouble">Р</span></div>
+            </a>
+          </h4>
+        </div>
+        <div id="collapse<%=service.id%>" class="panel-collapse collapse">
+          <div class="panel-body">
+            <%=render :partial=>'app/pricelist',:locals=>{pricelist:  service.pricelist.split(/\n/)}%>
+            <p style="font-size:13px;padding:10px;background-color: #f0f0f0;font-style: italic"><%=service.anounce%></p>
+            <div>
+              <%=link_to 'Подробнее об услуге', service_path(id:service.id, url:service.url), :class=>'btn btn-primary' %>
+            </div>
+          </div>
+        </div>
+      </div>
+  <% end %>
+</div>

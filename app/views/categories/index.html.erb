@@ -1,0 +1,33 @@
+<h1>Listing gategories</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Fl status</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @gategories.each do |gategory| %>
+      <tr>
+        <td><%= gategory.name %></td>
+        <td><%= gategory.fl_status %></td>
+        <td><%= gategory.title %></td>
+        <td><%= gategory.description %></td>
+        <td><%= link_to 'Show', gategory %></td>
+        <td><%= link_to 'Edit', edit_gategory_path(gategory) %></td>
+        <td><%= link_to 'Destroy', gategory, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Gategory', new_gategory_path %>

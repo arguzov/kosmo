@@ -1,0 +1,27 @@
+#navbar{
+  background-color: $navbar_color;
+  padding: 0px;
+  box-shadow: rgb(0, 102, 153) 0px 0px 10px;
+  .navbar{
+    padding: 0px;
+    margin: 0px;
+    background-color: $navbar_color;
+    border-width: 0px;
+    a{
+      color: #fdfdfd;
+      /*text-transform: uppercase;*/
+      i{
+        box-shadow: rgb(0, 102, 153) 0px 0px 10px;
+      }
+    }
+  }
+}
+.page-header{
+  margin-top: 0px;
+  padding-top: 0px;
+  h1{
+    font-size: 1.6em;
+    padding: 0px;
+    margin: 0px;
+  }
+}

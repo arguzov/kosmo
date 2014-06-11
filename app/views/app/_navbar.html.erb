@@ -1,0 +1,26 @@
+<div class="container-fluid" style="margin-top: 10px;margin-bottom: 0px;">
+  <div class="row" id="navbar">
+    <div class="container">
+      <div class="col-md-12">
+        <nav class="navbar navbar-default" role="navigation">
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li><a href="/"><i class="icon-arrow-right-bold"></i> Главная</a></li>
+              <%Menu.where('fl_type = 1').each do |item|%>
+                <li><a href="<%=item.actual_url%>"><i class="icon-<%=item.css_class%>"></i> <%=item.title%></a></li>
+              <% end %>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#recall">
+                  Обратный звонок
+                </button>
+              </li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
