@@ -1,6 +1,3 @@
-# config valid only for Capistrano 3.1
-lock '3.2.1'
-
 set :application, 'kosmo'
 set :repo_url, 'git@github.com:axxilius/kosmo.git'
 application = 'kosmo'
