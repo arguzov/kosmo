@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140609161329) do
+ActiveRecord::Schema.define(version: 20140612163530) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -37,7 +37,6 @@ ActiveRecord::Schema.define(version: 20140609161329) do
     t.datetime "updated_at"
     t.string   "url"
     t.boolean  "fl_menu"
-    t.integer  "tmp_old_id"
   end
 
   create_table "experts", force: true do |t|
@@ -91,11 +90,11 @@ ActiveRecord::Schema.define(version: 20140609161329) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "anounce"
+    t.string   "url"
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
-    t.string   "url"
   end
 
   create_table "menus", force: true do |t|
@@ -179,11 +178,11 @@ ActiveRecord::Schema.define(version: 20140609161329) do
     t.text     "anounce"
     t.integer  "price"
     t.text     "pricelist"
+    t.integer  "parent_id",          default: 0
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
-    t.integer  "parent_id",          default: 0, null: false
   end
 
   create_table "services_issues", id: false, force: true do |t|

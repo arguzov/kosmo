@@ -85,7 +85,6 @@ namespace :deploy do
         on roles(:all) do
             execute "ln -sf #{shared_path}/config/database.yml #{release_path}/config/database.yml"
             execute "ln -s #{shared_path}/Procfile #{release_path}/Procfile"
-            execute "ln -s #{shared_path}/system #{release_path}/public/system"
             execute "ln -sf #{shared_path}/public/system #{release_path}/public/system"
             execute "ln -sf #{shared_path}/public/data #{release_path}/public/data"
         end
