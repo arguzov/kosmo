@@ -22,6 +22,7 @@ module Kosmo
     config.i18n.enforce_available_locales = false
     config.time_zone = 'Moscow'
     config.active_record.default_timezone = :local
+    config.active_record.whitelist_attributes = true
     config.i18n.default_locale = :ru
   end
 end
