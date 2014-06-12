@@ -110,7 +110,6 @@ body{
         margin-bottom: 5px;
         font-size: 1.0em;
         text-decoration: underline;
-        color: #000;
       }
       .price {
         font-size: 0.8em;
@@ -212,6 +211,9 @@ body{
         padding: 10px 5px;
         vertical-align: top;
         border-width: 0px;
+        a{
+          text-decoration: underline;
+        }
       }
     }
   }
