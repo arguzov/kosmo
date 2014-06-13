@@ -6,16 +6,18 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-              <li><a href="/"><i class="icon-arrow-right-bold"></i> Главная</a></li>
+              <li class="visible-md visible-lg"><a href="/"><i class="icon-arrow-right-bold"></i> Главная</a></li>
               <%Menu.where('fl_type = 1').each do |item|%>
                 <li><a href="<%=item.actual_url%>"><i class="icon-<%=item.css_class%>"></i> <%=item.title%></a></li>
               <% end %>
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li>
+                <div class="visible-md visible-lg">
                 <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#recall" style="margin-top:10px;">
                   Перезвоните мне!
                 </button>
+                </div>
               </li>
             </ul>
           </div><!-- /.navbar-collapse -->
