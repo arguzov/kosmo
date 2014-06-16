@@ -1,6 +1,8 @@
 class ServicesController < ApplicationController
+    before_action :find_service, only: [:show]
+    before_action :define_experts, only: [:show]
+    before_action :define_issues, only: [:show]
     def show
-        @service = Service.find(params[:id])
         @pricelist = @service.pricelist.split(/\n/)
         @children = Service.where('parent_id = ?',@service.id)
         if @service.medicaments
@@ -17,9 +19,33 @@ class ServicesController < ApplicationController
             @service.content = @service.content.gsub('{children:horizontal}',horizontal)
             @service.content = @service.content.gsub('{children:vertical}',vertical)
         end
+        @album = Dir.glob("public/data/services/#{@service.id}/th/*")
     end
 
     def prices
       @services = Service.where('parent_id = 0')
+    end
+
+    private
+    def find_service
+        @service = Service.find(params[:id])
+    end
+    def define_experts
+        if @service.parent_id > 0
+            @experts = Service.where('parent_id = ?',@service.parent_id).first.experts.limit(2)
+        else
+            @experts = @service.experts.limit(2)
+        end
+        if @experts.nil? or @experts.count < 1
+            @experts = Expert.limit(2)
+        end
+    end
+
+    def define_issues
+        if @service.parent_id > 0
+            @issues = Service.where('parent_id = ?',@service.parent_id).first.issues
+        else
+            @issues = @service.issues
+        end
     end
 end

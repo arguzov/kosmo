@@ -201,6 +201,16 @@
       }
     }
   }
+  #gallery{
+    margin-top:5px;
+    .thumbnail {
+      width: 195px;
+      float:left;
+      img {
+        width: 185px;
+      }
+    }
+  }
 }
 #global-pricelist{
   .pricelist{

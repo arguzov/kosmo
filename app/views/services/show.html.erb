@@ -3,6 +3,18 @@
     <h1><%=@service.name%></h1>
   </div>
   <%=@service.content.html_safe%>
+  <% if @album.count > 0 %>
+  <div class="page-header">
+    <h2>Фотографии процедуры &laquo;<%=@service.name%>&raquo;</h2>
+  </div>
+  <div id="gallery">
+    <% @album.each do |image| %>
+        <div class="thumbnail">
+          <%=link_to image.gsub('public','').gsub('th/','big/'), :class=> 'photos', :data => {:rel=>'photos'} do %><%= image_tag image.gsub('public','') %><% end %>
+        </div>
+    <% end %>
+  </div>
+  <% end %>
   <table id="solution">
     <tr>
       <td class="left">
@@ -16,14 +28,21 @@
         <%=render :partial => 'app/order'%>
       </td>
       <td class="right">
-        <%experts = @service.experts.limit(2)%>
-        <%if experts.nil? %>
-            <% experts = Expert.limit(2)%>
+        <% if @issues.count > 0 %>
+            <div class="page-header">
+              <h2>Решаемые проблемы</h2>
+            </div>
+            <ul>
+            <% @issues.each do |issue|%>
+              <li><%=link_to issue.name, issue_path(issue)%></li>
+            <% end %>
+            </ul>
         <% end %>
+        <% if @experts.count > 0 %>
         <div class="page-header">
-          <h2>Специалист<%if experts.count > 1%>ы<% end %></h2>
+          <h2>Специалист<%if @experts.count > 1%>ы<% end %></h2>
         </div>
-        <%experts.each do |expert|%>
+        <%@experts.each do |expert|%>
         <div class="thumbnail">
           <%=image_tag expert.photo.url(:medium)%>
           <div class="caption">
@@ -31,6 +50,7 @@
             <p><%=expert.profession%></p>
           </div>
         </div>
+        <% end %>
         <% end %>
       </td>
     </tr>
