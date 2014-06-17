@@ -6,7 +6,7 @@
         <tr>
           <%@promos.each_with_index do |promo,index|%>
           <%if index > 0 && index%2 == 0%></tr><tr><% end %>
-          <td class="banner">
+          <td class="banner" style="width:50%;">
             <div class="wr">
             <%=promo.banner.html_safe%>
             <%=link_to "Подробнее о предложении", promo_path(promo), :class=>'btn btn-sm btn-primary'%>
