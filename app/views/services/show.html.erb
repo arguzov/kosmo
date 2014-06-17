@@ -23,6 +23,21 @@
             <h2>Прайс лист</h2>
           </div>
           <%=render :partial => 'app/pricelist', :locals => {:pricelist=>@pricelist}%>
+          <% if @service.promos.count > 0 %>
+              <div id="promos-list" style="margin: 0px;padding: 0px;">
+                <table class="table">
+                  <%@service.promos.each_with_index do |promo,index|%>
+                      <tr>
+                        <td class="banner">
+                          <div class="wr">
+                            <%=promo.banner.html_safe%>
+                          </div>
+                        </td>
+                      </tr>
+                  <% end %>
+                </table>
+              </div>
+          <% end %>
         </div>
         <br>
         <%=render :partial => 'app/order'%>

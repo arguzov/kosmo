@@ -44,7 +44,7 @@
       <ul>
         <%@news.each do |news|%>
             <li>
-              <%=link_to news.name%>
+              <%=link_to news.name, post_path(news)%>
               <%=news.anounce%>
             </li>
         <% end %>
