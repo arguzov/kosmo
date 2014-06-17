@@ -43,7 +43,7 @@ class ServicesController < ApplicationController
 
     def define_issues
         if @service.parent_id > 0
-            @issues = Service.where('parent_id = ?',@service.parent_id).first.issues
+            @issues = Service.where('parent_id = ?',@service.parent_id).first.issues.where('NOT (parent_id = 50)')
         else
             @issues = @service.issues.where('NOT (parent_id = 50)')
         end

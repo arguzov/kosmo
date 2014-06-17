@@ -14,18 +14,17 @@
             <h2>Другие акции</h2>
           </div>
           <table class="table">
-            <tr>
               <%@promos.each_with_index do |promo,index|%>
-                  <%if index > 0 && index%2 == 0%></tr><tr><% end %>
+                <tr>
                   <td class="banner">
                     <div class="wr">
                       <%=promo.banner.html_safe%>
                       <%=link_to "Подробнее о предложении", promo_path(promo), :class=>'btn btn-sm btn-primary'%>
                     </div>
                   </td>
+                </tr>
               <% end %>
-              </tr>
-              </table>
+          </table>
         </div>
       </td>
     </tr>
