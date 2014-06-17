@@ -14,7 +14,7 @@ class PostsController < ApplicationController
     end
 
     def reviews
-        @reviews = Post.where('category_id = 31')
+        @reviews = Post.where('category_id = 31').paginate(:page => params[:page], :per_page => 3)
     end
 
     def news

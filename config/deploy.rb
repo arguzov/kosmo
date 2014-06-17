@@ -87,6 +87,7 @@ namespace :deploy do
             execute "ln -s #{shared_path}/Procfile #{release_path}/Procfile"
             execute "ln -sf #{shared_path}/public/system #{release_path}/public/system"
             execute "ln -sf #{shared_path}/public/data #{release_path}/public/data"
+            execute "ln -sf #{shared_path}/public/images #{release_path}/public/images"
         end
     end
 
