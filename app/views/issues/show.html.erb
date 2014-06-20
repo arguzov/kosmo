@@ -12,12 +12,10 @@
     <%if expert.nil? %>
         <% expert = Expert.first%>
     <% end %>
-    <div class="thumbnail">
-      <%=image_tag expert.photo.url(:medium)%>
-      <div class="caption">
-        <%=link_to expert.name, expert_path(expert)%>
-        <p><%=expert.profession%></p>
-      </div>
+    <%=image_tag expert.photo.url(:medium)%>
+    <div class="caption">
+      <%=link_to expert.name, expert_path(expert)%>
+      <p><%=expert.profession%></p>
     </div>
   </div>
   <%=@issue.content.html_safe%>

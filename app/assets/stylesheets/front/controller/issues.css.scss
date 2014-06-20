@@ -22,19 +22,20 @@
   #author{
     float:right;
     margin-left: 10px;
-    .thumbnail {
-      text-align: center;
+    background-color: #f0f0f0;
+    text-align: center;
       img {
+        display: block;
         width: 200px;
-        margin-right: 10px;
+        margin: 10px;
       }
       .caption {
-        padding-top: 20px;
+        width: 220px;
+        margin-top: 20px;
         a {
           text-decoration: underline;
         }
       }
-    }
   }
   #solutions{
     width: 100%;
