@@ -226,8 +226,12 @@ body{
 }
 
 .order-form{
-  box-shadow: 0px 0px 10px #75a1c2;
+  /*box-shadow: 0px 0px 10px #75a1c2;*/
   padding: 20px;
+  background-color: #e0e0e0;
+  label{
+    font-size: .8em;
+  }
 }
 
 #content-wrapper{

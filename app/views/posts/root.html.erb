@@ -3,28 +3,28 @@
     <div class="row" id="services">
       <div class="col-md-4 col-lg-4 col-xs-4 col-sm-4">
         <%=image_tag 'main/epil.jpg', :class=>'img-rounded'%>
-        <%=link_to 'Эпиляция' %>
-        <div class="price">от 450 руб.</div>
+        <%=link_to 'Эпиляция', issue_path(:url=>'zabota-o-litse/nezhelatelnye-volosy') %>
+        <div class="price">от 120 руб.</div>
       </div>
       <div class="col-md-4 col-lg-4 col-xs-4 col-sm-4">
         <%=image_tag 'main/omolozenie.jpg', :class=>'img-rounded'%>
-        <%=link_to 'Омоложение' %>
-        <div class="price">от 550 руб.</div>
+        <%=link_to 'Омоложение', issue_path(:url=>'zabota-o-litse/omolozhenie-litsa-i-shei') %>
+        <div class="price">от 300 руб.</div>
       </div>
       <div class="col-md-4 col-lg-4 col-xs-4 col-sm-4">
         <%=image_tag 'main/celul.jpg', :class=>'img-rounded'%>
-        <%=link_to 'Борьба с целюллитом' %>
-        <div class="price">от 550 руб.</div>
+        <%=link_to 'Борьба с целюллитом',issue_path(:url=>'ukhod-za-telom/tselyullit') %>
+        <div class="price">от 300 руб.</div>
       </div>
       <div class="col-md-4 col-lg-4 col-xs-4 col-sm-4">
         <%=image_tag 'main/massage.png', :class=>'img-rounded'%>
-        <%=link_to 'Массаж' %>
-        <div class="price">от 550 руб.</div>
+        <%=link_to 'Массаж',service_path(:id=>38,:url=>'massag-tela') %>
+        <div class="price">от 500 руб.</div>
       </div>
       <div class="col-md-4 col-lg-4 col-xs-4 col-sm-4">
         <%=image_tag 'main/manik.png', :class=>'img-rounded'%>
-        <%=link_to 'Лечебный маникюр' %>
-        <div class="price">от 550 руб.</div>
+        <%=link_to 'Маникюр',issue_path(:url=>'krasivye-ruki/manikyur') %>
+        <div class="price">от 100 руб.</div>
       </div>
       <div class="col-md-4 col-lg-4 col-xs-4 col-sm-4">
         <div class="more img-rounded">

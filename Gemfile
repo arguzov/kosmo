@@ -62,3 +62,4 @@ gem "devise"
 gem 'metamagic'
 gem 'formtastic'
 gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'sanitize'

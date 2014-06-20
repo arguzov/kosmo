@@ -1,3 +1,7 @@
+<%
+   meta :title => @post.name,
+        :description => Sanitize.clean(@post.content).gsub("\n"," ").truncate(250)
+%>
 <div id="post">
 <div class="page-header">
   <h1><%=@post.name%></h1>

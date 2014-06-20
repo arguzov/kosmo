@@ -1,3 +1,7 @@
+<%
+   meta :title => "Акция - #{@promo.name}",
+        :description => Sanitize.clean(@promo.content).gsub("\n"," ").truncate(250)
+%>
 <div id="promo">
   <div class="page-header">
     <h1><%=@promo.name%></h1>

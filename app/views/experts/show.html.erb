@@ -1,3 +1,7 @@
+<%
+   meta :title => @expert.profession + ' - ' + @expert.name,
+        :description => Sanitize.clean(@expert.content).gsub("\n"," ").truncate(250)
+%>
 <table id="expert">
   <tr>
     <td class="descr">

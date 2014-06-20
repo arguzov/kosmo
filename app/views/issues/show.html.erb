@@ -1,3 +1,7 @@
+<%
+   meta :title => @issue.name + ' - лечение в Казани',
+        :description => Sanitize.clean(@issue.content).gsub("\n"," ").truncate(250)
+%>
 <div id="issue">
   <div class="page-header">
     <h1><%=@issue.name%></h1>
