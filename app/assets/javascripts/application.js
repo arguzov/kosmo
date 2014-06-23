@@ -31,5 +31,10 @@ $(document).ready(function(){
     $(".youtube").colorbox({iframe:true, innerWidth:640, innerHeight:390});
     $(".diplomas").colorbox({rel:'diplomas',width:"50%", height:"75%"});
     $(".photos").colorbox({rel:'photos',width:"50%", height:"75%"});
+    if($('#modal-show').length > 0){
+        var id = $('#modal-show').attr('data-id');
+        $('#' + id).modal();
+    }
+
 });
 

@@ -24,4 +24,8 @@ class PostsController < ApplicationController
     def contacts
 
     end
+
+    def thanks
+
+    end
 end

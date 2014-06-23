@@ -1,4 +1,6 @@
 Kosmo::Application.routes.draw do
+  resources :orders
+
   resources :promos
 
   resources :experts
@@ -32,6 +34,7 @@ Kosmo::Application.routes.draw do
   get 'responces'=>'posts#reviews', as: :responces
   get 'news'=>'posts#news', as: :news
   get 'contacts'=>'posts#contacts', as: :contacts
+  get 'thanks'=>'posts#thanks', as: :thanks
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
