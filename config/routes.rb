@@ -36,6 +36,27 @@ Kosmo::Application.routes.draw do
   get 'contacts'=>'posts#contacts', as: :contacts
   get 'thanks'=>'posts#thanks', as: :thanks
 
+  get '/404' => 'errors#not_found'
+  get '/422' => 'errors#server_error'
+  get '/500' => 'errors#server_error'
+
+  get '/fotoepilyatsiya-na-apparate-record-618.html', to: redirect('/services/1-fotoepilyacia.html')
+  get '/prajs.html', to: redirect('/services/prices')
+  get '/spetsialisty.html', to: redirect('/experts/')
+  get '/chistki-litsa.html', to: redirect('/services/6-chistka-lica.html')
+  get '/depilyatsiya/162-shugaring.html', to: redirect('/services/3-saharnaya-epilyacia.html')
+  get '/kontakty.html', to: redirect('/contacts')
+  get '/konsultatsiya-dermatologa-kosmetologa.html', to: redirect('/services/5-konsultaciya-kosmetologa.html')
+  get '/voskovaya-epilyatsiya.html', to: redirect('/services/2-voskovaya-epilyacia.html')
+  get '/konturnaya-plastika-korrektsiya-fillerami.html', to: redirect('/services/12-konturnaya-plastika-korrektsiya-fillerami.html')
+  get '/otzyvy.html', to: redirect('/responces')
+  get '/mezoterapiya-litsa.html', to: redirect('/services/14-mezoterapiya.html')
+  get '/pedikyur/76-apparatnyj-pedikyur-kazan.html', to: redirect('/services/59-apparatnyj-pedikyur-kazan.html')
+  get '/mezoterapiya-litsa/132-f-btx-gialuronovaya-kislota-peptidy.html', to: redirect('/services/14-mezoterapiya.html')
+  get '/biorevitalizatsiya.html', to: redirect('/services/15-biorevitalizacia.html')
+  get '/massazh-tela.html', to: redirect('/services/38-massag-tela.html')
+
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

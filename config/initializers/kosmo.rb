@@ -1,0 +1,1 @@
+MANAGER_EMAIL = 'epi-center-kazan@ya.ru'
