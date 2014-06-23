@@ -3,5 +3,7 @@
     <h1><%if defined?(header) %><%=header%><%else%>Записаться на приём<%end%></h1>
   </div>
   <%=render :partial => 'app/order/form' %>
+  <% if !defined?(header) %>
   <div style="margin-top: 10px;">Внимание! Запись предварительная. Наш администратор свяжется с вами и уточнит конкретное время</div>
+  <% end %>
 </div>
