@@ -15,6 +15,7 @@
 //= require plugins/slick.min
 //= require plugins/pajinate
 //= require plugins/colorbox
+//= require plugins/time_circles
 //= require plugins/bootstrap.min
 
 $(document).ready(function(){
@@ -35,6 +36,6 @@ $(document).ready(function(){
         var id = $('#modal-show').attr('data-id');
         $('#' + id).modal();
     }
-
+    $("#countdown").TimeCircles({fg_width: 0.05});
 });
 
