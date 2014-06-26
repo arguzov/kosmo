@@ -1,6 +1,6 @@
 ActiveAdmin.register Expert do
 
-  permit_params :name, :content, :profession, :photo, :education, :experience, :diploma, service_ids: []
+  permit_params :name, :content, :profession, :photo, :education, :experience, :diploma, :fl_order, service_ids: []
 
   index do
       column :id
