@@ -1,1 +1,1 @@
-MANAGER_EMAIL = 'epi-center-kazan@ya.ru'
+MANAGER_EMAIL = 'epi.center.kazan@yandex.ru'

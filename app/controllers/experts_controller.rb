@@ -6,6 +6,6 @@ class ExpertsController < ApplicationController
     end
 
     def index
-        @experts = Expert.all
+        @experts = Expert.order('fl_order,id')
     end
 end

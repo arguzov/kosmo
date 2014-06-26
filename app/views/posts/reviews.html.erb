@@ -11,7 +11,9 @@
         <tr>
           <td class="img">
             <div class="author"><%=review.person%></div>
+            <% if review.photo_file_name %>
             <%=image_tag review.photo.url(:medium), :class=>'img-rounded'%>
+            <% end %>
           </td>
           <td>
             <%=review.content.html_safe%>

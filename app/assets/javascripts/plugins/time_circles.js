@@ -701,11 +701,11 @@
         start: true,
         animation: "smooth",
         count_past_zero: true,
-        circle_bg_color: "#60686F",
+        circle_bg_color: "#dedede",
         use_background: true,
-        fg_width: 0.1,
-        bg_width: 1.2,
-        text_size: 0.08,
+        fg_width: 0.001,
+        bg_width: 1,
+        text_size: 0.1,
         total_duration: "Auto",
         direction: "Clockwise",
         start_angle: 0,
@@ -713,22 +713,22 @@
             Days: {
                 show: true,
                 text: "Дней",
-                color: "#FC6"
+                color: "#ccc"
             },
             Hours: {
                 show: true,
                 text: "Часов",
-                color: "#9CF"
+                color: "#ccc"
             },
             Minutes: {
                 show: true,
                 text: "Минут",
-                color: "#BFB"
+                color: "#ccc"
             },
             Seconds: {
                 show: true,
                 text: "Секунд",
-                color: "#F99"
+                color: "#ccc"
             }
         }
     };
