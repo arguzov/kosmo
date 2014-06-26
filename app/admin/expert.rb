@@ -6,6 +6,7 @@ ActiveAdmin.register Expert do
       column :id
       column :name
       column :profession
+      column :fl_order
       column :created_at
       column :updated_at
       default_actions
@@ -20,6 +21,7 @@ ActiveAdmin.register Expert do
           f.input :education
           f.input :experience
           f.input :diploma
+          f.input :fl_order
       end
       f.inputs "Сервисы" do
           f.input :services, as: :check_boxes
