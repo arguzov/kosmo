@@ -81,6 +81,9 @@
   p{
     padding-top: 0px;
     margin-top: 0px;
+    a{
+      text-decoration: underline;
+    }
   }
   img{
     width: 500px;
@@ -188,13 +191,26 @@
       padding-left: 10px;
       .thumbnail {
         text-align: center;
+        width: 115px;
+        float: left;
+        margin: 0px 5px 5px 0px;
         img {
-          width: 150px;
+          width: 115px;
           margin-right: 40px;
         }
         .caption {
-          padding-top: 20px;
+          padding-top: 7px;
           a {
+            text-decoration: underline;
+            font-size: .8em;
+            line-height: 110%;
+            display: block;
+          }
+        }
+      }
+      ul{
+        li{
+          a{
             text-decoration: underline;
           }
         }

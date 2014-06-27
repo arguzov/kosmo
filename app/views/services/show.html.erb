@@ -63,10 +63,11 @@
         </div>
         <%@experts.each do |expert|%>
         <div class="thumbnail">
-          <%=image_tag expert.photo.url(:medium)%>
+          <div style="height: 130px;overflow: hidden">
+            <%=link_to expert_path(expert) do %><%=image_tag 'http://kosmetologiya-kazan.ru' + expert.photo.url(:medium)%><% end %>
+          </div>
           <div class="caption">
             <%=link_to expert.name, expert_path(expert)%>
-            <p><%=expert.profession%></p>
           </div>
         </div>
         <% end %>

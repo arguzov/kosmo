@@ -32,12 +32,12 @@ class ServicesController < ApplicationController
     end
     def define_experts
         if @service.parent_id > 0
-            @experts = Service.where('parent_id = ?',@service.parent_id).first.experts.limit(2)
+            @experts = Service.where('parent_id = ?',@service.parent_id).first.experts
         else
-            @experts = @service.experts.limit(2)
+            @experts = @service.experts
         end
         if @experts.nil? or @experts.count < 1
-            @experts = Expert.limit(2)
+            @experts = Expert.limit(4)
         end
     end
 
