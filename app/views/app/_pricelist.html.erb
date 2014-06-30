@@ -13,7 +13,7 @@
             <%a = item.split(/:/)%>
             <td><%=a[0]%></td>
             <%a.slice(1,a.length).each do |price|%>
-              <td class="cost"><%=price%> <span class="rouble">Р</span></td>
+              <td class="cost"><%=price.html_safe%> <span class="rouble">Р</span></td>
             <% end %>
         <% end %>
       </tr>
