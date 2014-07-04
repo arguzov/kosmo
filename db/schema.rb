@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140626162543) do
+ActiveRecord::Schema.define(version: 20140704164004) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -174,6 +174,20 @@ ActiveRecord::Schema.define(version: 20140626162543) do
 
   add_index "redactor_assets", ["assetable_type", "assetable_id"], name: "idx_redactor_assetable", using: :btree
   add_index "redactor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_redactor_assetable_type", using: :btree
+
+  create_table "sections", force: true do |t|
+    t.string   "name"
+    t.integer  "fl_order"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sections_services", id: false, force: true do |t|
+    t.integer "section_id"
+    t.integer "service_id"
+  end
+
+  add_index "sections_services", ["section_id", "service_id"], name: "index_sections_services_on_section_id_and_service_id", using: :btree
 
   create_table "services", force: true do |t|
     t.string   "name"

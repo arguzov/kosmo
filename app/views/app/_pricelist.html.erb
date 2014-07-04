@@ -7,11 +7,15 @@
                 <th><%=th.html_safe%></th>
               <% end %>
             <% else %>
-              <td colspan="5" class="subcap"><h3><%=item.gsub('#','')%></h3></td>
+              <td colspan="5" class="subcap">
+                <h3><%=render :partial=>'app/pricelist/name',:locals => {item:item}%></h3>
+              </td>
             <% end %>
         <% else %>
+            <td>
+                <%=render :partial=>'app/pricelist/name',:locals => {item:item}%>
+            </td>
             <%a = item.split(/:/)%>
-            <td><%=a[0]%></td>
             <%a.slice(1,a.length).each do |price|%>
               <td class="cost"><%=price.html_safe%> <span class="rouble">Р</span></td>
             <% end %>

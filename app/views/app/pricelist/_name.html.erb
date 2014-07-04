@@ -1,0 +1,17 @@
+<%res = item.scan(/\[([ms])([0-9]+)\]/)
+  a = item.split(/:/)
+  name = a[0].gsub(/\[([ms])([0-9]+)\]/,'')
+  item = item.gsub('#','')
+%>
+<% if res.count > 0 %>
+    <% if res[0][0] == 'm'%>
+        <%=link_to name, medicament_path(:id=>res[0][1])%>
+    <% elsif res[0][0] == 's' %>
+        <%service = Service.find(res[0][1].to_i)%>
+        <%=link_to name, service_path(id:service.id, url:service.url)%>
+    <% else %>
+        <%=name%>
+    <% end %>
+<% else%>
+    <%=name%>
+<% end %>

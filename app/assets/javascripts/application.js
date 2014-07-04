@@ -37,5 +37,14 @@ $(document).ready(function(){
         $('#' + id).modal();
     }
     $("#countdown").TimeCircles({fg_width: 0.05});
+
+    $('#global-pricelist h4 a').click(function(){
+        var css = $(this).children('i').attr('class');
+        if(css == 'icon-arrow-down-bold'){
+            $(this).children('i').removeClass('icon-arrow-down-bold').addClass('icon-arrow-up-bold');
+        }else{
+            $(this).children('i').removeClass('icon-arrow-up-bold').addClass('icon-arrow-down-bold');
+        }
+    })
 });
 
