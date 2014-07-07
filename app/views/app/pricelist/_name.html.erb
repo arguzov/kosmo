@@ -1,7 +1,8 @@
-<%res = item.scan(/\[([ms])([0-9]+)\]/)
+<%
+  item = item.gsub('#','')
+  res = item.scan(/\[([ms])([0-9]+)\]/)
   a = item.split(/:/)
   name = a[0].gsub(/\[([ms])([0-9]+)\]/,'')
-  item = item.gsub('#','')
 %>
 <% if res.count > 0 %>
     <% if res[0][0] == 'm'%>

@@ -31,10 +31,9 @@ class ServicesController < ApplicationController
         @service = Service.find(params[:id])
     end
     def define_experts
-        if @service.parent_id > 0
+        @experts = @service.experts
+        if @experts.count < 1 && @service.parent_id > 0
             @experts = Service.where('parent_id = ?',@service.parent_id).first.experts
-        else
-            @experts = @service.experts
         end
         if @experts.nil? or @experts.count < 1
             @experts = Expert.limit(4)
