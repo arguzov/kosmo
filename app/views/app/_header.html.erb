@@ -37,7 +37,7 @@ new Image().src = "//counter.yadro.ru/hit?r"+
     </div>
     <div class="col-md-8">
       <div id="promos-top" class="slick-slider">
-        <% Promo.where('fl_top = 1 AND fl_active = 1').each do |promo|%>
+        <% Promo.where('fl_top = 1 AND fl_active = 1').order('created_at DESC').each do |promo|%>
             <div>
             <table>
               <tr>
