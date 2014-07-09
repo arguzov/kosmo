@@ -21,7 +21,10 @@
 $(document).ready(function(){
     $('#promos-top').slick({
         autoplay: true,
-        autoplaySpeed: 6000
+        autoplaySpeed: 6000,
+        onInit: function(){
+            $('#promos-top div').show();
+        }
     });
     $('#medicaments').pajinate({
         items_per_page : parseInt($('#medicaments').attr('data-items'))
