@@ -17,12 +17,33 @@
               <h4 class="panel-title">
                 <a data-toggle="collapse" data-parent="#global-pricelist" href="#collapse<%=service.id%>">
                   <%=('<i class="icon-arrow-down-bold"></i> ' + service.name).html_safe%>
-                  <div style="float:right">от <%=service.price%> <span class="rouble">Р</span></div>
+                  <div style="float:right">
+                    от <%=service.price%> <span class="rouble">Р</span>
+                    <% if service.promos.count > 0 %>
+                      <span class="badge" style="background-color: #b33c33;color: #fff">Акция!</span>
+                    <% end %>
+                  </div>
                 </a>
               </h4>
             </div>
             <div id="collapse<%=service.id%>" class="panel-collapse collapse">
               <div class="panel-body">
+                <% if service.promos.count > 0 %>
+                    <div id="promos-list" style="margin: 0px;padding: 0px;">
+                      <table class="table">
+                        <%service.promos.each_with_index do |promo,index|%>
+                            <tr>
+                              <td class="banner">
+                                <div class="wr">
+                                  <%=promo.banner.html_safe%>
+                                  <%=link_to "Подробнее о предложении", promo_path(promo), :class=>'btn btn-sm btn-primary'%>
+                                </div>
+                              </td>
+                            </tr>
+                        <% end %>
+                      </table>
+                    </div>
+                <% end %>
                 <%=render :partial=>'app/pricelist',:locals=>{pricelist:  service.pricelist.split(/\n/)}%>
                 <p style="font-size:13px;padding:10px;background-color: #f0f0f0;font-style: italic"><%=service.anounce%></p>
                 <div>
