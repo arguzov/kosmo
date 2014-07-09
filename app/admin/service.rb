@@ -1,6 +1,6 @@
 ActiveAdmin.register Service do
   permit_params :name, :anounce, :photo, :content, :price, :title, :description, :fl_show, :pricelist,:parent_id,:url, expert_ids: []
-
+  #fdsf
   index do
       column :name
       column :price
