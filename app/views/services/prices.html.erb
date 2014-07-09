@@ -12,6 +12,7 @@
   <%Section.order('fl_order').each do |section|%>
       <h1><%=section.name%></h1>
       <%section.services.order('').each do |service|%>
+          <%promos = service.promos.where('fl_active = 1')%>
           <div class="panel panel-default">
             <div class="panel-heading">
               <h4 class="panel-title">
@@ -19,7 +20,7 @@
                   <%=('<i class="icon-arrow-down-bold"></i> ' + service.name).html_safe%>
                   <div style="float:right">
                     от <%=service.price%> <span class="rouble">Р</span>
-                    <% if service.promos.count > 0 %>
+                    <% if promos.count > 0 %>
                       <span class="badge" style="background-color: #b33c33;color: #fff">Акция!</span>
                     <% end %>
                   </div>
@@ -28,15 +29,17 @@
             </div>
             <div id="collapse<%=service.id%>" class="panel-collapse collapse">
               <div class="panel-body">
-                <% if service.promos.count > 0 %>
+                <% if promos.count > 0 %>
                     <div id="promos-list" style="margin: 0px;padding: 0px;">
                       <table class="table">
-                        <%service.promos.each_with_index do |promo,index|%>
+                        <%promos.each_with_index do |promo,index|%>
                             <tr>
                               <td class="banner">
                                 <div class="wr">
                                   <%=promo.banner.html_safe%>
+                                  <% if !promo.fl_banner %>
                                   <%=link_to "Подробнее о предложении", promo_path(promo), :class=>'btn btn-sm btn-primary'%>
+                                  <% end %>
                                 </div>
                               </td>
                             </tr>
