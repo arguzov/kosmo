@@ -13,6 +13,10 @@ class PostsController < ApplicationController
         @more = Post.where('category_id = ? AND fl_status = 1 AND NOT(id = ?)',@post.category_id,@post.id).limit(4).order('id DESC')
     end
 
+    def gallery
+        @album = Dir.glob("public/data/gallery/th/*")
+    end
+
     def reviews
         @reviews = Post.where('category_id = 31').paginate(:page => params[:page], :per_page => 10)
     end

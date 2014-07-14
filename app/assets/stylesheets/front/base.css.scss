@@ -94,6 +94,14 @@ body{
         width: 175px;
       }
     }
+    .more {
+      height: 127px;
+      text-align: center;
+      a{
+        text-decoration: underline;
+        font-size: .9em;
+      }
+    }
   }
   #doctors {
     .col-md-4 {

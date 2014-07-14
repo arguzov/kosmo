@@ -119,11 +119,17 @@
   </div>
 </div>
 <div class="row" id="saloon">
-  <%@saloon.each do |image|%>
+  <%@saloon.slice(0,5).each do |image|%>
   <div class="thumbnail">
     <%=link_to image.gsub('public',''), :class=> 'photos', :data => {:rel=>'photos'} do %><%= image_tag image.gsub('public','') %><% end %>
   </div>
   <% end %>
+  <div class="thumbnail more">
+    <div style="margin: 20px">
+    <i class="icon-camera" style="font-size: 3.5em;"></i><Br>
+    <%=link_to "Ещё фотографии", gallery_path %>
+    </div>
+  </div>
 </div>
 <div class="row">
   <div class="col-md-6">

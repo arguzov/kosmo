@@ -35,6 +35,7 @@ Kosmo::Application.routes.draw do
   get 'news'=>'posts#news', as: :news
   get 'contacts'=>'posts#contacts', as: :contacts
   get 'thanks'=>'posts#thanks', as: :thanks
+  get 'gallery'=>'posts#gallery', as: :gallery
 
   get '/404' => 'errors#not_found'
   get '/422' => 'errors#server_error'
