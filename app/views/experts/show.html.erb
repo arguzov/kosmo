@@ -20,6 +20,20 @@
             </div>
           <% end %>
       </div>
+      <% if @reviews.length > 0 %>
+          <div style="clear: both"></div>
+          <div class="page-header">
+            <h2 class="pull-left">Некоторые отзывы о специалисте</h2>
+            <div class="pull-right" style="margin-top: 10px;"><%=link_to 'Все отзывы', responces_path, :class=>"btn btn-default btn-sm" %></div>
+            <div style="clear: both"></div>
+          </div>
+          <% @reviews.each do |review| %>
+              <div class="panel review">
+                <%=review.content.html_safe%>
+                <div style="text-align: right"><%=review.person%></div>
+              </div>
+          <% end %>
+      <% end %>
       <div style="clear: both"></div>
       <%=render :partial => 'app/order'%>
     </td>

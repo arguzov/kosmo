@@ -4,6 +4,7 @@ class Post < ActiveRecord::Base
     STATUSES = {"Опубликован"=>1,"Скрыт"=>2,"Черновик"=>3}
     belongs_to :category
     belongs_to :user
+    has_and_belongs_to_many :experts
 
     def category_name
         if self.category

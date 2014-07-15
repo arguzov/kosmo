@@ -44,6 +44,14 @@
           <% end %>
         </div>
         <br>
+        <% if @service.price > 1000 %>
+
+            <div class="well" style="text-align: center;padding-top: 0px;background-color: #E8F7FC">
+              <h2 style="color: #b33c33">Рассрочка 0%</h2>
+              <p>Услуги можно оплатить в рассрочку на выгодных условиях</p>
+              <%=link_to "Подробнее", post_path(:id=>198), :class=>'btn btn-primary btn-sm'%>
+            </div>
+        <% end %>
         <%=render :partial => 'app/order'%>
       </td>
       <td class="right">

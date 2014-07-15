@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140704164004) do
+ActiveRecord::Schema.define(version: 20140715104504) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -54,6 +54,13 @@ ActiveRecord::Schema.define(version: 20140704164004) do
     t.datetime "photo_updated_at"
     t.integer  "fl_order"
   end
+
+  create_table "experts_posts", id: false, force: true do |t|
+    t.integer "post_id"
+    t.integer "expert_id"
+  end
+
+  add_index "experts_posts", ["post_id", "expert_id"], name: "index_experts_posts_on_post_id_and_expert_id", using: :btree
 
   create_table "experts_services", id: false, force: true do |t|
     t.integer "expert_id"

@@ -1,5 +1,5 @@
 ActiveAdmin.register Post do
-    permit_params :name, :user_id, :category_id, :anounce, :content, :fl_status, :fl_menu, :title, :description, :photo, :person
+    permit_params :name, :user_id, :category_id, :anounce, :content, :fl_status, :fl_menu, :title, :description, :photo, :person, expert_ids: []
 
     index do
         column :name
@@ -26,6 +26,10 @@ ActiveAdmin.register Post do
             f.input :title
             f.input :description
         end
+        f.inputs "Специалисты" do
+            f.input :experts, as: :check_boxes
+        end
         f.actions
     end
+
 end
