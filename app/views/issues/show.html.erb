@@ -12,6 +12,9 @@
     <%if expert.nil? %>
         <% expert = Expert.first%>
     <% end %>
+    <% if [12,20,39,43].include?(@issue.id) %>
+        <%expert = Expert.find(3)%>
+    <% end %>
     <%=image_tag expert.photo.url(:medium)%>
     <div class="caption">
       <%=link_to expert.name, expert_path(expert)%>
