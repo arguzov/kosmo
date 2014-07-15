@@ -3,7 +3,7 @@ class ExpertsController < ApplicationController
       @expert = Expert.find(params[:id])
       @diplomas = Dir.glob("public/data/experts/#{@expert.id}/diploma/th/*")
       @gallery = Dir.glob("public/data/experts/#{@expert.id}/photos/th/*")
-      @reviews = @expert.posts.where('category_id = 31')
+      @reviews = @expert.posts.where('category_id = 31').limit(3)
     end
 
     def index
