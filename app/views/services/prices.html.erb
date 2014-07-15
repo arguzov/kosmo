@@ -9,6 +9,11 @@
   <p>Ниже представлен перечень актуальных цен на наши услуги. Кликните на интересующую вас услугу и раскроется блок с подробной информацией.</p>
   <p>Обратите внимание, что даны цены без учёта возможных дополнительных скидок и акций, т.е. посещение нашего салона может обойтись вам <strong>ещё дешевле</strong>.</p>
   <p>Просто позвоните нам и узнайте свою выгоду!</p>
+  <div class="well" style="text-align: center;padding-top: 0px;background-color: #E8F7FC">
+    <h2 style="color: #b33c33">Рассрочка 0%</h2>
+    <p>Услуги можно оплатить в рассрочку на выгодных условиях</p>
+    <%=link_to "Подробнее", post_path(:id=>198), :class=>'btn btn-primary btn-sm'%>
+  </div>
   <%Section.order('fl_order').each do |section|%>
       <h1><%=section.name%></h1>
       <%section.services.order('').each do |service|%>
