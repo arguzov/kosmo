@@ -9,10 +9,10 @@ class OrdersController < ApplicationController
                 return render text: 'You order has been created'
             end
         end
-        @order = Order.new(order_params)
+        @order = Order.new(params)
         respond_to do |format|
             if @order.save
-                OrderMailer.recall(params[:order]).deliver
+                OrderMailer.recall(params).deliver
                 format.html { redirect_to :back, notice: 'Order was created' }
                 format.json { render json: @order }
             else
