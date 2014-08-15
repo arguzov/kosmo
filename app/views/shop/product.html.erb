@@ -1,0 +1,59 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="page-header" style="margin: 10px 0px;">
+      <h1><%=@product.name%></h1>
+    </div>
+    <div class="content">
+      <div style="float: right;" style="margin-left: 10px;">
+        <%=image_tag "/data/products/#{@product.id}.jpg"%>
+      </div>
+      <%=@product.description.html_safe%>
+    </div>
+  </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+      <div style="box-shadow: 0px 0px 10px #555;padding: 15px 10px 5px 10px;margin-top: 10px;">
+    <%@prices = @product.prices.split("\n")%>
+    <table class="table" style="">
+      <tr>
+        <th style="text-align: center;font-size: 12px;border-top: 0px;">Продукт</th>
+        <th style="text-align: center;font-size: 12px;border-top: 0px;">Объём</th>
+        <th style="text-align: center;font-size: 12px;border-top: 0px;">Доступность</th>
+        <th style="text-align: center;font-size: 12px;border-top: 0px;">Цена</th>
+        <th style="text-align: center;font-size: 12px;border-top: 0px;">В корзину</th>
+      </tr>
+      <%i = 0%>
+      <%@prices.each do |line|%>
+          <%a = line.split(':')%>
+          <%i = i + 1%>
+          <tr>
+            <td style="text-align: center;"><%=@product.name%></td>
+            <td style="text-align: center;"><%=a[1]%> мл.</td>
+            <td style="text-align: center;">На складе</td>
+            <td style="text-align: center;"><%=a[2]%> руб.</td>
+            <td style="text-align: center"><button class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-shopping-cart"></i> в корзину</button></td>
+          </tr>
+      <% end %>
+    </table>
+        </div>
+    </div>
+  </div>
+  <div class="row">
+     <div class="col-md-7">
+       <div style="background-color: #f0f0f0;padding: 10px;margin-top: 20px;">
+       <div class="page-header">Проконсультироваться</div>
+       <%=render :partial => 'app/order/form'%>
+       </div>
+     </div>
+     <div class="col-md-5">
+       <div class="page-header" style="margin-top: 20px;">5 причин нам доверять</div>
+       <ul>
+         <li>Мы лицензированный центр</li>
+         <li>У нас работают специалисты с медцинским образованием</li>
+         <li>Мы работаем только с лучшми поставщиками</li>
+         <li>Наши цены не кусаются</li>
+       </ul>
+     </div>
+  </div>
+</div>

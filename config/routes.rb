@@ -1,10 +1,7 @@
 Kosmo::Application.routes.draw do
   resources :orders
-
   resources :promos
-
   resources :experts
-
   resources :medicaments
 
   #resources :services do
@@ -37,6 +34,10 @@ Kosmo::Application.routes.draw do
   get 'thanks'=>'posts#thanks', as: :thanks
   get 'gallery'=>'posts#gallery', as: :gallery
 
+  get 'shop'=>'shop#root', as: :shop_root
+  get 'shop/collection/:url'=>'shop#collection', as: :shop_collection
+  get 'shop/product/:url'=>'shop#product', as: :shop_product
+
   get '/404' => 'errors#not_found'
   get '/422' => 'errors#server_error'
   get '/500' => 'errors#server_error'
@@ -56,6 +57,8 @@ Kosmo::Application.routes.draw do
   get '/mezoterapiya-litsa/132-f-btx-gialuronovaya-kislota-peptidy.html', to: redirect('/services/14-mezoterapiya.html')
   get '/biorevitalizatsiya.html', to: redirect('/services/15-biorevitalizacia.html')
   get '/massazh-tela.html', to: redirect('/services/38-massag-tela.html')
+
+
 
 
   # Example of regular route:

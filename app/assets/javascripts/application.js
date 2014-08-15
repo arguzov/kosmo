@@ -17,6 +17,7 @@
 //= require plugins/colorbox
 //= require plugins/time_circles
 //= require plugins/bootstrap.min
+//= require plugins/readmore.min
 
 $(document).ready(function(){
     $('#promos-top').slick({
@@ -49,5 +50,21 @@ $(document).ready(function(){
             $(this).children('i').removeClass('icon-arrow-up-bold').addClass('icon-arrow-down-bold');
         }
     })
+
+    $('.descr').readmore({
+        maxHeight: 220,
+        speed: 100,
+        moreLink: '<br><a href="#">Читать далее</a>',
+        lessLink: '<br><a href="#">Свернуть текст</a>',
+        embedCSS: true,
+        sectionCSS: 'display: block; width: 100%;',
+        startOpen: false,
+        expandedClass: 'readmore-js-expanded',
+        collapsedClass: 'readmore-js-collapsed',
+
+// callbacks
+        beforeToggle: function(){},
+        afterToggle: function(){}
+    });
 });
 

@@ -1,0 +1,8 @@
+<div class="list-group" id="collections-nav">
+  <a href="#" class="list-group-item active">
+      Линии
+  </a>
+  <%Collection.all.each do |collection|%>
+      <%=link_to collection.name.html_safe, shop_collection_path({url:collection.url}), :class=>"list-group-item"%>
+  <% end %>
+</div>

@@ -1,5 +1,21 @@
 # See http://www.robotstxt.org/wc/norobots.html for documentation on how to use the robots.txt file
 #
 # To ban all spiders from the entire site uncomment the next two lines:
-# User-agent: *
-# Disallow: /
+User-agent: *
+Disallow: /aktsii
+Disallow: /component
+Disallow: /depilyatsiya
+Disallow: /konturnaya-plastika-korrektsiya-fillerami
+Disallow: /massazh-litsa-shei-oblasti-dekolte
+Disallow: /massazh-litsa
+Disallow: /massazh-rasslablyayushchij-po-kitajskim-metodikam
+Disallow: /massazh-tela
+Disallow: /mezoterapiya-litsa
+Disallow: /mezoterapiya
+Disallow: /novosti
+Disallow: /otzyvy
+Disallow: /piling
+Disallow: /protsedury-ukhoda-uvlazhneniya-i-omolozheniya
+Disallow: /spetsialisty
+Disallow: /ssilki
+

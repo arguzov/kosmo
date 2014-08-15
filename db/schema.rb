@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140715104504) do
+ActiveRecord::Schema.define(version: 20140804154730) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -37,6 +37,14 @@ ActiveRecord::Schema.define(version: 20140715104504) do
     t.datetime "updated_at"
     t.string   "url"
     t.boolean  "fl_menu"
+  end
+
+  create_table "collections", force: true do |t|
+    t.string   "name"
+    t.string   "url"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "experts", force: true do |t|
@@ -140,6 +148,16 @@ ActiveRecord::Schema.define(version: 20140715104504) do
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
     t.string   "person"
+  end
+
+  create_table "products", force: true do |t|
+    t.string   "name"
+    t.string   "url"
+    t.integer  "collection_id"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "prices"
   end
 
   create_table "promos", force: true do |t|

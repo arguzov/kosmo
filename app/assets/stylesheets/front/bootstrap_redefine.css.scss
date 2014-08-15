@@ -60,3 +60,10 @@ blockquote{
     margin: 0px;
   }
 }
+
+.list-group{
+    @include cancel-round;
+    a{
+        @include cancel-round;
+    }
+}
