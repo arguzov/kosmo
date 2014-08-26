@@ -1,0 +1,24 @@
+<div class="panel panel-default" style="width: 40%;margin: 40px auto">
+  <div class="panel-heading">Регистрация на сайте</div>
+  <div class="panel-body">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
+        <div class="control-group" style="margin-bottom: 10px;"><%= f.label 'Email' %><br />
+          <%= f.email_field :email, autofocus: true, :class=>"form-control" %>
+        </div>
+
+        <div class="control-group"><%= f.label 'Пароль' %><br />
+          <%= f.password_field :password, autocomplete: "off", :class=>"form-control" %>
+        </div>
+
+        <div class="control-group" style="margin-top: 10px;"><%= f.label 'Подтвердите пароль' %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "off", :class=>"form-control" %>
+        </div>
+
+        <div class="control-group" style="margin-top: 10px;">
+          <%= f.submit "Зарегистрироваться", :class=>'btn btn-primary' %>
+        </div>
+    <% end %>
+  </div>
+</div>
+

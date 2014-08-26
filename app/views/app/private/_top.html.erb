@@ -1,0 +1,19 @@
+<div class="row" id="private-top">
+  <div class="container col-md-12 col-lg-12 visible-md visible-lg" style="background-color: #000;padding: 10px 30px 0px 0px;">
+    <div style="float:left;color: #fff;padding-left: 20px;">
+      <% if user_signed_in? %>
+          Здраствуйте, <%=current_user.name%> | <a href="/private/profile">Личный кабинет</a>
+      <% else %>
+          Здравствуйте, Гость. | <%=link_to 'Вход на сайт', new_user_session_path %>
+      <% end %>
+    </div>
+    <div style="float: right;color: #fff;font-size: 14px;">
+      <% if user_signed_in? %>
+          <i class="glyphicon glyphicon-usd"></i> Ваша скидка: <a href="/"><%=current_user.discount%>%</a> &nbsp;&nbsp;
+          <i class="glyphicon glyphicon-shopping-cart"></i> В корзине: <a href="/shop/cart"><%=cart_items_count%></a>
+      <% else %>
+          <i class="glyphicon glyphicon-usd"></i> 0% <i class="glyphicon glyphicon-shopping-cart"></i> <a href="/shop">нет товаров</a>
+    <% end %>
+    </div>
+  </div>
+</div>

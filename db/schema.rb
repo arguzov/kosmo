@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140804154730) do
+ActiveRecord::Schema.define(version: 20140826113638) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -45,6 +45,9 @@ ActiveRecord::Schema.define(version: 20140804154730) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "title"
+    t.boolean  "fl_show"
+    t.integer  "unit_id"
   end
 
   create_table "experts", force: true do |t|
@@ -96,6 +99,14 @@ ActiveRecord::Schema.define(version: 20140804154730) do
 
   add_index "issues_services", ["issue_id", "service_id"], name: "index_issues_services_on_issue_id_and_service_id", using: :btree
 
+  create_table "items", force: true do |t|
+    t.integer  "product_id"
+    t.integer  "volume"
+    t.integer  "price"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "medicaments", force: true do |t|
     t.string   "name"
     t.text     "content"
@@ -128,6 +139,11 @@ ActiveRecord::Schema.define(version: 20140804154730) do
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "fl_type",    default: 1
+    t.string   "items"
+    t.integer  "qty"
+    t.integer  "price"
   end
 
   create_table "posts", force: true do |t|
@@ -158,6 +174,7 @@ ActiveRecord::Schema.define(version: 20140804154730) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "prices"
+    t.string   "title"
   end
 
   create_table "promos", force: true do |t|
@@ -238,6 +255,13 @@ ActiveRecord::Schema.define(version: 20140804154730) do
     t.integer "issue_id"
   end
 
+  create_table "units", force: true do |t|
+    t.string  "name"
+    t.string  "url"
+    t.text    "description"
+    t.integer "parent"
+  end
+
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -252,6 +276,9 @@ ActiveRecord::Schema.define(version: 20140804154730) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "admin"
+    t.string   "discount"
+    t.string   "name"
+    t.string   "phone"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

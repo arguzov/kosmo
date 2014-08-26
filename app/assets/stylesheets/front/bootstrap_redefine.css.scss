@@ -67,3 +67,8 @@ blockquote{
         @include cancel-round;
     }
 }
+
+.btn{
+    @include cancel-round;
+    box-shadow: 2px 2px 5px #555;
+}

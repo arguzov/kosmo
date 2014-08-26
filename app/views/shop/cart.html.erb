@@ -1,0 +1,44 @@
+<div class="row">
+  <div class="col-md-8" style="padding-bottom: 50px;">
+    <div class="page-header">
+      <h3>Моя корзина</h3>
+    </div>
+    <table class="table" id="shop-cart">
+      <tr>
+        <th></th>
+        <th>Продукт</th>
+        <th class="c">Цена</th>
+        <th class="c">Скидка</th>
+        <th class="c">К оплате</th>
+      </tr>
+      <%@items.each do |item|%>
+          <tr>
+            <td class="th"><%=image_tag "/data/products/#{item.product.id}.jpg"%></td>
+            <td ><%=item.product.name.html_safe%> <%=item.volume%> мл.</td>
+            <td class="c"><%=item.price%> <span class="rouble">Р</span></td>
+            <td class="c">0%</td>
+            <td class="c"><%=item.price%> <span class="rouble">Р</span></td>
+          </tr>
+      <% end %>
+      <tr>
+        <td colspan="4" style="text-align: right;">К оплате: </td>
+        <td class="c"><%=order_total(@items,0)%> <span class="rouble">Р</span></td>
+      </tr>
+    </table>
+    <div class="page-header">
+      <h3>Частые вопросы</h3>
+    </div>
+    <strong>Как просходит оплата заказа?</strong>
+    <p>Оплата заказа производится наличными при получении заказа. Наш менеджер свяжется с вами в течении нескольких часов после получения вашего заказа</p>
+    <strong>Как получить заказ</strong>
+    <p>В данный момент заказ можно получить только самовывозом из нашего салона по адресу ул. Островского, дом 2а ТЦ Караван</p>
+  </div>
+  <div class="col-md-4">
+    <div class="panel panel-default" style="margin-top: 10px;">
+      <div class="panel-heading">Оформить заказ</div>
+      <div class="panel-body">
+          <%=render :partial=>'shop/shared/order_form', :locals => {:from=>'cart'}%>
+      </div>
+    </div>
+  </div>
+</div>

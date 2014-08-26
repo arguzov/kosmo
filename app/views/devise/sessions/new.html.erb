@@ -1,0 +1,22 @@
+<div class="panel panel-default" style="width: 40%;margin: 40px auto">
+  <div class="panel-heading">Вход на сайт</div>
+  <div class="panel-body">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
+        <div class="control-group" style="margin-bottom: 10px;"><%= f.label 'Email' %><br />
+          <%= f.email_field :email, autofocus: true, :class=>"form-control" %></div>
+
+        <div class="control-group"><%= f.label 'Пароль' %><br />
+          <%= f.password_field :password, autocomplete: "off", :class=>"form-control" %></div>
+
+        <% if devise_mapping.rememberable? -%>
+            <div class="control-group" style="margin-top: 10px;"><%= f.check_box :remember_me %> <%= f.label 'Запомнить меня' %></div>
+        <% end -%>
+
+        <div class="control-group" style="margin-top: 10px;">
+          <%= f.submit "Войти на сайт", :class=>'btn btn-primary' %>
+          <div style="float: right;text-decoration: underline;padding-top: 5px;"><%=link_to 'Зарегистрироваться', new_user_registration_path %></div>
+        </div>
+    <% end %>
+  </div>
+</div>

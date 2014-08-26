@@ -1,7 +1,7 @@
-<div class="row">
+<div class="row" id="product" data-id="<%=@product.id%>">
   <div class="col-md-12">
     <div class="page-header" style="margin: 10px 0px;">
-      <h1><%=@product.name%></h1>
+      <h1><%=@product.name.html_safe%></h1>
     </div>
     <div class="content">
       <div style="float: right;" style="margin-left: 10px;">
@@ -14,7 +14,6 @@
 <div class="row">
     <div class="col-md-12">
       <div style="box-shadow: 0px 0px 10px #555;padding: 15px 10px 5px 10px;margin-top: 10px;">
-    <%@prices = @product.prices.split("\n")%>
     <table class="table" style="">
       <tr>
         <th style="text-align: center;font-size: 12px;border-top: 0px;">Продукт</th>
@@ -24,15 +23,13 @@
         <th style="text-align: center;font-size: 12px;border-top: 0px;">В корзину</th>
       </tr>
       <%i = 0%>
-      <%@prices.each do |line|%>
-          <%a = line.split(':')%>
-          <%i = i + 1%>
+      <%@product.items.order('price asc').each do |item|%>
           <tr>
-            <td style="text-align: center;"><%=@product.name%></td>
-            <td style="text-align: center;"><%=a[1]%> мл.</td>
+            <td style="text-align: center;"><%=@product.name.html_safe%></td>
+            <td style="text-align: center;"><%=item.volume%> мл.</td>
             <td style="text-align: center;">На складе</td>
-            <td style="text-align: center;"><%=a[2]%> руб.</td>
-            <td style="text-align: center"><button class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-shopping-cart"></i> в корзину</button></td>
+            <td style="text-align: center;"><%=item.price%> руб.</td>
+            <td style="text-align: center"><button class="btn btn-primary btn-sm add-to-cart" data-item="<%=item.id%>"><i class="glyphicon glyphicon-shopping-cart"></i> в корзину</button></td>
           </tr>
       <% end %>
     </table>
@@ -47,13 +44,13 @@
        </div>
      </div>
      <div class="col-md-5">
-       <div class="page-header" style="margin-top: 20px;">5 причин нам доверять</div>
-       <ul>
-         <li>Мы лицензированный центр</li>
-         <li>У нас работают специалисты с медцинским образованием</li>
-         <li>Мы работаем только с лучшми поставщиками</li>
-         <li>Наши цены не кусаются</li>
-       </ul>
+       <div class="page-header">
+         <h3>Частые вопросы</h3>
+       </div>
+       <strong>Как просходит оплата заказа?</strong>
+       <p>Оплата заказа производится наличными при получении заказа. Наш менеджер свяжется с вами в течении нескольких часов после получения вашего заказа</p>
+       <strong>Как получить заказ</strong>
+       <p>В данный момент заказ можно получить только самовывозом из нашего салона по адресу ул. Островского, дом 2а ТЦ Караван</p>
      </div>
   </div>
 </div>

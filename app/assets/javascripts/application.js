@@ -12,12 +12,15 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require plugins/tools
 //= require plugins/slick.min
 //= require plugins/pajinate
 //= require plugins/colorbox
 //= require plugins/time_circles
 //= require plugins/bootstrap.min
 //= require plugins/readmore.min
+//= require plugins/jquery.cookie
+//= require controller/shop
 
 $(document).ready(function(){
     $('#promos-top').slick({

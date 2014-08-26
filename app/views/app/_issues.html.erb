@@ -1,6 +1,10 @@
 <%
   @issues = Issue.where('parent_id = 0').order('id ASC')
 %>
+<div style="padding: 10px 10px 10px 10px;background-color: #EFEFEF;font-size: 12px;">
+  <div style="float:left;padding-top: 7px;padding-right: 10px;"><i class="glyphicon glyphicon-circle-arrow-down" style="font-size: 3.5em;text-shadow: 0px 0px 5px #555;color: #fff"></i></div>
+  Кликните на проблеме, которая вас беспокоит и мы подскажем возможные пути решения
+</div>
 <ul class="list-group" id="menu">
   <%@issues.each do |issue|%>
       <a class="list-group-item active"><%=issue.name%></a>

@@ -1,0 +1,45 @@
+#private-wrapper{
+    margin-top: 10px;
+    background-color: #ffffff;
+    min-height: 600px;
+    .main{
+        width: 80%;
+        vertical-align: top;
+    }
+    .left{
+        width: 20%;
+        background-color: #ffffff;
+        vertical-align: top;
+    }
+    #menu {
+        box-shadow: 2px 2px 5px #d9e4ec;
+        margin: 0px;
+        @include cancel-round;
+        a{
+            @include cancel-round;
+            font-size: 13px;
+            border-color: #d9e4ec;
+        }
+    }
+}
+#private{
+    min-height: 600px;
+    width: 100%;
+    .left{
+        padding: 10px 20px 10px 10px;
+        a{
+            font-size: 12px;
+        }
+    }
+}
+#private-profile{
+    .list-group-item{
+        border-width: 1px 0px 0px 0px;
+    }
+}
+#private-top{
+    a{
+        text-decoration: underline;
+        color: #75a1c2;
+    }
+}

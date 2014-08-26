@@ -34,9 +34,17 @@ Kosmo::Application.routes.draw do
   get 'thanks'=>'posts#thanks', as: :thanks
   get 'gallery'=>'posts#gallery', as: :gallery
 
-  get 'shop'=>'shop#root', as: :shop_root
+  get 'shop', to: redirect('/shop/collection/a_nox')
+  #get 'shop'=>'shop#root', as: :shop_root
   get 'shop/collection/:url'=>'shop#collection', as: :shop_collection
   get 'shop/product/:url'=>'shop#product', as: :shop_product
+  get 'shop/data/cart'=>'shop#cart_data'
+  get 'shop/cart'=>'shop#cart', as: :shop_cart
+  get 'shop/order/:id'=>'shop#order', as: :shop_order
+  get 'shop/orders'=>'shop#orders', as: :shop_orders
+  get 'shop/:url'=>'shop#unit', as: :shop_unit
+
+  get 'private/profile'=>'private#profile', as: :private_profile
 
   get '/404' => 'errors#not_found'
   get '/422' => 'errors#server_error'

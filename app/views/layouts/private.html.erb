@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%= metamagic %>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+  <%= stylesheet_link_tag    "application", media: "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<%=render 'app/header'%>
+<%=render 'app/navbar'%>
+<div class="container" id="private-wrapper">
+  <div class="row">
+    <div class="col-md-12" style="padding-left: 0px;">
+      <table id="private">
+        <tr>
+          <td class="left">
+              <%=render :partial => 'app/private/menu'%>
+          </td>
+          <td class="main"><%= yield %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <%=render 'app/footer' %>
+</div>
+<%=render :partial => 'app/modal/recall'%>
+</body>
+</html>

@@ -1,19 +1,18 @@
-
-<%banner = Promo.where('fl_banner = 1').first%>
-<% if banner && request.original_url.index('promo') == nil%>
-<div class="row">
-  <div class="col-md-12" style="box-shadow: 0px 0px 10px #555;margin-bottom: 10px;background-color: #F0F0F0">
-    <table style="width: 100%;">
-      <tr>
-        <td style="height: 120px;width: 350px;border-bottom: 0px solid #ccc">
-          <div id="countdown" style="width:350px;" data-date="<%=banner.due%>"></div>
-          <div style="width: 350px;text-align: center;color: #b33c33;font-weight: bold;">осталось до конца акции</div>
-        </td>
-        <td style="text-align: center;">
-          <%=banner.banner.html_safe%>
-        </td>
-      </tr>
-    </table>
-  </div>
-</div>
-<% end %>
+    <%banner = Promo.where('fl_banner = 1').first%>
+    <% if banner && request.original_url.index('promo') == nil%>
+        <div class="row">
+          <div class="col-md-12" style="box-shadow: 0px 0px 10px #555;margin-bottom: 10px;background-color: #F0F0F0">
+            <table style="width: 100%;">
+              <tr>
+                <td style="height: 120px;width: 350px;border-bottom: 0px solid #ccc">
+                  <div id="countdown" style="width:350px;" data-date="<%=banner.due%>"></div>
+                  <div style="width: 350px;text-align: center;color: #b33c33;font-weight: bold;">осталось до конца акции</div>
+                </td>
+                <td style="text-align: center;">
+                  <%=banner.banner.html_safe%>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+    <% end %>
