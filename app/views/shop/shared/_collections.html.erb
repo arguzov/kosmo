@@ -1,17 +1,14 @@
 <div class="list-group" id="collections-nav">
-  <a href="#" class="list-group-item active">Косметика</a>
   <!--<%Collection.where('fl_show = 1').each do |collection|%>
       <%=link_to collection.name.html_safe, shop_collection_path({url:collection.url}), :class=>"list-group-item"%>
   <% end %>-->
-  <a href="/shop/holyland" class="list-group-item">Косметика по уходу за кожей лица Holyland (Израиль)</a>
-  <a href="/shop/obagi" class="list-group-item">Система домашнего пиллинга Обаджи</a>
-  <a href="/shop/posle-epilyacii" class="list-group-item">Средства после эпиляции и для замедления роста волос</a>
-  <a href="#" class="list-group-item active">Бельё</a>
-  <a href="/shop/korrektiruyushee-belye" class="list-group-item">Корректирующее бельё</a>
-  <a href="/shop/energeticheskoe-belye" class="list-group-item">Энергетическое бельё</a>
-  <a href="#" class="list-group-item active">Сертификаты</a>
-  <a href="/shop/podarochnie-sertificati-nominal" class="list-group-item">Подарочные сертификаты номинальные</a>
-  <a href="/shop/podarochnie-sertificati-na-paketi-uslug" class="list-group-item">Подарочные сертификаты на пакеты услуг</a>
-  <a href="#" class="list-group-item active">Абонементы</a>
-  <a href="/shop/abonementi" class="list-group-item">Абонементы на услуги</a>
+  <%parents = {1=>'Косметика', 2=>'Бельё', 3=>'Сертификаты', 4=> 'Абонементы'}%>
+  <%prev_parent = 0%>
+  <%Unit.all.each do |unit|%>
+      <% if prev_parent != unit.parent%>
+          <a href="#" class="list-group-item active"><%=parents[unit.parent]%></a>
+          <%prev_parent = unit.parent%>
+      <% end %>
+      <a href="/shop/<%=unit.url%>" class="list-group-item"><%=unit.name%></a>
+  <% end %>
 </div>

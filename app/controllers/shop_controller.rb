@@ -10,6 +10,12 @@ class ShopController < ApplicationController
         @product = Product.where('url = ?',params[:url]).first
     end
 
+    def unit
+        @unit = Unit.where('url = ?',params[:url]).first
+        @collections = Collection.where('unit_id = ?',@unit.id)
+        @products = Product.where('collection_id IN (?)',@collections.map{|row| row.id}).order('RAND()')
+    end
+
     def cart
         if cookies.has_key?('cart')
             ids = cookies[:cart].split(/,/)
