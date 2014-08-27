@@ -15,7 +15,13 @@
           <div class="caption" style="text-align: center;text-decoration: underline;height: 60px;">
             <%=link_to product.name.html_safe, shop_product_path({url: product.url})%>
           </div>
-          <%=image_tag "/data/products/#{product.id}.jpg"%>
+          <%if product.photo? %>
+              <%=image_tag product.photo.url(:thumb)%>
+          <% else %>
+              <% if @collection.unit_id == 1 %>
+                  <%=image_tag "/data/products/#{product.id}.jpg"%>
+              <% end %>
+          <% end %>
           <div class="caption">
             <%@prices = product.prices.split("\n")%>
             <table class="table">

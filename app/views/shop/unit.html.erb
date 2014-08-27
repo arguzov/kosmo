@@ -12,20 +12,15 @@
             <div class="caption" style="text-align: center;text-decoration: underline;height: 60px;">
               <%=link_to product.name.html_safe, shop_product_path({url: product.url})%>
             </div>
-            <%=image_tag "/data/products/#{product.id}.jpg"%>
-            <div class="caption">
-              <%@prices = product.prices.split("\n")%>
-              <table class="table">
-                <%i = 0%>
-                <%@prices.each do |line|%>
-                    <%a = line.split(':')%>
-                    <%i = i + 1%>
-                    <tr <% if i > 1 %>style="display:none;"<% end %>>
-                      <td style="font-size: 12px;text-decoration: underline"><%=link_to "Выбрать объём", shop_product_path({url: product.url})%></td>
-                      <td style="text-align: right;background-color: #006699;color: #fff;vertical-align: middle;width: 100px;font-size: 12px;">от <%=a[2]%> руб.</td>
-                    </tr>
+            <%if product.photo? %>
+                <%=image_tag product.photo.url(:thumb)%>
+            <% else %>
+                <% if @unit.id == 1 %>
+                    <%=image_tag "/data/products/#{product.id}.jpg"%>
                 <% end %>
-              </table>
+            <% end %>
+            <div class="caption">
+
             </div>
           </div>
         </div>
