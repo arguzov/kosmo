@@ -116,3 +116,15 @@
         text-align: center;
     }
 }
+#units-nav{
+    .current{
+        font-weight: bold;
+        color: #000;
+        background-color: #EFEFEF;
+        border-left: 1px solid #666666;
+    }
+    .current_child{
+        color: #000;
+        border-left: 1px solid #666666;
+    }
+}

@@ -5,7 +5,13 @@
     </div>
     <div class="content">
       <div style="float: right;" style="margin-left: 10px;">
-        <%=image_tag "/data/products/#{@product.id}.jpg"%>
+        <%if @product.photo? %>
+            <%=image_tag @product.photo.url(:thumb)%>
+        <% else %>
+            <% if @product.collection.unit_id == 1 %>
+                <%=image_tag "/data/products/#{@product.id}.jpg"%>
+            <% end %>
+        <% end %>
       </div>
       <%=@product.description.html_safe%>
     </div>

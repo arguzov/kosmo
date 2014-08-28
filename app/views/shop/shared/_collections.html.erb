@@ -1,7 +1,4 @@
-<div class="list-group" id="collections-nav">
-  <!--<%Collection.where('fl_show = 1').each do |collection|%>
-      <%=link_to collection.name.html_safe, shop_collection_path({url:collection.url}), :class=>"list-group-item"%>
-  <% end %>-->
+<div class="list-group" id="units-nav">
   <%parents = {1=>'Косметика', 2=>'Бельё', 3=>'Сертификаты', 4=> 'Абонементы'}%>
   <%prev_parent = 0%>
   <%Unit.all.each do |unit|%>
@@ -9,6 +6,11 @@
           <a href="#" class="list-group-item active"><%=parents[unit.parent]%></a>
           <%prev_parent = unit.parent%>
       <% end %>
-      <a href="/shop/<%=unit.url%>" class="list-group-item"><%=unit.name%></a>
+      <a href="/shop/<%=unit.url%>" class="list-group-item <%if @unit && @unit.id == unit.id%>current<% end %>"><%=unit.name%></a>
+      <% if @unit && @unit.id == unit.id %>
+          <%@unit.collections.where('fl_show = 1').limit(10).each do |collection|%>
+             <%=link_to collection.name.html_safe, shop_collection_path({url:collection.url}), :class=>"list-group-item current_child"%>
+          <% end %>
+      <% end %>
   <% end %>
 </div>

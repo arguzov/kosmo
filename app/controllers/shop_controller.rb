@@ -4,10 +4,12 @@ class ShopController < ApplicationController
     def collection
         @collection = Collection.where('url = ?',params[:url]).first
         @products = Product.where('collection_id = ?',@collection[:id])
+        @unit = @collection.unit
     end
 
     def product
         @product = Product.where('url = ?',params[:url]).first
+        @unit = @product.collection.unit
     end
 
     def unit

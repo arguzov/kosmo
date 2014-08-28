@@ -9,34 +9,5 @@
   </div>
 </div>
 <div class="row" id="shop-collection" style="margin-top: 20px;">
-<%@products.each do |product|%>
-      <div class="col-sm-6 col-md-4">
-        <div class="thumbnail" >
-          <div class="caption" style="text-align: center;text-decoration: underline;height: 60px;">
-            <%=link_to product.name.html_safe, shop_product_path({url: product.url})%>
-          </div>
-          <%if product.photo? %>
-              <%=image_tag product.photo.url(:thumb)%>
-          <% else %>
-              <% if @collection.unit_id == 1 %>
-                  <%=image_tag "/data/products/#{product.id}.jpg"%>
-              <% end %>
-          <% end %>
-          <div class="caption">
-            <%@prices = product.prices.split("\n")%>
-            <table class="table">
-              <%i = 0%>
-              <%@prices.each do |line|%>
-                  <%a = line.split(':')%>
-                  <%i = i + 1%>
-                  <tr <% if i > 1 %>style="display:none;"<% end %>>
-                    <td style="font-size: 12px;text-decoration: underline"><%=link_to "Выбрать объём", shop_product_path({url: product.url})%></td>
-                    <td style="text-align: right;background-color: #006699;color: #fff;vertical-align: middle;width: 100px;font-size: 12px;">от <%=a[2]%> руб.</td>
-                  </tr>
-              <% end %>
-            </table>
-          </div>
-        </div>
-      </div>
-<% end %>
+    <%=render :partial=>'shop/shared/products', :locals => {products: @products, unit_id: @collection.unit_id}%>
 </div>
