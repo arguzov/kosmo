@@ -52,7 +52,7 @@
         <h2>Специализация</h2>
       </div>
         <ul>
-          <%@expert.services.each do |service|%>
+          <%@expert.services.where('fl_publish = 1').each do |service|%>
             <li><%=link_to service.name, service_path(id:service.id, url:service.url)%></li>
           <% end %>
         </ul>

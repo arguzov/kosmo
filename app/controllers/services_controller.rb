@@ -23,7 +23,7 @@ class ServicesController < ApplicationController
     end
 
     def prices
-      @services = Service.where('parent_id = 0')
+      @services = Service.where('parent_id = 0 AND fl_publish = 1')
     end
 
     private

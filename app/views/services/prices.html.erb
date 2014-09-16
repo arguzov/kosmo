@@ -16,7 +16,7 @@
   </div>
   <%Section.order('fl_order').each do |section|%>
       <h1><%=section.name%></h1>
-      <%section.services.order('').each do |service|%>
+      <%section.services.where('fl_publish = 1').order('').each do |service|%>
           <%promos = service.promos.where('fl_active = 1')%>
           <div class="panel panel-default">
             <div class="panel-heading">
