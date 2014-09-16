@@ -1,6 +1,7 @@
 <%
    meta :title => @service.title,
-        :description => Sanitize.clean(@service.anounce).truncate(250)
+        :description => Sanitize.clean(@service.anounce).truncate(250),
+        :keys => @service.keys
 %>
 <div id="service">
   <div class="page-header">
