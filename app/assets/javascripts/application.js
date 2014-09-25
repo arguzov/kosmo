@@ -69,5 +69,9 @@ $(document).ready(function(){
         beforeToggle: function(){},
         afterToggle: function(){}
     });
+
+    $('#sort').change(function(){
+        document.location.href = '/responces?sort=' + $(this).val();
+    })
 });
 

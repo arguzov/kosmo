@@ -18,7 +18,12 @@ class PostsController < ApplicationController
     end
 
     def reviews
-        @reviews = Post.where('category_id = 31').paginate(:page => params[:page], :per_page => 10)
+        if params == nil || params[:sort] == 'asc'
+            order = ' created_at ASC '
+        else
+            order = ' created_at DESC'
+        end
+        @reviews = Post.where('category_id = 31').order(order).paginate(:page => params[:page], :per_page => 10)
     end
 
     def news
