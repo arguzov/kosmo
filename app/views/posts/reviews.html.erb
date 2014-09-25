@@ -5,7 +5,7 @@
 <div id="reviews">
   <div class="page-header">
     <div style="float:right">
-        Сортировать <select id="sort"><option value="asc" <%if params == nil || params['sort'] == 'asc'%>selected<% end %>>в порядке добавления</option>
+        Сортировать <select id="sort"><option value="asc" <%if !params.has_key?('sort') || params['sort'] == 'asc'%>selected<% end %>>в порядке добавления</option>
                                       <option value="desc" <%if params['sort'] == 'desc'%>selected<% end %>>сначала новые</option></select>
     </div>
     <h1>Отзывы о Центре эпиляции и косметологии</h1>

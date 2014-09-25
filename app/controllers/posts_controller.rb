@@ -18,7 +18,7 @@ class PostsController < ApplicationController
     end
 
     def reviews
-        if params == nil || params[:sort] == 'asc'
+        if !params.has_key?('sort') || params[:sort] == 'asc'
             order = ' created_at ASC '
         else
             order = ' created_at DESC'
