@@ -11,9 +11,15 @@
         <tr>
           <td class="banner" style="width:100%;">
             <div class="wr">
-                <%=image_tag promo.photo.url(:medium)%>
-                <%=promo.banner.html_safe%>
-                <%=link_to "Подробнее о предложении", promo_path(promo), :class=>'btn btn-sm btn-primary'%>
+              <table style="width: 100%">
+                <tr>
+                  <Td><%=image_tag promo.photo.url(:medium)%></Td>
+                  <td>
+                    <%=promo.banner.html_safe%>
+                    <%=link_to "Подробнее о предложении", promo_path(promo), :class=>'btn btn-sm btn-primary'%>
+                  </td>
+                </tr>
+              </table>
             </div>
           </td>
         </tr>
