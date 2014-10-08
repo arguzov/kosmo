@@ -21,7 +21,7 @@
       <p><%=expert.profession%></p>
     </div>
   </div>
-  <%=@issue.content.html_safe%>
+  <%=alt_tags(@issue.content,@issue.name).html_safe%>
   <div class="page-header">
     <h2>Как лечим</h2>
   </div>

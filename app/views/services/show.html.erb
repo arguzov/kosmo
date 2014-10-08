@@ -7,7 +7,7 @@
   <div class="page-header">
     <h1><%=@service.name%></h1>
   </div>
-  <%=@service.content.html_safe%>
+  <%=alt_tags(@service.content,@service.name).html_safe%>
   <% if @album.count > 0 %>
   <div class="page-header">
     <h2>Фотографии процедуры &laquo;<%=@service.name%>&raquo;</h2>

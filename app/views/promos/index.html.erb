@@ -7,16 +7,16 @@
     <h1>Акции Центра эпиляции и косметологии</h1>
   </div>
   <table class="table">
+    <%@promos.each_with_index do |promo,index|%>
         <tr>
-          <%@promos.each_with_index do |promo,index|%>
-          <%if index > 0 && index%2 == 0%></tr><tr><% end %>
-          <td class="banner" style="width:50%;">
+          <td class="banner" style="width:100%;">
             <div class="wr">
-            <%=promo.banner.html_safe%>
-            <%=link_to "Подробнее о предложении", promo_path(promo), :class=>'btn btn-sm btn-primary'%>
+                <%=image_tag promo.photo.url(:medium)%>
+                <%=promo.banner.html_safe%>
+                <%=link_to "Подробнее о предложении", promo_path(promo), :class=>'btn btn-sm btn-primary'%>
             </div>
           </td>
-          <% end %>
         </tr>
+    <% end %>
   </table>
 </div>
