@@ -1,6 +1,6 @@
 class PromosController < ApplicationController
     def index
-        @promos = Promo.where('fl_active = 1 AND fl_banner = 0')
+        @promos = Promo.all
     end
 
     def show
