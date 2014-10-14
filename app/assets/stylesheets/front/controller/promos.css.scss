@@ -57,6 +57,7 @@
   .banner{
     @include promo-banner;
     .wr{
+      padding: 10px 0px;
       box-shadow: 0px 0px 10px #ccc;
     }
       img{
