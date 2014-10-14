@@ -41,11 +41,19 @@ new Image().src = "//counter.yadro.ru/hit?r"+
             <div style="display:none;">
             <table>
               <tr>
-                <td class="i"><%=image_tag promo.photo.url(:medium)%></td>
-                <td class="t">
-                  <%=promo.banner.html_safe%>
-                  <%=link_to "Подробнее о предложении", promo_path(promo), :class=>'btn btn-sm btn-primary'%>
-                </td>
+                <% if promo.id == 16%>
+                    <td class="t">
+                      <%=promo.banner.html_safe%>
+                      <%=link_to "Подробнее о предложении", promo_path(promo), :class=>'btn btn-sm btn-primary'%>
+                    </td>
+                    <td class="i"><%=image_tag promo.photo.url(:medium)%></td>
+                <% else %>
+                    <td class="i"><%=image_tag promo.photo.url(:medium)%></td>
+                    <td class="t">
+                      <%=promo.banner.html_safe%>
+                      <%=link_to "Подробнее о предложении", promo_path(promo), :class=>'btn btn-sm btn-primary'%>
+                    </td>
+                 <% end %>
               </tr>
             </table>
             </div>
