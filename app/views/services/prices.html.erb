@@ -26,7 +26,7 @@
                   <div style="float:right">
                     от <%=service.price%> <span class="rouble">Р</span>
                     <% if promos.count > 0 %>
-                      <span class="badge" style="background-color: #b33c33;color: #fff">Акция!</span>
+                        <%=link_to promo_path(promos[0]) do %><span class="badge" style="background-color: #b33c33;color: #fff">Акция!</span><% end %>
                     <% end %>
                   </div>
                 </a>
@@ -34,29 +34,10 @@
             </div>
             <div id="collapse<%=service.id%>" class="panel-collapse collapse">
               <div class="panel-body">
-                <% if promos.count > 0 %>
-                    <div id="promos-list" style="margin: 0px;padding: 0px;">
-                      <table class="table">
-                        <%promos.each_with_index do |promo,index|%>
-                            <tr>
-                              <td class="banner">
-                                <div class="wr">
-                                  <%=promo.banner.html_safe%>
-                                  <% if !promo.fl_banner %>
-                                  <%=link_to "Подробнее о предложении", promo_path(promo), :class=>'btn btn-sm btn-primary'%>
-                                  <% end %>
-                                </div>
-                              </td>
-                            </tr>
-                        <% end %>
-                      </table>
-                    </div>
-                <% end %>
+                <p style="font-size:13px;padding:10px;background-color: #f0f0f0;font-style: italic;text-decoration: underline!important">
+                  <%=link_to "Прочитать подробнее об услуге", service_path(id:service.id, url:service.url) %>
+                </p>
                 <%=render :partial=>'app/pricelist',:locals=>{pricelist:  service.pricelist.split(/\n/)}%>
-                <p style="font-size:13px;padding:10px;background-color: #f0f0f0;font-style: italic"><%=service.anounce%></p>
-                <div>
-                  <%=link_to 'Подробнее об услуге', service_path(id:service.id, url:service.url), :class=>'btn btn-primary' %>
-                </div>
               </div>
             </div>
           </div>
