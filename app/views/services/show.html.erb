@@ -28,10 +28,11 @@
             <h2>Прайс лист</h2>
           </div>
           <%=render :partial => 'app/pricelist', :locals => {:pricelist=>@pricelist}%>
-          <% if @service.promos.count > 0 %>
+          <%promos = @service.promos.where('fl_active = 1 AND fl_banner = 0')%>
+          <% if promos.count > 0 %>
               <div id="promos-list" style="margin: 0px;padding: 0px;">
                 <table class="table">
-                  <%@service.promos.each_with_index do |promo,index|%>
+                  <%promos.each_with_index do |promo,index|%>
                       <tr>
                         <td class="banner">
                           <div class="wr">
