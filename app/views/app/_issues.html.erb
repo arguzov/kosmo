@@ -1,17 +1,68 @@
 <%
   @issues = Issue.where('parent_id = 0').order('id ASC')
+  @sections = Section.all
+
 %>
-<div style="padding: 10px 10px 10px 10px;background-color: #EFEFEF;font-size: 12px;">
+<!--<div style="padding: 10px 10px 10px 10px;background-color: #EFEFEF;font-size: 12px;">
   <div style="float:left;padding-top: 7px;padding-right: 10px;"><i class="glyphicon glyphicon-circle-arrow-down" style="font-size: 3.5em;text-shadow: 0px 0px 5px #555;color: #fff"></i></div>
   Кликните на проблеме, которая вас беспокоит и мы подскажем возможные пути решения
-</div>
-<ul class="list-group" id="menu">
-  <%@issues.each do |issue|%>
-      <a class="list-group-item active"><%=issue.name%></a>
-      <%Issue.where('fl_show = 1 AND parent_id = ?',issue.id).each_with_index do |issue,index|%>
-          <%=link_to issue_path(url:issue.url), :class=>"list-group-item" do %>
-            <%=issue.name%>
-          <% end %>
-      <% end %>
+</div>-->
+<div class="panel-group" style="margin: 10px 0px 0px 15px;">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h4 class="panel-title">Наши услуги</h4>
+    </div>
+  </div>
+  <%@sections.each do |section|%>
+      <%services = section.services.where('fl_publish = 1')%>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%=section.id%>"><%=section.name%></a>
+            <span class="badge pull-right" style="background: #ffffff;color: #666666;"><%=services.count%></span>
+          </h4>
+        </div>
+        <div id="collapse<%=section.id%>" class="panel-collapse collapse in">
+          <div class="panel-body">
+            <ul>
+              <%services.each do |service|%>
+                  <li><%=link_to service_path(id:service.id, url:service.url) do %>
+                        <%=service.name%>
+                    <% end %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
   <% end %>
-</ul>
+</div>
+
+<div class="panel-group" style="margin: 10px 0px 10px 15px;">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h4 class="panel-title">Решаем проблемы</h4>
+    </div>
+  </div>
+  <%@issues.each do |issue|%>
+      <%iss = Issue.where('fl_show = 1 AND parent_id = ?',issue.id)%>
+      <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%=issue.id%>"><%=issue.name%></a>
+          <span class="badge pull-right" style="background: #ffffff;color: #666666;"><%=iss.count%></span>
+      </h4>
+    </div>
+    <div id="collapse<%=issue.id%>" class="panel-collapse collapse in">
+      <div class="panel-body">
+        <ul>
+        <%iss.each_with_index do |issue,index|%>
+            <li><%=link_to issue_path(url:issue.url) do %>
+                <%=issue.name%>
+            <% end %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+      </div>
+  <% end %>
+</div>

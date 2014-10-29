@@ -73,5 +73,8 @@ $(document).ready(function(){
     $('#sort').change(function(){
         document.location.href = '/responces?sort=' + $(this).val();
     })
+    if($('#global-pricelist').length == 0) {
+        $('.collapse').collapse();
+    }
 });
 

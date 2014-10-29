@@ -1,32 +1,17 @@
 <div class="row">
-  <div class="col-md-9">
+  <div class="col-md-12">
+    <div class="page-header" style="margin: 20px 0px 10px 0px;">
+      <h1>Центр эпиляции и косметологии в Казани</h1>
+    </div>
     <div class="row" id="services">
-      <div class="col-md-4 col-lg-4 col-xs-4 col-sm-4">
-        <%=image_tag 'main/epil.jpg', :class=>'img-rounded'%>
-        <%=link_to 'Эпиляция', issue_path(:url=>'zabota-o-litse/nezhelatelnye-volosy') %>
-        <div class="price">от 120 руб.</div>
-      </div>
-      <div class="col-md-4 col-lg-4 col-xs-4 col-sm-4">
-        <%=image_tag 'main/omolozenie.jpg', :class=>'img-rounded'%>
-        <%=link_to 'Омоложение', issue_path(:url=>'zabota-o-litse/omolozhenie-litsa-i-shei') %>
-        <div class="price">от 300 руб.</div>
-      </div>
-      <div class="col-md-4 col-lg-4 col-xs-4 col-sm-4">
-        <%=image_tag 'main/celul.jpg', :class=>'img-rounded'%>
-        <%=link_to 'Борьба с целюллитом',issue_path(:url=>'ukhod-za-telom/tselyullit') %>
-        <div class="price">от 300 руб.</div>
-      </div>
-      <div class="col-md-4 col-lg-4 col-xs-4 col-sm-4">
-        <%=image_tag 'main/massage.png', :class=>'img-rounded'%>
-        <%=link_to 'Массаж',service_path(:id=>38,:url=>'massag-tela') %>
-        <div class="price">от 500 руб.</div>
-      </div>
-      <div class="col-md-4 col-lg-4 col-xs-4 col-sm-4">
-        <%=image_tag 'main/manik.png', :class=>'img-rounded'%>
-        <%=link_to 'Маникюр',issue_path(:url=>'krasivye-ruki/manikyur') %>
-        <div class="price">от 100 руб.</div>
-      </div>
-      <div class="col-md-4 col-lg-4 col-xs-4 col-sm-4">
+    <%Service.order('fl_order ASC').limit(7).each do |service|%>
+        <div class="col-md-3 col-lg-3 col-xs-3 col-sm-3">
+          <%= image_tag service.photo.url(:medium),:class=>'img-rounded' %>
+          <%=link_to service.name, service_path(id:service.id, url:service.url)%>
+          <div class="price">от <%=service.price%> руб.</div>
+        </div>
+    <% end %>
+      <div class="col-md-3 col-lg-3 col-xs-3 col-sm-3">
         <div class="more img-rounded">
           и ещё
           <div class="num">100+</div>
@@ -34,21 +19,6 @@
         </div>
         <%=link_to 'Все услуги', prices_services_path %>
       </div>
-    </div>
-  </div>
-  <div class="col-md-3">
-    <div id="news">
-      <div class="page-header">
-        <h2>Новости</h2>
-      </div>
-      <ul>
-        <%@news.each do |news|%>
-            <li>
-              <%=link_to news.name, post_path(news)%>
-              <%=news.anounce%>
-            </li>
-        <% end %>
-      </ul>
     </div>
   </div>
 </div>
@@ -110,8 +80,8 @@
             <div class="num" style="font-size: 30px;padding: 0px;">10+</div>
             экспертов
           </div>
-          <div class="caption" style="padding: 20px 0px;">
-            <%=link_to "Все специалисты", experts_path %>
+          <div class="caption" style="padding: 10px 0px;">
+            <%=link_to "Познакомиться со всеми специалистами", experts_path %>
           </div>
         </div>
       </div>

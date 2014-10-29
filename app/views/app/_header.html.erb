@@ -17,9 +17,9 @@ new Image().src = "//counter.yadro.ru/hit?r"+
             +7 (843) 2000-322
           </div>
           <div class="col-xs-4 col-sm-4 right">
-            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#recall" style="margin-top:10px;">
+            <a class="btn btn-primary btn-sm" data-toggle="modal" href="#recall" style="margin-top:10px;">
               Перезвоните мне!
-            </button>
+            </a>
 
           </div>
         </div>
@@ -27,11 +27,13 @@ new Image().src = "//counter.yadro.ru/hit?r"+
     </div>
     <div class="col-md-4 visible-md visible-lg" id="logo">
       <div class="wrapper">
-        <%=image_tag 'logo.png'%>
+        <a href="/"><%=image_tag 'logo.png'%></a>
         <div class="address">
-          <strong style="font-size: 1.3em;">+7 (843) 2000-322</strong><br>
           ул. Спартаковская д. 2а<br>
-          пн-вс 9.00 - 21.00
+          <strong style="font-size: 1.3em;">+7 (843) 2000-322</strong><br>
+          <a data-toggle="modal" data-target="#recall" style="cursor: pointer;margin-top:5px;margin-left: 0px;font-size: 13px;color: #f5edc5;text-decoration: underline">
+            Заказать обратный звонок
+          </a>
         </div>
       </div>
     </div>

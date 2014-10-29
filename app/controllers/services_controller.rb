@@ -2,6 +2,7 @@ class ServicesController < ApplicationController
     before_action :find_service, only: [:show]
     before_action :define_experts, only: [:show]
     before_action :define_issues, only: [:show]
+    layout :resolve_layout
     def show
         @pricelist = @service.pricelist.split(/\n/)
         @children = Service.where('parent_id = ?',@service.id)
@@ -45,6 +46,16 @@ class ServicesController < ApplicationController
             @issues = Service.where('parent_id = ?',@service.parent_id).first.issues.where('NOT (parent_id = 50)')
         else
             @issues = @service.issues.where('NOT (parent_id = 50)')
+        end
+    end
+
+    private
+    def resolve_layout
+        case action_name
+            when "prices"
+                "pricelist"
+            else
+                "application"
         end
     end
 end

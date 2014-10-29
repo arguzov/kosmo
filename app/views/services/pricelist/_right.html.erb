@@ -1,0 +1,19 @@
+<div class="page-header" style="margin-top: 20px;">
+  <h1>Текущие акции</h1>
+</div>
+<div class="well" style="text-align: center;padding-top: 0px;background-color: #D9E4EC">
+  <h1 style="color: #b33c33">Рассрочка 0%</h1>
+  <p>Услуги можно оплатить в рассрочку на выгодных условиях</p>
+  <%=link_to "Подробнее о предложении", post_path(:id=>198), :class=>'btn btn-primary btn-sm'%>
+</div>
+<%
+   @promos = Promo.where('fl_active = 1 AND fl_banner = 0')
+%>
+  <%@promos.each_with_index do |promo,index|%>
+      <div class="well" style="text-align: center;padding-top: 0px;background-color: #D9E4EC">
+            <%banner = promo.banner.gsub(/<[^>]*class="offer">[^>]*<\/[^>]*>/i,'')%>
+            <%banner = banner.gsub('Специальное предложение','&nbsp;')%>
+            <%=banner.html_safe%>
+            <%=link_to "Подробнее о предложении", promo_path(promo), :class=>'btn btn-sm btn-primary'%>
+      </div>
+  <% end %>

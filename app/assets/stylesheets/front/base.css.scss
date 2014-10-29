@@ -140,7 +140,8 @@ body{
     }
   }
   #services {
-    .col-md-4 {
+    margin-bottom: 20px;
+    .col-md-3 {
       text-align: center;
       margin-top: 20px;
       img {
@@ -166,7 +167,7 @@ body{
         margin: 0px auto;
         width: 200px;
         height: 180px;
-        background-color: #E8F7FC;
+        background-color: #D9E4EC;
         text-align: center;
         box-shadow: 0px 0px 10px #75a1c2;
         .num {
@@ -203,7 +204,7 @@ body{
     .caption{
       text-align: center;
       font-size: 13px;
-      height: 100px;
+      height: 85px;
     }
   }
   #reasons{
@@ -258,6 +259,49 @@ body{
     width: 23%;
     background-color: #ffffff;
     vertical-align: top;
+    .panel-group{
+        @include cancel-round;
+        .panel{
+            margin: 0px;
+            @include cancel-round;
+            .panel-heading{
+                @include cancel-round;
+            }
+            .panel-body{
+                ul{
+                    margin-left: 0px;
+                    padding-left: 0px;
+                    li{
+                        margin: 0px;
+                        padding: 0px 0px 5px 0px;
+                        list-style: none;
+                        a{
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
+        }
+    }
+  }
+  .right{
+      vertical-align: top;
+      .well{
+          h1{
+              font-size: 18px;
+          }
+          h2{
+              font-size: 16px;
+          }
+          h3{
+              font-size: 14px;
+          }
+          ul{
+              padding: 0px;
+              margin: 5px;
+              font-size: 12px;
+          }
+      }
   }
   #menu {
     box-shadow: 2px 2px 5px #d9e4ec;
