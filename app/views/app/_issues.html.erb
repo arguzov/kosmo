@@ -1,20 +1,34 @@
 <%
   @issues = Issue.where('parent_id = 0').order('id ASC')
   @sections = Section.all
-
+  current_section = 0
+  current_service = 0
+  current_issue_section = 0
+  if @service != nil
+      current_service = @service.id
+      sections = @service.sections
+      if sections
+          current_section = sections.first.id
+      end
+  end
+  if @issue != nil && @issue.parent_id > 0
+      parent = Issue.where('id = ?',@issue.parent_id).first
+      current_issue_section = parent.id
+      current_issue = @issue.id
+  end
 %>
 <!--<div style="padding: 10px 10px 10px 10px;background-color: #EFEFEF;font-size: 12px;">
   <div style="float:left;padding-top: 7px;padding-right: 10px;"><i class="glyphicon glyphicon-circle-arrow-down" style="font-size: 3.5em;text-shadow: 0px 0px 5px #555;color: #fff"></i></div>
   Кликните на проблеме, которая вас беспокоит и мы подскажем возможные пути решения
 </div>-->
-<div class="panel-group" style="margin: 10px 0px 0px 15px;">
+<div class="panel-group" style="margin: 10px 0px 0px 15px;" id="menu-services" data-current="<%=current_section%>">
   <div class="panel panel-primary">
     <div class="panel-heading">
       <h4 class="panel-title">Наши услуги</h4>
     </div>
   </div>
   <%@sections.each do |section|%>
-      <%services = section.services.where('fl_publish = 1')%>
+      <%services = section.services.where('fl_publish = 1').order('fl_order ASC')%>
       <div class="panel panel-default">
         <div class="panel-heading">
           <h4 class="panel-title">
@@ -26,9 +40,13 @@
           <div class="panel-body">
             <ul>
               <%services.each do |service|%>
-                  <li><%=link_to service_path(id:service.id, url:service.url) do %>
-                        <%=service.name%>
-                    <% end %></li>
+                  <li>
+                    <%if current_service == service.id %>
+                        <span><%=service.name%> &rarr;</span>
+                    <% else %>
+                        <%=link_to service_path(id:service.id, url:service.url) do %><%=service.name%><% end %>
+                    <% end %>
+                  </li>
               <% end %>
             </ul>
           </div>
@@ -37,7 +55,7 @@
   <% end %>
 </div>
 
-<div class="panel-group" style="margin: 10px 0px 10px 15px;">
+<div class="panel-group" style="margin: 10px 0px 10px 15px;" id="menu-issues" data-current="<%=current_issue_section%>">
   <div class="panel panel-primary">
     <div class="panel-heading">
       <h4 class="panel-title">Решаем проблемы</h4>
@@ -56,9 +74,13 @@
       <div class="panel-body">
         <ul>
         <%iss.each_with_index do |issue,index|%>
-            <li><%=link_to issue_path(url:issue.url) do %>
-                <%=issue.name%>
-            <% end %></li>
+            <li>
+              <%if current_issue == issue.id %>
+                  <span><%=issue.name%> &rarr;</span>
+              <% else %>
+                  <%=link_to issue_path(url:issue.url) do %><%=issue.name%><% end %>
+              <% end %>
+            </li>
         <% end %>
         </ul>
       </div>

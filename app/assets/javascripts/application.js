@@ -74,7 +74,19 @@ $(document).ready(function(){
         document.location.href = '/responces?sort=' + $(this).val();
     })
     if($('#global-pricelist').length == 0) {
-        $('.collapse').collapse();
+        var current = parseInt($('#menu-services').attr('data-current'));
+        for(i = 1;i< 9;i++) {
+            if(i != current) {
+                $('#collapse' + i).collapse();
+            }
+        }
+        var issues = [14,15,16,17,37,50];
+        var current = parseInt($('#menu-issues').attr('data-current'));
+        for(var i in issues){
+            if(issues[i] != current) {
+                $('#collapse' + issues[i]).collapse();
+            }
+        }
     }
 });
 
