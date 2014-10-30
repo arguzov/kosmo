@@ -5,8 +5,14 @@
   current_service = 0
   current_issue_section = 0
   if @service != nil
-      current_service = @service.id
-      sections = @service.sections
+      if @service.parent_id > 0
+          parent = Service.where('id = ?',@service.parent_id).first
+          current_service = parent.id
+          sections = parent.sections
+      else
+          current_service = @service.id
+          sections = @service.sections
+      end
       if sections
           current_section = sections.first.id
       end
