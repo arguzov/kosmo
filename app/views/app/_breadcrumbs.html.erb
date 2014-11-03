@@ -1,0 +1,48 @@
+<ol class="breadcrumb" style="margin-bottom: 5px;">
+  <li><a href="/">Главная</a></li>
+  <%if @service %>
+      <%
+         if @service.parent_id > 0
+             parent = Service.where('id = ?',@service.parent_id).first
+             issues = parent.issues
+         else
+             parent = nil
+             issues = @service.issues
+         end
+      %>
+      <% if issues != nil && issues.count > 0%>
+          <% if issues.count < 2 %>
+              <li><a href="<%=issue_path(:url=>issues.first.url)%>"><%=issues.first.name%></a></li>
+          <% else %>
+              <li class="dropdown">
+                <a id="dLabel" data-target="#" href="<%=issue_path(:url=>issues.first.url)%>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <%=issues.first.name%>
+                  <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                  <%issues.each_with_index do |issue, key|%>
+                      <% if key > 0 %>
+                          <li><a href="<%=issue_path(:url=>issue.url)%>"><%=issue.name%></a></li>
+                      <% end %>
+                  <% end %>
+                </ul>
+              </li>
+          <% end %>
+      <% end %>
+      <% if parent != nil %>
+          <li><%=link_to parent.name, service_path(:id=>parent.id, :url=>parent.url) %></li>
+      <% end %>
+  <% end %>
+  <% if @medicament %>
+      <%
+         medicament_service = @medicament.service
+      %>
+      <% if medicament_service != nil %>
+          <li><%=link_to medicament_service.name, service_path(:id=>medicament_service.id, :url=>medicament_service.url) %></li>
+      <% end %>
+      <li class="active"><%=@medicament.name%></li>
+  <% end %>
+  <%if @service %>
+      <li class="active"><%=@service.name%></li>
+  <% end %>
+</ol>

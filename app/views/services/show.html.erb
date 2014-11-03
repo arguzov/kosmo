@@ -4,6 +4,7 @@
         :keywords => @service.keys
 %>
 <div id="service">
+  <%=render :partial => 'app/breadcrumbs'%>
   <div class="page-header">
     <h1><%=@service.name%></h1>
   </div>
@@ -25,7 +26,7 @@
       <td class="left">
         <div id="price">
           <div class="page-header">
-            <h2>&laquo;<%=@service.name%>&raquo; - цены в Казани</h2>
+            <h2><%=@service.name%> - цены в Казани</h2>
           </div>
           <%=render :partial => 'app/pricelist', :locals => {:pricelist=>@pricelist}%>
           <%promos = @service.promos.where('fl_active = 1 AND fl_banner = 0')%>
