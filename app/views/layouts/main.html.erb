@@ -15,7 +15,9 @@
 <%=render 'app/header'%>
 <%=render 'app/navbar'%>
 <div class="container" id="content-wrapper">
+  <noindex>
   <%=render 'app/banners/top'%>
+  </noindex>
   <div class="row">
     <div class="col-md-12" id="main">
       <%= yield %>
@@ -23,6 +25,8 @@
   </div>
   <%=render 'app/footer' %>
 </div>
+<noindex>
 <%=render :partial => 'app/modal/recall'%>
+</noindex>
 </body>
 </html>
