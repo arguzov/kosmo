@@ -8,7 +8,7 @@
   <div class="page-header">
     <h1><%=@medicament.name%></h1>
   </div>
-  <div><%=image_tag @medicament.photo, :alt=>@medicament.name, :title=>@medicament.name%></div>
+  <div id="medicament-thumb"><%=image_tag @medicament.photo, :alt=>@medicament.name, :title=>@medicament.name%></div>
   <%=@medicament.content.html_safe%>
   <table id="solution">
     <tr>
@@ -19,6 +19,12 @@
           </div>
           <%=render :partial => 'app/pricelist', :locals => {:pricelist=>@pricelist}%>
         </div>
+        <div class="well" style="text-align: center;padding-top: 0px;background-color: #E8F7FC">
+            <h2 style="color: #b33c33">Рассрочка 0%</h2>
+            <p>Услуги можно оплатить в рассрочку на выгодных условиях</p>
+            <%=link_to "Подробнее", post_path(:id=>198), :class=>'btn btn-primary btn-sm'%>
+        </div>
+        <%=render :partial => 'app/order', locals: {text: "Я хочу записаться на процедуру \"#{@medicament.name}\"  в ближайшее время. Перезвоните мне, пожалуйста, чтобы уточнить подробности"}%>
       </td>
       <td class="right">
         <div class="page-header">
