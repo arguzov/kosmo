@@ -52,6 +52,12 @@ Kosmo::Application.routes.draw do
 
   get '/fotoepilyatsiya-na-apparate-record-618.html', to: redirect('/services/1-fotoepilyacia.html')
   get '/prajs.html', to: redirect('/services/prices')
+  get '/pedikyur.html', to: redirect('/services/57-pedikyur-klassicheskij-kazan.html')
+  get '/credstva-protiv-vrastaniya-volos-i-zamedlyayushchie-rost-volos.html', to: redirect('/services/79-lasernaya-epilyaciya.html')
+  get '/disport-botoks.html', to: redirect('/services/16-botulotoksiny.html')
+  get '/obertyvanie-tela/98-obertyvanie-vsego-tela-listovymi-vodoroslyami.html', to: redirect('/services/25-obertyvanie-vsego-tela-listovymi-vodoroslyami.html')
+  get '/plazmolifting/163-o-metode-plasmolifting-v-trikhologii.html', to: redirect('/services/28-o-metode-plasmolifting-v-trikhologii.html')
+  get '/lechebnyj-manikyur-yaponskij-goryachij/79-yaponskij-manikyur-kazan.html', to: redirect('/services/63-yaponskij-manikyur-kazan.html')
   get '/spetsialisty.html', to: redirect('/experts/')
   get '/chistki-litsa.html', to: redirect('/services/6-chistka-lica.html')
   get '/depilyatsiya/162-shugaring.html', to: redirect('/services/3-saharnaya-epilyacia.html')
