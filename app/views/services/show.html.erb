@@ -6,6 +6,7 @@
 <div id="service">
   <%=render :partial => 'app/breadcrumbs'%>
   <div class="page-header">
+    <div style="float:right"><a href="#online-order" data-target="#online-order" onClick="online_order('Я хочу записаться на процедуру <%=@service.name%>  в ближайшее время. Перезвоните мне, пожалуйста, чтобы уточнить подробности')" data-toggle="modal" class="btn btn-danger btn-sm">Записаться онлайн</a></div>
     <h1><%=@service.name%></h1>
   </div>
   <%=alt_tags(@service.content,@service.name).html_safe%>
@@ -86,3 +87,6 @@
     </tr>
   </table>
 </div>
+<noindex>
+  <%=render :partial => 'app/modal/order', locals: {text: "Я хочу записаться на процедуру \"#{@service.name}\"  в ближайшее время. Перезвоните мне, пожалуйста, чтобы уточнить подробности"}%>
+</noindex>
