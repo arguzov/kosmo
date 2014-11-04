@@ -13,21 +13,6 @@
     <tr>
       <td style="width:60%;padding-top: 27px;"><%=render :partial => 'app/order'%></td>
       <td style="width:40%">
-        <div id="promos-list" style="padding-top: 50px;">
-          <table class="table">
-              <%@promos.each_with_index do |promo,index|%>
-                <tr>
-                  <td class="banner">
-                    <div class="wr">
-                      <%=promo.banner.gsub(/<[^>]*class="offer">[^>]*<\/[^>]*>/i,'').html_safe%>
-                      <%=link_to "Подробнее о предложении", promo_path(promo), :class=>'btn btn-sm btn-primary'%>
-                    </div>
-                  </td>
-                </tr>
-                <tr><td style="height:10px;"></td></tr>
-              <% end %>
-          </table>
-        </div>
       </td>
     </tr>
   </table>
