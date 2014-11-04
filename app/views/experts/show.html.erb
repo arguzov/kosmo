@@ -35,7 +35,7 @@
           <% end %>
       <% end %>
       <div style="clear: both"></div>
-      <%=render :partial => 'app/order'%>
+      <%=render :partial => 'app/order', locals: {text: "Я хочу записаться к специалисту \"#{@expert.name}\"  на процедуру \"(укажите, пожалуйста, желаемую процедуру)\".\n\nПерезвоните мне, пожалуйста, чтобы уточнить подробности"}%>
     </td>
     <td class="side">
       <div class="page-header">

@@ -1,8 +1,13 @@
+<%
+   if not defined?(text)
+       text = ''
+   end
+%>
 <div class="order-form">
   <div class="page-header">
     <h1><%if defined?(header) %><%=header%><%else%>Записаться<%end%></h1>
   </div>
-  <%=render :partial => 'app/order/form', locals: {text: "Я хочу записаться на процедуру \"#{@service.name}\"  в ближайшее время. Перезвоните мне, пожалуйста, чтобы уточнить подробности"} %>
+  <%=render :partial => 'app/order/form', locals: {text: text} %>
   <% if !defined?(header) %>
   <div style="margin-top: 10px;border-top:1px solid #ccc;padding-top:5px;">Вы также можете сами позвонить по телефону <strong>+7 (843) 2000-322</strong>. Наш администратор ответит на любые вопросы и запишет вас на процедуры в удобное время.</div>
   <% end %>
