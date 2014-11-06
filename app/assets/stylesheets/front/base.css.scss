@@ -37,7 +37,7 @@ body{
 
 #footer{
   border-top: 2px solid #555555;
-  background-color: #111111;
+  background-color: #ffffff;
   margin-top: 0px;
   table{
     width: 100%;
@@ -48,7 +48,7 @@ body{
         font-size:13px;
         margin: 0px;
         padding: 0px;
-        color: #eceef0;
+        color: #111111;
         font-weight: bold;
       }
       ul{
@@ -57,7 +57,7 @@ body{
         li{
           list-style: none;
           a{
-            color: #aaaaaa;
+            color: #323537;
             text-decoration: underline;
           }
         }
@@ -67,7 +67,7 @@ body{
       padding: 10px;
       font-size: 12px;
       border-right: 1px solid #555555;
-      color: #eceef0;
+      color: #323537;
     }
   }
 }

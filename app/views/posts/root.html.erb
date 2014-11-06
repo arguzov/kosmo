@@ -6,7 +6,7 @@
     <div class="row" id="services">
     <%Service.order('fl_order ASC').limit(7).each do |service|%>
         <div class="col-md-3 col-lg-3 col-xs-3 col-sm-3">
-          <%= image_tag service.photo.url(:medium),:class=>'img-rounded' %>
+          <noindex><%=link_to service_path(id:service.id, url:service.url) do %><%= image_tag service.photo.url(:medium),:class=>'img-rounded' %><% end %></noindex>
           <%=link_to service.name, service_path(id:service.id, url:service.url)%>
           <div class="price">от <%=service.price%> руб.</div>
         </div>

@@ -18,16 +18,15 @@
           <noindex>
           <h3>Эпиляция</h3>
           <ul>
-            <li><a href="/services/2-voskovaya-epilyacia.html">Восковая эпиляция</a></li>
-            <li><a href="/services/3-saharnaya-epilyacia.html">Сахарная эпиляция</a></li>
-            <li><a href="/services/1-fotoepilyacia.html">Лазерная эпиляция</a></li>
-            <li><a href="/services/4-brazilskaya-epilyacia.html">Бразильская эпиляция</a></li>
+            <%Section.where('id = 1').first.services.where('fl_publish = 1').order('fl_order').limit(4).each do |service|%>
+                <li><a href="<%=service_path(id:service.id, url:service.url)%>"><%=service.name%></a></li>
+            <% end %>
           </ul>
           <h3>Коррекция фигуры</h3>
           <ul>
-            <li><a href="/services/21-mezoterapiya-tela.html">Мезотерапия тела</a></li>
-            <li><a href="/services/26-kedrovaya-bochka.html">Кедровая бочка</a></li>
-            <li><a href="/services/22-oertivanie-tela.html">Обертывание</a></li>
+            <%Section.where('id = 4').first.services.where('fl_publish = 1').order('fl_order').limit(3).each do |service|%>
+                <li><a href="<%=service_path(id:service.id, url:service.url)%>"><%=service.name%></a></li>
+            <% end %>
           </ul>
           </noindex>
         </td>
@@ -35,14 +34,9 @@
           <noindex>
           <h3>Косметология</h3>
           <ul>
-            <li><a href="/services/15-biorevitalizacia.html">Биоревитализация</a></li>
-            <li><a href="/services/10-piling.html">Пилинг</a></li>
-            <li><a href="/services/6-chistka-lica.html">Чистки лица</a></li>
-            <li><a href="/services/12-konturnaya-plastika-korrektsiya-fillerami.html">Контурная пластика</a></li>
-            <li><a href="/services/19-fotomolozhenie.html">Фотоомоложение</a></li>
-            <li><a href="/services/16-botulotoksiny.html">Диспорт Ботокс</a></li>
-            <li><a href="/services/14-mezoterapiya.html">Мезотерапия лица</a></li>
-            <li><a href="/services/20-lazernoe-omolozhenie.html">Лазерное омоложение</a></li>
+            <%Section.where('id = 2').first.services.where('fl_publish = 1').order('fl_order').limit(8).each do |service|%>
+                <li><a href="<%=service_path(id:service.id, url:service.url)%>"><%=service.name%></a></li>
+            <% end %>
           </ul>
           </noindex>
         </td>
@@ -50,14 +44,9 @@
           <noindex>
           <h3>Маникюр и педикюр</h3>
           <ul>
-            <li><a href="/services/55-manikyur-apparatnyj.html">Маникюр аппаратный</a></li>
-            <li><a href="/services/54-manikyur-evropejskij.html">Маникюр европейский </a></li>
-            <li><a href="/services/53-manikyur-klassika.html">Маникюр классический </a></li>
-            <li><a href="/services/63-yaponskij-manikyur-kazan.html">Японский маникюр </a></li>
-            <li><a href="/services/59-apparatnyj-pedikyur-kazan.html">Аппаратный педикюр </a></li>
-            <li><a href="/services/58-evropejskij-pedikyur-kazan.html">Европейский педикюр </a></li>
-            <li><a href="/services/57-pedikyur-klassicheskij-kazan.html">Педикюр классический </a></li>
-            <li><a href="/services/62-parafinoterapiya-nog-kazan.html">Парафинотерапия стоп</a></li>
+            <%Section.where('id = 7').first.services.where('fl_publish = 1').order('fl_order').limit(8).each do |service|%>
+                <li><a href="<%=service_path(id:service.id, url:service.url)%>"><%=service.name%></a></li>
+            <% end %>
           </ul>
           </noindex>
         </td>
@@ -65,15 +54,15 @@
           <noindex>
           <h3>Массаж</h3>
           <ul>
-            <li><a href="/services/31-klassicheskij-massazh-litsa-kazan.html">Массаж лица</a></li>
-            <li><a href="/services/29-massazh-golovy.html">Массаж головы</a></li>
-            <li><a href="/services/38-massag-tela.html">Массаж тела</a></li>
-            <li><a href="/services/51-stone-terapiya.html">Стоун терапия</a></li>
+            <%Section.where('id = 5').first.services.where('fl_publish = 1').order('fl_order').limit(4).each do |service|%>
+                <li><a href="<%=service_path(id:service.id, url:service.url)%>"><%=service.name%></a></li>
+            <% end %>
           </ul>
-          <h3>Разное</h3>
+          <h3>Лечение волос</h3>
           <ul>
-            <li><a href="/services/52-tatuazh.html">Татуаж</a></li>
-            <li><a href="/services/60-mezoniti.html">Мезонити</a></li>
+            <%Section.where('id = 3').first.services.where('fl_publish = 1').order('fl_order').limit(3).each do |service|%>
+                <li><a href="<%=service_path(id:service.id, url:service.url)%>"><%=service.name%></a></li>
+            <% end %>
           </ul>
           </noindex>
         </td>
