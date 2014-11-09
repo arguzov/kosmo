@@ -4,4 +4,5 @@ class Expert < ActiveRecord::Base
     has_and_belongs_to_many :services
     has_and_belongs_to_many :posts
     accepts_nested_attributes_for :services, allow_destroy: true
+    default_scope { where('fl_order > 0') }
 end
