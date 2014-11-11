@@ -2,8 +2,13 @@
   padding: 10px 20px;
   .content-wrapper{
       img{
-          width: 500px;
-          margin-bottom: 10px;
+          max-width: 500px;
+      }
+      p {
+          img {
+              width: 500px;
+              margin-bottom: 10px;
+          }
       }
   }
   .complements{
@@ -66,12 +71,15 @@
         text-align: center;
         vertical-align: top;
         padding: 0px 20px;
-        img {
-          height: 150px;
-          width: 180px;
-          display: block;
-          margin: 5px auto;
-          box-shadow: 0px 0px 10px #555;
+        .thumb-wrapper {
+            overflow-y: hidden;
+            img {
+                height: 100px;
+                width: auto!important;
+                display: block;
+                margin: 5px auto;
+                box-shadow: 0px 0px 10px #555;
+            }
         }
         a {
           text-decoration: underline;

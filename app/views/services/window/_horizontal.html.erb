@@ -10,7 +10,9 @@
         <% end %>
         <td width="33%">
           <strong><%=link_to child.name,service_path(id:child.id, url:child.url)%></strong>
-          <%=link_to service_path(id:child.id, url:child.url) do %><%= image_tag child.photo.url(:medium),:class=>'img-rounded' %><% end %>
+          <div class="thumb-wrapper">
+              <%=link_to service_path(id:child.id, url:child.url) do %><%= image_tag child.photo.url(:medium),:class=>'img-rounded' %><% end %>
+          </div>
           <p><%=child.anounce%></p>
         </td>
       <% end %>
