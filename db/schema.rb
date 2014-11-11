@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141028072212) do
+ActiveRecord::Schema.define(version: 20141111070715) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -255,6 +255,7 @@ ActiveRecord::Schema.define(version: 20141028072212) do
     t.boolean  "fl_publish"
     t.string   "keys"
     t.integer  "fl_order",           default: 0
+    t.string   "complements"
   end
 
   create_table "services_issues", id: false, force: true do |t|

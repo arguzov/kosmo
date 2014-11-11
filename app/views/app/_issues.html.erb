@@ -13,8 +13,11 @@
           current_service = @service.id
           sections = @service.sections
       end
-      if sections
+      if sections != nil && sections.first != nil
           current_section = sections.first.id
+      end
+      if current_section == 5
+          current_service = @service.id
       end
   end
   if @issue != nil && @issue.parent_id > 0

@@ -9,7 +9,32 @@
     <div style="float:right"><a href="#online-order" data-target="#online-order" onClick="online_order('Я хочу записаться на процедуру <%=@service.name%>  в ближайшее время. Перезвоните мне, пожалуйста, чтобы уточнить подробности')" data-toggle="modal" class="btn btn-danger btn-sm">Записаться онлайн</a></div>
     <h1><%=@service.name%></h1>
   </div>
-  <%=alt_tags(@service.content,@service.name).html_safe%>
+  <div class="content-wrapper">
+      <%=alt_tags(@service.content,@service.name).html_safe%>
+  </div>
+  <% if @complements != nil %>
+      <div class="page-header">
+        <h2>Процедуру &laquo;<%=@service.name%>&raquo; хорошо дополняют</h2>
+      </div>
+      <table class="complements">
+        <tr>
+          <%@complements.each do |service|%>
+              <td>
+                <noindex>
+                  <%=link_to service_path(id:service.id, url:service.url) do %><%= image_tag service.photo.url(:medium)%><% end %>
+                </noindex>
+              </td>
+          <% end %>
+        </tr>
+        <tr>
+          <%@complements.each do |service|%>
+              <td>
+                <%=link_to service.name, service_path(id:service.id, url:service.url)%>
+              </td>
+          <% end %>
+        </tr>
+      </table>
+  <% end %>
   <% if @album.count > 0 %>
   <div class="page-header">
     <h2>Фотографии процедуры &laquo;<%=@service.name%>&raquo;</h2>

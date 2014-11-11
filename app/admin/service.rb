@@ -1,5 +1,5 @@
 ActiveAdmin.register Service do
-  permit_params :name, :anounce, :photo, :content, :price, :title, :description, :keys, :fl_show, :pricelist,:parent_id,:url, expert_ids: []
+  permit_params :name, :anounce, :photo, :content, :price, :title, :description, :keys, :complements, :fl_show, :pricelist,:parent_id,:url, expert_ids: []
   #fdsf
   index do
       column :name
@@ -22,6 +22,7 @@ ActiveAdmin.register Service do
           f.input :title
           f.input :description
           f.input :keys
+          f.input :complements
       end
       f.inputs "Специалисты" do
           f.input :experts, as: :check_boxes

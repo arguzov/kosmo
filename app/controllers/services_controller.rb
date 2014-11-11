@@ -21,6 +21,11 @@ class ServicesController < ApplicationController
             @service.content = @service.content.gsub('{children:vertical}',vertical)
         end
         @album = Dir.glob("public/data/services/#{@service.id}/th/*")
+        if @service.complements != nil
+            @complements = Service.where('id IN (?)',@service.complements.split(','))
+        else
+            @complements = nil
+        end
     end
 
     def prices
