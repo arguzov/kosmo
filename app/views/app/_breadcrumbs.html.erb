@@ -15,10 +15,8 @@
               <li><a href="<%=issue_path(:url=>issues.first.url)%>"><%=issues.first.name%></a></li>
           <% else %>
               <li class="dropdown">
-                <a id="dLabel" data-target="#" href="<%=issue_path(:url=>issues.first.url)%>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <%=issues.first.name%>
-                  <span class="caret"></span>
-                </a>
+                <a id="dLabel" href="<%=issue_path(:url=>issues.first.url)%>"><%=issues.first.name%></a><span style="cursor: pointer;" class="caret" data-target="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></span>
+
                 <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                   <%issues.each_with_index do |issue, key|%>
                       <% if key > 0 %>
