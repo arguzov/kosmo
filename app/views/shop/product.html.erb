@@ -1,3 +1,11 @@
+<%
+   title = @product.name
+   if @product.title.length > 0
+       title += " (#{@product.title})"
+   end
+   meta :title => title + ' - купить в Казани',
+        :description => sanitize(@product.description.truncate(250), :tags=>[])
+%>
 <div class="row" id="product" data-id="<%=@product.id%>">
   <div class="col-md-12">
     <div class="page-header" style="margin: 10px 0px;">
@@ -45,18 +53,15 @@
   <div class="row">
      <div class="col-md-7">
        <div style="background-color: #f0f0f0;padding: 10px;margin-top: 20px;">
-       <div class="page-header">Проконсультироваться</div>
-       <%=render :partial => 'app/order/form'%>
+       <div class="page-header">
+         <h3 style="margin: 0px;padding: 0px;">Задавайте вопросы - мы поможем!</h3>
+       </div>
+       <%=render :partial => 'app/order/form', :locals => {:text=>'Задайте свой вопрос'}%>
        </div>
      </div>
      <div class="col-md-5">
-       <div class="page-header">
-         <h3>Частые вопросы</h3>
-       </div>
-       <strong>Как просходит оплата заказа?</strong>
-       <p>Оплата заказа производится наличными при получении заказа. Наш менеджер свяжется с вами в течении нескольких часов после получения вашего заказа</p>
-       <strong>Как получить заказ</strong>
-       <p>В данный момент заказ можно получить только самовывозом из нашего салона по адресу ул. Островского, дом 2а ТЦ Караван</p>
+         <%=render :partial => 'shop/shared/faq'%>
      </div>
   </div>
 </div>
+<div style="height:20px;"></div>

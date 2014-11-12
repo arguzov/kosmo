@@ -3,4 +3,5 @@ class Product < ActiveRecord::Base
     validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
     belongs_to :collection
     has_many :items
+    default_scope {where('fl_show = 1')}
 end

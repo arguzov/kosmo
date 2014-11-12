@@ -1,3 +1,7 @@
+<%
+   meta :title => @unit.name + ' - купить в Казани',
+        :description => sanitize(@unit.description.truncate(250), :tags=>[])
+%>
 <div id="shop-unit">
   <div class="page-header">
     <h1><%=@unit.name%></h1>

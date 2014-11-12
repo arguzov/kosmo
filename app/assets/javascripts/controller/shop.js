@@ -1,7 +1,21 @@
 $(document).ready(function(){
     load_cart_data();
     add_to_cart();
-    add_to_viewed();
+    //add_to_viewed();
+    $('#shop-cart .remove').click(function(){
+        var id = $(this).closest('tr').attr('id').replace('item-','');
+        var cookie = $.cookie('cart');
+        if(cookie != undefined){
+            var a = cookie.split(',');
+            var index = a.indexOf(id);
+            if (index > -1) {
+                a.splice(index, 1);
+            }
+            cookie = a.join(',');
+        }
+        $.cookie('cart',cookie, { expires: 7, path: '/' });
+        document.location.reload();
+    })
 
     function load_cart_data(){
         if($('#cart-wrapper').length < 1){
@@ -11,10 +25,10 @@ $(document).ready(function(){
             var cart_html = '';
             var viewed_html = '';
             $.each(data.cart,function(index,row){
-                cart_html += '<a href="/shop/product/'+ row.url +'.html"><img src="/data/products/'+row.id+'.jpg"></a>';
+                cart_html += '<a href="/shop/product/'+ row.url +'.html" title="'+row.name+'"><img alt="'+row.name+'" src="'+row.photo_url+'"></a>';
             })
             $.each(data.viewed,function(index,row){
-                viewed_html += '<a href="/shop/product/'+ row.url +'.html"><img src="/data/products/'+row.id+'.jpg"></a>';
+                viewed_html += '<a href="/shop/product/'+ row.url +'.html" title="'+row.name+'"><img alt="'+row.name+'" src="'+row.photo_url+'"></a>';
             })
             if(cart_html == ''){
                 cart_html = '<div class="empty"><a href="/shop"><i class="glyphicon glyphicon-plus"></i></a></div>';

@@ -1,5 +1,6 @@
 class ShopController < ApplicationController
     layout :resolve_layout
+    before_action :authenticate_user!, :only => [:orders,:order]
 
     def collection
         @collection = Collection.where('url = ?',params[:url]).first
@@ -10,6 +11,16 @@ class ShopController < ApplicationController
     def product
         @product = Product.where('url = ?',params[:url]).first
         @unit = @product.collection.unit
+        if cookies.has_key?('viewed')
+            ids = cookies[:viewed].split(/,/)
+            if !ids.include?(@product.id)
+                ids = ids[0..9]
+                ids.unshift(@product.id)
+            end
+            cookies[:viewed] = ids.join(',')
+        else
+            cookies[:viewed] = [@product.id]
+        end
     end
 
     def unit
@@ -44,14 +55,25 @@ class ShopController < ApplicationController
             ids = cookies[:cart].split(/,/)
             items = Item.where('id IN (?)',ids)
             items.each do |item|
-                cart_products.push({:name=>item.product.name, :url=>item.product.url, :price=>item.price, :id=>item.product.id})
+                product = item.product
+                if product.photo.exists?
+                    photo_url = product.photo.url(:thumb)
+                else
+                    photo_url = "/data/products/#{product.id}.jpg"
+                end
+                cart_products.push({:name=>product.name, :url=>product.url, :photo_url=>photo_url, :price=>item.price, :id=>product.id})
             end
         end
         if cookies.has_key?('viewed')
             ids = cookies[:viewed].split(/,/)
-            items = Item.where('id IN (?)',ids)
+            items = Product.where('id IN (?)',ids)
             items.each do |item|
-                viewed_products.push({:name=>item.product.name, :url=>item.product.url, :price=>item.price, :id=>item.product.id})
+                if item.photo.exists?
+                    photo_url = item.photo.url(:thumb)
+                else
+                    photo_url = "/data/products/#{item.id}.jpg"
+                end
+                viewed_products.push({:name=>item.name, :url=>item.url, :photo_url=>photo_url, :price=>0, :id=>item.id})
             end
         end
         return render json: {:cart=>cart_products,:viewed=>viewed_products}

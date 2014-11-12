@@ -10,14 +10,23 @@
         <th class="c">Цена</th>
         <th class="c">Скидка</th>
         <th class="c">К оплате</th>
+        <th class="c">Удалить</th>
       </tr>
       <%@items.each do |item|%>
-          <tr>
-            <td class="th"><%=image_tag "/data/products/#{item.product.id}.jpg"%></td>
+          <%product = item.product%>
+          <tr id="item-<%=item.id%>">
+            <td class="th">
+              <% if product.photo.exists? %>
+                  <%=image_tag product.photo.url(:thumb)%>
+              <% else %>
+                  <%=image_tag "/data/products/#{item.product.id}.jpg"%>
+              <% end %>
+            </td>
             <td ><%=item.product.name.html_safe%> <%=item.volume%> мл.</td>
             <td class="c"><%=item.price%> <span class="rouble">Р</span></td>
             <td class="c">0%</td>
             <td class="c"><%=item.price%> <span class="rouble">Р</span></td>
+            <td class="c"><button class="btn btn-sm btn-danger remove"><i class="glyphicon glyphicon-remove"></i></button></td>
           </tr>
       <% end %>
       <tr>
@@ -25,11 +34,13 @@
         <td class="c"><%=order_total(@items,0)%> <span class="rouble">Р</span></td>
       </tr>
     </table>
-    <div class="page-header">
-      <h3>Частые вопросы</h3>
+    <div class="page-header" style="padding-bottom: 0px;margin-bottom: 10px;">
+      <h3 style="padding: 0px;">Частые вопросы</h3>
     </div>
+    <strong>У меня не получается оформить заказ!</strong>
+    <p>Не беда, вы можете сделать это просто позвонив в наш Центр по телефонам <strong>+7 (987) 292-55-41, +7 (843) 2000-322</strong>. Менеджер примет заказ, а заодно и проконсультирует по вопросу выбора.</p>
     <strong>Как просходит оплата заказа?</strong>
-    <p>Оплата заказа производится наличными при получении заказа. Наш менеджер свяжется с вами в течении нескольких часов после получения вашего заказа</p>
+    <p>Оплата заказа производится наличными при получении заказа. Наш менеджер свяжется с вами в течении нескольких часов после получения вашего заказа для уточнения деталей</p>
     <strong>Как получить заказ</strong>
     <p>В данный момент заказ можно получить только самовывозом из нашего салона по адресу ул. Островского, дом 2а ТЦ Караван</p>
   </div>

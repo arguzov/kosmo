@@ -10,6 +10,7 @@
               <%Menu.where('fl_type = 1').each do |item|%>
                 <li <%if item.id == 3 %>class="visible-md visible-lg"<% end %>><a href="<%=item.actual_url%>"><i class="icon-<%=item.css_class%>"></i> <%=item.title%></a></li>
               <% end %>
+              <li class="visible-md visible-lg"><a href="/shop/"><i class="icon-bag"></i> Магазин</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li>
