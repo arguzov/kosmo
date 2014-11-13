@@ -3,6 +3,7 @@ ActiveAdmin.register Service do
   #fdddsf
   index do
       column :name
+      column :title
       column :price
       column :fl_show
       default_actions
