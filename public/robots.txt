@@ -18,4 +18,8 @@ Disallow: /piling
 Disallow: /protsedury-ukhoda-uvlazhneniya-i-omolozheniya
 Disallow: /spetsialisty
 Disallow: /ssilki
+Disallow: /users
+Disallow: /private
+Disallow: /shop/cart
+Disallow: /shop/orders
 
