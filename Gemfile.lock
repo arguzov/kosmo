@@ -51,6 +51,12 @@ GEM
       activesupport (>= 3.0.0)
     arel (4.0.2)
     bcrypt (3.1.7)
+    better_errors (2.0.0)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
+      rack (>= 0.9.0)
+    binding_of_caller (0.7.2)
+      debug_inspector (>= 0.0.1)
     bootstrap-datepicker-rails (1.3.0.2)
       railties (>= 3.0)
     bourbon (3.2.1)
@@ -94,6 +100,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
+    debug_inspector (0.0.2)
     devise (3.2.4)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -292,6 +299,8 @@ DEPENDENCIES
   active_model_serializers
   activeadmin!
   ancestry
+  better_errors
+  binding_of_caller
   bootstrap-datepicker-rails
   capistrano
   capistrano-bundler

@@ -37,6 +37,8 @@ group :development do
     gem 'capistrano-bundler'
     gem 'capistrano-rvm'
     gem 'meta_request'
+    gem 'better_errors'
+    gem 'binding_of_caller'
 end
 
 group :production do

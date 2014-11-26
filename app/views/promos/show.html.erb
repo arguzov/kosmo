@@ -11,7 +11,13 @@
   </div>
   <table class="acts">
     <tr>
-      <td style="width:60%;padding-top: 27px;"><%=render :partial => 'app/order'%></td>
+      <td style="width:60%;padding-top: 27px;">
+        <% if @promo.id == 20 %>
+            <%=render :partial => 'app/order', locals: {text: "Я хочу записаться на процедуру лазерной эпиляции со скидкой 50% по кодовому слову ЛАЗЕР 26. Перезвоните мне, пожалуйста, чтобы уточнить подробности"}%>
+        <% else %>
+            <%=render :partial => 'app/order'%>
+        <% end %>
+      </td>
       <td style="width:40%">
       </td>
     </tr>
