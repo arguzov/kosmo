@@ -12,7 +12,7 @@
   <div class="content-wrapper">
       <%=alt_tags(@service.content,@service.name).html_safe%>
   </div>
-  <% if @complements != nil %>
+  <% if @complements != nil && @complements.length > 0 %>
       <div class="page-header">
         <h2>Процедуру &laquo;<%=@service.name%>&raquo; в Казани хорошо дополняют</h2>
       </div>
