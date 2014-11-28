@@ -21,6 +21,7 @@
 //= require plugins/readmore.min
 //= require plugins/jquery.cookie
 //= require controller/shop
+//= require controller/manager
 
 $(document).ready(function(){
     $('#promos-top').slick({

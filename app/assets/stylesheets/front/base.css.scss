@@ -338,3 +338,11 @@ body{
         width: 300px;
     }
 }
+
+#manager-orders{
+    tr.complete {
+        td {
+            color: #aaa;
+        }
+    }
+}

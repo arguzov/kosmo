@@ -44,6 +44,10 @@ Kosmo::Application.routes.draw do
   get 'shop/orders'=>'shop#orders', as: :shop_orders
   get 'shop/:url'=>'shop#unit', as: :shop_unit
 
+  namespace :manager do
+      resources :orders
+  end
+
   get 'private/profile'=>'private#profile', as: :private_profile
 
   get '/404' => 'errors#not_found'
