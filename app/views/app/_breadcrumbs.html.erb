@@ -1,30 +1,39 @@
 <ol class="breadcrumb" style="margin-bottom: 10px;">
   <li><a href="/">Главная</a></li>
+  <% if @section %>
+      <li><%=@section.name%></li>
+  <% end %>
   <%if @service %>
       <%
          if @service.parent_id > 0
              parent = Service.where('id = ?',@service.parent_id).first
              issues = parent.issues
+             section = parent.sections.first
          else
              parent = nil
              issues = @service.issues
+             section = @service.sections.first
          end
       %>
-      <% if issues != nil && issues.count > 0%>
-          <% if issues.count < 2 %>
-              <li><a href="<%=issue_path(:url=>issues.first.url)%>"><%=issues.first.name%></a></li>
-          <% else %>
-              <li class="dropdown">
-                <a id="dLabel" href="<%=issue_path(:url=>issues.first.url)%>"><%=issues.first.name%></a><span style="cursor: pointer;" class="caret" data-target="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></span>
+      <% if section.url != nil && section.url.length > 0 %>
+          <li><%=link_to section.name, section_path(:url=>section.url) %></li>
+      <% else %>
+          <% if issues != nil && issues.count > 0%>
+              <% if issues.count < 2 %>
+                  <li><a href="<%=issue_path(:url=>issues.first.url)%>"><%=issues.first.name%></a></li>
+              <% else %>
+                  <li class="dropdown">
+                    <a id="dLabel" href="<%=issue_path(:url=>issues.first.url)%>"><%=issues.first.name%></a><span style="cursor: pointer;" class="caret" data-target="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></span>
 
-                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                  <%issues.each_with_index do |issue, key|%>
-                      <% if key > 0 %>
-                          <li><a href="<%=issue_path(:url=>issue.url)%>"><%=issue.name%></a></li>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                      <%issues.each_with_index do |issue, key|%>
+                          <% if key > 0 %>
+                              <li><a href="<%=issue_path(:url=>issue.url)%>"><%=issue.name%></a></li>
+                          <% end %>
                       <% end %>
-                  <% end %>
-                </ul>
-              </li>
+                    </ul>
+                  </li>
+              <% end %>
           <% end %>
       <% end %>
       <% if parent != nil %>

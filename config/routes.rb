@@ -15,6 +15,8 @@ Kosmo::Application.routes.draw do
   get 'issues'=>'issues#index', as: :issues
   #resources :issues
 
+  get 'section/:url.html'=>'sections#show', as: :section
+
   mount RedactorRails::Engine => '/redactor_rails'
   ActiveAdmin.routes(self)
   devise_for :users

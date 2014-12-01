@@ -4,7 +4,7 @@ ActiveAdmin.register Section do
   # See permitted parameters documentation:
   # https://github.com/gregbell/active_admin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
-  permit_params :name, :fl_order, service_ids: []
+  permit_params :name, :url, :fl_order, :content, service_ids: []
   #
   # or
   #
@@ -16,6 +16,8 @@ ActiveAdmin.register Section do
   form do |f|
       f.inputs "Данные раздела" do
           f.input :name
+          f.input :url
+          f.input :content, input_html: {class: "redactor" }
           f.input :fl_order
       end
       f.inputs "Сервисы" do
