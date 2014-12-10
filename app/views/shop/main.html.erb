@@ -1,0 +1,14 @@
+<%
+   meta :title => 'Интернет магазин лечебной косметики',
+        :description => 'Мы предлагаем Вам приобрести косметику в домашний уход, сертификаты на процедуры и корректирующее белье  в нашем интернет-магазине.'
+%>
+<div class="row">
+  <div class="col-md-12">
+    <div class="page-header" style="margin: 10px 0px;">
+      <h1>Интернет магазин</h1>
+    </div>
+    <div class="descr">
+      <%=Post.find(209).content.html_safe%>
+    </div>
+  </div>
+</div>

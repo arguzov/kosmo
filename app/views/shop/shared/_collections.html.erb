@@ -1,16 +1,48 @@
-<div class="list-group" id="units-nav">
-  <%parents = {1=>'Косметика', 2=>'Бельё', 3=>'Сертификаты', 4=> 'Абонементы'}%>
-  <%prev_parent = 0%>
-  <%Unit.all.each do |unit|%>
-      <% if prev_parent != unit.parent%>
-          <a href="#" class="list-group-item active"><%=parents[unit.parent]%></a>
-          <%prev_parent = unit.parent%>
-      <% end %>
-      <a href="/shop/<%=unit.url%>" class="list-group-item <%if @unit && @unit.id == unit.id%>current<% end %>"><%=unit.name%></a>
-      <% if @unit && @unit.id == unit.id %>
-          <%@unit.collections.where('fl_show = 1').limit(10).each do |collection|%>
-             <%=link_to collection.name.html_safe, shop_collection_path({url:collection.url}), :class=>"list-group-item current_child"%>
-          <% end %>
-      <% end %>
+<%
+   current_collection = 0
+   current_unit = 0
+   if @collection != nil
+       current_unit = @collection.unit_id
+       current_collection = @collection.id
+   end
+   if @product != nil
+       current_collection = @product.collection.id
+       current_unit = @product.collection.unit_id
+   end
+
+%>
+<%parents = {1=>'Косметика', 2=>'Бельё', 3=>'Сертификаты'}%>
+<%parents.each do |key,parent|%>
+<div class="panel-group" id="shop-menu" style="margin: 0px 0px 0px 15px;padding-left: 0px;" data-current="<%=current_unit%>">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h4 class="panel-title"><%=parent%></h4>
+    </div>
+  </div>
+  <%Unit.where('parent = ?',key).each do |unit|%>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%=unit.id%>"><%=unit.name%></a>
+          </h4>
+        </div>
+        <div id="collapse<%=unit.id%>" class="panel-collapse collapse in">
+          <div class="panel-body">
+            <ul>
+              <%unit.collections.where('fl_show = 1').each do |collection|%>
+                  <li>
+                    <%if current_collection == collection.id %>
+                        <%=collection.name%> &rarr;
+                    <% else %>
+                        <%=link_to shop_collection_path(url:collection.url) do %><%=collection.name%><% end %>
+                    <% end %>
+                  </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
   <% end %>
 </div>
+<% end %>
+<br><br>

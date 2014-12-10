@@ -74,7 +74,7 @@ $(document).ready(function(){
     $('#sort').change(function(){
         document.location.href = '/responces?sort=' + $(this).val();
     })
-    if($('#global-pricelist').length == 0) {
+    if($('#global-pricelist').length == 0 && $('#menu-services').length > 0) {
         var current = parseInt($('#menu-services').attr('data-current'));
         for(i = 1;i< 9;i++) {
             if(i != current) {
@@ -88,6 +88,18 @@ $(document).ready(function(){
                 $('#collapse' + issues[i]).collapse();
             }
         }
+    }
+
+    if($('#shop-menu').length > 0){
+        var current = parseInt($('#shop-menu').attr('data-current'));
+        $('#shop-menu .panel-collapse').each(function(){
+            var id = parseInt($(this).attr('id').replace('collapse',''));
+            console.log(id);
+            if(id != current) {
+                $(this).collapse();
+            }
+        })
+
     }
 });
 

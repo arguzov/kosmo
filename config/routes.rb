@@ -36,7 +36,7 @@ Kosmo::Application.routes.draw do
   get 'thanks'=>'posts#thanks', as: :thanks
   get 'gallery'=>'posts#gallery', as: :gallery
 
-  get 'shop', to: redirect('/shop/collection/a_nox')
+  get 'shop'=>'shop#main', as: :shop
   #get 'shop'=>'shop#root', as: :shop_root
   get 'shop/collection/:url'=>'shop#collection', as: :shop_collection
   get 'shop/product/:url.html'=>'shop#product', as: :shop_product
