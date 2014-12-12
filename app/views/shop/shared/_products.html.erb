@@ -7,7 +7,7 @@
         <%if product.photo? %>
             <%if product.collection_id == 39 %>
                <div class="img-wrapper">
-                 <%=image_tag product.photo.url%>
+                 <%=image_tag product.photo.url(:medium)%>
                </div>
             <% else %>
                 <div class="img-wrapper-2">
