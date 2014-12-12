@@ -16,6 +16,14 @@
     }
 }
 #shop-collection{
+    .img-wrapper{
+        width: 180px;
+        height: 180px;
+        overflow: hidden;
+        img{
+            height: 180px;
+        }
+    }
     img{
         width: 180px;
         height: 180px;

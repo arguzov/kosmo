@@ -5,7 +5,13 @@
           <%=link_to product.name.html_safe, shop_product_path({url: product.url})%>
         </div>
         <%if product.photo? %>
-            <%=image_tag product.photo.url(:thumb)%>
+            <%if product.collection_id == 39 %>
+               <div class="img-wrapper">
+                 <%=image_tag product.photo.url(:thumb)%>
+               </div>
+            <% else %>
+                <%=image_tag product.photo.url(:thumb)%>
+            <% end %>
         <% else %>
             <% if unit_id == 1 %>
                 <%=image_tag "/data/products/#{product.id}.jpg"%>
