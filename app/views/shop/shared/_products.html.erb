@@ -10,7 +10,9 @@
                  <%=image_tag product.photo.url(:thumb)%>
                </div>
             <% else %>
-                <%=image_tag product.photo.url(:thumb)%>
+                <div class="img-wrapper-2">
+                    <%=image_tag product.photo.url(:thumb)%>
+                </div>
             <% end %>
         <% else %>
             <% if unit_id == 1 %>
