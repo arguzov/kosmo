@@ -1,4 +1,6 @@
 Kosmo::Application.routes.draw do
+  resources :faqs
+
   resources :orders
   resources :promos
   resources :experts

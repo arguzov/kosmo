@@ -1,0 +1,23 @@
+<% if flash[:notice] && flash[:notice] == 'Order was created' %>
+    <div style="padding:0px 20px 40px 20px;text-align: center"><h2>Вопрос принят</h2>Спасибо за вопрос.<br>Наши специалисты ответят в ближайшее время</div>
+<% else %>
+<div id="faq-form" class="well">
+    <div class="page-header"><h4>Задать свой вопрос</h4></div>
+    <p class="notice">Если вы не нашли ответ в уже опубликованных статьях, то вы можете задать нам любой вопрос из области красоты используя эту форму. Наши специалисты постараются дать на него максимально развёрнутый ответ полезный вам и остальным посетителям нашего сайта.</p>
+    <div>
+    <%= form_for [Faq.new] do |f| %>
+        <input type="hidden" name="faq[name]" value="Вопрос с сайта">
+        <div class="form-group">
+          <label for="exampleInputPhone">Ваше имя</label>
+          <input type="text" class="form-control" id="exampleInputPhone" required="required" name="faq[author]" style="width: 300px;">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputText">Ваш вопрос</label>
+          <textarea style="height: 200px;" class="form-control" id="exampleInputText" name="faq[question]"></textarea>
+        </div>
+        <p class="notice">Обратите внимание, что данная форма <strong>не является способом оперативной связи с нами</strong>. Если вы хотите задать какие-то уточняющие вопросы по процедурам, записатья на приём, уточнить цены и т.д., то позвоните, пожалуйста по телефону <strong>+7 (843) 2000-322</strong> или <a href="#recall" data-toggle="modal" data-target="#recall">закажите обратный звонок</a>.</p>
+        <button type="submit" class="button">Отправить вопрос</button>
+    <% end %>
+    </div>
+<% end %>
+</div>
