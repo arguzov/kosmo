@@ -67,12 +67,39 @@
 }
 #contacts{
   padding: 20px;
-  .view{
-    width: 100%;
-    td{
-      img{
-        /*width: 700px;*/
-      }
-    }
+  h3{
+      padding: 0px 0px 10px 0px;
+      margin: 0px;
   }
+    td {
+        width: 50%;
+        vertical-align: top;
+        img {
+            /*width: 700px;*/
+            width: 95%;
+        }
+        a{
+            text-decoration: underline;
+        }
+        ul{
+            padding: 0px;
+            li{
+                padding: 5px 0px 5px 0px;
+                list-style: none;
+            }
+        }
+        .placeholder{
+            width: 95%;
+            height: 267px;
+            background: #ddd;
+            .txt{
+                text-align: center;
+                 padding-top: 100px;
+                 font-size: 20px;
+            }
+        }
+    }
+    .r{
+       padding-left: 20px;
+    }
 }
