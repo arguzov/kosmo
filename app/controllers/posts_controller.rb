@@ -2,7 +2,7 @@ class PostsController < ApplicationController
     def root
         #self.class.layout 'main'
         @news = Post.where('category_id = 1 AND fl_status = 1').order('id desc').limit(4)
-        @experts = Expert.limit(5)
+        @experts = Expert.order('fl_order,id').limit(5)
         @saloon = Dir.glob("public/data/saloon/*")
         @reviews = Post.where('id IN (145,143)')
         render 'root', :layout=>'main'
