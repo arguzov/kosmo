@@ -24,6 +24,9 @@
 //= require controller/manager
 
 $(document).ready(function(){
+    if($('#vk').length > 0) {
+        $('#vk').modal();
+    }
     $('#promos-top').slick({
         autoplay: true,
         autoplaySpeed: 6000,

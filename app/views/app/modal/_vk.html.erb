@@ -1,0 +1,25 @@
+<% if cookies.has_key?(:views_count) && cookies[:views_count] == 5 %>
+<div class="modal fade" id="vk" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Подписка на группу вконтакте</h4>
+      </div>
+      <div class="modal-body">
+        <p style="font-size:12px;">Приглашаем вас вступить в нашу группу в социальной сети "Вконтакте", чтобы быть в курсе новых течений в области красоты, не пропустить неожиданные кратковременные снижения цен и другие интересные акции</p>
+        <script type="text/javascript" src="//vk.com/js/api/openapi.js?116"></script>
+
+        <!-- VK Widget -->
+        <div id="vk_groups"></div>
+        <script type="text/javascript">
+            VK.Widgets.Group("vk_groups", {mode: 0, width: "530", height: "400", color1: 'FFFFFF', color2: '2B587A', color3: '5B7FA6'}, 60572647);
+        </script>
+      </div>
+      <div class="modal-footer" style="text-align: left;">
+          <p style="font-size:12px;">Если вы по какой-то причине не желаете этого делать, то просто закройте это окно. Больше мы его вам не покажем (при условии что вы будете пользоваться тем же браузером и не будете очищать куки).</p>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<% end %>
