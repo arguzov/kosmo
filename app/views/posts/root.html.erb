@@ -4,14 +4,14 @@
       <h1>Центр эпиляции и косметологии в Казани</h1>
     </div>
     <div class="row" id="services">
-    <%Service.order('fl_order ASC').limit(7).each do |service|%>
-        <div class="col-md-3 col-lg-3 col-xs-3 col-sm-3">
+    <%Service.order('fl_order ASC').limit(7).each_with_index do |service,index|%>
+        <div class="col-md-3 col-lg-3 <%if index == 0 || index == 4%>hidden-xs hidden-sm<% else %>col-xs-4 col-sm-4<% end %>">
           <noindex><%=link_to service_path(id:service.id, url:service.url) do %><%= image_tag service.photo.url(:medium),:class=>'img-rounded' %><% end %></noindex>
           <%=link_to service.name, service_path(id:service.id, url:service.url)%>
           <div class="price">от <%=service.price%> руб.</div>
         </div>
     <% end %>
-      <div class="col-md-3 col-lg-3 col-xs-3 col-sm-3">
+      <div class="col-md-3 col-lg-3 col-xs-4 col-sm-4">
         <div class="more img-rounded">
           и ещё
           <div class="num">100+</div>
