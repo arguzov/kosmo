@@ -10,16 +10,16 @@
 <body>
 <%=render 'app/header'%>
 <%=render 'app/navbar'%>
-<div class="container" id="content-wrapper">
+<div class="container-fluid" id="content-wrapper">
   <noindex>
   <%=render 'app/banners/top'%>
   </noindex>
   <div class="row">
-    <div class="col-md-12" style="padding-left: 0px;">
+    <div class="col-md-12" style="padding-left: 10px;">
       <table width="100%">
         <tr>
           <td class="main"><%= yield %></td>
-          <td class="right visible-lg visible-md"><%=render :partial => 'services/pricelist/right'%></td>
+          <td class="right visible-lg visible-md" style="padding-right:10px;"><%=render :partial => 'services/pricelist/right'%></td>
         </tr>
       </table>
     </div>

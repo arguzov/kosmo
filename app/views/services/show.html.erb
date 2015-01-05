@@ -82,7 +82,7 @@
         <% end %>
         <%=render :partial => 'app/order', locals: {text: "Я хочу записаться на процедуру \"#{@service.name}\"  в ближайшее время. Перезвоните мне, пожалуйста, чтобы уточнить подробности"}%>
       </td>
-      <td class="right">
+      <td class="right visible-lg visible-md">
         <% if @issues.count > 0 %>
             <div class="page-header">
               <h2>Решаемые проблемы</h2>

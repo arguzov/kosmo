@@ -88,7 +88,7 @@
     </div>
   </div>
 </div>
-<div class="row" id="saloon">
+<div class="row visible-lg visible-md" id="saloon">
   <%@saloon.slice(0,5).each do |image|%>
   <div class="thumbnail">
     <%=link_to image.gsub('public',''), :class=> 'photos', :data => {:rel=>'photos'} do %><%= image_tag image.gsub('public','') %><% end %>
@@ -130,6 +130,6 @@
     <%=render :partial => 'app/order'%>
   </div>
 </div>
-<div class="row" style="overflow-x:hidden;margin-bottom: 0px;padding-bottom: 0px;">
-  <script type="text/javascript" charset="utf-8" src="//api-maps.yandex.ru/services/constructor/1.0/js/?sid=QuDnq8KdfdSfG-bTrDsCw-Ki4D3nXGtn&width=1170&height=360"></script>
+<div class="row" style="overflow-x:hidden;margin-bottom: 0px;padding-bottom: 0px;padding-top:20px;">
+  <script type="text/javascript" charset="utf-8" src="//api-maps.yandex.ru/services/constructor/1.0/js/?sid=QuDnq8KdfdSfG-bTrDsCw-Ki4D3nXGtn&width=100%&height=360"></script>
 </div>

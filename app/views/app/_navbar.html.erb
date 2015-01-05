@@ -1,6 +1,6 @@
 <div class="container-fluid" style="margin-top: 10px;margin-bottom: 0px;">
   <div class="row" id="navbar">
-    <div class="container">
+    <div class="container-fluid">
       <div class="col-md-12">
         <nav class="navbar navbar-default" role="navigation">
           <!-- Collect the nav links, forms, and other content for toggling -->
@@ -11,10 +11,10 @@
                 <li><a href="<%=item.actual_url%>"><i class="icon-<%=item.css_class%>"></i> <%=item.title%></a></li>
               <% end %>
               <li><a href="/faqs/"><i class="icon-question"></i> Вопрос-ответ</a></li>
-              <li><a href="/shop/"><i class="icon-bag"></i> Магазин</a></li>
+              <li class="visible-md visible-lg"><a href="/shop/"><i class="icon-bag"></i> Магазин</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              <li>
+              <li style="padding-right:20px;">
                 <div class="visible-md visible-lg social-icons">
                 <!--<button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#recall" style="margin-top:3px;font-size:1.4em;" title="Заказать обратный звонок">
                   <i class="icon-telephone"></i>
