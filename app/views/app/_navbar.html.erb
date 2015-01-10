@@ -10,8 +10,8 @@
               <%Menu.where('fl_type = 1').each do |item|%>
                 <li><a href="<%=item.actual_url%>"><i class="icon-<%=item.css_class%>"></i> <%=item.title%></a></li>
               <% end %>
-              <li><a href="/faqs/"><i class="icon-question"></i> Вопрос-ответ</a></li>
-              <li class="visible-md visible-lg"><a href="/shop/"><i class="icon-bag"></i> Магазин</a></li>
+              <li><a href="/faqs/"><i class="icon-question"></i> Вопросы</a></li>
+              <li><a href="/shop/"><i class="icon-bag"></i> Магазин</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li style="padding-right:20px;">

@@ -14,7 +14,13 @@ class PostsController < ApplicationController
     end
 
     def gallery
-        @album = Dir.glob("public/data/gallery/th/*")
+        if params.has_key?(:album_id) && params[:album_id].to_i == 2
+            @album = Dir.glob("public/data/gallery2/th/*")
+            @title = ' на Ибрагимова'
+        else
+            @album = Dir.glob("public/data/gallery/th/*")
+            @title = ' на Спартаковской'
+        end
     end
 
     def reviews
