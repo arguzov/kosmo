@@ -50,6 +50,13 @@ Kosmo::Application.routes.draw do
 
   namespace :manager do
       resources :orders
+      namespace :shop do
+        resources :categories
+        resources :products
+        namespace :product do
+          resources :items
+        end
+      end
   end
 
   get 'private/profile'=>'private#profile', as: :private_profile

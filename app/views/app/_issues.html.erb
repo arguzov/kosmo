@@ -57,6 +57,30 @@
         </div>
       </div>
   <% end %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse50">Мужской кабинет</a>
+      </h4>
+    </div>
+    <div id="collapse50" class="panel-collapse collapse in">
+      <div class="panel-body">
+        <ul>
+          <%issue = Issue.find(50)%>
+          <%iss = Issue.where('fl_show = 1 AND parent_id = ?',issue.id)%>
+          <%iss.each_with_index do |issue,index|%>
+              <li>
+                <%if current_issue == issue.id %>
+                    <span><%=issue.name%> &rarr;</span>
+                <% else %>
+                    <%=link_to issue_path(url:issue.url) do %><%=issue.name%><% end %>
+                <% end %>
+              </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="panel-group" style="margin: 10px 0px 10px 15px;" id="menu-issues" data-current="<%=current_issue_section%>">
@@ -65,8 +89,8 @@
       <h4 class="panel-title">Решаем проблемы</h4>
     </div>
   </div>
-  <%@issues.each do |issue|%>
-      <%iss = Issue.where('fl_show = 1 AND parent_id = ?',issue.id)%>
+  <%@issues.where('NOT(id = 50)').each do |issue|%>
+      <%iss = Issue.where('fl_show = 1 AND parent_id = ? ',issue.id)%>
       <div class="panel panel-default">
     <div class="panel-heading">
       <h4 class="panel-title">

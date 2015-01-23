@@ -1,0 +1,40 @@
+<table class="table" id="product-prices" data-id="<%=@product.id%>">
+  <tr>
+    <th>Объём(к-во)</th>
+    <th>Ед. изм.</th>
+    <th>Цвет</th>
+    <th>Цена</th>
+    <%@product.shop_product_items.each do |item|%>
+      <tr data-id="<%=item.id%>">
+        <td><input type="text" name="volume" value="<%=item.volume%>" class="form-control"></td>
+        <td style="width:100px;">
+          <select name="unit" class="form-control">
+            <%ShopProductItem::UNITS.each do |index,unit|%>
+                <option value="index" <%if index == item.unit%>selected<% end %>><%=unit%></option>
+            <% end %>
+          </select>
+        </td>
+        <td><input type="text" name="color" value="<%=item.color%>" class="form-control"></td>
+        <td><input type="text" name="price" value="<%=item.price%>" class="form-control"></td>
+        <td>
+          <button class="btn btn-primary btn-sm do"><%=fa_icon 'check'%></button>
+          <%=link_to "/manager/shop/product/items/#{item.id}", :class=>'btn btn-danger btn-sm', :method => :delete, :confirm=>'Уверены' do %><%=fa_icon 'times'%><% end %>
+        </td>
+      </tr>
+  <% end %>
+  <tr data-id="0">
+    <td><input type="text" name="volume"  class="form-control"></td>
+    <td style="width:100px;">
+      <select name="unit" class="form-control">
+        <%ShopProductItem::UNITS.each do |index,unit|%>
+            <option value="index"><%=unit%></option>
+        <% end %>
+      </select>
+    </td>
+    <td><input type="text" name="color" class="form-control"></td>
+    <td><input type="text" name="price" class="form-control"></td>
+    <td>
+      <button class="btn btn-primary btn-sm do"><%=fa_icon 'check'%></button>
+    </td>
+  </tr>
+</table>

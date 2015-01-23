@@ -65,5 +65,7 @@ gem 'foreman'
 gem "devise"
 gem 'metamagic'
 gem 'formtastic'
+gem 'font-awesome-rails'
+gem 'simple_form', '3.1.0.rc2'
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'sanitize'

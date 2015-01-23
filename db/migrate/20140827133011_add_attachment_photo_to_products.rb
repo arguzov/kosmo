@@ -6,6 +6,6 @@ class AddAttachmentPhotoToProducts < ActiveRecord::Migration
   end
 
   def self.down
-    drop_attached_file :products, :photo
+    drop_attached_file :shop_products, :photo
   end
 end

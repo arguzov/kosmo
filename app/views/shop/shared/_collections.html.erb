@@ -2,34 +2,34 @@
    current_collection = 0
    current_unit = 0
    if @collection != nil
-       current_unit = @collection.unit_id
+       current_unit = @collection.parent_id
        current_collection = @collection.id
    end
    if @product != nil
-       current_collection = @product.collection.id
-       current_unit = @product.collection.unit_id
+       current_collection = @product.category_id
+       current_unit = ShopCategory.where('id = ?',current_collection).first.id
    end
 
 %>
 <%parents = {1=>'Косметика', 2=>'Бельё', 3=>'Сертификаты'}%>
-<%parents.each do |key,parent|%>
+<%ShopCategory.where('parent_id = 0 AND fl_show = 1').each do |unit|%>
 <div class="panel-group" id="shop-menu" style="margin: 0px 0px 0px 15px;padding-left: 0px;" data-current="<%=current_unit%>">
   <div class="panel panel-primary">
     <div class="panel-heading">
-      <h4 class="panel-title"><%=parent%></h4>
+      <h4 class="panel-title"><%=unit.name%></h4>
     </div>
   </div>
-  <%Unit.where('parent = ?',key).each do |unit|%>
+  <%ShopCategory.where('parent_id = ? AND fl_show = 1',unit.id).each do |category|%>
       <div class="panel panel-default">
         <div class="panel-heading">
           <h4 class="panel-title">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%=unit.id%>"><%=unit.name%></a>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%=category.id%>"><%=category.name%></a>
           </h4>
         </div>
-        <div id="collapse<%=unit.id%>" class="panel-collapse collapse in">
+        <div id="collapse<%=category.id%>" class="panel-collapse collapse in">
           <div class="panel-body">
             <ul>
-              <%unit.collections.where('fl_show = 1').each do |collection|%>
+              <%ShopCategory.where('parent_id = ? AND fl_show = 1',category.id).each do |collection|%>
                   <li>
                     <%if current_collection == collection.id %>
                         <%=collection.name%> &rarr;

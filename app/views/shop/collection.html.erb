@@ -13,5 +13,5 @@
   </div>
 </div>
 <div class="row" id="shop-collection" style="margin-top: 20px;">
-    <%=render :partial=>'shop/shared/products', :locals => {products: @products, unit_id: @collection.unit_id}%>
+    <%=render :partial=>'shop/shared/products', :locals => {products: @products, unit_id: @collection.parent_id}%>
 </div>

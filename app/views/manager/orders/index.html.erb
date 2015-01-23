@@ -1,30 +1,37 @@
-<input type="hidden" id="order-id" value="0">
-<table class="table" id="manager-orders">
-  <tr>
-    <th>Id</th>
-    <th>От кого</th>
-    <th>Дата</th>
-    <th>Текст</th>
-    <th>Статус</th>
-    <th>Подробнее</th>
-  </tr>
-  <%@orders.each do |order|%>
-  <tr <%if order.fl_status > 2 %>class="complete"<% end %>>
-    <td><%=order.id%></td>
-    <td><%=order.contacts%></td>
-    <td><%=order.created_at.strftime('%d.%m.%Y<br>%H:%m').html_safe%></td>
-    <td>
-      <%=order.content%>
-      <%if order.comment != nil && order.comment.length > 0%>
-          <div class="well" style="font-size: 11px;padding: 5px;margin-top:10px;">
-            <%=order.manager.name%>(<%=order.updated_at.strftime('%d.%m.%Y %H:%m')%>): <%=order.comment%>
-          </div>
-      <% end %>
-    </td>
-    <td><%=Order::STATUSES[order.fl_status]%></td>
-    <td><button data-toggle="modal" data-target="#manager-order" data-id="<%=order.id%>" class="btn btn-primary">Действия</button></td>
-  </tr>
-  <% end %>
-</table>
-<%= will_paginate @reviews, renderer: BootstrapPagination::Rails %>
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="ibox">
+    <div class="ibox-title">Список заявок</div>
+    <div class="ibox-content">
+      <input type="hidden" id="order-id" value="0">
+      <table class="table" id="manager-orders">
+        <tr>
+          <th>Id</th>
+          <th>От кого</th>
+          <th>Дата</th>
+          <th>Текст</th>
+          <th>Статус</th>
+          <th>Подробнее</th>
+        </tr>
+        <%@orders.each do |order|%>
+            <tr <%if order.fl_status > 2 %>class="complete"<% end %>>
+              <td><%=order.id%></td>
+              <td><%=order.contacts%></td>
+              <td><%=order.created_at.strftime('%d.%m.%Y<br>%H:%m').html_safe%></td>
+              <td>
+                <%=order.content%>
+                <%if order.comment != nil && order.comment.length > 0%>
+                    <div class="well" style="font-size: 11px;padding: 5px;margin-top:10px;">
+                      <%=order.manager.name%>(<%=order.updated_at.strftime('%d.%m.%Y %H:%m')%>): <%=order.comment%>
+                    </div>
+                <% end %>
+              </td>
+              <td><%=Order::STATUSES[order.fl_status]%></td>
+              <td><button data-toggle="modal" data-target="#manager-order" data-id="<%=order.id%>" class="btn btn-primary">Действия</button></td>
+            </tr>
+        <% end %>
+      </table>
+      <%= will_paginate @reviews, renderer: BootstrapPagination::Rails %>
+    </div>
+  </div>
+</div>
 <%=render :partial => 'manager/orders/modal/order'%>

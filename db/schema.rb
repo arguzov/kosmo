@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150105115759) do
+ActiveRecord::Schema.define(version: 20150123101331) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -117,14 +117,6 @@ ActiveRecord::Schema.define(version: 20150105115759) do
   end
 
   add_index "issues_services", ["issue_id", "service_id"], name: "index_issues_services_on_issue_id_and_service_id", using: :btree
-
-  create_table "items", force: true do |t|
-    t.integer  "product_id"
-    t.integer  "volume"
-    t.integer  "price"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "medicaments", force: true do |t|
     t.string   "name"
@@ -286,6 +278,35 @@ ActiveRecord::Schema.define(version: 20150105115759) do
   create_table "services_issues", id: false, force: true do |t|
     t.integer "service_id"
     t.integer "issue_id"
+  end
+
+  create_table "shop_categories", force: true do |t|
+    t.string  "name"
+    t.string  "url"
+    t.text    "description"
+    t.integer "parent_id"
+    t.boolean "fl_show"
+  end
+
+  create_table "shop_product_items", force: true do |t|
+    t.integer "product_id"
+    t.integer "volume"
+    t.integer "price"
+    t.string  "color"
+    t.integer "unit"
+  end
+
+  create_table "shop_products", force: true do |t|
+    t.string   "name"
+    t.string   "url"
+    t.integer  "category_id"
+    t.text     "description"
+    t.boolean  "fl_show"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.integer  "price"
   end
 
   create_table "units", force: true do |t|

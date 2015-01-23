@@ -48,7 +48,7 @@ class OrdersController < ApplicationController
         end
         @order.user_id = user.id
         ids = cookies[:cart].split(/,/)
-        items = Item.where('id IN (?)',ids)
+        items = ShopProductItem.where('id IN (?)',ids)
         content = "Сделан заказ в интернет магазине\n\n"
         price = 0
         items.each do |item|

@@ -1,0 +1,14 @@
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="ibox">
+    <div class="ibox-title">Цены на товар &laquo;<%=@product.name%>&raquo;</div>
+    <div class="ibox-content">
+      <%=render :partial => 'manager/shop/products/prices'%>
+    </div>
+  </div>
+  <div class="ibox">
+    <div class="ibox-title">Редактировать товар &laquo;<%=@product.name%>&raquo;</div>
+    <div class="ibox-content">
+        <%=render :partial => 'manager/shop/products/form'%>
+    </div>
+  </div>
+</div>

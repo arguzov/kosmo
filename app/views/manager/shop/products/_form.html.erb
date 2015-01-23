@@ -1,0 +1,12 @@
+<%= simple_form_for [:manager,@product] do |f| %>
+    <%= f.input :name %>
+    <%= f.input :url %>
+    <%= f.association :shop_category %>
+    <%= f.input :fl_show, as: :boolean %>
+    <%= f.input :description, as: :text, :class=>'redactor' %>
+    <div class="form-group">
+        <div style="border:1px solid #ededed;padding: 10px;width: 120px;margin-bottom: 10px;"><img src="<%=@product.photo.url(:thumb)%>"></div>
+        <%= f.file_field :photo%>
+    </div>
+    <%= f.button :submit %>
+<% end %>

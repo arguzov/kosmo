@@ -5,7 +5,7 @@
           <%=link_to product.name.html_safe, shop_product_path({url: product.url})%>
         </div>
         <%if product.photo? %>
-            <%if product.collection_id == 39 %>
+            <%if product.parent_id == 39 %>
                <div class="img-wrapper">
                  <%=image_tag product.photo.url%>
                </div>

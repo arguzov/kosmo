@@ -1,0 +1,54 @@
+@import "font-awesome";
+@import "manager/bootstrap.min";
+@import url("//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amplang=en");
+// Variables, Mixins
+@import "manager/layout/variables";
+@import "manager/layout/mixins";
+// INSPINIA Theme Elements
+@import "manager/layout/typography";
+@import "manager/layout/navigation";
+@import "manager/layout/buttons";
+@import "manager/layout/badgets_labels";
+@import "manager/layout/elements";
+@import "manager/layout/sidebar";
+@import "manager/layout/base";
+@import "manager/layout/pages";
+// Media query style
+@import "manager/layout/media";
+// Custom style
+// Your custom style to override base style
+@import "manager/layout/custom";
+@import "manager/plugins/*";
+@import "manager/plugins/dataTables/*";
+@import "manager/controller/*";
+@import "redactor-rails/css/redactor";
+//@import "redactor-rails/plugins/*";
+
+body.DTTT_Print {
+    background: #fff;
+
+}
+.DTTT_Print #page-wrapper {
+    margin: 0;
+    background:#fff;
+}
+
+button.DTTT_button, div.DTTT_button, a.DTTT_button {
+    border: 1px solid #e7eaec;
+    background: #fff;
+    color: #676a6c;
+    box-shadow: none;
+    padding: 6px 8px;
+}
+button.DTTT_button:hover, div.DTTT_button:hover, a.DTTT_button:hover {
+    border: 1px solid #d2d2d2;
+    background: #fff;
+    color: #676a6c;
+    box-shadow: none;
+    padding: 6px 8px;
+}
+
+.dataTables_filter label {
+    margin-right: 5px;
+
+}

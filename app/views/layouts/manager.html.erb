@@ -1,46 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-  <%= stylesheet_link_tag    "application", media: "all" %>
-  <%= javascript_include_tag "application" %>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Администррование</title>
+
+  <%= stylesheet_link_tag    'manager', media: 'all', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="container-fluid" style="margin-top: 10px;margin-bottom: 0px;">
-  <div class="row" id="navbar">
-    <div class="container">
-      <div class="col-md-12">
-        <nav class="navbar navbar-default" role="navigation">
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-              <li><a href="/manager/orders"><i class="icon-bag"></i> Заказы на услуги</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-              <li>
-                <div style="padding-top: 15px;color: #fff;">
-                  <%=current_user.name%> &nbsp;| <%=link_to destroy_user_session_path, :method => :delete do %> Выйти <% end %>
-                </div>
-              </li>
-            </ul>
-          </div><!-- /.navbar-collapse -->
-        </nav>
-      </div>
+<div id="wrapper">
+  <%=render :partial => 'app/manager/nav/left'%>
+  <div id="page-wrapper" class="gray-bg">
+    <div class="row border-bottom">
+      <%=render :partial => 'app/manager/nav/top'%>
+    </div>
+    <div class="wrapper wrapper-content">
+      <%=yield %>
+    </div>
+    <div class="footer">
+      <%=render :partial => 'app/manager/footer'%>
     </div>
   </div>
 </div>
-<div class="container" id="private-wrapper">
-  <div class="row">
-    <div class="col-md-12" style="padding-left: 0px;">
-      <table id="private">
-        <tr>
-          <td class="main"><%= yield %></td>
-        </tr>
-      </table>
-    </div>
-  </div>
-  <%=render 'app/footer' %>
-</div>
+<%= javascript_include_tag 'manager', 'data-turbolinks-track' => true %>
 </body>
 </html>

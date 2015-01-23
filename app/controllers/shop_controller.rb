@@ -3,14 +3,14 @@ class ShopController < ApplicationController
     before_action :authenticate_user!, :only => [:orders,:order]
 
     def collection
-        @collection = Collection.where('url = ?',params[:url]).first
-        @products = Product.where('collection_id = ?',@collection[:id])
-        @unit = @collection.unit
+        @collection = ShopCategory.where('url = ?',params[:url]).first
+        @products = ShopProduct.where('category_id = ?',@collection[:id])
+        @unit = ShopCategory.where('parent_id = ?',@collection.id)
     end
 
     def product
-        @product = Product.where('url = ?',params[:url]).first
-        @unit = @product.collection.unit
+        @product = ShopProduct.where('url = ?',params[:url]).first
+        @unit = @product.shop_category
         if cookies.has_key?('viewed')
             ids = cookies[:viewed].split(/,/)
             if !ids.include?(@product.id)
@@ -24,15 +24,15 @@ class ShopController < ApplicationController
     end
 
     def unit
-        @unit = Unit.where('url = ?',params[:url]).first
-        @collections = Collection.where('unit_id = ?',@unit.id)
-        @products = Product.where('collection_id IN (?)',@collections.map{|row| row.id}).order('RAND()')
+        @unit = ShopCategory.where('url = ?',params[:url]).first
+        @collections = ShopCategory.where('parent_id = ?',@unit.id)
+        @products = ShopProduct.where('parent_id IN (?)',@collections.map{|row| row.id}).order('RAND()')
     end
 
     def cart
         if cookies.has_key?('cart')
             ids = cookies[:cart].split(/,/)
-            @items = Item.where('id IN (?)',ids)
+            @items = ShopProductItem.where('id IN (?)',ids)
         else
             @items = []
         end
@@ -45,7 +45,7 @@ class ShopController < ApplicationController
     def order
         @order = Order.find(params[:id])
         ids = @order.items.split(/,/)
-        @items = Item.where('id IN (?)',ids)
+        @items = ShopProductItem.where('id IN (?)',ids)
     end
 
     def cart_data
@@ -53,7 +53,7 @@ class ShopController < ApplicationController
         viewed_products = []
         if cookies.has_key?('cart')
             ids = cookies[:cart].split(/,/)
-            items = Item.where('id IN (?)',ids)
+            items = ShopProductItem.where('id IN (?)',ids)
             items.each do |item|
                 product = item.product
                 if product.photo.exists?
@@ -66,7 +66,7 @@ class ShopController < ApplicationController
         end
         if cookies.has_key?('viewed')
             ids = cookies[:viewed].split(/,/)
-            items = Product.where('id IN (?)',ids)
+            items = ShopProduct.where('id IN (?)',ids)
             items.each do |item|
                 if item.photo.exists?
                     photo_url = item.photo.url(:thumb)
