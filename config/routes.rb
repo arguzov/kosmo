@@ -34,7 +34,7 @@ Kosmo::Application.routes.draw do
   root 'posts#root'
   get 'responces'=>'posts#reviews', as: :responces
   get 'news'=>'posts#news', as: :news
-  get 'contacts'=>'posts#contacts', as: :contacts
+  get 'contacts/:id'=>'posts#contacts', as: :contacts
   get 'thanks'=>'posts#thanks', as: :thanks
   get 'gallery'=>'posts#gallery', as: :gallery
 

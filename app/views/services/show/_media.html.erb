@@ -1,0 +1,37 @@
+<%
+   images = @service.content.scan(/<img[^>]*src=([^ ]*)[^>]*>/i)
+   video = @service.content.scan(/<iframe[^>]*src=([^ ]*)[^>]*>/i)
+%>
+<ul class="nav nav-pills white space-top" role="tablist" id="photos">
+  <% if images.length > 0%>
+      <li class="active"><a href="#pill-1" role="tab" data-toggle="tab" title="images"><i class="fa fa-camera pr-5"></i> Фотографии (<%=images.length%>)</a></li>
+  <% end %>
+  <% if video.length > 0%>
+      <li><a href="#pill-2" role="tab" data-toggle="tab" title="video"><i class="fa fa-video-camera pr-5"></i> Видео (<%=video.length%>)</a></li>
+  <% end %>
+</ul>
+<div class="tab-content clear-style">
+  <% if images.length > 0%>
+      <div class="tab-pane active" id="pill-1">
+        <div class="owl-carousel content-slider-with-controls">
+          <%images.each do |url|%>
+              <div class="overlay-container">
+                <img src="http://kosmetologiya-kazan.ru<%=quote_clear(url[0])%>" alt="">
+                <a href="<%=quote_clear(url[0])%>" class="popup-img overlay" title="image title"><i class="fa fa-search-plus"></i></a>
+              </div>
+          <% end %>
+        </div>
+      </div>
+  <% end %>
+  <% if video.length > 0%>
+  <div class="tab-pane" id="pill-2">
+    <div class="owl-carousel content-slider-with-controls">
+      <%video.each do |url|%>
+      <div class="overlay-container">
+        <div class="embed-responsive embed-responsive-16by9"><iframe src="<%=quote_clear(url[0])%>" frameborder="0" allowfullscreen=""></iframe></div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  <% end %>
+</div>

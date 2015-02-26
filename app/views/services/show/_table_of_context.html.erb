@@ -1,0 +1,19 @@
+<%parts = @service.content.scan(/(<h2[^>]*>([^<]*)<\/h2>)/i)%>
+<div class="block clearfix  hidden-sm hidden-xs">
+  <h3 class="title">Оглавление</h3>
+  <div class="separator"></div>
+  <nav class="affix-menu scrollspy">
+    <ul class="nav nav-pills nav-stacked">
+      <li style="padding-right:10px;" class="active"><a href="#photos">Фото и видео</a></li>
+      <% if parts.length > 0 %>
+      <%parts.each do |line|%>
+          <li style="padding-right:10px;"><a href="#<%=Digest::MD5.hexdigest(line[0])%>"><%=line[1]%></a></li>
+      <% end %>
+      <% else %>
+          <li style="padding-right:10px;"><a href="">Описание услуги</a></li>
+      <% end %>
+      <li style="padding-right:10px;"><a href="#pricelist">Цены</a></li>
+      <li style="padding-right:10px;"><a href="#booking">Запись онлайн</a></li>
+    </ul>
+  </nav>
+</div>

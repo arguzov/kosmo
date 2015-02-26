@@ -2,30 +2,57 @@
    meta :title => @post.name,
         :description => Sanitize.clean(@post.content).gsub("\n"," ").truncate(250)
 %>
-<div id="post">
-<div class="page-header">
-  <h1><%=@post.name%></h1>
+<div class="main col-md-8">
+  <!-- page-title start -->
+  <!-- ================ -->
+  <h1 class="page-title"><%=@post.name%></h1>
+  <!-- page-title end -->
+
+  <!-- blogpost start -->
+  <article class="clearfix blogpost full">
+    <div class="blogpost-body">
+      <div class="side">
+        <div class="post-info">
+          <span class="day"><%=@post.created_at.strftime("%d")%></span>
+          <span class="month"><%=@post.created_at.strftime("%m %Y")%></span>
+        </div>
+        <div id="affix"><span class="share">Поделиться</span><div id="share"></div></div>
+      </div>
+      <div class="blogpost-content">
+        <header>
+          <div class="submitted"><i class="fa fa-user pr-5"></i> от <a href="#">ЦЭиК</a></div>
+        </header>
+        <p><%=image_tag @post.photo.url%></p>
+        <%=@post.content.html_safe%>
+      </div>
+    </div>
+  </article>
+  <%=render :partial => 'app/order', locals: {text: "Я хочу заказать обратный звонок. Перезвоните мне пожалуйста..."}%>
 </div>
-<div class="content">
-  <div class="photo"><%=image_tag @post.photo.url(:medium)%></div>
-  <%=@post.content.html_safe%>
-</div>
-</div>
-<div id="news">
-  <div class="page-header">
-    <h1>Ещё новости</h1>
+<aside class="col-md-3 col-md-offset-1">
+  <div class="sidebar">
+    <h3 class="title">Похожие записи</h3>
+    <div class="separator"></div>
+      <%@more.each do |news|%>
+        <div class="block clearfix">
+          <div class="image-box">
+            <div class="overlay-container">
+              <img src="<%=news.photo.url(:medium)%>" alt="">
+              <div class="overlay">
+                <div class="overlay-links">
+                  <%=link_to post_path(news) do %><i class="fa fa-link"></i><% end %>
+                  <a href="<%=news.photo.url%>" class="popup-img-single" title="image title"><i class="fa fa-search-plus"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="image-box-body">
+              <h3 class="title"><%=link_to news.name, post_path(news)%></h3>
+              <%=news.anounce.html_safe%>
+              <%=link_to post_path(news), :class=>'link' do %><span>Читать</span><% end %>
+            </div>
+        </div>
+        <br>
+      <% end %>
+    </div>
   </div>
-  <table class="table">
-    <%@more.each do |news|%>
-        <tr>
-          <td class="img">
-            <%=image_tag news.photo.url(:medium), :class=>'img-rounded'%>
-          </td>
-          <td>
-            <div><%=link_to news.name, post_path(news), :class=>'caption'%></div>
-            <%=news.anounce.html_safe%>
-          </td>
-        </tr>
-    <% end %>
-  </table>
-</div>
+</aside>

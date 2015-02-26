@@ -2,19 +2,24 @@
    meta :title => 'Косметологи, массажисты и другие специалисты в Казани',
         :description => 'Подробная информация о казанских косметологах, массажистах, специалистах по эпиляции и т.д.'
 %>
-<div id="experts">
-<div class="page-header">
-  <h1>Наши специалисты</h1>
-</div>
-  <%@experts.each do |expert|%>
-  <div style="float:left;width: 210px;padding-left: 20px;">
-    <div class="thumbnail">
-      <img src="<%=expert.photo%>" style="width: 180px;height:270px">
-      <div class="caption">
-        <%=link_to expert.name, expert_path(expert)%>
-        <p><%=expert.profession%></p>
-        <!--<p><%=link_to expert_path(expert), :class=>"btn btn-primary" do %>Досье специалиста</a><%end%></p>-->
+<h1 class="page-title">Наши специалисты</h1>
+<div class="separator-2"></div>
+<div class="row grid-space-20">
+  <%@experts.each_with_index do |expert,index|%>
+  <div class="col-md-3 col-sm-6">
+    <div class="box-style-1 gray-bg team-member animated object-visible fadeInLeft" data-animation-effect="fadeInLeft" data-effect-delay="<%=700 - index.to_i*100%>">
+      <div class="overlay-container">
+        <img src="<%=expert.photo%>" style="height:350px;;">
+        <div class="overlay">
+          <ul class="social-links colored clearfix">
+            <li class="facebook"><%=link_to expert_path(expert) do %><%=fa_icon 'file-text-o'%><% end %></li>
+            <li class="twitter"><a target="_blank" href="http://www.twitter.com"><%=fa_icon 'phone'%></a></li>
+            <li class="skype"><a target="_blank" href="http://www.skype.com"><%=fa_icon 'pencil'%></a></li>
+          </ul>
+        </div>
       </div>
+      <h3><%=link_to expert.name, expert_path(expert)%></h3>
+      <%=expert.profession%>
     </div>
   </div>
   <% end %>

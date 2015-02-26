@@ -2,22 +2,39 @@
    meta :title => "Новости Центра эпиляци и косметологии",
         :description => 'Информация о добавлении новых услуг, поступлении последнего оборудования, акциях и скидках'
 %>
-<div id="news">
-  <div class="page-header">
-    <h1>Новости Центра эпиляции и косметологии</h1>
-  </div>
-  <table class="table">
-    <%@news.each do |news|%>
-        <tr>
-          <td class="img">
-            <%=image_tag news.photo.url(:medium), :class=>'img-rounded'%>
-          </td>
-          <td>
-            <div class="date"><%= news.created_at.strftime("%d.%m") %></div>
-            <div><%=link_to news.name, post_path(news), :class=>'caption'%></div>
-            <%=news.anounce.html_safe%>
-          </td>
-        </tr>
-    <% end %>
-  </table>
+<div class="main col-md-12" id="news">
+  <!-- page-title start -->
+  <!-- ================ -->
+  <h1 class="page-title">Новости Центра эпиляции и косметологии</h1>
+  <div class="separator-2"></div>
+  <!-- page-title end -->
+  <%@news.each do |news|%>
+  <!-- blogpost start -->
+  <article class="clearfix blogpost object-non-visible" data-animation-effect="fadeInUpSmall" data-effect-delay="200">
+    <div class="overlay-container pull-right">
+      <%=image_tag news.photo.url(:medium)%>
+      <div class="overlay">
+        <div class="overlay-links">
+          <%=link_to post_path(news) do %><i class="fa fa-link"></i><% end %>
+        </div>
+      </div>
+    </div>
+    <div class="blogpost-body">
+      <div class="post-info">
+        <span class="day"><%=news.created_at.strftime("%d")%></span>
+        <span class="month"><%=news.created_at.strftime("%m %Y")%></span>
+      </div>
+      <div class="blogpost-content">
+        <header>
+          <h2 class="title"><%=link_to news.name, post_path(news)%></h2>
+          <div class="submitted"><i class="fa fa-user pr-5"></i> от <a href="#">ЦЭиК</a></div>
+        </header>
+        <%=news.anounce.html_safe%>
+      </div>
+    </div>
+    <footer class="clearfix">
+      <%=link_to post_path(news), :class=>'pull-right' do %><span>Читать новость</span><% end %>
+    </footer>
+  </article>
+  <% end %>
 </div>

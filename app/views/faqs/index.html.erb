@@ -1,10 +1,29 @@
-<div id="faq-fetch">
-  <div class="page-header"><h1>Вопросы и ответы</h1></div>
+<div class="main col-md-12" id="faq-fetch">
+  <!-- page-title start -->
+  <!-- ================ -->
+  <h1 class="page-title">Вопросы и ответы</h1>
+  <div class="separator-2"></div>
+  <!-- page-title end -->
   <%@fetch.each do |item|%>
-  <div class="faq-item">
-      <%=link_to item.name, faq_path(item)%>
-      <div class="question"><%=item.question.html_safe%></div>
-  </div>
+      <!-- blogpost start -->
+      <article class="clearfix blogpost object-non-visible" data-animation-effect="fadeInUpSmall" data-effect-delay="200">
+        <div class="blogpost-body">
+          <div class="post-info">
+            <span class="day"><%=item.created_at.strftime("%d")%></span>
+            <span class="month"><%=item.created_at.strftime("%m %Y")%></span>
+          </div>
+          <div class="blogpost-content">
+            <header>
+              <h2 class="title"><%=link_to item.name, faq_path(item)%></h2>
+              <div class="submitted"><i class="fa fa-user pr-5"></i> от <a href="#">ЦЭиК</a></div>
+            </header>
+            <%=item.question.html_safe%>
+          </div>
+        </div>
+        <footer class="clearfix">
+          <%=link_to faq_path(item), :class=>'pull-right' do %><span>Читать ответ</span><% end %>
+        </footer>
+      </article>
   <% end %>
   <%=render :partial => 'faqs/form'%>
 </div>

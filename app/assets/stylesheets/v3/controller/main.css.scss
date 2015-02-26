@@ -1,0 +1,33 @@
+@import "v3/common";
+@import "v3/plugins/owl/owl.carousel";
+@import "v3/plugins/magnific-popup/magnific-popup";
+
+.owl-controls{
+    display: none!important;
+}
+
+#branches{
+    .body{
+        h2{
+            margin: 0px;
+            padding: 0px;
+            a{
+                text-decoration: underline;
+            }
+        }
+        p{
+            padding: 0px;
+            margin: 0px;
+        }
+    }
+}
+#about{
+    ul{
+        li{
+            padding: 10px 0px;
+        }
+    }
+    a{
+        text-decoration: underline;
+    }
+}

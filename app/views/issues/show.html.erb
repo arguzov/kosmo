@@ -2,40 +2,36 @@
    meta :title => @issue.name + ' - лечение в Казани',
         :description => Sanitize.clean(@issue.content).gsub("\n"," ").truncate(250)
 %>
-<div id="issue">
-  <div class="page-header">
-    <h1><%=@issue.name%></h1>
-  </div>
-  <% if @issue.content.length > 5 %>
-  <div id="author">
-    <% expert = (@services.length > 0)? @services.first.experts.last : nil%>
-    <%if expert.nil? %>
-        <% expert = Expert.first%>
-    <% end %>
-    <% if [12,20,39,43].include?(@issue.id) %>
-        <%expert = Expert.find(3)%>
-    <% end %>
-    <%=image_tag expert.photo.url(:medium)%>
-    <div class="caption">
-      <%=link_to expert.name, expert_path(expert)%>
-      <p><%=expert.profession%></p>
+
+<div class="main col-md-8 scrollit">
+  <h1 class="page-title"><%=@issue.name%></h1>
+  <article class="">
+    <div class="blogpost-content">
+      <%=alt_tags(@issue.content,@issue.name).html_safe%>
     </div>
-  </div>
-  <%=alt_tags(@issue.content,@issue.name).html_safe%>
-  <div class="page-header">
-    <h2>Как лечим</h2>
-  </div>
-  <% end %>
-  <table id="solutions">
-    <%@issue.services.each do |service|%>
-        <tr>
-          <td class="i" style="border-width: 0px;"><%= image_tag service.photo.url(:medium),:class=>'img-rounded' %></td>
-          <td class="t" style="border-width: 0px;">
-            <%=link_to service.name, service_path(id:service.id, url:service.url)%>
-            <p><%=service.anounce.truncate(250)%></p>
-          </td>
-          <td class="p" style="border-width: 0px;">от <%=service.price%> <span class="rouble">Р</span></td>
-        </tr>
-    <% end %>
-  </table>
+    <h2 class="title">Как лечим</h2>
+    <%=render :partial => 'issues/show/services'%>
+    <div class="comments-form">
+      <h2 class="title" id="booking">Записаться на консультацию онлайн</h2>
+      <%=render :partial => 'app/order/form'%>
+    </div>
+  </article>
 </div>
+<aside class="col-md-3 col-md-offset-1">
+  <div class="sidebar" style="padding-top:10px;">
+    <div class="block clearfix hidden-sm hidden-xs">
+      <h3 class="title">Специалист</h3>
+      <div class="separator"></div>
+      <% expert = (@services.length > 0)? @services.first.experts.last : nil%>
+      <%if expert.nil? %>
+          <% expert = Expert.first%>
+      <% end %>
+      <% if [12,20,39,43].include?(@issue.id) %>
+          <%expert = Expert.find(3)%>
+      <% end %>
+      <%=render partial: 'experts/shared/portrait', :locals => {expert: expert}%>
+    </div>
+
+    <!---->
+  </div>
+</aside>

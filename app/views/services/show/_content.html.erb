@@ -1,0 +1,7 @@
+<%
+   content = @service.content
+   content = content.gsub(/<img[^>]*src=([^ ]*)[^>]*>/i,'')
+   content = content.gsub(/<iframe[^>]*src=([^ ]*)[^>]*>/i,'')
+   content = content.gsub(/<h2[^>]*>([^<]*)<\/h2>/i) {|s| s.gsub('<h2','<h2 id="' + Digest::MD5.hexdigest(s) + '"')}
+%>
+<%=content.html_safe%>

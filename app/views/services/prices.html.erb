@@ -2,10 +2,11 @@
    meta :title => 'Косметология Казань - цены на услуги',
         :description => 'Подробный прайс лст на услуги по косметолгии в Казани'
 %>
-<div class="panel-group" id="global-pricelist" style="margin: 20px;">
-  <div class="page-header">
-    <h1>Прайс лист Центра эпиляции и косметологии</h1>
-  </div>
+<div class="main col-md-12" id="news">
+  <!-- page-title start -->
+  <!-- ================ -->
+  <h1 class="page-title">Прайс лист Центра эпиляции и косметологии</h1>
+  <div class="separator-2"></div>
   <p>Ниже представлен перечень актуальных цен на наши услуги. Кликните на интересующую вас услугу и раскроется блок с подробной информацией.</p>
   <p>Обратите внимание, что даны цены без учёта возможных дополнительных скидок и акций, т.е. посещение нашего салона может обойтись вам <strong>ещё дешевле</strong>.</p>
   <p>Просто позвоните нам по телефону <strong>+7 (843) 2000-322</strong> (либо закажите <a href="javascript://" data-toggle="modal" data-target="#recall" style="text-decoration: underline;">обратный звонок</a>) и узнайте свою выгоду!</p>
@@ -13,17 +14,14 @@
       <h1><%=section.name%></h1>
       <%section.services.where('fl_publish = 1').order('fl_order').each do |service|%>
           <%promos = service.promos.where('fl_active = 1')%>
-          <div class="panel panel-default">
-            <div class="panel-heading">
+          <div class="panel" style="margin: 0px;" id="global-pricelist">
+            <div class="panel-heading" style="padding: 0px;margin: 0px;background-color: gray;border-bottom-width: 0px;">
               <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#global-pricelist" href="#collapse<%=service.id%>">
-                  <%=('<i class="icon-arrow-down-bold"></i> ' + service.name).html_safe%>
-                  <div style="float:right">
-                    от <%=service.price%> <span class="rouble">Р</span>
-                    <% if promos.count > 0 %>
-                        <%=link_to promo_path(promos[0]) do %><span class="badge" style="background-color: #b33c33;color: #fff">Акция!</span><% end %>
-                    <% end %>
-                  </div>
+                <a data-toggle="collapse" style="background-color: #F5F5F5;margin:0px;color: #000;" data-parent="#global-pricelist" href="#collapse<%=service.id%>">
+                  <%=('<i class="fa fa-caret-down"></i> ' + service.name).html_safe%>
+                  <% if promos.count > 0 %>
+                      <span class="label label-danger pull-right" style="cursor: pointer" onclick="document.location.href='/promos/<%=promos.first.id%>">Акция!</span>
+                  <% end %>
                 </a>
               </h4>
             </div>

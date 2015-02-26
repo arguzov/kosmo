@@ -2,40 +2,41 @@
    meta :title => @medicament.name + ' в Казани',
         :description => Sanitize.clean(@medicament.content).gsub("\n"," ").truncate(250)
 %>
-<!-- ffsdf -->
-<div id="service">
-  <%=render :partial => 'app/breadcrumbs'%>
-  <div class="page-header">
-    <h1><%=@medicament.name%></h1>
-  </div>
-  <div id="medicament-thumb"><%=image_tag @medicament.photo, :alt=>@medicament.name, :title=>@medicament.name%></div>
-  <%=@medicament.content.html_safe%>
-  <table id="solution">
-    <tr>
-      <td class="left">
-        <div id="price">
-          <div class="page-header">
-            <h2>Прайс лист</h2>
-          </div>
-          <%=render :partial => 'app/pricelist', :locals => {:pricelist=>@pricelist}%>
-        </div>
-        <div class="well" style="text-align: center;padding-top: 0px;background-color: #E8F7FC">
-            <h2 style="color: #b33c33">Рассрочка 0%</h2>
-            <p>Услуги можно оплатить в рассрочку на выгодных условиях</p>
-            <%=link_to "Подробнее", post_path(:id=>198), :class=>'btn btn-primary btn-sm'%>
-        </div>
-        <%=render :partial => 'app/order', locals: {text: "Я хочу записаться на процедуру \"#{@medicament.name}\"  в ближайшее время. Перезвоните мне, пожалуйста, чтобы уточнить подробности"}%>
-      </td>
-      <td class="right">
-        <div class="page-header">
-          <h2>Ещё похожие</h2>
-        </div>
-        <ul>
-        <%@same.each do |medicament|%>
-          <li><%=link_to medicament.name, medicament_path(medicament)%></li>
-        <% end %>
-        </ul>
-      </td>
-    </tr>
-  </table>
+<div class="main col-md-8 scrollit">
+  <h1 class="page-title"><%=@medicament.name%></h1>
+  <article class="">
+    <div class="blogpost-content">
+      <%=@medicament.content.html_safe%>
+    </div>
+    <a name="h6"></a>
+    <h2>Прайс лист</h2>
+    <%=render :partial => 'app/pricelist', :locals => {:pricelist=>@pricelist}%>
+    <%=render :partial => 'app/order', locals: {text: "Я хочу записаться на процедуру \"#{@medicament.name}\"  в ближайшее время. Перезвоните мне, пожалуйста, чтобы уточнить подробности"}%>
+  </article>
 </div>
+<aside class="col-md-3 col-md-offset-1">
+  <div class="sidebar" style="padding-top:10px;">
+    <div class="block clearfix">
+      <h3 class="title">Внешний вид</h3>
+      <div class="separator"></div>
+      <div class="overlay-container">
+        <%=image_tag @medicament.photo, :alt=>@medicament.name, :title=>@medicament.name%>
+        <div class="overlay">
+          <div class="overlay-links">
+            <%=link_to medicament_path(@medicament) do %><i class="fa fa-link"></i><% end %>
+            <a href="<%=@medicament.photo%>" class="popup-img-single" title="image title"><i class="fa fa-search-plus"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="block clearfix">
+      <h3 class="title">Ещё похожие</h3>
+      <div class="separator"></div>
+      <ul>
+        <%@same.each do |medicament|%>
+            <li><%=link_to medicament.name, medicament_path(medicament)%></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</aside>

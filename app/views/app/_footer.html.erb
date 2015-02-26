@@ -1,72 +1,81 @@
-<div class="row" style="padding-top:0px;">
-  <div class="col-md-12" id="footer">
-    <table>
-      <tr>
-        <td class="office">
-          <nobr>2014 &copy; Центр эпиляции и косметологии</nobr>
-          <div>
-            Лицензия: ЛО-16-01-002859 от 15.08.2013
+<!-- footer start (Add "light" class to #footer in order to enable light footer) -->
+<!-- ================ -->
+<footer id="footer">
+
+  <!-- .footer start -->
+  <!-- ================ -->
+  <div class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="footer-content">
+            <div class="row">
+              <div class="col-sm-6">
+                <p>Центр эпиляции и косметологии действует по лицензии ЛО-16-01-002859 от 15.08.2013 </p>
+                <ul class="social-links circle">
+                  <li class="facebook"><a target="_blank" href="http://www.facebook.com"><i class="fa fa-facebook"></i></a></li>
+                  <li class="twitter"><a target="_blank" href="http://www.twitter.com"><i class="fa fa-twitter"></i></a></li>
+                  <li class="googleplus"><a target="_blank" href="http://plus.google.com"><i class="fa fa-google-plus"></i></a></li>
+                  <li class="skype"><a target="_blank" href="http://www.skype.com"><i class="fa fa-skype"></i></a></li>
+                  <li class="linkedin"><a target="_blank" href="http://www.linkedin.com"><i class="fa fa-linkedin"></i></a></li>
+                </ul>
+              </div>
+              <div class="col-sm-6">
+                <ul class="list-icons">
+                  <li><i class="fa fa-map-marker pr-10"></i> Казань, ул. Спартаковская, 2а</li>
+                  <li><i class="fa fa-phone pr-10"></i> +7 (987) 292-55-41</li>
+                  <li><i class="fa fa-phone pr-10"></i> +7 (843) 2000-322</li>
+                  <li><i class="fa fa-envelope-o pr-10"></i>epi.center.kazan@yandex.ru</li>
+                </ul>
+              </div>
+            </div>
           </div>
-          <div>
-            <!--LiveInterfnet logo--><a href="http://www.liveinternet.ru/click"
-                                       target="_blank"><img src="//counter.yadro.ru/logo?44.6"
-                                                            title="LiveInternet"
-                                                            alt="" border="0" width="31" height="31"/></a><!--/LiveInternet-->
+        </div>
+        <div class="space-bottom hidden-lg hidden-xs"></div>
+        <div class="col-sm-6 col-md-2">
+          <div class="footer-content">
+            <nav>
+              <ul class="nav nav-pills nav-stacked">
+                <li><a href="index.html">Эпиляция</a></li>
+                <li class="active"><a href="blog-right-sidebar.html">Косметология</a></li>
+                <li><a href="portfolio-3col.html">Лечение волос</a></li>
+                <li><a href="page-about.html">Коррекция фигуры</a></li>
+                <li><a href="page-contact.html">Массаж</a></li>
+                <li><a href="page-contact.html">Пирсинг</a></li>
+              </ul>
+            </nav>
           </div>
-        </td>
-        <td>
-          <noindex>
-          <h3>Эпиляция</h3>
-          <ul>
-            <%Section.where('id = 1').first.services.where('fl_publish = 1').order('fl_order').limit(4).each do |service|%>
-                <li><a href="<%=service_path(id:service.id, url:service.url)%>"><%=service.name%></a></li>
-            <% end %>
-          </ul>
-          <h3>Коррекция фигуры</h3>
-          <ul>
-            <%Section.where('id = 4').first.services.where('fl_publish = 1').order('fl_order').limit(3).each do |service|%>
-                <li><a href="<%=service_path(id:service.id, url:service.url)%>"><%=service.name%></a></li>
-            <% end %>
-          </ul>
-          </noindex>
-        </td>
-        <td>
-          <noindex>
-          <h3>Косметология</h3>
-          <ul>
-            <%Section.where('id = 2').first.services.where('fl_publish = 1').order('fl_order').limit(8).each do |service|%>
-                <li><a href="<%=service_path(id:service.id, url:service.url)%>"><%=service.name%></a></li>
-            <% end %>
-          </ul>
-          </noindex>
-        </td>
-        <td>
-          <noindex>
-          <h3>Маникюр и педикюр</h3>
-          <ul>
-            <%Section.where('id = 7').first.services.where('fl_publish = 1').order('fl_order').limit(8).each do |service|%>
-                <li><a href="<%=service_path(id:service.id, url:service.url)%>"><%=service.name%></a></li>
-            <% end %>
-          </ul>
-          </noindex>
-        </td>
-        <td>
-          <noindex>
-          <h3>Массаж</h3>
-          <ul>
-            <%Section.where('id = 5').first.services.where('fl_publish = 1').order('fl_order').limit(4).each do |service|%>
-                <li><a href="<%=service_path(id:service.id, url:service.url)%>"><%=service.name%></a></li>
-            <% end %>
-          </ul>
-          <h3>Лечение волос</h3>
-          <ul>
-            <%Section.where('id = 3').first.services.where('fl_publish = 1').order('fl_order').limit(3).each do |service|%>
-                <li><a href="<%=service_path(id:service.id, url:service.url)%>"><%=service.name%></a></li>
-            <% end %>
-          </ul>
-          </noindex>
-        </td>
-      </tr>
-    </table>
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <div class="footer-content">
+            <script type="text/javascript" src="//vk.com/js/api/openapi.js?116"></script>
+
+            <!-- VK Widget -->
+            <div id="vk_groups"></div>
+            <script type="text/javascript">VK.Widgets.Group("vk_groups",{mode:0,width:"350",height:"200",color1:'FFFFFF',color2:'2B587A',color3:'5B7FA6'},60572647);</script>
+          </div>
+        </div>
+      </div>
+      <div class="space-bottom hidden-lg hidden-xs"></div>
+    </div>
   </div>
-</div>
+  <!-- .footer end -->
+
+  <!-- .subfooter start -->
+  <!-- ================ -->
+  <div class="subfooter">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <p>Copyright © 2014 Центр эпиляции и косметологии</p>
+        </div>
+        <div class="col-md-6">
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- .subfooter end -->
+
+</footer>
+<!-- footer end -->

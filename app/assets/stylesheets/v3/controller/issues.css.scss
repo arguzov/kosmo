@@ -1,0 +1,18 @@
+@import "v3/common";
+@import "v3/plugins/owl/owl.carousel";
+@import "v3/plugins/magnific-popup/magnific-popup";
+
+#services{
+    a{
+        text-decoration: underline;
+    }
+    .blogpost-body{
+        header {
+            a {
+                display: block;
+                font-size: 1.4em;
+                padding: 5px;
+            }
+        }
+    }
+}

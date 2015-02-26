@@ -56,11 +56,6 @@ class ServicesController < ApplicationController
 
     private
     def resolve_layout
-        case action_name
-            when "prices"
-                "pricelist"
-            else
-                "application"
-        end
+        "application"
     end
 end

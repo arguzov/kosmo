@@ -1,35 +1,145 @@
-<div class="container-fluid" style="margin-top: 10px;margin-bottom: 0px;">
-  <div class="row" id="navbar">
+<!-- main-navigation start -->
+<!-- ================ -->
+<div class="main-navigation animated">
+
+  <!-- navbar start -->
+  <!-- ================ -->
+  <nav class="navbar navbar-default" role="navigation">
     <div class="container-fluid">
-      <div class="col-md-12">
-        <nav class="navbar navbar-default" role="navigation">
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-              <!--<li class="visible-md visible-lg"><a href="/"><i class="icon-arrow-right-bold"></i> Главная</a></li>-->
-              <%Menu.where('fl_type = 1').each do |item|%>
-                <li><a href="<%=item.actual_url%>"><i class="icon-<%=item.css_class%>"></i> <%=item.title%></a></li>
+
+      <!-- Toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Специалисты</a>
+            <ul class="dropdown-menu">
+              <%Expert.order('fl_order,id').each do |expert|%>
+                  <li>
+                    <%=link_to expert_path(expert) do %><%=expert.name%><br>
+                    <span style="font-size: .8em;"><%=expert.profession%></span><% end %>
+                  </li>
               <% end %>
-              <li><a href="/faqs/"><i class="icon-question"></i> Вопросы</a></li>
-              <!--<li><a href="/shop/"><i class="icon-bag"></i> Магазин</a></li>-->
+              <li><%=link_to 'Все специалисты', experts_path%></li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
-              <li style="padding-right:20px;">
-                <div class="visible-md visible-lg social-icons">
-                <!--<button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#recall" style="margin-top:3px;font-size:1.4em;" title="Заказать обратный звонок">
-                  <i class="icon-telephone"></i>
-                </button>-->
-                  <!--<a href="#recall" data-toggle="modal" class="btn btn-primary btn-sm">Заказать звонок</a>-->
-                  <!--<%=mail_to MANAGER_EMAIL do %><%=image_tag 'icons/email.png'%><% end %>-->
-                  <<!--<%=image_tag 'icons/phone.png', :data=>{:toggle=>'modal',:target=>'#recall'}%>-->
-                  <a href="https://vk.com/centrkosmetologii" target="_blank"><%=image_tag 'icons/vkontakte.png'%></a>
-                  <a href="http://instagram.com/centr_epilacii_i_cosmetologii" target="_blank"><%=image_tag 'icons/instagram.png'%></a>
+          </li>
+          <!-- mega-menu start -->
+          <li class="dropdown mega-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Наши услуги</a>
+            <ul class="dropdown-menu">
+              <li>
+                <div class="row">
+                  <div class="col-lg-12 col-md-12">
+                    <div class="row">
+                      <div class="col-md-3">
+                        <h4>Эпиляция</h4>
+                        <ul class="menu">
+                          <%Section.where('id = 1').first.services.where('fl_publish = 1').order('fl_order').limit(5).each do |service|%>
+                              <li><a href="<%=service_path(id:service.id, url:service.url)%>"><%=words_limitation(service.name,3)%></a></li>
+                          <% end %>
+                          <li><a href="/section/epilyaciya.html" style="color: #cd3c2e">Весь раздел</a></li>
+                        </ul>
+                      </div>
+                      <div class="col-md-3">
+                        <h4>Косметология</h4>
+                        <ul class="menu">
+                          <%Section.where('id = 2').first.services.where('fl_publish = 1').order('fl_order').limit(5).each do |service|%>
+                              <li><a href="<%=service_path(id:service.id, url:service.url)%>"><%=words_limitation(service.name,3)%></a></li>
+                          <% end %>
+                          <li><a href="/section/kosmetology.html" style="color: #cd3c2e">Весь раздел</a></li>
+                        </ul>
+                      </div>
+                      <div class="col-md-3">
+                        <h4>Коррекция фигуры</h4>
+                        <ul class="menu">
+                          <%Section.where('id = 4').first.services.where('fl_publish = 1').order('fl_order').limit(5).each do |service|%>
+                              <li><a href="<%=service_path(id:service.id, url:service.url)%>"><%=words_limitation(service.name,3)%></a></li>
+                          <% end %>
+                          <li><a href="/section/korrekciya-figuri.html" style="color: #cd3c2e">Весь раздел</a></li>
+                        </ul>
+                      </div>
+                      <div class="col-md-3">
+                        <h4>Массаж</h4>
+                        <ul class="menu">
+                          <%Section.where('id = 5').first.services.where('fl_publish = 1').order('fl_order').limit(5).each do |service|%>
+                              <li><a href="<%=service_path(id:service.id, url:service.url)%>"><%=words_limitation(service.name,3)%></a></li>
+                          <% end %>
+                          <li><a href="/section/massage.html" style="color: #cd3c2e">Весь раздел</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="row" style="padding-top:5px;">
+                      <div class="col-md-12" style="text-align: right;padding-top:5px;border-top: 1px solid #eee;">
+                        <a href="/services/prices" class="btn btn-primary">Посмотреть все услуги</a>
+                        <a href="/services/prices" class="btn btn-danger">Узнать цены</a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </li>
             </ul>
-          </div><!-- /.navbar-collapse -->
-        </nav>
+          </li>
+          <!-- mega-menu end -->
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Акции</a>
+            <ul class="dropdown-menu">
+              <% Promo.where('fl_top = 1 AND fl_active = 1').order('created_at DESC').each do |promo|%>
+                  <li><%=link_to promo.name, promo_path(promo)%></li>
+              <% end %>
+              <li><%=link_to 'Все акции', promos_path %></li>
+            </ul>
+          </li>
+          <!-- mega-menu start -->
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Информация</a>
+            <ul class="dropdown-menu">
+              <li><%=link_to 'Наши новости', news_path%></li>
+              <li><%=link_to 'Отзывы клиентов', responces_path%></li>
+              <li><%=link_to 'Вопросы и ответы', faqs_path %></li>
+            </ul>
+          </li>
+          <!-- mega-menu end -->
+          <li class="dropdown mega-menu">
+            <a href="portfolio-3col.html" class="dropdown-toggle" data-toggle="dropdown">Контакты</a>
+            <ul class="dropdown-menu">
+              <li>
+                <div class="row">
+                  <div class="col-md-4 col-lg-4 hidden-sm hidden-xs" style="padding-top:10px;">
+                    <%=image_tag "welcome_girl.png"%>
+                  </div>
+                  <div class="col-md-4 col-sm-6 col-xs-6">
+                    <h4>Центр на Спартаковской</h4>
+                    <p style="padding-bottom: 0px;margin-bottom: 0px;"><strong>Адрес:</strong> ул.Спартаковская, 2а (ТЦ «Караван»)</p>
+                    <p><strong>Телефоны:</strong> +7 (987) 292-55-41, +7 (843) 2000-322</p>
+                    <p><img src="http://kosmetologiya-kazan.ru/assets/xsaloon2-382cd9a6a6659fbefb58db2e6c87dd5b.jpg.pagespeed.ic.8mDq9pkG1e.jpg" style="width:200px;"></p>
+                    <p><a style="text-decoration: none;" href="/contacts/1" class="btn btn-default">Схема проезда</a></p>
+                  </div>
+                  <div class="col-md-4 col-sm-6 col-xs-6">
+                    <h4>Центр на Ибрагимова</h4>
+                    <p style="padding-bottom: 0px;margin-bottom: 0px;"><strong>Адрес:</strong> пр. Ибрагимова, 54 (ФЦ «Олимп»)</p>
+                    <p><strong>Телефон:</strong> +7 (843) 226-60-20</p>
+                    <p><img src="http://kosmetologiya-kazan.ru/assets/xsaloon3-a9a8c12b22ac846a260c7704f3c6573a.jpg.pagespeed.ic.gJ_NeWAEFL.jpg" style="width:200px;"></p>
+                    <p><a style="text-decoration: none;" href="/contacts/2" class="btn btn-default">Схема проезда</a></p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
+
     </div>
-  </div>
+  </nav>
+  <!-- navbar end -->
+
 </div>
+<!-- main-navigation end -->

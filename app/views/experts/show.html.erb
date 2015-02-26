@@ -2,76 +2,23 @@
    meta :title => @expert.profession + ' - ' + @expert.name,
         :description => Sanitize.clean(@expert.content).gsub("\n"," ").truncate(250)
 %>
-<table id="expert">
-  <tr>
-    <td class="descrr">
-      <div class="page-header">
-        <h1><%=@expert.name%></h1>
-      </div>
-      <% if @expert.content.length > 0 %>
-      <img class="ava" src="<%=@expert.photo.url(:medium)%>">
+<div class="main col-md-8 scrollit">
+  <h1 class="page-title"><%=@expert.name%></h1>
+  <%=render :partial=>'experts/show/gallery'%>
+  <% if @expert.content.length > 0 %>
       <%=@expert.content.html_safe%>
-      <% end %>
-      <div style="clear: both"></div>
-      <div id="gallery">
-          <% @gallery.each do |image| %>
-            <div class="thumbnail">
-              <%=link_to image.gsub('public','').gsub('th/',''), :class=> 'photos', :data => {:rel=>'photos'} do %><%= image_tag image.gsub('public','') %><% end %>
-            </div>
-          <% end %>
-      </div>
-      <% if @reviews.length > 0 %>
-          <div style="clear: both"></div>
-          <div class="page-header">
-            <h2 class="pull-left">Некоторые отзывы о специалисте</h2>
-            <div class="pull-right" style="margin-top: 10px;"><%=link_to 'Все отзывы', responces_path, :class=>"btn btn-default btn-sm" %></div>
-            <div style="clear: both"></div>
-          </div>
-          <% @reviews.each do |review| %>
-              <div class="panel review">
-                <%=review.content.html_safe%>
-                <div style="text-align: right"><%=review.person%></div>
-              </div>
-          <% end %>
-      <% end %>
-      <div style="clear: both"></div>
-      <%=render :partial => 'app/order', locals: {text: "Я хочу записаться к специалисту \"#{@expert.name}\"  на процедуру \"(укажите, пожалуйста, желаемую процедуру)\".\n\nПерезвоните мне, пожалуйста, чтобы уточнить подробности"}%>
-    </td>
-    <td class="side">
-      <div class="page-header">
-        <h2>Образование</h2>
-      </div>
-      <%=@expert.education.html_safe%>
-      <% if 1 == 2 %>
-      <div class="page-header">
-        <h2>Стаж работы</h2>
-      </div>
-      <%=@expert.experience.html_safe%>
-      <% end %>
-      <div class="page-header">
-        <h2>Специализация</h2>
-      </div>
-        <ul>
-          <%@expert.services.where('fl_publish = 1').each do |service|%>
-            <li><%=link_to service.name, service_path(id:service.id, url:service.url)%></li>
-          <% end %>
-        </ul>
-      <% if @diplomas.length > 0 %>
-      <div class="page-header">
-        <h2>Дипломы и сертификаты</h2>
-      </div>
-      <div id="diplomas" data-items="4">
-        <ul class="content">
-        <% @diplomas.each do |image| %>
-            <li><%=link_to image.gsub('public','').gsub('th/',''), :class=> 'diplomas', :data => {:rel=>'diplomas'} do %><%= image_tag image.gsub('public','') %><% end %></li>
-        <% end %>
-        </ul>
-        <% if @diplomas.count > 4 %>
-            <div class="page_navigation"></div>
-            <div style="clear:both"></div><br>
-        <% end %>
-      </div>
-      <% end %>
-    </td>
-  </tr>
-</table>
+  <% end %>
+  <%=render :partial => 'experts/show/diplomas'%>
+  <%=render :partial => 'experts/show/reviews'%>
+  <div class="comments-form">
+    <h2 class="title">Записаться к специалисту</h2>
+    <%=render :partial => 'app/order/form'%>
+  </div>
+</div>
+<aside class="col-md-3 col-md-offset-1">
+  <div class="sidebar" style="padding-top:10px;">
+    <%=render :partial => 'experts/shared/portrait', :locals => {expert: @expert}%>
+    <%=render :partial => 'experts/show/education'%>
+    <%=render :partial => 'experts/show/specialization'%>
+  </div>
+</aside>

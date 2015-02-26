@@ -10,7 +10,7 @@ class PostsController < ApplicationController
 
     def show
         @post = Post.find(params[:id])
-        @more = Post.where('category_id = ? AND fl_status = 1 AND NOT(id = ?)',@post.category_id,@post.id).limit(4).order('id DESC')
+        @more = Post.where('category_id = ? AND fl_status = 1 AND NOT(id = ?)',@post.category_id,@post.id).limit(3).order('id DESC')
     end
 
     def gallery

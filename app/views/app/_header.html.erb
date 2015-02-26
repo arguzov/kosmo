@@ -6,64 +6,167 @@ new Image().src = "//counter.yadro.ru/hit?r"+
         ";h"+escape(document.title.substring(0,80))+
         ";"+Math.random();//--></script><!--/LiveInternet-->
 <!-- Yandex.Metrika counter --><script type="text/javascript">(function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter28296001 = new Ya.Metrika({id:28296001, clickmap:true, trackLinks:true, accurateTrackBounce:true}); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks");</script><noscript><div><img src="//mc.yandex.ru/watch/28296001" style="position:absolute; left:-9999px;" alt="" /></div></noscript><!-- /Yandex.Metrika counter -->
-<div class="container">
-  <div class="row">
-    <div class="container-fluid col-sm-12 col-xs-12 visible-xs visible-sm">
-      <div class="row" id="sm-top">
-        <div class="container">
-          <div class="col-xs-4 col-sm-4 left">
-            <a href="/">Центр эпиляции<br>и косметологии</a>
+<script type="text/javascript">(window.Image ? (new Image()) : document.createElement('img')).src = location.protocol + '//vk.com/rtrg?r=vmuUNvX1VfFgk*REKofBd8reXtHo1w5HFCDl5G0pnQnf5gLyLvamsK3d/5O0jlgzDZ7MOIvAqDl0NpTr85ruIiNCmqMuv1teTx3UaTVP2uBpKLvCPcdXPqR5VH89CkPKYvfy8R4LTnMIdIDxrDRmDkQ0c7SN4lZCfc*LrFRPkK4-';</script>
+<div class="header-top">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-2  col-sm-6">
+
+        <!-- header-top-first start -->
+        <!-- ================ -->
+        <div class="header-top-first clearfix">
+          <ul class="social-links clearfix hidden-xs">
+            <li style="width:165px;"><a href=""><nobr><i class="fa fa-phone"></i> +7 (843) 2000-322</nobr></a></li>
+            <li class="instagram"><a target="_blank" href="https://instagram.com/centr_epilyacii_i_cosmetologii/"><i class="fa fa-instagram"></i></a></li>
+            <li class="youtube"><a target="_blank" href="http://www.youtube.com/channel/UCNfba3wYgoVGRYsACSGffag"><i class="fa fa-youtube-play"></i></a></li>
+          </ul>
+          <div class="social-links hidden-lg hidden-md hidden-sm">
+            <div class="btn-group dropdown">
+              <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"><i class="fa fa-phone"></i> Наши телефоны</button>
+              <ul class="dropdown-menu dropdown-animation">
+                <li class="twitter" style="display: block"><a target="_blank" href="#"><nobr>+7 (843) 2000-322</nobr></a></li>
+                <li class="twitter" style="display: block"><a target="_blank" href="#"><nobr>+7 (987) 292-55-41</nobr></a></li>
+              </ul>
+            </div>
           </div>
-          <div class="col-xs-4 col-sm-4 center">
-            +7 (843) 2000-322
-          </div>
-          <div class="col-xs-4 col-sm-4 right">
-            <a class="btn btn-primary btn-sm" data-toggle="modal" href="#recall" style="margin-top:10px;">
-              Перезвоните мне!
-            </a>
+        </div>
+        <!-- header-top-first end -->
+
+      </div>
+      <div class="col-xs-10 col-sm-6">
+
+        <!-- header-top-second start -->
+        <!-- ================ -->
+        <div id="header-top-second"  class="clearfix">
+
+          <!-- header top dropdowns start -->
+          <!-- ================ -->
+          <div class="header-top-dropdown">
+            <div class="btn-group dropdown hidden-sm hidden-xs">
+              <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"><i class="fa fa-phone"></i> Обратный звонок</button>
+              <ul class="dropdown-menu dropdown-menu-right dropdown-animation" style="padding-bottom: 0px;">
+                <li>
+                  <% if flash[:notice] && flash[:notice] == 'Order was created' %>
+                      <div id="modal-show" data-id="recall">Спасибо, Ваша заявка принята. Мы перезвоним Вам в ближайшее время</div>
+                  <% else %>
+                      <%= form_for [Order.new] do |f| %>
+                          <div class="form-group has-feedback">
+                            <i class="fa fa-phone form-control-feedback"></i>
+                            <input type="text" class="form-control" placeholder="Пример: +79033003300" name="order[contacts]" required>
+                            <input type="hidden" name="order[content]" value="Перезвоните мне пожалуйста">
+                            <span class="help-block m-b-none" style="font-size:11px;">Введите Ваш телефон и нажмите Enter.<br>Мы перезвоним вам в ближайшее время</span>
+                          </div>
+                      <% end %>
+                  <% end %>
+                </li>
+              </ul>
+            </div>
+            <!--<div class="btn-group dropdown">
+              <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Вход</button>
+              <ul class="dropdown-menu dropdown-menu-right dropdown-animation">
+                <li>
+                  <form class="login-form">
+                    <div class="form-group has-feedback">
+                      <label class="control-label">Email</label>
+                      <input type="text" class="form-control" placeholder="">
+                      <i class="fa fa-user form-control-feedback"></i>
+                    </div>
+                    <div class="form-group has-feedback">
+                      <label class="control-label">Пароль</label>
+                      <input type="password" class="form-control" placeholder="">
+                      <i class="fa fa-lock form-control-feedback"></i>
+                    </div>
+                    <button type="submit" class="btn btn-group btn-dark btn-sm">Войти</button>
+                    <ul>
+                      <li><a href="#">Регистрация</a></li>
+                      <li><a href="#">Забыли пароль?</a></li>
+                    </ul>
+                    <div class="divider"></div>
+                    <span class="text-center">Войти с помощью</span>
+                    <ul class="social-links clearfix">
+                      <li class="facebook"><a target="_blank" href="http://www.facebook.com"><i class="fa fa-facebook"></i></a></li>
+                      <li class="twitter"><a target="_blank" href="http://www.twitter.com"><i class="fa fa-twitter"></i></a></li>
+                      <li class="googleplus"><a target="_blank" href="http://plus.google.com"><i class="fa fa-google-plus"></i></a></li>
+                    </ul>
+                  </form>
+                </li>
+              </ul>
+            </div>
+            <div class="btn-group dropdown">
+              <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"><i class="fa fa-shopping-cart"></i> Корзина (5)</button>
+              <ul class="dropdown-menu dropdown-menu-right dropdown-animation cart">
+                <li>
+                  <table class="table table-hover">
+                    <thead>
+                    <tr>
+                      <th class="quantity">К-во</th>
+                      <th class="product">Продукт</th>
+                      <th class="amount">Сумма</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                      <td class="quantity">2 x</td>
+                      <td class="product"><a href="shop-product.html">Крем для лица</a><span class="small">Tend skin 100 мл.</span></td>
+                      <td class="amount">2400</td>
+                    </tr>
+                    <tr>
+                      <td class="quantity">1 x</td>
+                      <td class="product"><a href="shop-product.html">Сертифкат подарочный</a><span class="small">номинал 20 000 руб.</span></td>
+                      <td class="amount">20000</td>
+                    </tr>
+                    <tr>
+                      <td class="quantity">2 x</td>
+                      <td class="product"><a href="shop-product.html">Корсет</a><span class="small">для коррекци фигуры</span></td>
+                      <td class="amount">15000</td>
+                    </tr>
+                    <tr>
+                      <td class="total-quantity" colspan="2">Итого 5 товаров</td>
+                      <td class="total-amount">37400</td>
+                    </tr>
+                    </tbody>
+                  </table>
+                  <div class="panel-body text-right">
+                    <a href="shop-cart.html" class="btn btn-group btn-default btn-sm">Перейти в корзину</a>
+                    <a href="shop-checkout.html" class="btn btn-group btn-default btn-sm">Оформить заказ</a>
+                  </div>
+                </li>
+              </ul>
+            </div>-->
 
           </div>
+          <!--  header top dropdowns end -->
+
         </div>
-      </div>
-    </div>
-    <div class="col-md-4 visible-md visible-lg" id="logo">
-      <div class="wrapper">
-        <a href="/"><%=image_tag 'logo.png'%></a>
-        <div class="address">
-          <div>ул. Спартаковская, 2а</div>
-          <div style="margin: -3px 0px 5px 0px">пр. Ибрагимова, 54</div>
-          <strong style="font-size: 1.2em;">+7 (843) 2000-322</strong><br>
-          <a data-toggle="modal" data-target="#recall" style="cursor: pointer;margin-left: 0px;font-size: 13px;color: #f5edc5;text-decoration: underline">
-            Заказать обратный звонок
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-8">
-      <div id="promos-top" class="slick-slider">
-        <% Promo.where('fl_top = 1 AND fl_active = 1').order('created_at DESC').each do |promo|%>
-            <div style="display:none;">
-            <table>
-              <tr>
-                <% if promo.id == 16%>
-                    <td class="t">
-                      <%=promo.banner.html_safe%>
-                      <%=link_to "Подробнее о предложении", promo_path(promo), :class=>'btn btn-sm btn-primary'%>
-                    </td>
-                    <td class="i"><%=image_tag promo.photo.url(:medium)%></td>
-                <% else %>
-                    <td class="i"><%=image_tag promo.photo.url(:medium)%></td>
-                    <td class="t">
-                      <%=promo.banner.html_safe%>
-                      <%=link_to "Подробнее о предложении", promo_path(promo), :class=>'btn btn-sm btn-primary'%>
-                    </td>
-                 <% end %>
-              </tr>
-            </table>
-            </div>
-        <% end %>
+        <!-- header-top-second end -->
 
       </div>
     </div>
   </div>
 </div>
+
+<header class="header clearfix">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="header-left clearfix">
+          <!-- logo -->
+          <div class="logo">
+            <a href="/"><%=image_tag 'logo.png'%></a>
+          </div>
+        </div>
+        <!-- header-left end -->
+      </div>
+      <div class="col-md-9">
+
+        <!-- header-right start -->
+        <!-- ================ -->
+        <div class="header-right clearfix">
+          <%=render :partial => 'app/navbar'%>
+        </div>
+        <!-- header-right end -->
+
+      </div>
+    </div>
+  </div>
+</header>

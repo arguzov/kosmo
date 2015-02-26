@@ -1,0 +1,14 @@
+<div class="image-box hidden-xs hidden-sm">
+  <div class="overlay-container">
+    <img src="<%=expert.photo%>" style="height:350px;;">
+    <div class="overlay">
+      <div class="overlay-links">
+        <%=link_to expert_path(expert) do %><i class="fa fa-link"></i><% end %>
+      </div>
+    </div>
+  </div>
+  <div class="image-box-body">
+    <h3 class="title" style="margin-bottom: 0px"><a style="text-decoration: underline" href="<%=expert_path(expert)%>"><%=expert.name%></a></h3>
+    <p><%=expert.profession%></p>
+  </div>
+</div>

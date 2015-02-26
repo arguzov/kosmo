@@ -2,35 +2,23 @@
 <html>
 <head>
   <%= metamagic %>
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-  <%= stylesheet_link_tag    "application", media: "all" %>
-  <%= javascript_include_tag "application" %>
+  <%= stylesheet_link_tag    "v3/controller/#{params[:controller]}", media: "all" %>
+  <%= javascript_include_tag "v3/controller/#{params[:controller]}" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-<%=render 'app/header'%>
-<%=render 'app/navbar'%>
-<div class="container-fluid" id="content-wrapper">
-  <noindex>
-  <%=render 'app/banners/top'%>
-  </noindex>
-  <div class="row">
-    <div class="col-md-12" style="padding-left: 0px;">
-      <table width="100%">
-        <tr>
-          <td class="left">
-              <%=render :partial => 'app/issues'%>
-          </td>
-          <td class="main"><%= yield %></td>
-        </tr>
-      </table>
+<body class="no-trans">
+<div class="scrollToTop"><i class="icon-up-open-big"></i></div>
+<div class="page-wrapper">
+  <%=render :partial => 'app/header'%>
+  <%=render :partial => 'app/breadcrumbs'%>
+  <section class="main-container" style="padding-top: 0px;">
+    <div class="container">
+      <div class="row">
+        <%=yield%>
+      </div>
     </div>
-  </div>
-  <%=render 'app/footer' %>
+  </section>
+  <%=render :partial => 'app/footer'%>
 </div>
-<noindex>
-<%=render :partial => 'app/modal/recall'%>
-<%=render :partial => 'app/modal/vk'%>
-</noindex>
 </body>
 </html>

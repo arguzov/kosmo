@@ -1,0 +1,13 @@
+@import "v3/common";
+@import "v3/plugins/owl/owl.carousel";
+@import "v3/plugins/magnific-popup/magnific-popup";
+
+#global-pricelist{
+    i.fa{
+        color: gray;
+    }
+    td.cost{
+        text-align: right;
+        font-weight: bold;
+    }
+}

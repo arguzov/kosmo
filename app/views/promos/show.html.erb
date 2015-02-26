@@ -2,26 +2,66 @@
    meta :title => "Акция - #{@promo.name}",
         :description => Sanitize.clean(@promo.content).gsub("\n"," ").truncate(250)
 %>
-<div id="promo">
-  <div class="page-header">
-    <h1><%=@promo.name%></h1>
-  </div>
-  <div class="content">
-    <%=@promo.content.html_safe%>
-  </div>
-  <table class="acts">
-    <tr>
-      <td style="width:60%;padding-top: 27px;">
-        <% if @promo.id == 20 %>
-            <%=render :partial => 'app/order', locals: {text: "Я хочу записаться на процедуру лазерной эпиляции со скидкой 50% по кодовому слову ЛАЗЕР 26. Перезвоните мне, пожалуйста, чтобы уточнить подробности"}%>
-        <% elsif @promo.id == 18 %>
-            <%=render :partial => 'app/order', locals: {text: "Я хочу записаться на вакуумно-роликовый массаж со скидкой 50% по кодовому слову СТАРВАК. Перезвоните мне, пожалуйста, чтобы уточнить подробности"}%>
+<div class="main col-md-8">
+  <!-- page-title start -->
+  <!-- ================ -->
+  <h1 class="page-title"><%=@promo.name%></h1>
+  <!-- page-title end -->
+
+  <!-- blogpost start -->
+  <article class="clearfix blogpost full">
+    <div class="blogpost-body">
+      <div class="side">
+        <div class="post-info">
+        <% if @promo.due == nil %>
+            <span class="day"><%=@promo.created_at.strftime("%d")%></span>
+            <span class="month"><%=@promo.created_at.strftime("%m")%></span>
         <% else %>
-            <%=render :partial => 'app/order'%>
+            <div class="month">До</div>
+            <span class="day"><%=@promo.due.strftime("%d")%></span>
+            <span class="month"><%=@promo.due.strftime("%m")%></span>
         <% end %>
-      </td>
-      <td style="width:40%">
-      </td>
-    </tr>
-  </table>
+        </div>
+        <div id="affix"><span class="share">Поделиться</span><div id="share"></div></div>
+      </div>
+      <div class="blogpost-content">
+        <header>
+          <div class="submitted"><i class="fa fa-user pr-5"></i> от <a href="#">ЦЭиК</a></div>
+        </header>
+        <%=@promo.content.html_safe%>
+      </div>
+    </div>
+  </article>
+  <% if @promo.id == 20 %>
+      <%=render :partial => 'app/order', locals: {text: "Я хочу записаться на процедуру лазерной эпиляции со скидкой 50% по кодовому слову ЛАЗЕР 26. Перезвоните мне, пожалуйста, чтобы уточнить подробности"}%>
+  <% elsif @promo.id == 18 %>
+      <%=render :partial => 'app/order', locals: {text: "Я хочу записаться на вакуумно-роликовый массаж со скидкой 50% по кодовому слову СТАРВАК. Перезвоните мне, пожалуйста, чтобы уточнить подробности"}%>
+  <% else %>
+      <%=render :partial => 'app/order'%>
+  <% end %>
 </div>
+<aside class="col-md-3 col-md-offset-1">
+  <div class="sidebar">
+    <h3 class="title">Ещё акции</h3>
+    <div class="separator"></div>
+    <%@promos.each_with_index do |promo,index|%>
+        <div class="block clearfix">
+          <div class="image-box">
+            <div class="overlay-container">
+              <img src="<%=promo.photo.url(:medium)%>" alt="">
+              <div class="overlay">
+                <div class="overlay-links">
+                  <%=link_to promo_path(promo) do %><i class="fa fa-link"></i><% end %>
+                  <a href="<%=promo.photo.url%>" class="popup-img-single" title="image title"><i class="fa fa-search-plus"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="image-box-body">
+              <h3 class="title"><%=link_to promo.name, post_path(promo)%></h3>
+            </div>
+          </div>
+          <br>
+    <% end %>
+    </div>
+  </div>
+</aside>

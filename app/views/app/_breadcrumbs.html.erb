@@ -1,55 +1,67 @@
-<ol class="breadcrumb" style="margin-bottom: 10px;">
-  <li><a href="/">Главная</a></li>
-  <% if @section %>
-      <li><%=@section.name%></li>
-  <% end %>
-  <%if @service %>
-      <%
-         if @service.parent_id > 0
-             parent = Service.where('id = ?',@service.parent_id).first
-             issues = parent.issues
-             section = parent.sections.first
-         else
-             parent = nil
-             issues = @service.issues
-             section = @service.sections.first
-         end
-      %>
-      <% if section.url != nil && section.url.length > 0 %>
-          <li><%=link_to section.name, section_path(:url=>section.url) %></li>
-      <% else %>
-          <% if issues != nil && issues.count > 0%>
-              <% if issues.count < 2 %>
-                  <li><a href="<%=issue_path(:url=>issues.first.url)%>"><%=issues.first.name%></a></li>
-              <% else %>
-                  <li class="dropdown">
-                    <a id="dLabel" href="<%=issue_path(:url=>issues.first.url)%>"><%=issues.first.name%></a><span style="cursor: pointer;" class="caret" data-target="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></span>
+<% if current_layout == 'services' || current_layout == 'medicaments'%>
+    <div class="page-intro">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <ol class="breadcrumb" style="margin-bottom: 10px;">
+              <li><i class="fa fa-home pr-10"></i><a href="/">Главная</a></li>
+              <% if @section %>
+                  <li><%=@section.name%></li>
+              <% end %>
+              <%if @service %>
+                  <%
+                     if @service.parent_id > 0
+                         parent = Service.where('id = ?',@service.parent_id).first
+                         issues = parent.issues
+                         section = parent.sections.first
+                     else
+                         parent = nil
+                         issues = @service.issues
+                         section = @service.sections.first
+                     end
+                  %>
+                  <% if section.url != nil && section.url.length > 0 %>
+                      <li><%=link_to section.name, section_path(:url=>section.url) %></li>
+                  <% else %>
+                      <% if issues != nil && issues.count > 0%>
+                          <% if issues.count < 2 %>
+                              <li><a href="<%=issue_path(:url=>issues.first.url)%>"><%=issues.first.name%></a></li>
+                          <% else %>
+                              <li class="dropdown">
+                                <a id="dLabel" href="<%=issue_path(:url=>issues.first.url)%>"><%=issues.first.name%></a><span style="cursor: pointer;" class="caret" data-target="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></span>
 
-                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                      <%issues.each_with_index do |issue, key|%>
-                          <% if key > 0 %>
-                              <li><a href="<%=issue_path(:url=>issue.url)%>"><%=issue.name%></a></li>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                  <%issues.each_with_index do |issue, key|%>
+                                      <% if key > 0 %>
+                                          <li><a href="<%=issue_path(:url=>issue.url)%>"><%=issue.name%></a></li>
+                                      <% end %>
+                                  <% end %>
+                                </ul>
+                              </li>
                           <% end %>
                       <% end %>
-                    </ul>
-                  </li>
+                  <% end %>
+                  <% if parent != nil %>
+                      <li><%=link_to parent.name, service_path(:id=>parent.id, :url=>parent.url) %></li>
+                  <% end %>
               <% end %>
-          <% end %>
-      <% end %>
-      <% if parent != nil %>
-          <li><%=link_to parent.name, service_path(:id=>parent.id, :url=>parent.url) %></li>
-      <% end %>
-  <% end %>
-  <% if @medicament %>
-      <%
-         medicament_service = @medicament.service
-      %>
-      <% if medicament_service != nil %>
-          <li><%=link_to medicament_service.name, service_path(:id=>medicament_service.id, :url=>medicament_service.url) %></li>
-      <% end %>
-      <li class="active"><%=@medicament.name%></li>
-  <% end %>
-  <%if @service %>
-      <li class="active"><%=@service.name%></li>
-  <% end %>
-</ol>
+              <% if @medicament %>
+                  <%
+                     medicament_service = @medicament.service
+                  %>
+                  <% if medicament_service != nil %>
+                      <li><%=link_to medicament_service.name, service_path(:id=>medicament_service.id, :url=>medicament_service.url) %></li>
+                  <% end %>
+                  <li class="active"><%=@medicament.name%></li>
+              <% end %>
+              <%if @service %>
+                  <li class="active"><%=@service.name%></li>
+              <% end %>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+<% else %>
+    <%=render :partial => 'app/banners/top'%>
+<% end %>

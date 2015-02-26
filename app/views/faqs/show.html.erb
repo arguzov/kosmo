@@ -2,11 +2,10 @@
    meta :title => "#{@faq.name} - вопросы и ответы",
         :description => Sanitize.clean(@faq.question).gsub("\n"," ").truncate(250)
 %>
-<div id="faq-document">
-  <div class="page-header">
-    <h1><%=@faq.name%></h1>
-  </div>
-  <div class="well question"><%=@faq.question.html_safe%></div>
+<div class="main col-md-12" id="faq-document">
+  <h1 class="page-title"><%=@faq.name%></h1>
+  <div class="separator-2"></div>
+  <div class="well"><blockquote><%=@faq.question.html_safe%></blockquote></div>
   <div class="answer"><%=@faq.answer.html_safe%></div>
   <br>
   <%=render :partial => 'faqs/form'%>

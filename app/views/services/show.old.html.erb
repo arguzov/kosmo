@@ -1,0 +1,117 @@
+<%
+   meta :title => @service.title,
+        :description => @service.description,
+        :keywords => @service.keys
+%>
+<div id="service">
+  <%=render :partial => 'app/breadcrumbs'%>
+  <div class="page-header">
+    <div style="float:right"><a href="#online-order" data-target="#online-order" onClick="online_order('Я хочу записаться на процедуру <%=@service.name%>  в ближайшее время. Перезвоните мне, пожалуйста, чтобы уточнить подробности')" data-toggle="modal" class="btn btn-danger btn-sm">Записаться онлайн</a></div>
+    <h1><%=@service.name%></h1>
+  </div>
+  <div class="content-wrapper">
+      <%=alt_tags(@service.content,@service.name).html_safe%>
+  </div>
+  <% if @complements != nil && @complements.length > 0 %>
+      <div class="page-header">
+        <h2>Процедуру &laquo;<%=@service.name%>&raquo; в Казани хорошо дополняют</h2>
+      </div>
+      <table class="complements">
+        <tr>
+          <%@complements.each do |service|%>
+              <td>
+                <noindex>
+                  <%=link_to service_path(id:service.id, url:service.url) do %><%= image_tag service.photo.url(:medium)%><% end %>
+                </noindex>
+              </td>
+          <% end %>
+        </tr>
+        <tr>
+          <%@complements.each do |service|%>
+              <td>
+                <%=link_to service.name, service_path(id:service.id, url:service.url)%>
+              </td>
+          <% end %>
+        </tr>
+      </table>
+  <% end %>
+  <% if @album.count > 0 %>
+  <div class="page-header">
+    <h2>Фотографии процедуры &laquo;<%=@service.name%>&raquo;</h2>
+  </div>
+  <div id="gallery">
+    <% @album.each do |image| %>
+        <div class="thumbnail">
+          <%=link_to image.gsub('public','').gsub('th/','big/'), :class=> 'photos', :data => {:rel=>'photos'} do %><%= image_tag image.gsub('public','') %><% end %>
+        </div>
+    <% end %>
+  </div>
+  <% end %>
+  <table id="solution">
+    <tr>
+      <td class="left">
+        <div id="price">
+          <div class="page-header">
+            <h2><%=@service.name%> - цены в Казани</h2>
+          </div>
+          <%=render :partial => 'app/pricelist', :locals => {:pricelist=>@pricelist}%>
+          <%promos = @service.promos.where('fl_active = 1 AND fl_banner = 0')%>
+          <% if promos.count > 0 %>
+              <div id="promos-list" style="margin: 0px;padding: 0px;">
+                <table class="table">
+                  <%promos.each_with_index do |promo,index|%>
+                      <tr>
+                        <td class="banner">
+                          <div class="wr">
+                            <%=promo.banner.html_safe%>
+                          </div>
+                        </td>
+                      </tr>
+                  <% end %>
+                </table>
+              </div>
+          <% end %>
+        </div>
+        <br>
+        <% if @service.price > 1000 ||  @service.id == 1%>
+            <div class="well" style="text-align: center;padding-top: 0px;background-color: #E8F7FC">
+              <h2 style="color: #b33c33">Рассрочка 0%</h2>
+              <p>Услуги можно оплатить в рассрочку на выгодных условиях</p>
+              <%=link_to "Подробнее", post_path(:id=>198), :class=>'btn btn-primary btn-sm'%>
+            </div>
+        <% end %>
+        <%=render :partial => 'app/order', locals: {text: "Я хочу записаться на процедуру \"#{@service.name}\"  в ближайшее время. Перезвоните мне, пожалуйста, чтобы уточнить подробности"}%>
+      </td>
+      <td class="right visible-lg visible-md">
+        <% if @issues.count > 0 %>
+            <div class="page-header">
+              <h2>Решаемые проблемы</h2>
+            </div>
+            <ul>
+            <% @issues.each do |issue|%>
+              <li><%=link_to issue.name, issue_path(url:issue.url)%></li>
+            <% end %>
+            </ul>
+        <% end %>
+        <% if @experts.count > 0 %>
+        <div class="page-header">
+          <h2>Специалист<%if @experts.count > 1%>ы<% end %></h2>
+        </div>
+        <%@experts.each do |expert|%>
+        <div class="thumbnail">
+          <div style="height: 130px;overflow: hidden">
+            <%=link_to expert_path(expert) do %><%=image_tag 'http://kosmetologiya-kazan.ru' + expert.photo.url(:medium)%><% end %>
+          </div>
+          <div class="caption">
+            <%=link_to expert.name, expert_path(expert)%>
+          </div>
+        </div>
+        <% end %>
+        <% end %>
+      </td>
+    </tr>
+  </table>
+</div>
+<noindex>
+  <%=render :partial => 'app/modal/order', locals: {text: "Я хочу записаться на процедуру \"#{@service.name}\"  в ближайшее время. Перезвоните мне, пожалуйста, чтобы уточнить подробности"}%>
+</noindex>

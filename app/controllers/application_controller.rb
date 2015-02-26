@@ -29,4 +29,10 @@ class ApplicationController < ActionController::Base
          history.save
      end
   end
+
+  protected
+
+  def current_layout
+      @current_layout = params[:controller].split("/").first
+  end
 end

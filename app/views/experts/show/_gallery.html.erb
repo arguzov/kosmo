@@ -1,0 +1,8 @@
+        <div class="owl-carousel content-slider-with-controls">
+          <%@gallery.each do |image|%>
+              <div class="overlay-container">
+                <%= image_tag "http://kosmetologiya-kazan.ru#{image.gsub('public','').gsub('th/','')}" %>
+                <%=link_to image.gsub('public','').gsub('th/',''), :class=> 'popup-img overlay', :data => {:rel=>'photos'} do %><i class="fa fa-search-plus"></i><% end %>
+              </div>
+          <% end %>
+        </div>

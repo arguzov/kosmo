@@ -1,0 +1,19 @@
+@import "v3/common";
+#promos{
+    .blogpost-content{
+        .body {
+            .offer {
+                display: none;
+            }
+            h1 {
+                font-size: 14px;
+            }
+            h2 {
+                font-size: 14px;
+            }
+            h3 {
+                font-size: 14px;
+            }
+        }
+    }
+}

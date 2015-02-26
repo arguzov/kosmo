@@ -6,28 +6,17 @@
   <meta name="keywords" content="эпиляция, косметология, центр красоты, эпиляция казань, косметология казань, центр красоты казань " />
   <meta name='yandex-verification' content='567925f6d8ccf0e9' />
   <meta name="google-site-verification" content="56fk9dV_cGNYMPMkwXgpOI6cOWWp6YRheeqZOo9g-vI" />
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-  <%= stylesheet_link_tag    "application", media: "all" %>
-  <%= javascript_include_tag "application" %>
+  <%= stylesheet_link_tag    "v3/controller/main", media: "all" %>
+  <%= javascript_include_tag "v3/controller/main" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-<%=render 'app/header'%>
-<%=render 'app/navbar'%>
-<div class="container-fluid" id="content-wrapper">
-  <noindex>
-  <%=render 'app/banners/top'%>
-  </noindex>
-  <div class="row">
-    <div class="col-md-12" id="main">
-      <%= yield %>
-    </div>
-  </div>
-  <%=render 'app/footer' %>
+<body class="no-trans">
+<div class="scrollToTop"><i class="icon-up-open-big"></i></div>
+<div class="page-wrapper">
+  <%=render :partial => 'app/header'%>
+  <%=render :partial => 'app/breadcrumbs'%>
+  <%=yield%>
+  <%=render :partial => 'app/footer'%>
 </div>
-<noindex>
-<%=render :partial => 'app/modal/recall'%>
-<%=render :partial => 'app/modal/vk'%>
-</noindex>
 </body>
 </html>

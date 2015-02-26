@@ -51,10 +51,10 @@ $(document).ready(function(){
 
     $('#global-pricelist h4 a').click(function(){
         var css = $(this).children('i').attr('class');
-        if(css == 'icon-arrow-down-bold'){
-            $(this).children('i').removeClass('icon-arrow-down-bold').addClass('icon-arrow-up-bold');
+        if(css == 'fa-chevron-down'){
+            $(this).children('i').removeClass('fa-chevron-down').addClass('fa-chevron-up');
         }else{
-            $(this).children('i').removeClass('icon-arrow-up-bold').addClass('icon-arrow-down-bold');
+            $(this).children('i').removeClass('fa-chevron-up').addClass('fa-chevron-down');
         }
     })
 

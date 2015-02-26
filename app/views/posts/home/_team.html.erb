@@ -1,0 +1,94 @@
+<h2 class="text-center">Наши специалисты</h2>
+<div class="separator"></div>
+<div class="section gray-bg clearfix object-non-visible" data-animation-effect="fadeInUpSmall" data-effect-delay="100">
+  <div class="container">
+
+    <div class="owl-carousel carousel">
+      <%@experts.each_with_index do |expert,index|%>
+      <div class="image-box object-non-visible" data-animation-effect="fadeInLeft" data-effect-delay="<%=index*100%>">
+         <div style="height:200px;overflow: hidden">
+          <img src="http://www.kosmetologiya-kazan.ru<%=expert.photo.url(:medium)%>" alt="" style="margin: 10px auto 0px auto;">
+          <div class="overlay">
+            <div class="overlay-links">
+              <a href="portfolio-item.html"><i class="fa fa-link"></i></a>
+              <a href="images/portfolio-1.jpg" class="popup-img"><i class="fa fa-search-plus"></i></a>
+            </div>
+          </div>
+         </div>
+        <div class="image-box-body">
+          <h3 class="title text-center"><a href="portfolio-item.html"><%=expert.name%></a></h3>
+          <p class="text-center"><%=expert.profession%></p>
+        </div>
+      </div>
+      <% end %>
+    </div>
+
+    <!--<div class="row grid-space-20">
+      <div class="col-md-3 col-sm-6">
+        <div class="box-style-1 white-bg team-member">
+          <div class="overlay-container">
+            <img src="images/team-member-1.jpg" alt="">
+            <div class="overlay">
+              <ul class="social-links clearfix">
+                <li class="twitter"><a target="_blank" href="http://www.twitter.com"><i class="fa fa-twitter"></i></a></li>
+                <li class="skype"><a target="_blank" href="http://www.skype.com"><i class="fa fa-skype"></i></a></li>
+                <li class="facebook"><a target="_blank" href="http://www.facebook.com"><i class="fa fa-facebook"></i></a></li>
+              </ul>
+            </div>
+          </div>
+          <h3>Jane Doe</h3>
+          CEO
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="box-style-1 white-bg team-member">
+          <div class="overlay-container">
+            <img src="images/team-member-2.jpg" alt="">
+            <div class="overlay">
+              <ul class="social-links clearfix">
+                <li class="twitter"><a target="_blank" href="http://www.twitter.com"><i class="fa fa-twitter"></i></a></li>
+                <li class="skype"><a target="_blank" href="http://www.skype.com"><i class="fa fa-skype"></i></a></li>
+                <li class="facebook"><a target="_blank" href="http://www.facebook.com"><i class="fa fa-facebook"></i></a></li>
+              </ul>
+            </div>
+          </div>
+          <h3>John Doe</h3>
+          CTO
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="box-style-1 white-bg team-member">
+          <div class="overlay-container">
+            <img src="images/team-member-3.jpg" alt="">
+            <div class="overlay">
+              <ul class="social-links clearfix">
+                <li class="twitter"><a target="_blank" href="http://www.twitter.com"><i class="fa fa-twitter"></i></a></li>
+                <li class="skype"><a target="_blank" href="http://www.skype.com"><i class="fa fa-skype"></i></a></li>
+                <li class="facebook"><a target="_blank" href="http://www.facebook.com"><i class="fa fa-facebook"></i></a></li>
+              </ul>
+            </div>
+          </div>
+          <h3>Anne Smith</h3>
+          Project Manager
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="box-style-1 white-bg team-member">
+          <div class="overlay-container">
+            <img src="images/team-member-4.jpg" alt="">
+            <div class="overlay">
+              <ul class="social-links clearfix">
+                <li class="twitter"><a target="_blank" href="http://www.twitter.com"><i class="fa fa-twitter"></i></a></li>
+                <li class="skype"><a target="_blank" href="http://www.skype.com"><i class="fa fa-skype"></i></a></li>
+                <li class="facebook"><a target="_blank" href="http://www.facebook.com"><i class="fa fa-facebook"></i></a></li>
+              </ul>
+            </div>
+          </div>
+          <h3>Margaret Manson</h3>
+          Developer
+        </div>
+      </div>
+    </div>-->
+  </div>
+</div>
+<!-- section end -->

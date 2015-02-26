@@ -2,27 +2,47 @@
    meta :title => 'Акции Центра эпиляции и косметологии',
         :description => 'Текущие акции, скидки и специальные предложения от центра эпиляции и косметологии'
 %>
-<div id="promos-list">
-  <div class="page-header">
-    <h1>Акции Центра эпиляции и косметологии</h1>
-  </div>
-  <table class="table">
-    <%@promos.each_with_index do |promo,index|%>
-        <tr>
-          <td class="banner" style="width:100%;">
-            <div class="wr">
-              <table style="width: 100%">
-                <tr>
-                  <Td><%=image_tag promo.photo.url(:medium)%></Td>
-                  <td>
-                    <%=promo.banner.html_safe%>
-                    <%=link_to "Подробнее о предложении", promo_path(promo), :class=>'btn btn-sm btn-primary'%>
-                  </td>
-                </tr>
-              </table>
+<div class="main col-md-12" id="promos">
+  <!-- page-title start -->
+  <!-- ================ -->
+  <h1 class="page-title">Акции Центра эпиляции и косметологии</h1>
+  <div class="separator-2"></div>
+  <!-- page-title end -->
+  <%@promos.each_with_index do |promo,index|%>
+      <!-- blogpost start -->
+      <article class="clearfix blogpost object-non-visible" data-animation-effect="fadeInUpSmall" data-effect-delay="200">
+        <div class="overlay-container pull-right">
+          <%=image_tag promo.photo.url(:medium)%>
+          <div class="overlay">
+            <div class="overlay-links">
+              <%=link_to promo_path(promo) do %><i class="fa fa-link"></i><% end %>
             </div>
-          </td>
-        </tr>
-    <% end %>
-  </table>
+          </div>
+        </div>
+        <div class="blogpost-body">
+          <div class="post-info">
+            <% if promo.due == nil %>
+                <span class="day"><%=promo.created_at.strftime("%d")%></span>
+                <span class="month"><%=promo.created_at.strftime("%m")%></span>
+            <% else %>
+                <div class="month">До</div>
+                <span class="day"><%=promo.due.strftime("%d")%></span>
+                <span class="month"><%=promo.due.strftime("%m")%></span>
+            <% end %>
+          </div>
+          <div class="blogpost-content">
+            <header>
+              <h2 class="title"><%=link_to promo.name, promo_path(promo)%></h2>
+              <div class="submitted"><i class="fa fa-user pr-5"></i> от <a href="#">ЦЭиК</a></div>
+            </header>
+            <div class="body">
+                <%=promo.banner.html_safe%>
+            </div>
+          </div>
+        </div>
+        <footer class="clearfix">
+          <%=link_to promo_path(promo), :class=>'pull-right' do %><span>Подробнее о предложении</span><% end %>
+        </footer>
+      </article>
+  <% end %>
 </div>
