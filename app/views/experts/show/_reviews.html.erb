@@ -1,7 +1,9 @@
+<% if @reviews.length > 0 %>
 <h3 class="title">Отзывы о специалисте</h3>
 <% @reviews.each do |review| %>
     <blockquote class="margin-clear">
       <p style="margin-bottom: 0px;padding-bottom: 5px;"> <%=review.content.html_safe%></p>
       <footer><cite title="Source Title"><%=review.person%></cite></footer>
     </blockquote>
+<% end %>
 <% end %>
