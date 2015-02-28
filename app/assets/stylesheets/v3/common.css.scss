@@ -18,3 +18,12 @@
         }
     }
 }
+.rouble {
+    display: inline-block;
+    position: relative; }
+
+.rouble:before {
+    display: block;
+    content: "–";
+    position: absolute;
+    top: 0.05em; }

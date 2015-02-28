@@ -7,10 +7,12 @@
   <h1 class="page-title"><%=@service.name%></h1>
   <article class="">
     <div class="blogpost-content">
+      <% if @service.id.to_i != 79 %>
       <p style="padding-bottom: 0px;margin-bottom: 0px;">
         <%=@service.anounce.html_safe%>
       </p>
       <%=render :partial => 'services/show/media'%>
+      <% end %>
       <%=render :partial => 'services/show/content'%>
     </div>
     <a name="h6"></a>
