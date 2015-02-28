@@ -27,12 +27,13 @@
 <aside class="col-md-3 col-md-offset-1">
   <div class="sidebar" style="padding-top:10px;">
     <%=render partial: 'services/show/table_of_context'%>
+    <% if @service.id.to_i != 79 %>
     <div class="block clearfix hidden-sm hidden-xs">
       <h3 class="title">Специалист</h3>
       <div class="separator"></div>
       <%=render partial: 'experts/shared/portrait', :locals => {expert: @service.experts.first}%>
     </div>
-
+    <% end %>
     <!---->
   </div>
 </aside>
