@@ -1,21 +1,21 @@
-<div class="medicaments-horizontal">
-  <div class="page-header">
-    <h2>Виды услуги</h2>
-  </div>
-  <div id="medicaments-horizontal">
-      <div class="wrap"><table><tr>
-      <%services.each_with_index do |child,index|%>
-        <%if index > 0 && index%3 == 0%>
-            </tr><tr>
-        <% end %>
-        <td width="33%">
-          <strong><%=link_to child.name,service_path(id:child.id, url:child.url)%></strong>
-          <div class="thumb-wrapper">
-              <%=link_to service_path(id:child.id, url:child.url) do %><%= image_tag child.photo.url(:medium),:class=>'img-rounded' %><% end %>
+<h2>Виды услуги</h2>
+<%services.each_with_index do |child,index|%>
+    <article class="clearfix blogpost object-non-visible" data-animation-effect="fadeInUpSmall" data-effect-delay="200">
+      <div class="overlay-container pull-right">
+        <%=image_tag child.photo.url(:medium) %>
+        <div class="overlay">
+          <div class="overlay-links">
+            <%=link_to service_path(id:child.id, url:child.url) do %><i class="fa fa-link"></i><% end %>
           </div>
-          <p><%=child.anounce%></p>
-        </td>
-      <% end %>
-      </tr></table></div>
-  </div>
-</div>
+        </div>
+      </div>
+      <div class="blogpost-body" style="padding:0px;margin: 0px;">
+        <div class="blogpost-content" style="padding: 0px;margin: 10px;">
+          <header>
+            <%=link_to child.name, service_path(id:child.id, url:child.url)%>
+          </header>
+          <%=child.anounce%>
+        </div>
+      </div>
+    </article>
+<% end %>

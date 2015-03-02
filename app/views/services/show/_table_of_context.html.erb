@@ -4,9 +4,6 @@
   <div class="separator"></div>
   <nav class="affix-menu scrollspy">
     <ul class="nav nav-pills nav-stacked">
-      <% if @service.id.to_i != 79 %>
-      <li style="padding-right:10px;" class="active"><a href="#photos">Фото и видео</a></li>
-      <% end %>
       <% if parts.length > 0 %>
       <%parts.each do |line|%>
           <li style="padding-right:10px;"><a href="#<%=Digest::MD5.hexdigest(line[0])%>"><%=line[1]%></a></li>

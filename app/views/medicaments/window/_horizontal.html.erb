@@ -1,9 +1,17 @@
 <h2>Используемые препараты</h2>
-<ul>
-  <%medicaments.each_with_index do |medicament,index|%>
-      <li>
-        <strong><%=link_to medicament.name,medicament_path(medicament)%></strong>
-        <p><%=medicament.anounce%></p>
-      </li>
-  <% end %>
-</ul>
+<%medicaments.each_with_index do |medicament,index|%>
+
+    <article class="clearfix blogpost object-non-visible" data-animation-effect="fadeInUpSmall" data-effect-delay="200">
+      <div class="overlay-container pull-right">
+        <%=image_tag medicament.photo.url(:medium) %>
+      </div>
+      <div class="blogpost-body" style="padding:0px;margin: 0px;">
+        <div class="blogpost-content" style="padding: 0px;margin: 10px;">
+          <header>
+            <%=link_to medicament.name,medicament_path(medicament)%>
+          </header>
+          <%=medicament.anounce%>
+        </div>
+      </div>
+    </article>
+<% end %>

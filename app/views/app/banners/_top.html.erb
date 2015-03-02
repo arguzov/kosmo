@@ -27,20 +27,26 @@
           </div>
         </div>
     <% end %>
-<%banner = Promo.where('fl_top = 1 and fl_active = 1').order('rand()').first%>
+<%banners = Promo.where('fl_top = 1 and fl_active = 1').order('fl_banner DESC')%>
 <div class="section parallax parallax-bg dark-translucent-bg" id="top-promos">
   <div class="container">
-    <div class="call-to-action">
-      <div class="row">
-        <div class="col-md-8">
-            <%=banner.banner.html_safe%>
-        </div>
-        <div class="col-md-4">
-          <div class="text-center">
-            <a href="/promos/<%=banner.id%>" class="btn btn-success btn-lg">Запись онлайн</a>
+    <div id="owl-top" class="owl-carousel owl-theme content-slider-with-controls-autoplay">
+      <% banners.each do |banner|%>
+          <div class="overlay-container">
+        <div class="call-to-action">
+          <div class="row">
+            <div class="col-md-8">
+              <%=banner.banner.html_safe%>
+            </div>
+            <div class="col-md-4">
+              <div class="text-center">
+                <a href="/promos/<%=banner.id%>" class="btn btn-success btn-lg">Запись онлайн</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+      <% end %>
     </div>
   </div>
 </div>

@@ -1,5 +1,4 @@
 //=require v3/common
-//=require v3/plugins/owl-carousel/owl.carousel
 //=require v3/plugins/magnific-popup/jquery.magnific-popup.min
 //=require v3/plugins/jquery.appear
 //=require v3/plugins/jquery.countTo

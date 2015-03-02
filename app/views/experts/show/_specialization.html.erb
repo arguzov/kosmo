@@ -1,6 +1,6 @@
 <h3 class="title">Специализация</h3>
 <div class="separator"></div>
-<ul>
+<ul id="specialization">
   <%@expert.services.where('fl_publish = 1').each do |service|%>
       <li><%=link_to service.name, service_path(id:service.id, url:service.url)%></li>
   <% end %>
