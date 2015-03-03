@@ -17,7 +17,11 @@
             </td>
             <%a = item.split(/:/)%>
             <%a.slice(1,a.length).each do |price|%>
-              <td class="cost"><nobr><%=price.html_safe%> <span class="rouble">Р</span></nobr></td>
+              <% if defined?(@service) && @service.id == 79%>
+                    <td class="cost"><nobr><span style="color:#666"><s><%=price.html_safe%> <span class="rouble">Р</span></s></span> <%=((price.to_i*0.7).round).to_s%><span class="rouble">Р</span></nobr></td>
+              <% else %>
+                  <td class="cost"><nobr><%=price.html_safe%> <span class="rouble">Р</span></nobr></td>
+              <% end %>
             <% end %>
         <% end %>
       </tr>

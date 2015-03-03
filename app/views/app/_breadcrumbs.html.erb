@@ -1,4 +1,7 @@
 <% if current_layout == 'services' || current_layout == 'medicaments'%>
+    <%if current_layout == 'services' && defined?(@service) && @service.id == 79%>
+        <%=render :partial => 'app/banners/top'%>
+    <% else %>
     <div class="page-intro">
       <div class="container">
         <div class="row">
@@ -62,6 +65,7 @@
         </div>
       </div>
     </div>
+    <% end %>
 <% else %>
     <%=render :partial => 'app/banners/top'%>
 <% end %>
