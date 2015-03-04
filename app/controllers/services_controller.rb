@@ -26,6 +26,9 @@ class ServicesController < ApplicationController
         else
             @complements = nil
         end
+        if @service.id == 79
+            @reviews = Post.where('id IN (224,223,221)')
+        end
     end
 
     def prices

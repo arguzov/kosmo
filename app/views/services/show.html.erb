@@ -38,6 +38,7 @@
         </div>
     <% end %>
     <%=render :partial => 'app/pricelist', :locals => {:pricelist=>@pricelist}%>
+    <%=render :partial => 'services/show/reviews'%>
     <div class="comments-form">
       <h2 class="title" id="booking" style="padding: 0px;margin: 0px;">Записаться на процедуру онлайн</h2>
       <% if @service.id == 79 %><p style="padding: 0px;margin: 0px 0px 10px 0px;"><sup style="color:red;">*</sup>Данная процедура проводится по адресу Спартаковская, 2а</p><% end %>

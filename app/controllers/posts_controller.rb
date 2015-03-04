@@ -24,10 +24,10 @@ class PostsController < ApplicationController
     end
 
     def reviews
-        if !params.has_key?('sort') || params[:sort] == 'asc'
-            order = ' created_at ASC '
+        if !params.has_key?('sort') || params[:sort] == 'desc'
+            order = ' created_at DESC '
         else
-            order = ' created_at DESC'
+            order = ' created_at ASC'
         end
         @reviews = Post.where('category_id = 31').order(order).paginate(:page => params[:page], :per_page => 10)
     end
