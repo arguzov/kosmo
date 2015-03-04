@@ -21,12 +21,21 @@
     }
 }
 #about{
+    h4{
+        padding: 0px;
+        margin:0px;
+    }
     ul{
         li{
-            padding: 10px 0px;
+            padding: 0px 0px;
         }
     }
     a{
         text-decoration: underline;
+    }
+    #new_order{
+        textarea{
+            height: 300px;
+        }
     }
 }

@@ -1,0 +1,15 @@
+<% if @album.count > 0 %>
+    <h2>Фотографии процедуры &laquo;<%=@service.name%>&raquo;</h2>
+    <div class="owl-carousel carousel-autoplay">
+      <% @album.each do |image| %>
+      <div class="image-box">
+        <div class="overlay-container">
+          <%= image_tag image.gsub('public','') %>
+          <%=link_to image.gsub('public','').gsub('th/','big/'), :class=> 'overlay small', :data => {:rel=>'photos'}, :target=>'_blank' do %>
+            <i class="fa fa-link"></i>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+<% end %>

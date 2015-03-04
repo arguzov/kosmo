@@ -10,7 +10,7 @@
   </div>
   <div class="form-group has-feedback">
     <label for="message4"><%if defined?(text) %>Текст заявки<% else %>Комментарий (не обязательно)<% end %></label>
-    <textarea rows="4" class="form-control" id="message4" name="order[content]" <%if not defined?(text) %>placeholder="Ваши пожелания по времени звонка и/или любые вопросы. Можете оставить незаполненым, если хотите просто записатсья на приём"<% end %>><%if defined?(text) %><%=text%><% end %></textarea>
+    <textarea rows="4" class="form-control" id="message4" name="order[content]" <%if not defined?(text) %>placeholder="Добавьте в это поле Ваши пожелания по времени звонка и/или любые другие вопросы. Можете оставить незаполненым, если хотите просто запросить звонок нашего специалиста"<% end %>><%if defined?(text) %><%=text%><% end %></textarea>
     <i class="fa fa-envelope-o form-control-feedback"></i>
   </div>
   <input type="submit" value="Отправить заявку" class="btn btn-default">
