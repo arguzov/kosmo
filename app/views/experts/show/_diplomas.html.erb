@@ -1,3 +1,4 @@
+<% if @diplomas.length > 0%>
 <h3 class="title">Дипломы и сертификаты</h3>
 <div class="owl-carousel carousel-autoplay">
   <% @diplomas.each do |image| %>
@@ -12,3 +13,4 @@
   </div>
   <% end %>
 </div>
+<% end %>

@@ -1,3 +1,5 @@
+<% if @expert.education.length > 2%>
 <h3 class="title">Образование</h3>
 <div class="separator"></div>
 <%=@expert.education.html_safe%>
+<% end %>
