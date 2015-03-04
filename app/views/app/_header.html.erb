@@ -145,7 +145,7 @@ new Image().src = "//counter.yadro.ru/hit?r"+
   </div>
 </div>
 
-<header class="header clearfix">
+<header class="header clearfix" <%if defined?(@service) && @service.id == 79 %>style="border-bottom-width: 0px;"<% end %>>
   <div class="container">
     <div class="row">
       <div class="col-md-3">

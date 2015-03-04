@@ -10,27 +10,27 @@
    end
 %>
 <% if defined?(@service) && @service.id == 79%>
-    <div class="section parallax parallax-bg dark-translucent-bg" id="top-promos">
-      <div class="container">
-        <div class="call-to-action">
-          <div class="row">
-            <div class="col-md-8">
-              <p class="offer">
-                Только до 1 марта!
-              </p>
-              <h1>Лазерная эпиляция</h1>
-              <h3>удаление нежелательных волос навсегда</h3>
-              <h2 style="color:red;">со скидкой 30%</h2>
-            </div>
-            <div class="col-md-4">
-              <div class="text-center">
-                <a href="#booking" class="btn btn-success btn-lg">Записаться онлайн</a>
+    <div class="container">
+        <div class="section parallax parallax-bg" id="top-promos">
+            <div class="call-to-action">
+              <div class="row">
+                <div class="col-md-8">
+                  <p class="offer">
+                    Только до 1 марта!
+                  </p>
+                  <h1>Лазерная эпиляция</h1>
+                  <h3>удаление нежелательных волос навсегда</h3>
+                  <h2 style="color:red;">со скидкой 30%</h2>
+                </div>
+                <div class="col-md-4">
+                  <div class="text-center">
+                    <a href="#booking" class="btn btn-success btn-lg">Записаться онлайн</a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
       </div>
-    </div>
 <% else %>
     <%banners = Promo.where('fl_top = 1 and fl_active = 1').order('fl_banner DESC')%>
     <div class="section parallax parallax-bg dark-translucent-bg" id="top-promos">
