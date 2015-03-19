@@ -1,23 +1,3 @@
 <%@issue.services.each do |service|%>
-<article class="clearfix blogpost object-non-visible" data-animation-effect="fadeInUpSmall" data-effect-delay="200" id="services">
-  <div class="overlay-container pull-right">
-    <%=image_tag service.photo.url(:medium) %>
-    <div class="overlay">
-      <div class="overlay-links">
-        <%=link_to service_path(id:service.id, url:service.url) do %><i class="fa fa-link"></i><% end %>
-      </div>
-    </div>
-  </div>
-  <div class="blogpost-body" style="padding:0px;margin: 0px;">
-    <div class="blogpost-content" style="padding: 0px;margin: 10px;">
-      <header>
-        <%=link_to service.name, service_path(id:service.id, url:service.url)%>
-      </header>
-      <%=service.anounce.truncate(250)%>
-      <div class="form-group" style="padding-top: 10px;">
-        <%=link_to service_path(id:service.id, url:service.url), :class=>'btn btn-default' do %> от <%=service.price%> руб. <% end %>
-      </div>
-    </div>
-  </div>
-</article>
+    <%=render :partial => 'app/shared/service_row', :locals => {service: service}%>
 <% end %>

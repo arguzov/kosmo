@@ -3,9 +3,14 @@ class ServicesController < ApplicationController
     before_action :define_experts, only: [:show]
     before_action :define_issues, only: [:show]
     layout :resolve_layout
+
+    def index
+        @sections = Section.order('fl_order')
+    end
+
     def show
         @pricelist = @service.pricelist.split(/\n/)
-        @children = Service.where('parent_id = ?',@service.id)
+        @children = Service.where('parent_id = ? AND fl_publish = 1',@service.id)
         if @service.medicaments
             horizontal = render_to_string(:partial => 'medicaments/window/horizontal', :layout => false, :locals => {:medicaments => @service.medicaments})
             vertical = render_to_string(:partial => 'medicaments/window/vertical', :layout => false, :locals => {:medicaments => @service.medicaments})
@@ -22,7 +27,7 @@ class ServicesController < ApplicationController
         end
         @album = Dir.glob("public/data/services/#{@service.id}/th/*")
         if @service.complements != nil
-            @complements = Service.where('id IN (?)',@service.complements.split(','))
+            @complements = Service.where('id IN (?) AND fl_publish = 1',@service.complements.split(','))
         else
             @complements = nil
         end
