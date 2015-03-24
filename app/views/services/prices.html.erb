@@ -20,7 +20,7 @@
                 <a data-toggle="collapse" style="background-color: #F5F5F5;margin:0px;color: #000;" data-parent="#global-pricelist" href="#collapse<%=service.id%>">
                   <%=('<i class="fa fa-caret-down"></i> ' + service.name).html_safe%>
                   <% if promos.count > 0 %>
-                      <span class="label label-danger pull-right" style="cursor: pointer" onclick="document.location.href='/promos/<%=promos.first.id%>">Акция!</span>
+                      <span class="label label-danger pull-right" style="cursor: pointer" onclick="document.location.href='/promos/<%=promos.first.id%>'">Акция!</span>
                   <% end %>
                 </a>
               </h4>
