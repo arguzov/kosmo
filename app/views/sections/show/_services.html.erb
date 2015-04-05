@@ -10,11 +10,22 @@
       <!-- isotope filters end -->
 
       <!-- portfolio items start -->
-      <div class="row">
-        <%@section.services.where('fl_publish = 1').order('fl_order ASC').each do |service|%>
-            <%=render :partial => 'app/shared/service_row', :locals => {service: service}%>
+      <div class="isotope-container row">
+        <%@section.services.order('fl_order ASC').each do |service|%>
+            <div class="col-sm-6 col-md-3 isotope-item r<%=service.sections.first.id%>">
+              <div class="image-box">
+                <div class="overlay-container" style="height:120px;">
+                  <img src="http://www.kosmetologiya-kazan.ru<%=service.photo.url(:medium)%>" alt="">
+                  <%=link_to service_path(id:service.id, url:service.url), :class=>"overlay small" do%>
+                      <i class="fa fa-link"></i>
+                  <% end %>
+                </div>
+                <a href="<%=service_path(id:service.id, url:service.url)%>" class="btn btn-block" style="background-color: #ececec;color: #000; text-transform: lowercase;font-size:12px;height:50px;"><%=service.name.truncate(50)%></a>
+              </div>
+            </div>
         <% end %>
       </div>
+
     </div>
   </div>
 </div>

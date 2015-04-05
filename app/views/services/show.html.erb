@@ -36,6 +36,10 @@
             </div>
           </div>
         </div>
+    <% else %>
+        <div class="alert alert-info" role="alert">
+          <strong>0% рассрочка!</strong> Наши услуши вы можете оплатить в рассрочку без процентов.<br><a target="_blank" href="/posts/198" style="text-decoration: underline;color: black;">Узнать подробности</a>
+        </div>
     <% end %>
     <%=render :partial => 'app/pricelist', :locals => {:pricelist=>@pricelist}%>
     <%=render :partial => 'services/show/reviews'%>

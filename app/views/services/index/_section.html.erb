@@ -1,0 +1,6 @@
+<h2 id="section_<%=section.id%>"><%=section.name%></h2>
+<ul>
+  <%section.services.where('fl_publish = 1').order('fl_order').each do |service|%>
+      <li><%=link_to service.name, service_path(id:service.id, url:service.url) %></li>
+  <% end %>
+</ul>
