@@ -9,7 +9,7 @@ Kosmo::Application.routes.draw do
   #resources :services do
   #    get 'prices', on: :collection
   #end
-  get 'services/:id-:url.html'=>'services#show', as: :service
+  get 'services/:id-:url.html'=>'services#show', as: :service,  :constraints => {:id => /\d+/}
   get 'services'=>'services#index', as: :services
   get 'services/prices'=>'services#prices', as: :prices_services
 

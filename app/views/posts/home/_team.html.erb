@@ -8,15 +8,9 @@
       <div class="image-box object-non-visible" data-animation-effect="fadeInLeft" data-effect-delay="<%=index*100%>">
          <div style="height:200px;overflow: hidden">
           <img src="http://www.kosmetologiya-kazan.ru<%=expert.photo.url(:medium)%>" alt="" style="margin: 10px auto 0px auto;">
-          <div class="overlay">
-            <div class="overlay-links">
-              <a href="portfolio-item.html"><i class="fa fa-link"></i></a>
-              <a href="images/portfolio-1.jpg" class="popup-img"><i class="fa fa-search-plus"></i></a>
-            </div>
-          </div>
          </div>
         <div class="image-box-body">
-          <h3 class="title text-center"><a href="portfolio-item.html"><%=expert.name%></a></h3>
+          <h3 class="title text-center"><%=expert.name%></h3>
           <p class="text-center"><%=expert.profession%></p>
         </div>
       </div>
