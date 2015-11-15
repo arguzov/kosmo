@@ -32,7 +32,11 @@ class ServicesController < ApplicationController
             @complements = nil
         end
         if @service.id == 79
-            @reviews = Post.where('id IN (224,223,221)')
+            @reviews = Post.where('id IN (227,224,223,221)')
+		elsif @service.id == 74
+			@reviews = Post.where('id IN (228)')
+		elsif @service.id == 1
+			@reviews = Post.where('id IN (229)')
         end
     end
 

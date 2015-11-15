@@ -23,4 +23,8 @@ $(document).ready(function(){
             $(this).children('i').removeClass('fa-caret-right').addClass('fa-caret-down');
         }
     })
+	
+	/*$(".image-box a").magnificPopup({ 
+		type: 'image'
+	});*/
 })

@@ -9,26 +9,8 @@
        cookies[:views_count] = 1
    end
 %>
-<% if defined?(@service) && @service.id == 79%>
-    <div class="container">
-        <div class="section parallax parallax-bg" id="top-promos">
-            <div class="call-to-action">
-              <div class="row">
-                <div class="col-md-8">
-                  <h1 style="font-size:2.0em;">Лазерная эпиляция</h1>
-                  <h3 style="font-size:1.2em;">удаление нежелательных волос навсегда</h3>
-                  <h2 style="color:red;">со скидкой 40%</h2>
-                </div>
-                <div class="col-md-4">
-                  <div class="text-center">
-                    <a href="#booking" class="btn btn-success btn-lg">Записаться онлайн</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-      </div>
-<% else %>
+
+
     <%banners = Promo.where('fl_top = 1 and fl_active = 1').order('fl_banner DESC')%>
     <div class="section parallax parallax-bg dark-translucent-bg" id="top-promos">
       <div class="container">
@@ -52,4 +34,3 @@
         </div>
       </div>
     </div>
-<% end %>

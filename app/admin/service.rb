@@ -1,11 +1,12 @@
 ActiveAdmin.register Service do
-  permit_params :name, :anounce, :photo, :content, :price, :title, :description, :keys, :complements, :fl_show, :pricelist,:parent_id,:url, expert_ids: []
+  permit_params :name, :anounce, :photo, :content, :price, :title, :description, :keys, :complements, :fl_show, :fl_publish, :pricelist,:parent_id,:url, expert_ids: []
   #fdddsf
   index do
       column :name
       column :title
       column :price
       column :fl_show
+	  column :fl_publish
       default_actions
   end
 
@@ -20,6 +21,7 @@ ActiveAdmin.register Service do
           f.input :pricelist
           f.input :photo, :as => :file, :hint => f.template.image_tag(f.object.photo.url(:thumb))
           f.input :fl_show
+		  f.input :fl_publish
           f.input :title
           f.input :description
           f.input :keys

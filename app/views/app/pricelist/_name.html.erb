@@ -1,8 +1,8 @@
 <%
   item = item.gsub('#','')
-  res = item.scan(/\[([ms])([0-9]+)\]/)
+  res = item.scan(/\[([msa])([0-9]+)\]/)
   a = item.split(/:/)
-  name = a[0].gsub(/\[([ms])([0-9]+)\]/,'')
+  name = a[0].gsub(/\[([msa])([0-9]+)\]/,'')
 %>
 <% if res.count > 0 %>
     <% if res[0][0] == 'm'%>
@@ -10,6 +10,8 @@
     <% elsif res[0][0] == 's' %>
         <%service = Service.find(res[0][1].to_i)%>
         <%=link_to name, service_path(id:service.id, url:service.url)%>
+	<% elsif res[0][0] == 'a' %>
+		<%=link_to name, '#a'+res[0][1]%>
     <% else %>
         <%=name%>
     <% end %>
