@@ -1,5 +1,6 @@
 Kosmo::Application.routes.draw do
 
+  # dsfsdfsdf
   get '/promos/58', to: redirect('http://lazerep.kosmetologiya-kazan.ru/index.html')
 
   resources :faqs
