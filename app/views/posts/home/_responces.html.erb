@@ -10,7 +10,7 @@
               <img src="<%=review.photo.url(:medium)%>" alt="" title="" class="img-circle" style="height:150px;width:150px;">
             </div>
             <div class="testimonial-body">
-              <%=review.content.html_safe%>
+              <p><%= strip_tags review.content%></p>
               <div>
                   <div class="pull-right"><a href="/responces">Почитать другие отзывы</a></div>
                   <div class="testimonial-info-1"><%=review.person%></div>
