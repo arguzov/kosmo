@@ -21,7 +21,7 @@
       <div class="collapse navbar-collapse" id="navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Специалисты</a>
+            <a href="/experts" class="dropdown-toggle" data-toggle="dropdown">Специалисты</a>
             <ul class="dropdown-menu">
               <%Expert.order('fl_order,id').each do |expert|%>
                   <li>
@@ -34,7 +34,7 @@
           </li>
           <!-- mega-menu start -->
           <li class="dropdown mega-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Наши услуги</a>
+            <a href="/services" class="dropdown-toggle" data-toggle="dropdown">Наши услуги</a>
             <ul class="dropdown-menu">
               <li>
                 <div class="row">
@@ -90,7 +90,7 @@
           </li>
           <!-- mega-menu end -->
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Акции</a>
+            <a href="/promos" class="dropdown-toggle" data-toggle="dropdown">Акции</a>
             <ul class="dropdown-menu">
               <% Promo.where('fl_top = 1 AND fl_active = 1').order('created_at DESC').each do |promo|%>
                   <li><%=link_to promo.name, promo_path(promo)%></li>
@@ -100,11 +100,11 @@
           </li>
           <!-- mega-menu start -->
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Информация</a>
+            <a href="/news" class="dropdown-toggle" data-toggle="dropdown">Информация</a>
             <ul class="dropdown-menu">
               <li><%=link_to 'Наши новости', news_path%></li>
               <li><%=link_to 'Отзывы клиентов', responces_path%></li>
-              <li><%=link_to 'Энциклопедия красоты', faqs_path %></li>
+              <li><%=link_to 'Блог о красоте', faqs_path %></li>
             </ul>
           </li>
           <!-- mega-menu end -->

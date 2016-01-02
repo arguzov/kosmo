@@ -8,6 +8,8 @@ Kosmo::Application.routes.draw do
   resources :orders
   resources :promos
   resources :experts
+  resources :certificates
+  resources :subscriptions
   resources :medicaments
 
   #resources :services do

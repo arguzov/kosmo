@@ -1,5 +1,5 @@
 <% if defined?(@reviews) && @reviews != nil && @reviews.length > 0 %>
-<h3 class="title review-title">Отзывы о процедуре</h3>
+<h3 class="title review-title" id="testimonials">Отзывы о процедуре</h3>
 <% @reviews.each do |review| %>
     <blockquote class="margin-clear">
       <p style="margin-bottom: 0px;padding-bottom: 5px;"> <%=review.content.html_safe%></p>

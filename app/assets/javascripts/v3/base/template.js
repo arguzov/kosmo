@@ -939,20 +939,7 @@
 			}
 		}
 
-		//Scroll totop
-		//-----------------------------------------------
-		$(window).scroll(function() {
-			if($(this).scrollTop() != 0) {
-				$(".scrollToTop").fadeIn();	
-			} else {
-				$(".scrollToTop").fadeOut();
-			}
-		});
-		
-		$(".scrollToTop").click(function() {
-			$("body,html").animate({scrollTop:0},800);
-		});
-		
+
 		//Modal
 		//-----------------------------------------------
 		if($(".modal").length>0) {
@@ -967,12 +954,6 @@
 			$(".plan .pt-popover").popover({
 				trigger: 'hover'
 			});
-		};
-
-		// Parallax section
-		//-----------------------------------------------
-		if (($(".parallax").length>0)  && !Modernizr.touch ){
-			$(".parallax").parallax("50%", 0.2, false);
 		};
 
 		// Remove Button

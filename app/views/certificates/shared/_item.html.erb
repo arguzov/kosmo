@@ -1,0 +1,16 @@
+<div class="listing-item">
+  <div class="overlay-container" style="padding-top:10px;">
+    <%=image_tag certificate.photo.url%>
+  </div>
+  <div class="listing-item-body clearfix">
+    <h3 class="title"><%=link_to certificate.name, certificate_path(certificate)%></h3>
+    <p><%=certificate.preview.html_safe%></p>
+    <span class="price"><%=certificate.price%> <div class="rouble">Р</div></span>
+    <div class="elements-list pull-right">
+      <%=link_to certificate_path(certificate) do%><i class="fa fa-shopping-cart pr-10"></i>Подробнее<% end %>
+    </div>
+    <% if defined?(mode) && mode == 'right'%>
+        <div class="text-center"><a href="/certificates" class="btn btn-sm btn-primary">Все сертификаты</a></div>
+    <% end %>
+  </div>
+</div>

@@ -2,119 +2,49 @@
    meta :title => @service.title,
         :description => @service.description,
         :keywords => @service.keys
+   certificates = @service.certificates
+   mode = ''
+   if certificates.length == 0
+       certificates = Certificate.order('RAND()').limit(1)
+       mode = 'right'
+   end
 %>
-<div class="main col-md-8 scrollit">
+<div class="main col-md-9 scrollit">
   <h1 class="page-title"><%=@service.name%></h1>
   <article class="">
     <div class="blogpost-content">
       <%=render :partial => 'services/show/content'%>
       <%=render :partial=> 'services/show/gallery'%>
     </div>
+    <a name="experts"></a>
+    <h2 id="experts">Наши специалисты</h2>
+    <div class="row">
+      <% @service.experts.limit(3).each do |expert| %>
+          <div class="block clearfix col-md-4" style="padding-bottom: 0px;">
+            <%=render partial: 'experts/shared/portrait', :locals => {expert:expert}%>
+          </div>
+      <% end %>
+    </div>
     <a name="h6"></a>
     <h2 id="pricelist">Цены на процедуру</h2>
-	<% if @service.id == 79 %>
-        <div class="section parallax-bg" id="top-promos">
-          <div class="container">
-            <div class="call-to-action">
-              <div class="row">
-                <div class="col-md-4">
-				  <h1 style="font-size:2.0em;">Лазерная эпиляция</h1>
-				  <h2 style="color:red;font-size:1.5em;margin-top:0.2em;">БЕЗЛИМИТНЫЕ АБОНЕМЕНТЫ</h2>
-				  <!--<h1 style="font-size:2.0em;">Лазерная эпиляция</h1>
-                  <h3 style="font-size:1.2em;">БЕЗЛИМИТНЫЕ АБОНЕМЕНТЫ</h3>
-                  <h2 style="color:red;">со скидкой 50%</h2>-->
-                </div>
-                <div class="col-md-4">
-                  <div class="text-center">
-                    <!--<a href="#booking" class="btn btn-success btn-lg">Записаться онлайн</a>-->
-					<a href="/promos/45" class="btn btn-success btn-lg">Подробнее</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>	
-    <% elsif @service.id == 2 %>
-		<div class="section parallax-bg" id="top-promos">
-          <div class="container">
-            <div class="call-to-action">
-              <div class="row">
-                <div class="col-md-4">
-                  <h1 style="font-size:2.0em;">Восковая эпиляция</h1>
-                  <h3 style="font-size:1.5em;">скидка <span style="color:red">25%</span>*</h3>
-				  <p>* - подробные условия на странице акции</p>                  
-                </div>
-                <div class="col-md-4">
-                  <div class="text-center">
-                    <a href="/promos/51" class="btn btn-success btn-lg">Подробнее</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-	<% elsif @service.id == 9 %>
-		<div class="section parallax-bg" id="top-promos">
-          <div class="container">
-            <div class="call-to-action">
-              <div class="row">
-                <div class="col-md-4">
-                  <h1 style="font-size:2.0em;">Атравматическая чистка лица</h1>
-                  <h3 style="font-size:1.5em;">скидка <span style="color:red">25%</span>*</h3>
-				  <p>* - подробные условия на странице акции</p>                  
-                </div>
-                <div class="col-md-4">
-                  <div class="text-center">
-                    <a href="/promos/51" class="btn btn-success btn-lg">Подробнее</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-	<% elsif @service.id == 40 || @service.id == 33 || @service.id == 74 %>
-		<div class="section parallax-bg" id="top-promos">
-          <div class="container">
-            <div class="call-to-action">
-              <div class="row">
-                <div class="col-md-4">
-                  <h1 style="font-size:2.0em;">Пакет из 3 массажей</h1>
-                  <h3 style="font-size:1.5em;">со скидкой *</h3>
-				  <p>* - подробные условия на странице акции</p>                  
-                </div>
-                <div class="col-md-4">
-                  <div class="text-center">
-                    <a href="/promos/53" class="btn btn-success btn-lg">Подробнее</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-	<% else %>
-        <div class="alert alert-info" role="alert">
-          <strong>0% рассрочка!</strong> Наши услуги вы можете оплатить в рассрочку без процентов.<br><a target="_blank" href="/posts/198" style="text-decoration: underline;color: black;">Узнать подробности</a>
-        </div>
-    <% end %>
-    <%=render :partial => 'app/pricelist', :locals => {:pricelist=>@pricelist}%>
+    <div class="well">
+      <%=render :partial => 'app/pricelist', :locals => {:pricelist=>@pricelist}%>
+      <div class="alert alert-info" role="alert">
+        <strong>0% рассрочка!</strong> Наши услуги вы можете оплатить в рассрочку без процентов.<br><a target="_blank" href="/posts/198" style="text-decoration: underline;color: black;">Узнать подробности</a>
+      </div>
+    </div>
     <%=render :partial => 'services/show/reviews'%>
     <div class="comments-form">
-      <h2 class="title" id="booking" style="padding: 0px;margin: 0px;">Записаться на процедуру онлайн</h2>
+      <h2 class="title" id="booking">Записаться на процедуру онлайн</h2>
       <% if @service.id == 79 %><p style="padding: 0px;margin: 0px 0px 10px 0px;"><sup style="color:red;">*</sup>Данная процедура проводится по адресу Спартаковская, 2а</p><% end %>
       <%=render :partial => 'app/order/form'%>
     </div>
   </article>
 </div>
-<aside class="col-md-3 col-md-offset-1">
-  <div class="sidebar" style="padding-top:10px;">
-    <%=render partial: 'services/show/table_of_context'%>
-    <% if @service.id.to_i != 79 && @service.experts.length > 0%>
-    <div class="block clearfix hidden-sm hidden-xs">
-      <h3 class="title">Специалист</h3>
-      <div class="separator"></div>
-      <%=render partial: 'experts/shared/portrait', :locals => {expert: @service.experts.first}%>
-    </div>
-    <% end %>
-    <!---->
+<aside class="col-md-3" style="padding-top:30px;">
+  <div class="sidebar" style="padding-top:0px;padding-left: 10px;">
+    <%=render partial: 'services/show/call_to_action'%>
+    <%=render partial: 'app/widgets/certificates', locals: {certificates: certificates,mode: mode}%>
+    <%=render partial: 'app/widgets/vk_group'%>
   </div>
 </aside>

@@ -8,29 +8,37 @@
    else
        cookies[:views_count] = 1
    end
+   if current_layout == 'services' && @service != nil
+       banners = Service.find(@service.id).promos.where('fl_top = 1 and fl_active = 1').order('fl_banner DESC')
+   else
+       banners = Promo.where('fl_top = 1 and fl_active = 1').order('fl_banner DESC')
+   end
+
 %>
-
-
-    <%banners = Promo.where('fl_top = 1 and fl_active = 1').order('fl_banner DESC')%>
-    <div class="section parallax parallax-bg dark-translucent-bg" id="top-promos">
-      <div class="container">
-        <div id="owl-top" class="owl-carousel owl-theme content-slider">
-          <% banners.each do |banner|%>
-              <div class="overlay-container">
-                <div class="call-to-action">
-                  <div class="row">
-                    <div class="col-md-8">
-                      <%=banner.banner.html_safe%>
-                    </div>
-                    <div class="col-md-4">
-                      <div class="text-center">
-                        <a href="/promos/<%=banner.id%>" class="btn btn-success btn-lg">Подробнее</a>
-                      </div>
-                    </div>
+<% if banners.length > 0 && !NO_TOP_BANNER_PAGES.include?(current_layout)%>
+<div class="section" id="top-promos">
+  <div class="container">
+    <div id="owl-top" class="owl-carousel owl-theme content-slider">
+      <% banners.each do |banner|%>
+          <div class="overlay-container" style="margin-top: 0px;margin-bottom: 0px;height:240px;">
+            <div class="call-to-action">
+              <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-3">
+                  <%=image_tag banner.photo.url(:medium), class: 'img-responsive'%>
+                </div>
+                <div class="col-md-7" style="padding-top: 15px;text-align: left;">
+                  <%=banner.banner.html_safe%>
+                  <div style="float: left;" class="btn-default btn  btn-md">До <%=banner.due.strftime('%d.%m.%Y')%></div>
+                  <div style="float: left;">
+                    <a href="/promos/<%=banner.id%>" class="btn btn-success btn-md">Подробнее</a>
                   </div>
                 </div>
               </div>
-          <% end %>
-        </div>
-      </div>
+            </div>
+          </div>
+      <% end %>
     </div>
+  </div>
+</div>
+<% end %>

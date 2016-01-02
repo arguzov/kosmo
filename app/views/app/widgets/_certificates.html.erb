@@ -1,0 +1,9 @@
+<% if certificates.length > 0 %>
+<div class="masonry-grid-fitrows row grid-space-20">
+  <%certificates.each do |certificate|%>
+      <div class="col-md-12 masonry-grid-item">
+        <%=render :partial => 'certificates/shared/item', locals: {certificate: certificate, mode: mode}%>
+      </div>
+  <% end %>
+</div>
+<% end %>

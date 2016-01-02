@@ -1,0 +1,22 @@
+<%
+   meta :title => "Новости Центра эпиляци и косметологии",
+        :description => 'Информация о добавлении новых услуг, поступлении последнего оборудования, акциях и скидках'
+%>
+<div class="main col-md-12" id="news">
+  <!-- page-title start -->
+  <!-- ================ -->
+  <h1 class="page-title">Подарочные сертификаты</h1>
+  <div class="separator-2"></div>
+  <!-- page-title end -->
+  <% if @certificates.length > 0 %>
+  <div class="masonry-grid-fitrows row grid-space-20">
+    <%@certificates.each do |certificate|%>
+        <div class="col-md-4 col-sm-6 masonry-grid-item">
+          <%=render :partial => 'certificates/shared/item', locals: {certificate: certificate}%>
+        </div>
+    <% end %>
+  </div>
+  <% else %>
+      <div class="well">Раздел находится в стадии заполения информацией</div>
+  <% end %>
+</div>

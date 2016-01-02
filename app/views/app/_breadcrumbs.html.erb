@@ -1,11 +1,12 @@
-<% if current_layout == 'services' || current_layout == 'medicaments'%>
-    <%if current_layout == 'services' && defined?(@service) && (@service.id == 79 || @service.id == 109 || @service.id == 74)%>
-        <%=render :partial => 'app/banners/top'%>
-    <% else %>
+    <%=render :partial => 'app/banners/top'%>
     <div class="page-intro">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
+            <div class="pull-right" style="padding-top: 7px;">
+              <i class="fa fa-gift"></i> <a href="/certificates" style="font-size: 13px;">Подарочные сертификаты</a> &nbsp;
+              <i class="fa fa-calendar"></i> <a href="/subscriptions" style="font-size:13px;">Абонементы</a>
+            </div>
             <ol class="breadcrumb" style="margin-bottom: 10px;">
               <li><i class="fa fa-home pr-10"></i><a href="/">Главная</a></li>
               <% if @section %>
@@ -65,7 +66,3 @@
         </div>
       </div>
     </div>
-    <% end %>
-<% else %>
-    <%=render :partial => 'app/banners/top'%>
-<% end %>

@@ -3,4 +3,5 @@ class Promo < ActiveRecord::Base
   validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
   has_and_belongs_to_many :services
   accepts_nested_attributes_for :services, allow_destroy: true
+  default_scope where('due > ?',Time.now)
 end

@@ -8,8 +8,8 @@
   <%@experts.each_with_index do |expert,index|%>
   <div class="col-md-3 col-sm-6">
     <div class="box-style-1 gray-bg team-member animated object-visible fadeInLeft" data-animation-effect="fadeInLeft" data-effect-delay="<%=700 - index.to_i*100%>">
-      <div class="overlay-container">
-        <img src="<%=expert.photo%>" style="height:350px;;">
+      <div class="overlay-container" style="height:250px;">
+        <img src="<%=expert.photo%>">
         <div class="overlay">
           <ul class="social-links colored clearfix">
             <li class="facebook"><%=link_to expert_path(expert) do %><%=fa_icon 'file-text-o'%><% end %></li>

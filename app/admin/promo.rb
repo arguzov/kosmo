@@ -1,5 +1,11 @@
 ActiveAdmin.register Promo do
 
+    controller do
+        def scoped_collection
+            Promo.unscoped
+        end
+    end
+
     permit_params :name, :content, :banner, :fl_active, :fl_top, :fl_banner, :due, :photo, service_ids: []
 
     index do

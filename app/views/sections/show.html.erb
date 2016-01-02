@@ -1,31 +1,32 @@
 <%
    meta :title => "#{@section.name} в Казани"
 %>
-<div class="main col-md-8 scrollit">
+<div class="row">
+<div class="main col-md-9">
   <h1 class="page-title"><%=@section.name%></h1>
-  <article class="">
-    <div class="blogpost-content">
-      <%=alt_tags(@section.content,@section.name).html_safe%>
-    </div>
-    <%=render :partial => 'sections/show/services'%>
-    <div class="comments-form">
-      <h2 class="title" id="booking">Записаться на консультацию онлайн</h2>
-      <%=render :partial => 'app/order/form'%>
-    </div>
-  </article>
+  <div class="well">
+    <%=alt_tags(@section.content,@section.name).html_safe%>
+  </div>
+  <%=render :partial => 'sections/show/services'%>
 </div>
-<aside class="col-md-3 col-md-offset-1">
-  <div class="sidebar" style="padding-top:10px;">
-    <div class="block clearfix hidden-sm hidden-xs">
-      <h3 class="title">Специалисты</h3>
-      <div class="separator"></div>
+  <div class="col-md-3">
+    <%=render partial: 'app/widgets/right'%>
+  </div>
+</div>
+<div class="row" style="margin-top: 20px;">
+  <div class="col-md-3 hidden-sm hidden-xs">
+    <div class="block clearfix" style="margin-top: 30px;">
       <%service = @section.services.first%>
-      <%service.experts.each do |expert|%>
+      <%service.experts.limit(1).each do |expert|%>
           <%=render partial: 'experts/shared/portrait', :locals => {expert: expert}%>
           <br>
       <% end %>
     </div>
-
-    <!---->
   </div>
-</aside>
+  <div class="col-md-9 col-sm-12 col-xs-12">
+    <div class="comments-form">
+      <h2 class="title" id="booking">Записаться на консультацию онлайн</h2>
+      <%=render :partial => 'app/order/form'%>
+    </div>
+  </div>
+</div>

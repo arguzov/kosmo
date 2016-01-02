@@ -1,0 +1,26 @@
+<%
+    if subscription.post_id.to_i > 0
+        more_link = post_path(subscription.post)
+    else
+        more_link = subscription_path(subscription)
+    end
+%>
+<div class="listing-item" style="padding-top: 0px;">
+  <h3 style="background-color: #f1f1f1;margin-top: 0px;padding: 10px;text-align: center;">
+    <%=subscription.service.name%>
+    <%if subscription.discount.to_i > 0%>
+        <div class="label label-danger pull-right">- <%=subscription.discount%>%</div>
+    <% end %>
+  </h3>
+  <div class="overlay-container" style="padding-top:10px;">
+    <%=image_tag subscription.photo.url%>
+  </div>
+  <div class="listing-item-body clearfix" style="background-color: #f1f1f1">
+    <h3 class="title"><%=link_to subscription.name, more_link%></h3>
+    <p style="color: #666;"><%=subscription.preview.html_safe%></p>
+    <span class="price"><%=subscription.price%> <div class="rouble">Р</div></span>
+    <div class="elements-list pull-right">
+      <%=link_to more_link do%><i class="fa fa-shopping-cart pr-10"></i>Подробнее<% end %>
+    </div>
+  </div>
+</div>

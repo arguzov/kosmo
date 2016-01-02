@@ -1,0 +1,22 @@
+<%
+   meta :title => "Новости Центра эпиляци и косметологии",
+        :description => 'Информация о добавлении новых услуг, поступлении последнего оборудования, акциях и скидках'
+%>
+<div class="main col-md-12" id="news">
+  <!-- page-title start -->
+  <!-- ================ -->
+  <h1 class="page-title">Абонементы</h1>
+  <div class="separator-2"></div>
+  <!-- page-title end -->
+  <% if @subscriptions.length > 0 %>
+  <div class="masonry-grid-fitrows row grid-space-20">
+    <%@subscriptions.each do |subscription|%>
+        <div class="col-md-4 col-sm-6 masonry-grid-item">
+          <%=render :partial => 'subscriptions/shared/item', locals: {subscription: subscription}%>
+        </div>
+    <% end %>
+  </div>
+  <% else %>
+  <div class="well">Раздел находится в стадии заполения информацией</div>
+  <% end %>
+</div>

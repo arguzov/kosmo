@@ -7,15 +7,11 @@
 @import "v3/plugins/toastr/toastr.min";
 @import "v3/plugins/owl/owl.carousel";
 #top-promos{
-    padding: 20px;
-    .call-to-action {
-        padding: 0px;
-        h1, h2, h3 {
-            padding: 0px;
-            margin: 0px;
-        }
-        .offer {
-            display: none
+    padding: 0px;
+    background: image-url("bg/parallax-bg.jpg") no-repeat;
+    .owl-controls{
+        .owl-pagination{
+            margin-top: 50px!important;
         }
     }
 }
@@ -27,6 +23,30 @@
         }
     }
 }
+
+.call-to-action {
+    padding: 0px;
+    h1, h2 {
+        padding: 0px;
+        margin: 0px;
+    }
+    h1{
+        font-size: 2.5em;
+        font-family: Verdana;
+    }
+    h2{
+        font-size: 1.5em;
+    }
+    h3.discount{
+        color: #c9302c;
+        margin: 10px 0px 0px 0px;
+        font-size: 2.0em;
+    }
+    h4.prices{
+        font-weight: normal;
+    }
+}
+
 .rouble {
     display: inline-block;
     position: relative; }
@@ -36,3 +56,23 @@
     content: "–";
     position: absolute;
     top: 0.05em; }
+
+.right-widget {
+    margin-bottom: 20px;
+    .w-title{
+        background-color:#f5f5f5;
+        padding: 10px;
+        border-style: solid;
+        border-color: #e5e5e5;
+        border-width: 0px 1px 0px 1px;
+        border-top: 2px solid #d0d0d0;
+        font-weight: bold;
+    }
+    .w-body{
+        background-color: #fafafa;
+        text-align: center;
+        padding: 20px 0px;
+        border: 1px solid #e5e5e5;
+        border-top-width: 0px;
+    }
+}

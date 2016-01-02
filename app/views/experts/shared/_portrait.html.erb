@@ -1,7 +1,7 @@
 <% if defined?(expert) && expert != nil %>
 <div class="image-box hidden-xs hidden-sm">
-  <div class="overlay-container">
-    <img src="<%=expert.photo%>" style="height:350px;;">
+  <div class="overlay-container" style="height:250px;">
+    <img src="<%=expert.photo%>">
     <div class="overlay">
       <div class="overlay-links">
         <%=link_to expert_path(expert) do %><i class="fa fa-link"></i><% end %>

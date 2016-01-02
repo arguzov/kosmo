@@ -12,7 +12,6 @@
   <script type="text/javascript" src="//vk.com/js/api/openapi.js?121"></script>
 </head>
 <body class="no-trans">
-<div class="scrollToTop"><i class="icon-up-open-big"></i></div>
 <div class="page-wrapper">
   <%=render :partial => 'app/header'%>
   <%=render :partial => 'app/breadcrumbs'%>
@@ -25,10 +24,6 @@
   </section>
   <%=render :partial => 'app/footer'%>
 </div>
-<!-- BEGIN JIVOSITE CODE {literal} -->
-<script type='text/javascript'>
-(function(){ var widget_id = 'B7gkMJxK7P';
-var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = '//code.jivosite.com/script/widget/'+widget_id; var ss = document.getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss);})();</script>
-<!-- {/literal} END JIVOSITE CODE -->
+<%=render :partial => 'app/widgets/jivosite'%>
 </body>
 </html>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150123101331) do
+ActiveRecord::Schema.define(version: 20160101152148) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -38,6 +38,27 @@ ActiveRecord::Schema.define(version: 20150123101331) do
     t.string   "url"
     t.boolean  "fl_menu"
   end
+
+  create_table "certificates", force: true do |t|
+    t.string   "name"
+    t.integer  "fl_type"
+    t.text     "preview"
+    t.text     "content"
+    t.integer  "price"
+    t.integer  "discount"
+    t.integer  "fl_status"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+  end
+
+  create_table "certificates_services", id: false, force: true do |t|
+    t.integer "certificate_id"
+    t.integer "service_id"
+  end
+
+  add_index "certificates_services", ["certificate_id", "service_id"], name: "index_certificates_services_on_certificate_id_and_service_id", using: :btree
 
   create_table "collections", force: true do |t|
     t.string   "name"
@@ -307,6 +328,21 @@ ActiveRecord::Schema.define(version: 20150123101331) do
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
     t.integer  "price"
+  end
+
+  create_table "subscriptions", force: true do |t|
+    t.string   "name"
+    t.integer  "service_id",         default: 0
+    t.text     "preview"
+    t.text     "content"
+    t.integer  "post_id",            default: 0
+    t.integer  "price",              default: 0
+    t.integer  "discount",           default: 0
+    t.integer  "fl_status",          default: 0
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   create_table "units", force: true do |t|

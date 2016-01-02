@@ -2,7 +2,7 @@
    meta :title => "Отзывы о Центре эпиляции и косметологии в Казани",
         :description => "Отзывы клиентов о качестве обслуживания в казанском центре эпиляции и косметологии"
 %>
-<div class="main col-md-12" id="news">
+<div class="main col-md-9" id="news">
   <!-- page-title start -->
   <!-- ================ -->
   <h1 class="page-title">
@@ -32,4 +32,10 @@
     <% end %>
   </table>
   <%= will_paginate @reviews, renderer: BootstrapPagination::Rails %>
+</div>
+<div class="col-md-3">
+  <div style="padding-top: 30px;">
+    <%=render partial: 'app/widgets/vk_group'%>
+    <%=render partial: 'app/widgets/certificates', locals: {certificates: Certificate.order('RAND()').limit(1),mode: 'right'}%>
+  </div>
 </div>
