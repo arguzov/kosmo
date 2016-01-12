@@ -10,7 +10,7 @@
         <% end %>
       </div>
       <div class="listing-item-body clearfix" style="text-align: left!important;padding: 10px 10px 0px 10px;">
-        <%=post.content.html_safe%>
+        <%=sanitize post.content, tags: %w(p a) %>
         <div class="text-center"><a href="/responces" class="btn btn-sm btn-primary">Все отзывы</a></div>
       </div>
   </div>
