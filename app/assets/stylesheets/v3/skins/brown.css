@@ -148,6 +148,7 @@ fieldset[disabled] .btn-default {
 
 .btn-danger{
     background-color: #971b2f;
+    border-color: #971b2f;
 }
 
 .btn-success{

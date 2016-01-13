@@ -13,7 +13,7 @@
    else
        banners = Promo.where('fl_top = 1 and fl_active = 1').order('fl_banner DESC')
    end
-
+   months = %w(января февраля марта апреля мая июня июля августа сентября октября ноября декабря)
 %>
 <% if banners.length > 0 && !NO_TOP_BANNER_PAGES.include?(current_layout)%>
 <div class="section" id="top-promos">
@@ -29,7 +29,7 @@
                 </div>
                 <div class="col-md-7" style="padding-top: 15px;text-align: left;">
                   <%=banner.banner.html_safe%>
-                  <div style="float: left;" class="btn-primary btn  btn-md">До <%=banner.due.strftime('%d.%m.%Y')%></div>
+                  <div style="float: left;" class="btn btn-danger btn  btn-md">До <%=banner.due.strftime('%d')%> <%=months[banner.due.strftime('%m').to_i - 1]%> <%=banner.due.strftime('%Y')%></div>
                   <div style="float: left;">
                     <a href="/promos/<%=banner.id%>" class="btn btn-default btn-md">Подробнее</a>
                   </div>
