@@ -26,13 +26,11 @@
       <% end %>
     </div>
     <a name="h6"></a>
-    <h2 id="pricelist">Цены на процедуру</h2>
-    <div class="well">
-      <%=render :partial => 'app/pricelist', :locals => {:pricelist=>@pricelist}%>
+    <h2 id="pricelist">Цены на <%if @service.id == 79%>все зоны<%else%>процедуру<% end %></h2>
+      <%=render :partial => 'app/pricelist', :locals => {:pricelist=>@pricelist,collapsed: 1}%>
       <div class="alert alert-info" role="alert">
         <strong>0% рассрочка!</strong> Наши услуги вы можете оплатить в рассрочку без процентов.<br><a target="_blank" href="/posts/198" style="text-decoration: underline;color: black;">Узнать подробности</a>
       </div>
-    </div>
     <%=render :partial => 'services/show/reviews'%>
     <div class="comments-form">
       <h2 class="title" id="booking">Записаться на процедуру онлайн</h2>

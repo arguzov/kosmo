@@ -1,3 +1,29 @@
+<% if defined?(collapsed) && @service.id == 79%>
+    <p>Раскройте интересующий вас блок чтобы узнать все цены</p>
+    <div class="panel" style="margin: 0px;" id="global-pricelist">
+      <%Price.where('service_id = ? AND parent_id = 0',@service.id).each do |service|%>
+          <div class="panel-heading" style="padding: 0px;margin: 1px;background-color: gray;border-bottom-width: 0px;">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" style="background-color: #F5F5F5;margin:0px;color: #000;" data-parent="#global-pricelist" href="#collapse<%=service.id%>">
+                <%=('<i class="fa fa-caret-down"></i> ' + service.name).html_safe%>
+              </a>
+            </h4>
+          </div>
+          <div id="collapse<%=service.id%>" class="panel-collapse collapse">
+            <div class="panel-body">
+              <table class="table table-striped">
+                <%Price.where('parent_id = ?',service.id).each do |line|%>
+                <tr>
+                  <td width="80%"><%=line.name%></td>
+                  <td width="20%" class="text-right"><%=line.price%> <span class="rouble">Р</span></td>
+                </tr>
+                <% end %>
+              </table>
+            </div>
+          </div>
+      <% end %>
+    </div>
+<% else %>
 <table class="table">
   <%costHID=0%>
   <%counterPL = 0%>
@@ -37,6 +63,7 @@
       </tr>
   <% end %>
 </table>
+<% end %>
 <% if defined?(@service) && @service.id == 1 %>
 <p><span style="font-size:1.1em;color:red">*</span> - цена на первую процедуру, по акции</p>
 <%end%>

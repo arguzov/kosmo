@@ -1,9 +1,8 @@
 <%
    content = @service.content
-   #if @service.id.to_i != 79
-       #content = content.gsub(/<img[^>]*src=([^ ]*)[^>]*>/i,'')
-       #content = content.gsub(/<iframe[^>]*src=([^ >]*)[^>]*>/i,'')
-       content = content.gsub(/<h2[^>]*>([^<]*)<\/h2>/i) {|s| s.gsub('<h2','<h2 id="' + Digest::MD5.hexdigest(s) + '"')}
-   #end
+   content = content.gsub(/<p>[^а-яА-Яa-zA-Z0-9]*\{alert ([^\}]+)\}[^<]*<\/p>/i,'<div class="alert alert-\\1">')
+   content = content.gsub(/<p>[^а-яА-Яa-zA-Z0-9]*\{\/alert\}[^<]*<\/p>/i,'</div>')
+   #content = content.gsub(/<p>[^\{]*\{well ([^\}]+)\}[^<]*<\/p>/i,'<div class="well well-\\1">')
+   #content = content.gsub(/<p>[^\{]*\{\/well\}[^<]*<\/p>/i,'</div>')
 %>
 <%=content.html_safe%>
