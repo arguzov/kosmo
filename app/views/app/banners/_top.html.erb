@@ -23,7 +23,7 @@
           <div class="overlay-container" style="margin-top: 0px;margin-bottom: 0px;height:240px;">
             <div class="call-to-action">
               <div class="row">
-                <div class="col-md-2"></div>
+                <div class="col-md-1"></div>
                 <div class="col-md-3">
                   <%=image_tag banner.photo.url(:medium), class: 'img-responsive'%>
                 </div>
@@ -31,7 +31,8 @@
                   <%=banner.banner.html_safe%>
                   <div style="float: left;" class="btn btn-danger btn  btn-md">До <%=banner.due.strftime('%d')%> <%=months[banner.due.strftime('%m').to_i - 1]%> <%=banner.due.strftime('%Y')%></div>
                   <div style="float: left;">
-                    <a href="/promos/<%=banner.id%>" class="btn btn-default btn-md">Подробнее</a>
+                    <button data-toggle="modal" data-target="#online-order" class="btn btn-default btn-md">Записаться</button>
+                    <a href="<%if banner.more_link == nil || banner.more_link.length == 0%>/promos/<%=banner.id%><% else %><%=banner.more_link%><% end %>" class="btn btn-md" style="background-color: #fcf8e3;color: #000000 ">Подробнее</a>
                   </div>
                 </div>
               </div>

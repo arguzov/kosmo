@@ -29,7 +29,7 @@ Kosmo::Application.configure do
       port:                 587,
       domain:               'http://kosmetologiya-kazan.ru/',
       user_name:            'axxilius@gmail.com',
-      password:             'Dia123mond',
+      password:             'zvf6tdf43',
       authentication:       'plain',
       enable_starttls_auto: true}
   # Debug mode disables concatenation and preprocessing of assets.

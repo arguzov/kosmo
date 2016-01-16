@@ -6,7 +6,7 @@ ActiveAdmin.register Promo do
         end
     end
 
-    permit_params :name, :content, :banner, :fl_active, :fl_top, :fl_banner, :due, :photo, service_ids: []
+    permit_params :name, :content, :banner, :fl_active, :fl_top, :fl_banner, :due, :more_link, :photo, service_ids: []
 
     index do
         column :id
@@ -28,6 +28,7 @@ ActiveAdmin.register Promo do
             f.input :fl_top
             f.input :fl_banner
             f.input :due
+            f.input :more_link
         end
         f.inputs "Сервисы" do
             f.input :services, as: :check_boxes

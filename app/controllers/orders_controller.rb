@@ -19,7 +19,7 @@ class OrdersController < ApplicationController
         end
         respond_to do |format|
             if @order.save
-                OrderMailer.recall(@params).deliver
+                #OrderMailer.recall(@params).deliver
                 format.html { redirect_to :back, notice: 'Order was created' }
                 format.json { render json: @order }
             else
