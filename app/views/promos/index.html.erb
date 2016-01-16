@@ -13,11 +13,12 @@
                   <div class="col-md-4">
                     <%=image_tag banner.photo.url(:medium), class: 'img-responsive'%>
                   </div>
-                  <div class="col-md-6" style="padding-top: 15px;text-align: left;">
+                  <div class="col-md-8" style="padding-top: 15px;text-align: left;">
                     <%=banner.banner.html_safe%>
-                    <div style="float: left;" class="btn-default btn  btn-md">До <%=banner.due.strftime('%d.%m.%Y')%></div>
+                    <div style="float: left;" class="btn-danger btn  btn-md">До <%=banner.due.strftime('%d.%m.%Y')%></div>
                     <div style="float: left;">
-                      <a href="/promos/<%=banner.id%>" class="btn btn-success btn-md">Подробнее</a>
+                      <button data-toggle="modal" data-target="#online-order" class="btn btn-default btn-md">Записаться</button>
+                      <a href="<%if banner.more_link == nil || banner.more_link.length == 0%>/promos/<%=banner.id%><% else %><%=banner.more_link%><% end %>" class="btn btn-md" style="background-color: #fcf8e3;color: #000000 ">Подробнее</a>
                     </div>
                   </div>
                 </div>
