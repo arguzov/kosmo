@@ -93,7 +93,9 @@
             <a href="/promos" class="dropdown-toggle" data-toggle="dropdown">Акции</a>
             <ul class="dropdown-menu">
               <% Promo.where('fl_top = 1 AND fl_active = 1').order('created_at DESC').each do |promo|%>
-                  <li><%=link_to promo.name, promo_path(promo)%></li>
+                  <li>
+                    <a href="<% if promo.more_link == nil || promo.more_link.length == 0%>/promos/<%=promo.id%><% else %><%=promo.more_link%><% end %>"><%=promo.name%></a>
+                  </li>
               <% end %>
               <li><%=link_to 'Все акции', promos_path %></li>
             </ul>
