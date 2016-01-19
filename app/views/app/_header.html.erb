@@ -16,10 +16,10 @@ new Image().src = "//counter.yadro.ru/hit?r"+
         <!-- ================ -->
         <div class="header-top-first clearfix">
           <ul class="social-links clearfix hidden-xs">
-            <li style="width:165px;"><a href="javascript://" style="color:#7A5230;font-weight: bold;"><nobr><i class="fa fa-phone"></i> +7 (843) 2000-322</nobr></a></li>
-            <li class="instagram"><a target="_blank" href="https://www.instagram.com/kosmetologiya_kazan/"><i class="fa fa-instagram"></i></a></li>
-            <li class="youtube"><a target="_blank" href="http://www.youtube.com/channel/UCMybbiz-6UAJyZW92GIynhw"><i class="fa fa-youtube-play"></i></a></li>
-            <li class="instagram"><a target="_blank" href="https://vk.com/kosmetologiya_kazan"><i class="fa fa-vk"></i></a></li>
+            <li style="width:365px;">
+              <a href="javascript://" style="color:#7A5230;font-weight: bold;"><nobr><i class="fa fa-phone"></i> +7 (843) 2000-322, ул. Спартаковская 2а</nobr></a><br>
+              <a href="javascript://" style="color:#7A5230;font-weight: bold;"><nobr><i class="fa fa-phone"></i> +7 (843) 226-60-20, пр. Ибрагимова, 54</nobr></a>
+            </li>
           </ul>
           <div class="social-links hidden-lg hidden-md hidden-sm">
             <div class="btn-group dropdown">
@@ -38,34 +38,21 @@ new Image().src = "//counter.yadro.ru/hit?r"+
 
         <!-- header-top-second start -->
         <!-- ================ -->
-        <div id="header-top-second"  class="clearfix">
 
           <!-- header top dropdowns start -->
           <!-- ================ -->
-          <div class="header-top-dropdown">
-            <div class="btn-group dropdown hidden-sm hidden-xs">
-              <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" style="color: #614126;font-weight: bold;"><i class="fa fa-phone"></i><span style="font-size:14px;">Обратный звонок</span></button>
-              <ul class="dropdown-menu dropdown-menu-right dropdown-animation" style="padding-bottom: 0px;">
-                <li>
-                  <% if flash[:notice] && flash[:notice] == 'Order was created' %>
-                      <div id="modal-show" data-id="recall">Спасибо, Ваша заявка принята. Мы перезвоним Вам в ближайшее время</div>
-                  <% else %>
-                      <%= form_for [Order.new] do |f| %>
-                          <div class="form-group has-feedback">
-                            <i class="fa fa-phone form-control-feedback"></i>
-                            <input type="text" class="form-control" placeholder="Пример: +79033003300" name="order[contacts]" required>
-                            <input type="hidden" name="order[content]" value="Перезвоните мне пожалуйста">
-                            <span class="help-block m-b-none" style="font-size:11px;">Введите Ваш телефон и нажмите Enter.<br>Мы перезвоним вам в ближайшее время</span>
-                          </div>
-                      <% end %>
-                  <% end %>
-                </li>
-              </ul>
+            <div class="hidden-sm hidden-xs text-right">
+              <button class="btn-lg btn-default dropdown-toggle" href="javascript://" data-toggle="modal" data-target="#recall" style="margin-top: 10px;font-size: 14px;"><i class="fa fa-phone"></i> обратный звонок</button>
             </div>
-          </div>
+            <!--<div class="social-links hidden-sm hidden-xs" style="border-width: 0px!important;padding: 0px;margin: 0px;">
+              <ul style="border-width: 0px;padding: 0px;margin: 0px;">
+                <li class="instagram"><a target="_blank" href="https://www.instagram.com/kosmetologiya_kazan/"><i class="fa fa-instagram"></i></a></li>
+                <li class="youtube"><a target="_blank" href="http://www.youtube.com/channel/UCMybbiz-6UAJyZW92GIynhw"><i class="fa fa-youtube-play"></i></a></li>
+                <li class="instagram"><a target="_blank" href="https://vk.com/kosmetologiya_kazan"><i class="fa fa-vk"></i></a></li>
+              </ul>
+            </div>-->
           <!--  header top dropdowns end -->
 
-        </div>
         <!-- header-top-second end -->
 
       </div>

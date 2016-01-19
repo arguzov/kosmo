@@ -8,11 +8,16 @@
        certificates = Certificate.order('RAND()').limit(1)
        mode = 'right'
    end
+   banners = @service.promos.where('fl_top = 1 and fl_active = 1').order('fl_banner DESC')
+   if banners.length > 0 && banners.first.is_alive
+       @widgets = banners.first.widgets
+   end
 %>
 <div class="main col-md-9 scrollit">
   <h1 class="page-title"><%=@service.name%></h1>
   <article class="">
     <div class="blogpost-content">
+      <%=render :partial => 'services/widget/promo', locals: {position: 1}%>
       <%=render :partial => 'services/show/content'%>
       <%=render :partial=> 'services/show/gallery'%>
     </div>
@@ -26,6 +31,7 @@
       <% end %>
     </div>
     <a name="h6"></a>
+    <%=render :partial => 'services/widget/promo', locals: {position: 2}%>
     <h2 id="pricelist">Цены на <%if @service.id == 79%>все зоны<%else%>процедуру<% end %></h2>
       <%=render :partial => 'app/pricelist', :locals => {:pricelist=>@pricelist,collapsed: 1}%>
       <div class="alert alert-info" role="alert">

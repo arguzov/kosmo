@@ -1,0 +1,7 @@
+<% if @widgets != nil %>
+    <% widgets = @widgets.pos(position) %>
+    <% if widgets.length > 0 %>
+        <h2><%=widgets.first.header%></h2>
+        <%=widgets.first.content.html_safe%>
+    <% end %>
+<% end %>
