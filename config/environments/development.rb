@@ -25,13 +25,14 @@ Kosmo::Application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.smtp_settings = {
-      address:              'smtp.gmail.com',
-      port:                 587,
-      domain:               'http://kosmetologiya-kazan.ru/',
+      address:              'smtp-pulse.com',
+      port:                 465,
       user_name:            'axxilius@gmail.com',
-      password:             'zvf6tdf43',
-      authentication:       'plain',
-      enable_starttls_auto: true}
+      password:             'tDFkTktSeP',
+      :authentication       => :login,
+      :ssl                  => true,
+      :tls                  => true,
+      :enable_starttls_auto => true}
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.

@@ -1,5 +1,5 @@
 class OrderMailer < ActionMailer::Base
-    default from: 'noreply@kosmetologiya-kazan.ru'
+    default from: 'axxilius@gmail.com'
 
     def recall(data)
         @data = data
