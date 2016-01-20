@@ -1,8 +1,14 @@
+<%
+    onsubmit = ''
+    if @service != nil && @service.id == 79
+        onsubmit = 'yaCounter28296001.reachGoal("lazer_order"); return true;'
+    end
+%>
 <% if flash[:notice] && flash[:notice] == 'Order was created' %>
     <div class="well" style="padding:20px;text-align: center" id="modal-show" data-id="recall">Заявка принята<br>Спасибо за обращение в Центр эпиляции и косметологии.<br>Наш менеджер скоро свяжется с вами для уточнения деталей.</div>
 <% else %>
 <div class="well">
-    <%= form_for [Order.new] do |f| %>
+    <%= form_for [Order.new], :html => { :onsubmit => onsubmit } do |f| %>
   <div class="form-group has-feedback">
     <label for="subject4">Ваш телефон/email</label>
     <input type="text" class="form-control" id="subject4" placeholder="" name="order[contacts]" required>
