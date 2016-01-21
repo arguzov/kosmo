@@ -80,3 +80,15 @@
 <script type="text/javascript" src="https://cdn.callbackkiller.com/widget/cbk.js?cbk_code=16969" charset="UTF-8" async></script>
 <%=render :partial => 'app/modal/order', locals: {text: 'Я хочу записаться на приём по акции'} %>
 <%=render :partial => 'app/modal/recall', locals: {text: 'Перезвоните мне пожалуйста'} %>
+<% if @service != nil && @service.id == 79 %>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-72722235-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+<% end %>
