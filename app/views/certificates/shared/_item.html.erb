@@ -5,7 +5,9 @@
   <div class="listing-item-body clearfix">
     <h3 class="title"><%=link_to certificate.name, certificate_path(certificate)%></h3>
     <p><%=certificate.preview.html_safe%></p>
+    <% if certificate.fl_type == 1%>
     <span class="price"><%=certificate.price%> <div class="rouble">Р</div></span>
+    <% end %>
     <div class="elements-list pull-right">
       <%=link_to certificate_path(certificate) do%><i class="fa fa-shopping-cart pr-10"></i>Подробнее<% end %>
     </div>
