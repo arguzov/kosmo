@@ -5,15 +5,12 @@
           <div style="height: 200px;overflow: hidden">
             <img src="<%=service.photo.url(:medium)%>" style="height: 100%;-webkit-filter: sepia(15%);">
           </div>
-          <div class="listing-item-body clearfix" style="background-color: #f1f1f1;height: 180px;">
+          <div class="listing-item-body clearfix" style="background-color: #FCF8E3;height: 180px;">
             <div style="height: 120px;">
-            <h3 class="title"><%=link_to service.name.truncate(35), service_path(id:service.id, url:service.url)%></h3>
-            <p><%=service.anounce.truncate(70)%></p>
+            <h3 class="title"><a href="<%= service_path(id:service.id, url:service.url)%>" style="text-decoration: underline"><%= service.name.truncate(35) %></a></h3>
+            <p style="color: #000;"><%=service.description.truncate(70)%></p>
             </div>
             <span class="price">от <%=service.price%> <div class="rouble">Р</div></span>
-            <div class="elements-list pull-right">
-              <%=link_to service_path(id:service.id, url:service.url) do%><i class="fa fa-shopping-cart pr-10"></i>Подробнее<% end %>
-            </div>
           </div>
         </div>
       </div>

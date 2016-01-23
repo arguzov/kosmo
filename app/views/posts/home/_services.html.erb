@@ -6,7 +6,7 @@
     <div class="row">
       <div class="col-md-12" style="padding-bottom: 0px;margin-bottom: 0px;">
         <!-- isotope filters start -->
-        <div class="filters">
+        <!--<div class="filters">
           <ul class="nav nav-pills">
             <li class="active"><a href="#" data-filter="*">Все</a></li>
             <li><a href="#" data-filter=".r1">Эпиляция</a></li>
@@ -16,22 +16,20 @@
             <li><a href="#" data-filter=".r7">Ногтевой сервис</a></li>
             <li><a href="#" data-filter=".r8">Пирсинг</a></li>
           </ul>
-        </div>
+        </div>-->
         <!-- isotope filters end -->
 
         <!-- portfolio items start -->
-        <div class="isotope-container row">
+        <div class="row">
           <%Section.all.each do |section|%>
-              <%section.services.where('fl_publish = 1').order('fl_order ASC').limit(5).each do |service|%>
-                  <div class="col-sm-6 col-md-2 isotope-item r<%=section.id%>">
-                    <div class="image-box">
-                      <div class="overlay-container" style="height:120px;">
+              <% limit = (section.id == 2)?4:2%>
+              <%section.services.where('fl_publish = 1').order('fl_order ASC').limit(limit).each do |service|%>
+                  <div class="col-sm-6 col-md-3">
+                    <div class="image-box" style="margin-bottom: 10px;">
+                      <div class="overlay-container" style="height:180px;">
                         <img src="http://www.kosmetologiya-kazan.ru<%=service.photo.url(:medium)%>" alt="">
-                        <%=link_to service_path(id:service.id, url:service.url), :class=>"overlay small" do%>
-                            <i class="fa fa-link"></i>
-                        <% end %>
                       </div>
-                      <a href="<%=service_path(id:service.id, url:service.url)%>" class="btn btn-light-gray btn-block" style="text-transform: lowercase;font-size:11px;height:50px;"><%=service.name.truncate(50)%></a>
+                      <a href="<%=service_path(id:service.id, url:service.url)%>" class="btn btn-block" style="text-transform: lowercase;font-size:12px;height:50px;background-color: #E8CEAB;color: #000000;text-decoration: underline"><%=service.name.truncate(50)%></a>
                     </div>
                   </div>
               <% end %>

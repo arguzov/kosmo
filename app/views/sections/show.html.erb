@@ -4,10 +4,10 @@
 <div class="row">
 <div class="main col-md-9">
   <h1 class="page-title"><%=@section.name%></h1>
-  <div class="well">
+  <%=render :partial => 'sections/show/services'%>
+  <div style="border-left: 5px solid #ededed;padding-left: 20px;">
     <%=alt_tags(@section.content,@section.name).html_safe%>
   </div>
-  <%=render :partial => 'sections/show/services'%>
 </div>
   <div class="col-md-3">
     <%=render partial: 'app/widgets/right'%>
