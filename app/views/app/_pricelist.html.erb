@@ -1,4 +1,4 @@
-<% if defined?(collapsed) && @service.id == 79%>
+<% if defined?(collapsed) && (@service.id == 79 || @service.id == 12)%>
     <p>Раскройте интересующий вас блок чтобы узнать все цены</p>
     <div class="panel" style="margin: 0px;" id="global-pricelist">
       <%Price.where('service_id = ? AND parent_id = 0',@service.id).each do |service|%>

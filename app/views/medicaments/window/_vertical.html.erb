@@ -1,16 +1,18 @@
 <h2>Используемые препараты</h2>
-<%medicaments.each_with_index do |medicament,index|%>
-    <article class="clearfix blogpost">
-      <div class="overlay-container pull-right">
-        <%=image_tag medicament.photo.url(:medium) %>
+<div class="panel">
+  <%medicaments.each_with_index do |medicament,index|%>
+      <div class="panel-heading" style="padding: 0px;margin: 1px;background-color: gray;border-bottom-width: 0px;">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" style="background-color: #F5F5F5;margin:0px;color: #000;" data-parent="#global-pricelist" href="#collapse<%=medicament.id%>">
+            <%=('<i class="fa fa-caret-down"></i> ' + medicament.name).html_safe%>
+          </a>
+        </h4>
       </div>
-      <div class="blogpost-body" style="padding:0px;margin: 0px;">
-        <div class="blogpost-content" style="padding: 0px;margin: 10px;">
-          <header>
-            <%=link_to medicament.name,medicament_path(medicament)%>
-          </header>
+      <div id="collapse<%=medicament.id%>" class="panel-collapse collapse">
+        <div class="panel-body">
+          <p class="pull-left" style="margin-right:10px;"><%=image_tag medicament.photo.url(:medium) %></p>
           <%=medicament.anounce%>
         </div>
       </div>
-    </article>
-<% end %>
+  <% end %>
+</div>
