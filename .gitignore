@@ -11,3 +11,5 @@
 /public/system/
 /public/data/
 /public/assets/
+/Gemfile
+/Gemfile.lock

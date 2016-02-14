@@ -10,7 +10,7 @@ ActiveAdmin.register Subscription do
       column :price
       column :discount
       column :status
-      default_actions
+      actions
   end
 
   form do |f|

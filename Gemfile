@@ -46,7 +46,7 @@ group :production do
     gem 'newrelic_rpm'
 end
 
-gem 'mysql2'
+gem 'mysql2', '~> 0.3.18'
 gem "paperclip", "~> 4.1"
 gem 'redactor-rails'
 gem "carrierwave"
