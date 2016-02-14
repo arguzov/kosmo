@@ -6,7 +6,7 @@ ActiveAdmin.register Unit do
         column :name
         column :url
         column :parent
-        default_actions
+        actions
     end
 
     form do |f|

@@ -12,7 +12,7 @@ ActiveAdmin.register Faq do
     column :fl_show
     column :created_at
     column :updated_at
-    default_actions
+    actions
   end
 
   form do |f|

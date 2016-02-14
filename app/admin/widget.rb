@@ -7,7 +7,7 @@ ActiveAdmin.register Widget do
       column :entity_id
       column :position
       column :header
-      default_actions
+      actions
   end
 
   form do |f|

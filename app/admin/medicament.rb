@@ -5,7 +5,7 @@ ActiveAdmin.register Medicament do
         column :name
         column :service_id
         column :fl_show
-        default_actions
+        actions
     end
 
     form do |f|

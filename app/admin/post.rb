@@ -7,7 +7,7 @@ ActiveAdmin.register Post do
         column :fl_menu
         column :created_at
         column :updated_at
-        default_actions
+        actions
     end
 
     form do |f|

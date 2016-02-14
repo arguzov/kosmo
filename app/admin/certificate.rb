@@ -10,7 +10,7 @@ ActiveAdmin.register Certificate do
       column :discount
       column :status
       column :type
-      default_actions
+      actions
   end
 
   form do |f|

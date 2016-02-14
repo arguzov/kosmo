@@ -10,7 +10,7 @@ ActiveAdmin.register User do
         column :discount
         column :created_at
         column :last_sign_in
-        default_actions
+        actions
     end
 
     form do |f|

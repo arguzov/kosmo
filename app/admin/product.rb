@@ -7,7 +7,7 @@ ActiveAdmin.register Product do
         column :title
         column :collection
         column :url
-        default_actions
+        actions
     end
 
     form do |f|

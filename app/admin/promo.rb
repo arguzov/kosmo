@@ -15,7 +15,7 @@ ActiveAdmin.register Promo do
         column :fl_top
         column :fl_banner
         column :created_at
-        default_actions
+        actions
     end
 
     form do |f|

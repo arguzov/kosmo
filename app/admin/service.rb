@@ -7,7 +7,7 @@ ActiveAdmin.register Service do
       column :price
       column :fl_show
 	  column :fl_publish
-      default_actions
+      actions
   end
 
   form do |f|

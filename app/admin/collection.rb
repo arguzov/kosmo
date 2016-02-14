@@ -7,7 +7,7 @@ ActiveAdmin.register Collection do
         column :url
         column :unit
         column :fl_show
-        default_actions
+        actions
     end
 
     form do |f|
