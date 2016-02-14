@@ -10,6 +10,9 @@
 
   <!-- blogpost start -->
   <article class="clearfix blogpost full">
+    <%if @post.category_id == 33 %>
+        <%=@post.content.html_safe%>
+    <% else %>
     <div class="blogpost-body">
       <div class="side">
         <div class="post-info">
@@ -25,6 +28,7 @@
         <%=@post.content.html_safe%>
       </div>
     </div>
+    <% end %>
     <div>
       <script type="text/javascript">
         VK.init({apiId: 5163251, onlyWidgets: true});
