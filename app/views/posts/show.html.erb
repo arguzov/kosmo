@@ -1,6 +1,10 @@
 <%
    meta :title => @post.name,
         :description => Sanitize.clean(@post.content).gsub("\n"," ").truncate(250)
+
+   content = @post.content.dup
+   content = content.gsub(/<p>[^а-яА-Яa-zA-Z0-9]*\{alert ([^\}]+)\}[^<]*<\/p>/i,'<div class="alert alert-\\1">')
+   content = content.gsub(/<p>[^а-яА-Яa-zA-Z0-9]*\{\/alert\}[^<]*<\/p>/i,'</div>')
 %>
 <div class="main col-md-9">
   <!-- page-title start -->
@@ -24,8 +28,10 @@
         <header>
           <div class="submitted"><i class="fa fa-user pr-5"></i> от <a href="#">ЦЭиК</a></div>
         </header>
+        <% if @post.photo.exists? %>
         <p><%=image_tag @post.photo.url%></p>
-        <%=@post.content.html_safe%>
+        <% end %>
+        <%=content.html_safe%>
       </div>
     </div>
     <% end %>
