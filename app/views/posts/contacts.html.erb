@@ -24,7 +24,7 @@
         <li>Метро: проезд до станции &laquo;прощадь Тукая&raquo;, после чего 5 минут неспешной прогулки по красивому парку с фонтаном.</li>
       </ul>
       </p>
-      <script type="text/javascript" charset="utf-8" src="//api-maps.yandex.ru/services/constructor/1.0/js/?sid=QuDnq8KdfdSfG-bTrDsCw-Ki4D3nXGtn&width=100%&height=300"></script>
+      <img src="<%=image_path('scheme1.png')%>">
   <%elsif params[:id].to_i == 2%>
       <h1 class="page-title">Центр на Ибрагимова</h1>
       <div class="separator-2"></div>
@@ -46,6 +46,9 @@
         <li>Метро: проезд до станции &laquo;козья Слобода&raquo;, после чего 5 минут неспешной прогулки по удобной дорожке</li>
       </ul>
       </p>
-      <script type="text/javascript" charset="utf-8" src="//api-maps.yandex.ru/services/constructor/1.0/js/?sid=dfoHGUi0y3g3xpaL4f8YzFJL1RqrlqUK&width=100%&height=300"></script>
+      <div class="row">
+        <div class="col-md-6" style="height: 410px;overflow-y: hidden"><img src="<%=image_path('scheme2.png')%>"></div>
+        <div class="col-md-6" style="height: 410px;overflow-y: hidden"><img src="<%=image_path('scheme3.png')%>"></div>
+      </div>
   <% end %>
 </div>
