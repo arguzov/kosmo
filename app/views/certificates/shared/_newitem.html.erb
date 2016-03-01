@@ -6,7 +6,7 @@
     <h2><a style="text-decoration: underline" href="<%if certificate.fl_status == 2%>/certificates/group/<%=certificate.id%><% else %>/certificates/<%=certificate.id%><% end %>"><%=certificate.name%></a></h2>
     <%=certificate.preview.html_safe%>
     <div style="padding-top: 5px;">
-        <a href="" class="btn btn-md btn-default">Подробнее</a>
+        <a href="<%if certificate.fl_status == 2%>/certificates/group/<%=certificate.id%><% else %>/certificates/<%=certificate.id%><% end %>" class="btn btn-md btn-default">Подробнее</a>
     </div>
   </div>
 </div>
