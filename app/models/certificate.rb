@@ -5,6 +5,7 @@ class Certificate < ActiveRecord::Base
     TYPES = {"По номиналу"=>1,"По услугам"=>2}
 
     has_and_belongs_to_many :services
+    scope :by_group, -> (group){where('group_id = ?',group)}
 
     def status
         Subscription::STATUSES.invert[self.fl_status]

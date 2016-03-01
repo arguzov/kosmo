@@ -1,0 +1,12 @@
+<div class="row call-to-action" style="background-color: #E9E9E9;margin-bottom: 20px;">
+  <div class="col-md-4">
+    <img src="http://kosmetologiya-kazan.ru/<%=image_path certificate.photo.url%>">
+  </div>
+  <div class="col-md-8" style="padding-top: 15px;text-align: left;">
+    <h2><a style="text-decoration: underline" href="<%if certificate.fl_status == 2%>/certificates/group/<%=certificate.group_id%><% else %>/certificates/<%=certificate.id%><% end %>"><%=certificate.name%></a></h2>
+    <%=certificate.preview.html_safe%>
+    <div style="padding-top: 5px;">
+        <a href="" class="btn btn-md btn-default">Подробнее</a>
+    </div>
+  </div>
+</div>

@@ -8,9 +8,12 @@ Kosmo::Application.routes.draw do
   resources :orders
   resources :promos
   resources :experts
-  resources :certificates
   resources :subscriptions
   resources :medicaments
+
+  resources :certificates do
+      get 'group/:group'=>'certificates#group', on: :collection
+  end
 
   #resources :services do
   #    get 'prices', on: :collection
