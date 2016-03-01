@@ -1,7 +1,7 @@
 class CertificatesController < ApplicationController
 
     def index
-        @certificates = Certificate.all
+        @certificates = Certificate.where('group_id = 0')
     end
 
     def group
