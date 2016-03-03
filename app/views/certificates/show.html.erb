@@ -9,25 +9,11 @@
   <!-- page-title end -->
 
   <!-- blogpost start -->
-  <article class="clearfix blogpost full">
-    <div class="blogpost-body">
-      <div class="side">
-        <div class="post-info">
-          <span class="price"><%=@certificate.price%></span>
-          <span class="month">рублей</span>
-        </div>
-      </div>
-      <div class="blogpost-content">
-        <header>
-          <div class="submitted"><i class="fa fa-user pr-5"></i> от <a href="#">ЦЭиК</a></div>
-        </header>
-        <p><%=image_tag @certificate.photo.url%></p>
+  <article class="clearfix full">
         <%=@certificate.content.html_safe%>
         <div>
           <%=render :partial => 'app/widgets/share'%>
         </div>
-      </div>
-    </div>
   </article>
   <%=render :partial => 'app/order', locals: {header:"Заказать сертификат",text: "Я хочу заказать подарочный сертификат. Перезвоните мне пожалуйста..."}%>
 </div>
