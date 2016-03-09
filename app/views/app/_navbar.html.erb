@@ -20,6 +20,14 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
+          <!-- mega-menu start -->
+          <li class="dropdown">
+            <a href="/news" class="dropdown-toggle" data-toggle="dropdown">О нас</a>
+            <ul class="dropdown-menu">
+              <li><%=link_to 'Наши новости', news_path%></li>
+              <li><%=link_to 'Отзывы клиентов', responces_path%></li>
+            </ul>
+          </li>
           <li class="dropdown">
             <a href="/experts" class="dropdown-toggle" data-toggle="dropdown">Специалисты</a>
             <ul class="dropdown-menu">
@@ -101,13 +109,8 @@
             </ul>
           </li>
           <!-- mega-menu start -->
-          <li class="dropdown">
-            <a href="/news" class="dropdown-toggle" data-toggle="dropdown">Информация</a>
-            <ul class="dropdown-menu">
-              <li><%=link_to 'Наши новости', news_path%></li>
-              <li><%=link_to 'Отзывы клиентов', responces_path%></li>
-              <li><%=link_to 'Блог о красоте', faqs_path %></li>
-            </ul>
+          <li>
+            <a href="<%=faqs_path%>">Блог</a>
           </li>
           <!-- mega-menu end -->
           <li class="dropdown mega-menu">
