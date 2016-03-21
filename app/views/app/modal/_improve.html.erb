@@ -1,0 +1,24 @@
+<div class="modal fade" id="improve" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Обратная связь</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for [Faq.new] do |f| %>
+            <input type="hidden" name="faq[name]" value="Вопрос с сайта">
+            <div class="form-group  has-feedback">
+              <label for="exampleInputPhone">Ваше имя</label>
+              <input type="text" class="form-control" id="exampleInputPhone" required="required" name="faq[author]" style="width: 300px;">
+            </div>
+            <div class="form-group  has-feedback">
+              <label for="exampleInputText">Ваше предложение (замечание, пожелание...)</label>
+              <textarea style="height: 200px;" class="form-control" id="exampleInputText" name="faq[question]"></textarea>
+            </div>
+            <button type="submit" class="btn btn-default">Отправить</button>
+        <% end %>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
