@@ -1,7 +1,10 @@
-<% if defined?(collapsed) && (@service.id == 79 || @service.id == 12)%>
+<%
+    prices = Price.where('service_id = ? AND parent_id = 0',@service.id)
+%>
+<% if defined?(collapsed) && prices.length > 0 %>
     <p>Раскройте интересующий вас блок чтобы узнать все цены</p>
     <div class="panel" style="margin: 0px;" id="global-pricelist">
-      <%Price.where('service_id = ? AND parent_id = 0',@service.id).each do |service|%>
+      <%prices.each do |service|%>
           <div class="panel-heading" style="padding: 0px;margin: 1px;background-color: gray;border-bottom-width: 0px;">
             <h4 class="panel-title">
               <a data-toggle="collapse" style="background-color: #F5F5F5;margin:0px;color: #000;" data-parent="#global-pricelist" href="#collapse<%=service.id%>">
