@@ -1,7 +1,7 @@
 <%
     post = Post.where('category_id = 31 AND photo_file_name is not null').order('RAND()').first
 %>
-<div class="listing-item right-widget">
+<div class="listing-item right-widget hidden-xs">
   <div class="w-title"><%=post.person%></div>
   <div class="w-body" style="padding: 0px;">
       <div class="overlay-container" style="margin-bottom: 0px;">

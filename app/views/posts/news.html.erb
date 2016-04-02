@@ -2,42 +2,29 @@
    meta :title => "Новости Центра эпиляци и косметологии",
         :description => 'Информация о добавлении новых услуг, поступлении последнего оборудования, акциях и скидках'
 %>
-<div class="main col-md-9" id="news">
+<div class="main col-md-9 col-xs-12" id="news">
   <!-- page-title start -->
   <!-- ================ -->
   <h1 class="page-title">Новости Центра эпиляции и косметологии</h1>
   <div class="separator-2"></div>
-  <!-- page-title end -->
-  <%@news.each do |news|%>
-  <!-- blogpost start -->
-  <article class="clearfix blogpost">
-    <div class="overlay-container pull-right">
-      <%=image_tag news.photo.url(:medium)%>
-      <div class="overlay">
-        <div class="overlay-links">
-          <%=link_to post_path(news) do %><i class="fa fa-link"></i><% end %>
+  <div class="masonry-grid-fitrows row grid-space-20">
+    <%@news.each do |news|%>
+        <div class="col-md-4 col-sm-6 masonry-grid-item col-xs-12">
+          <div class="listing-item">
+            <div style="height: 200px;overflow: hidden">
+              <img src="http://kosmetologiya-kazan.ru/<%=image_path news.photo.url(:medium)%>" style="height: 100%;-webkit-filter: sepia(15%);">
+            </div>
+            <div class="listing-item-body clearfix" style="background-color: #FCF8E3;height: 160px;">
+              <div style="height: 100px;">
+                <h3 class="title"><a href="<%= post_path(news)%>" style="text-decoration: underline"><%= news.name.truncate(35) %></a></h3>
+                <p style="color: #000;"><%=news.anounce.truncate(70).html_safe%></p>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-    <div class="blogpost-body">
-      <div class="post-info">
-        <span class="day"><%=news.created_at.strftime("%d")%></span>
-        <span class="month"><%=news.created_at.strftime("%m %Y")%></span>
-      </div>
-      <div class="blogpost-content">
-        <header>
-          <h2 class="title"><%=link_to news.name, post_path(news)%></h2>
-          <div class="submitted"><i class="fa fa-user pr-5"></i> от <a href="#">ЦЭиК</a></div>
-        </header>
-        <%=news.anounce.html_safe%>
-      </div>
-    </div>
-    <footer class="clearfix">
-      <%=link_to post_path(news), :class=>'pull-right' do %><span>Читать новость</span><% end %>
-    </footer>
-  </article>
-  <% end %>
+    <% end %>
+  </div>
 </div>
-<div class="col-md-3">
+<div class="col-md-3 hidden-xs">
   <%=render partial: 'app/widgets/right'%>
 </div>

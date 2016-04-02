@@ -21,10 +21,12 @@
 
         <!-- portfolio items start -->
         <div class="row">
+          <% i = 0 %>
           <%Section.all.each do |section|%>
+              <% i = i + 1%>
               <% limit = (section.id == 2)?4:2%>
               <%section.services.where('fl_publish = 1').order('fl_order ASC').limit(limit).each do |service|%>
-                  <div class="col-sm-6 col-md-3">
+                  <div class="col-sm-6 col-md-3 <%if i % 2 == 0 %>hidden-xs<% end %>">
                     <div class="image-box" style="margin-bottom: 10px;">
                       <div class="overlay-container" style="height:180px;">
                         <img src="http://www.kosmetologiya-kazan.ru<%=service.photo.url(:medium)%>" alt="">

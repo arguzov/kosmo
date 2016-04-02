@@ -1,4 +1,4 @@
-<div class="section gray-bg clearfix">
+<div class="section gray-bg clearfix hidden-xs">
   <div class="owl-carousel content-slider">
     <%Post.where('category_id = 31 AND photo_file_name is not NULL').order('created_at DESC').limit(4).each do |review|%>
     <div class="testimonial">
