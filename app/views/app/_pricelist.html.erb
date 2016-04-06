@@ -1,7 +1,9 @@
 <%
-    prices = Price.where('service_id = ? AND parent_id = 0',@service.id)
+    unless @service == nil
+        prices = Price.where('service_id = ? AND parent_id = 0',@service.id)
+    end
 %>
-<% if defined?(collapsed) && prices.length > 0 %>
+<% if defined?(collapsed) && defined?(prices) && prices.length > 0 %>
     <p>Раскройте интересующий вас блок чтобы узнать все цены</p>
     <div class="panel" style="margin: 0px;" id="global-pricelist">
       <%prices.each do |service|%>
