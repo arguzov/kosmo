@@ -4,7 +4,7 @@ ActiveAdmin.register Faq do
   # See permitted parameters documentation:
   # https://github.com/gregbell/active_admin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
-  permit_params :name, :question, :answer, :fl_show
+  permit_params :name, :question, :answer, :fl_show, :photo
 
   index do
     column :name
@@ -21,6 +21,7 @@ ActiveAdmin.register Faq do
       f.input :author
       f.input :question, input_html: {class: "redactor" }
       f.input :answer, input_html: {class: "redactor" }
+      f.input :photo, :as => :file, :hint => f.template.image_tag(f.object.photo.url(:thumb))
       f.input :fl_show
     end
     f.actions

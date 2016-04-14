@@ -9,9 +9,9 @@
        cookies[:views_count] = 1
    end
    if current_layout == 'services' && @service != nil
-       banners = Service.find(@service.id).promos.where('fl_top = 1 and fl_active = 1').order('fl_banner DESC')
+       banners = Service.find(@service.id).promos.where('fl_top = 1 and fl_active = 1').order('fl_order ASC')
    else
-       banners = Promo.where('fl_top = 1 and fl_active = 1').order('fl_banner DESC')
+       banners = Promo.where('fl_top = 1 and fl_active = 1').order('fl_order ASC')
    end
    months = %w(января февраля марта апреля мая июня июля августа сентября октября ноября декабря)
 %>
