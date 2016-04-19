@@ -9,12 +9,12 @@
       <%prices.each do |service|%>
           <div class="panel-heading" style="padding: 0px;margin: 1px;background-color: gray;border-bottom-width: 0px;">
             <h4 class="panel-title">
-              <a data-toggle="collapse" style="background-color: #F5F5F5;margin:0px;color: #000;" data-parent="#global-pricelist" href="#collapse<%=service.id%>">
+              <a data-toggle="collapse" style="background-color: #F5F5F5;margin:0px;color: #000;" data-parent="#global-pricelist" href="#collapse-s-<%=service.id%>">
                 <%=('<i class="fa fa-caret-down"></i> ' + service.name).html_safe%>
               </a>
             </h4>
           </div>
-          <div id="collapse<%=service.id%>" class="panel-collapse collapse">
+          <div id="collapse-s-<%=service.id%>" class="panel-collapse collapse">
             <div class="panel-body">
               <table class="table table-striped">
                 <%Price.where('parent_id = ?',service.id).each do |line|%>
