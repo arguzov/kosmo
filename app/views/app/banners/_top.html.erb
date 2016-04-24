@@ -20,12 +20,12 @@
   <div class="container">
     <div id="owl-top" class="owl-carousel owl-theme content-slider">
       <% banners.each do |banner|%>
-          <div class="overlay-container" style="margin-top: 0px;margin-bottom: 0px;height:240px;">
+          <div class="overlay-container" style="margin-top: 0px;margin-bottom: 0px;height:280px;">
             <div class="call-to-action">
               <div class="row">
                 <div class="col-md-1"></div>
                 <div class="col-md-3">
-                  <%=image_tag banner.photo.url(:medium), class: 'img-responsive'%>
+                  <img src="<%=image_path banner.photo.url(:medium)%>" class="img-responsive">
                 </div>
                 <div class="col-md-7" style="padding-top: 15px;text-align: left;">
                   <%=banner.banner.html_safe%>

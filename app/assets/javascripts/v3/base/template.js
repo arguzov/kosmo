@@ -294,7 +294,7 @@
 				autoPlay: 5000,
 				navigation: false,
 				navigationText: false,
-				pagination: false
+				pagination: true
 			});
 			$(".owl-carousel.content-slider-with-controls").owlCarousel({
 				singleItem: true,

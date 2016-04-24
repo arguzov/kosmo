@@ -27,13 +27,6 @@ $(document).ready(function(){
     if($('#vk').length > 0) {
         $('#vk').modal();
     }
-    $('#promos-top').slick({
-        autoplay: true,
-        autoplaySpeed: 6000,
-        onInit: function(){
-            $('#promos-top div').show();
-        }
-    });
     $('#medicaments').pajinate({
         items_per_page : parseInt($('#medicaments').attr('data-items'))
     });

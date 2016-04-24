@@ -11,7 +11,9 @@
       <p><strong>Электронная почта:</strong> <%=mail_to MANAGER_EMAIL%></p>
       <p><strong>Лицензия:</strong> ЛО-16-01-002859 от 15.08.2013</p>
       <p><strong>Время работы:</strong> пн-сб с 9.00 до 21.00. В воскресенье c 10:00 до 18:00</p>
-      <%=image_tag 'saloon2.jpg',:class=>"img-responsive"%>
+      <div class="row">
+      <div class="col-md-6 col-xs-12 col-sm-12"><%=image_tag 'saloon2.jpg',:class=>"img-responsive"%></div>
+      </div>
       <div style="padding: 10px 0px 0px 0px;"><%=link_to "Посмотреть фотографии внутри салона", gallery_path %></div>
       <h4>Схема проезда</h4>
       <p>Центр эпиляции и косметологии находится в самом центре Казани, недалеко от площади Тукая и парка Тысячелетия, рядом с Баскет холлом в здании ТЦ &laquo;Караван&raquo;. Оборудован отдельный вход, снабжённый заметной вывеской.</p>
@@ -33,7 +35,9 @@
       <p><strong>Электронная почта:</strong> <%=mail_to MANAGER_EMAIL%></p>
       <p><strong>Лицензия:</strong> ЛО-16-01-002859 от 15.08.2013</p>
       <p><strong>Время работы:</strong> ежедневно с 9.00 до 21.00</p>
-      <%=image_tag 'saloon3.jpg',:class=>"img-responsive"%>
+      <div class="row">
+        <div class="col-md-6 col-xs-12 col-sm-12"><%=image_tag 'saloon3.jpg',:class=>"img-responsive"%></div>
+      </div>
       <div style="padding: 10px 0px 0px 0px;"><%=link_to "Посмотреть фотографии внутри салона", gallery_path(:album_id=>2) %></div>
       <h4>Схема проезда</h4>
       <p>Наш второй центр находится районе пересеченя проспекта Ибрагимова и улицы Декабристов, в месте соприкосновения 3-х районов Казани: Кировского, Московского и Ново-савиновского, что обуславливает его высокую транспортную доступность.</p>
