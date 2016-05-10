@@ -10,6 +10,21 @@
     padding: 0px;
     /*background: image-url("bg/parallax-bg.jpg") no-repeat;*/
     background-color: #E8CEAB;
+    .l1{
+        font-size: 24px;
+        font-weight: bold;
+    }
+    .l2{
+        font-size: 18px;
+    }
+    .l3{
+        font-size: 20px;
+        color: #ec4758;
+        padding: 10px 0px;
+    }
+    .l4{
+        font-size: 14px;
+    }
 }
 .service-row{
     header {
@@ -131,5 +146,11 @@
     }
     strong.action{
         color: red;
+    }
+}
+#branches{
+    h1{
+        font-size: 28px;
+        font-weight: 500;
     }
 }

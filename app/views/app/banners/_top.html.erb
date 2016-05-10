@@ -28,7 +28,18 @@
                   <img src="<%=image_path banner.photo.url(:medium)%>" class="img-responsive">
                 </div>
                 <div class="col-md-7" style="padding-top: 15px;text-align: left;">
-                  <%=banner.banner.html_safe%>
+                  <%
+                    banner_text = banner.banner
+                    banner_text = banner_text.gsub(/<h1[^>]*>/,'<div class="l1">')
+                    banner_text = banner_text.gsub(/<h2[^>]*>/,'<div class="l2">')
+                    banner_text = banner_text.gsub(/<h3[^>]*>/,'<div class="l3">')
+                    banner_text = banner_text.gsub(/<h4[^>]*>/,'<div class="l4">')
+                    banner_text = banner_text.gsub(/<\/h1>/,'</div>')
+                    banner_text = banner_text.gsub(/<\/h2>/,'</div>')
+                    banner_text = banner_text.gsub(/<\/h3>/,'</div>')
+                    banner_text = banner_text.gsub(/<\/h4>/,'</div>')
+                %>
+                  <%=banner_text.html_safe%>
                   <div style="float: left;" class="btn btn-danger btn  btn-md">До <%=banner.due.strftime('%d')%> <%=months[banner.due.strftime('%m').to_i - 1]%> <%=banner.due.strftime('%Y')%></div>
                   <div style="float: left;">
                     <button data-toggle="modal" data-target="#online-order" class="btn btn-default btn-md" <%if @service != nil && @service.id == 79 %>onclick="yaCounter28296001.reachGoal('lazer_subsc'); return true;"<% end %>>Записаться</button>
