@@ -28,4 +28,8 @@ $(document).ready(function(){
         }
         toastr.success($('#modal-show').html());
     }
+    $('.promo-order').click(function(){
+        var text = $(this).attr('data-title');
+        $('#message4').val('Я хочу записаться по акции "' + text + '"');
+    })
 });

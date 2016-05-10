@@ -42,7 +42,7 @@
                   <%=banner_text.html_safe%>
                   <div style="float: left;" class="btn btn-danger btn  btn-md">До <%=banner.due.strftime('%d')%> <%=months[banner.due.strftime('%m').to_i - 1]%> <%=banner.due.strftime('%Y')%></div>
                   <div style="float: left;">
-                    <button data-toggle="modal" data-target="#online-order" class="btn btn-default btn-md" <%if @service != nil && @service.id == 79 %>onclick="yaCounter28296001.reachGoal('lazer_subsc'); return true;"<% end %>>Записаться</button>
+                    <button data-toggle="modal" data-target="#online-order" class="btn btn-default btn-md promo-order" data-title='<%=banner.name%>' <%if @service != nil && @service.id == 79 %>onclick="yaCounter28296001.reachGoal('lazer_subsc'); return true;"<% end %>>Записаться</button>
                     <a href="<%if banner.more_link == nil || banner.more_link.length == 0%>/promos/<%=banner.id%><% else %><%=banner.more_link%><% end %>" class="btn btn-md" style="background-color: #fcf8e3;color: #000000 ">Подробнее</a>
                   </div>
                 </div>
