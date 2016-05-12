@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160414094756) do
+ActiveRecord::Schema.define(version: 20160512095727) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -248,6 +248,24 @@ ActiveRecord::Schema.define(version: 20160414094756) do
     t.integer  "fl_order",           default: 99
   end
 
+  create_table "promos_old", force: true do |t|
+    t.string   "name"
+    t.text     "content"
+    t.text     "banner"
+    t.boolean  "fl_active"
+    t.boolean  "fl_top"
+    t.datetime "due"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.boolean  "fl_banner"
+    t.string   "more_link"
+    t.integer  "fl_order",           default: 99
+  end
+
   create_table "promos_services", id: false, force: true do |t|
     t.integer "promo_id"
     t.integer "service_id"
@@ -309,6 +327,7 @@ ActiveRecord::Schema.define(version: 20160414094756) do
     t.string   "keys"
     t.integer  "fl_order",           default: 0
     t.string   "complements"
+    t.string   "metrika_id"
   end
 
   create_table "services_issues", id: false, force: true do |t|

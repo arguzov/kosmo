@@ -41,7 +41,7 @@
     <div class="comments-form">
       <h2 class="title" id="booking">Записаться на процедуру онлайн</h2>
       <% if @service.id == 79 %><p style="padding: 0px;margin: 0px 0px 10px 0px;"><sup style="color:red;">*</sup>Данная процедура проводится по адресу Спартаковская, 2а</p><% end %>
-      <%=render :partial => 'app/order/form'%>
+      <%=render :partial => 'app/order/form', locals: {metrika_id: @service.metrika_id}%>
     </div>
   </article>
 </div>
