@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160512095727) do
+ActiveRecord::Schema.define(version: 20160513073637) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -413,6 +413,10 @@ ActiveRecord::Schema.define(version: 20160512095727) do
     t.text    "content"
     t.integer "position_id"
     t.integer "entity_id"
+    t.boolean "is_only"
+    t.boolean "is_new"
+    t.string  "button_name"
+    t.string  "metrika_id"
   end
 
 end

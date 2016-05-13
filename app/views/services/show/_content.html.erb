@@ -4,5 +4,20 @@
    content = content.gsub(/<p>[^а-яА-Яa-zA-Z0-9]*\{\/alert\}[^<]*<\/p>/i,'</div>')
    #content = content.gsub(/<p>[^\{]*\{well ([^\}]+)\}[^<]*<\/p>/i,'<div class="well well-\\1">')
    #content = content.gsub(/<p>[^\{]*\{\/well\}[^<]*<\/p>/i,'</div>')
+   widget = Widget.pos(3).entity(@service.id).first
+   whtml = ''
+   if widget != nil
+       whtml = '<div class="alert alert-warning text-center">'
+       if widget.is_only
+           whtml += '<div class="text-center">Только в этом месяце!</div>'
+       end
+       whtml += '<div style="font-size: 1.5em;margin-bottom: 10px;">' + widget.content + '</div>'
+       whtml += '<div style="margin-bottom: 10px;"><a href="#booking" class="btn btn-md btn-danger" onclick="yaCounter28296001.reachGoal(\'' + widget.metrika_id + '\');return true;">'+widget.button_name+'</a></div>'
+       if widget.is_new
+           whtml += '<div class="text-center">* действует на первое посещение</div>'
+       end
+       whtml += '</div>'
+   end
 %>
+<%=whtml.html_safe%>
 <%=content.html_safe%>
