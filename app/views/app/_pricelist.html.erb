@@ -2,70 +2,26 @@
     unless @service == nil
         prices = Price.where('service_id = ? AND parent_id = 0',@service.id)
     end
+    @fl_new = false;
 %>
 <% if defined?(collapsed) && defined?(prices) && prices.length > 0 %>
-    <p>Раскройте интересующий вас блок чтобы узнать все цены</p>
+    <!--<p>Раскройте интересующий вас блок чтобы узнать все цены</p>-->
     <div class="panel" style="margin: 0px;" id="global-pricelist">
       <%prices.each do |service|%>
-          <div class="panel-heading" style="padding: 0px;margin: 1px;background-color: gray;border-bottom-width: 0px;">
-            <h4 class="panel-title">
-              <a data-toggle="collapse" style="background-color: #F5F5F5;margin:0px;color: #000;" data-parent="#global-pricelist" href="#collapse-s-<%=service.id%>">
-                <%=('<i class="fa fa-caret-down"></i> ' + service.name).html_safe%>
-              </a>
-            </h4>
-          </div>
-          <div id="collapse-s-<%=service.id%>" class="panel-collapse collapse">
-            <div class="panel-body">
-              <table class="table table-striped">
-                <%Price.where('parent_id = ?',service.id).each do |line|%>
-                <tr>
-                  <td width="80%"><%=line.name%></td>
-                  <td width="20%" class="text-right"><%=line.price%> <span class="rouble">Р</span></td>
-                </tr>
-                <% end %>
-              </table>
-            </div>
-          </div>
+          <% if service.price > 0 %>
+              <%= render :partial => 'app/pricelist/plain', locals: {service: service}%>
+          <% else %>
+              <%= render :partial => 'app/pricelist/collapsed', locals: {service: service}%>
+          <% end %>
       <% end %>
     </div>
 <% else %>
-<table class="table">
-  <%costHID=0%>
-  <%counterPL = 0%>
-  <%pricelist.each do |item|%>
-      <tr>
-        <% if /#/.match(item) %>
-            <%if /:/.match(item)%>
-              <%item.gsub('#','').split(/:/).each do |th|%>
-                <th><a name="cost<%=costHID%>" id="cost<%=costHID%>"></a><%=th.html_safe%></th>
-              <% end %>
-            <% else %>
-              <td colspan="5" class="subcap">
-                <h3><a name="cost<%=costHID%>" id="cost<%=costHID%>"></a><%=render :partial=>'app/pricelist/name',:locals => {item:item}%></h3>
-              </td>
-            <% end %>
-			<% costHID=costHID+1 %>
-        <% else %>
-            <td>
-                <%=render :partial=>'app/pricelist/name',:locals => {item:item}%>
-            </td>
-            <%a = item.split(/:/)%>
-            <%a.slice(1,a.length).each do |price|%>
-              <% if defined?(@service) && @service.id == 99999%>
-                    <td class="cost"><nobr><span style="color:#666"><s><%=price.html_safe%> <span class="rouble">Р</span></s></span> <%=((price.to_i*0.6).round).to_s%><span class="rouble">Р</span></nobr></td>
-			  <% elsif defined?(@service) && @service.id == 1 %>
-				<td class="cost"><nobr><span style="color:#666"><%=price.html_safe%> <span class="rouble">Р</span></span> 
-				<% if counterPL>0 %>
-					(<%=((price.to_i*0.45).round).to_s%><span class="rouble">Р</span><span style="font-size:1.1em;color:red">*</span>)
-				<%end%>
-				</nobr></td>
-              <% else %>
-                  <td class="cost"><nobr><%=price.html_safe%> <span class="rouble">Р</span></nobr></td>
-              <% end %>
-            <% end %>
-			<%counterPL = counterPL+1 %>
-        <% end %>
-      </tr>
-  <% end %>
-</table>
+    <div class="panel" style="margin: 0px;" id="global-pricelist">
+        Цена по запросу
+    </div>
+<% end %>
+<% if @fl_new %>
+<div style="padding: 10px 0px 0px 0px;">
+  * скидка действует на первое посещение
+</div>
 <% end %>

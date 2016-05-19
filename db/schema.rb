@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160513073637) do
+ActiveRecord::Schema.define(version: 20160516101619) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -208,10 +208,12 @@ ActiveRecord::Schema.define(version: 20160513073637) do
 
   create_table "prices", force: true do |t|
     t.integer "service_id"
-    t.integer "parent_id",  default: 0
+    t.integer "parent_id",   default: 0
     t.string  "name"
-    t.integer "price",      default: 0
-    t.integer "old_price",  default: 0
+    t.integer "price",       default: 0
+    t.integer "old_price",   default: 0
+    t.integer "discount"
+    t.boolean "is_new_only"
   end
 
   create_table "products", force: true do |t|

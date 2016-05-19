@@ -59,6 +59,7 @@ Kosmo::Application.routes.draw do
 
   namespace :manager do
       resources :orders
+      resources :prices
       namespace :shop do
         resources :categories
         resources :products

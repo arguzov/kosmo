@@ -83,4 +83,43 @@ $(document).ready(function(){
         });
     })
 
+    $('#manager-prices .sh').click(function(){
+        var id = $(this).attr('data-id');
+        $('.sr').filter('[data-id="'+id+'"]').css('display','table-row');
+        if($(this).find('.badge').first().html() == '+'){
+            $('.sr').filter('[data-id="'+id+'"]').css('display','table-row');
+            $(this).find('.badge').first().html('-');
+        }else{
+            $('.sr').filter('[data-id="'+id+'"]').css('display','none');
+            $(this).find('.badge').first().html('+');
+        }
+    })
+
+    $('#manager-prices input').change(function(){
+        var id = $(this).closest('tr').attr('data-price_id');
+        var field = $(this).attr('name');
+        var val = $(this).val();
+        var url = '/manager/prices';
+        var method = 'POST';
+        if(field == 'is_new_only'){
+            if($(this).prop('checked')){
+                val = 1;
+            }else{
+                val = 0;
+            }
+        }
+        $.ajax({ url: url,
+            type: method,
+            beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+            data: {id: id,
+                    field: field,
+                    value: val},
+            success: function(response) {
+                if(response.status == 'ok'){
+                    //document.location.reload();
+                }
+            }
+        });
+    })
+
 })

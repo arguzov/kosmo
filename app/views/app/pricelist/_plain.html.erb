@@ -1,0 +1,10 @@
+<div class="panel-body" style="padding: 0px;margin: 0px;">
+    <table class="table table-striped" style="padding: 0px;margin: 1px 0px;">
+          <tr>
+            <td width="80%"><%=service.name%></td>
+            <td width="20%" class="text-right">
+              <%=render :partial => 'app/pricelist/pricerow', locals: {line: service}%>
+            </td>
+          </tr>
+    </table>
+</div>

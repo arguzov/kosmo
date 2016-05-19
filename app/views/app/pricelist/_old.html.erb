@@ -1,0 +1,39 @@
+<table class="table">
+  <%costHID=0%>
+  <%counterPL = 0%>
+  <%pricelist.each do |item|%>
+      <tr>
+        <% if /#/.match(item) %>
+            <%if /:/.match(item)%>
+                <%item.gsub('#','').split(/:/).each do |th|%>
+                    <th><a name="cost<%=costHID%>" id="cost<%=costHID%>"></a><%=th.html_safe%></th>
+                <% end %>
+            <% else %>
+                <td colspan="5" class="subcap">
+                  <h3><a name="cost<%=costHID%>" id="cost<%=costHID%>"></a><%=render :partial=>'app/pricelist/name',:locals => {item:item}%></h3>
+                </td>
+            <% end %>
+            <% costHID=costHID+1 %>
+        <% else %>
+            <td>
+              <%=render :partial=>'app/pricelist/name',:locals => {item:item}%>
+            </td>
+            <%a = item.split(/:/)%>
+            <%a.slice(1,a.length).each do |price|%>
+                <% if defined?(@service) && @service.id == 99999%>
+                    <td class="cost"><nobr><span style="color:#666"><s><%=price.html_safe%> <span class="rouble">Р</span></s></span> <%=((price.to_i*0.6).round).to_s%><span class="rouble">Р</span></nobr></td>
+                <% elsif defined?(@service) && @service.id == 1 %>
+                    <td class="cost"><nobr><span style="color:#666"><%=price.html_safe%> <span class="rouble">Р</span></span>
+                      <% if counterPL>0 %>
+                          (<%=((price.to_i*0.45).round).to_s%><span class="rouble">Р</span><span style="font-size:1.1em;color:red">*</span>)
+                      <%end%>
+                    </nobr></td>
+                <% else %>
+                    <td class="cost"><nobr><%=price.html_safe%> <span class="rouble">Р</span></nobr></td>
+                <% end %>
+            <% end %>
+            <%counterPL = counterPL+1 %>
+        <% end %>
+      </tr>
+  <% end %>
+</table>

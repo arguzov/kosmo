@@ -10,7 +10,12 @@ class Service < ActiveRecord::Base
     accepts_nested_attributes_for :issues, allow_destroy: true
     accepts_nested_attributes_for :experts, allow_destroy: true
     accepts_nested_attributes_for :promos, allow_destroy: true
+    has_many :prices
     def self.for_select
         self.where('parent_id = 0').map{|c| ["#{c.name}", c.id]}.unshift(["Выбрать",0])
+    end
+
+    def first_level_prices
+        self.prices.first_level
     end
 end

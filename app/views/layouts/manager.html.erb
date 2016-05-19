@@ -2,45 +2,17 @@
 <html>
 <head>
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-  <%= stylesheet_link_tag    "application", media: "all" %>
-  <%= javascript_include_tag "application" %>
+  <%= stylesheet_link_tag    "manager", media: "all" %>
+  <%= javascript_include_tag "manager" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="container-fluid" style="margin-top: 10px;margin-bottom: 0px;">
-  <div class="row" id="navbar">
-    <div class="container">
-      <div class="col-md-12">
-        <nav class="navbar navbar-default" role="navigation">
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-              <li><a href="/manager/orders"><i class="icon-bag"></i> Заказы на услуги</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-              <li>
-                <div style="padding-top: 15px;color: #fff;">
-                  <%=current_user.name%> &nbsp;| <%=link_to destroy_user_session_path, :method => :delete do %> Выйти <% end %>
-                </div>
-              </li>
-            </ul>
-          </div><!-- /.navbar-collapse -->
-        </nav>
-      </div>
-    </div>
-  </div>
-</div>
 <div class="container" id="private-wrapper">
   <div class="row">
-    <div class="col-md-12" style="padding-left: 0px;">
-      <table id="private">
-        <tr>
-          <td class="main"><%= yield %></td>
-        </tr>
-      </table>
+    <div class="col-md-12">
+        <%= yield %>
     </div>
   </div>
-  <%=render 'app/footer' %>
 </div>
 </body>
 </html>
