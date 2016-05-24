@@ -1,2 +1,6 @@
-Контакты: <%=@data[:contacts]%><br><br>
+Контакты: <%=@data[:contacts]%><br>
+<% unless @data[:url] == nil %>
+Со страницы: <%=@data[:url]%><br><br>
+<% end %>
 <%=@data[:content]%>
+

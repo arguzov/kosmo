@@ -9,6 +9,7 @@
 <% else %>
 <div class="well">
     <%= form_for [Order.new], :html => { :onsubmit => onsubmit } do |f| %>
+      <input type="hidden" name="order[url]" value="<%=request.original_url%>">
   <div class="form-group has-feedback">
     <label for="subject4">Ваш телефон/email</label>
     <input type="text" class="form-control" id="subject4" placeholder="" name="order[contacts]" required>

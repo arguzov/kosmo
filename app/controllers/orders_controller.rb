@@ -31,7 +31,7 @@ class OrdersController < ApplicationController
 
     private
     def order_params
-        params.require(:order).permit(:contacts, :content, :fl_type)
+        params.require(:order).permit(:contacts, :content, :fl_type, :url)
     end
 
     def shop_order
