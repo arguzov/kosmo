@@ -7,6 +7,18 @@
 </div>
 <div id="collapse-s-<%=service.id%>" class="panel-collapse collapse">
   <div class="panel-body">
+    <% if browser.device.mobile? %>
+        <table class="table table-striped">
+          <%Price.where('parent_id = ?',service.id).each do |line|%>
+              <tr>
+                <td>
+                  <div><%=line.name%></div>
+                  <div style="padding: 10px 0px;"><strong><%=render :partial => 'app/pricelist/pricerow', locals: {line: line}%></strong></div>
+                </td>
+              </tr>
+          <% end %>
+        </table>
+    <% else %>
     <table class="table table-striped">
       <%Price.where('parent_id = ?',service.id).each do |line|%>
           <tr>
@@ -17,5 +29,6 @@
           </tr>
       <% end %>
     </table>
+    <% end %>
   </div>
 </div>

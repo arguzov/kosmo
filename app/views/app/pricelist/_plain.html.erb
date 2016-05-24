@@ -1,4 +1,14 @@
 <div class="panel-body" style="padding: 0px;margin: 0px;">
+  <% if browser.device.mobile? %>
+      <table class="table table-striped" style="padding: 0px;margin: 1px 0px;">
+        <tr>
+          <td>
+            <div><%=service.name%></div>
+            <div style="padding: 10px 0px;"><strong><%=render :partial => 'app/pricelist/pricerow', locals: {line: service}%></strong></div>
+          </td>
+        </tr>
+      </table>
+  <% else %>
     <table class="table table-striped" style="padding: 0px;margin: 1px 0px;">
           <tr>
             <td width="80%"><%=service.name%></td>
@@ -7,4 +17,5 @@
             </td>
           </tr>
     </table>
+  <% end %>
 </div>
