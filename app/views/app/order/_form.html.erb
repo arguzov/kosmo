@@ -1,7 +1,7 @@
 <%
     onsubmit = ''
     if @service != nil && @service.metrika_id != nil && !@service.metrika_id.empty?
-        onsubmit = 'yaCounter28296001.reachGoal("'+@service.metrika_id+'"); return true;'
+        onsubmit = raw 'yaCounter28296001.reachGoal(\''+@service.metrika_id+'\'); return true;'
     end
 %>
 <% if flash[:notice] && flash[:notice] == 'Order was created' %>
