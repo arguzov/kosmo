@@ -7,7 +7,7 @@
     <a data-toggle="collapse" style="background-color: #F5F5F5;margin:0px;color: #000;" data-parent="#global-pricelist" href="#collapse-s-<%=service.id%>">
       <%=('<i class="fa fa-caret-down"></i> ' + service.name).html_safe%>
       <% if discount.count > 0  %>
-          <span class="label label-warning pull-right">Скидка <%=discount.first.discount%>%</span>
+          <span class="label label-danger pull-right">Скидка <%=discount.first.discount%>%</span>
       <% end %>
     </a>
   </h4>

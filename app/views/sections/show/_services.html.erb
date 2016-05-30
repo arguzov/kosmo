@@ -10,7 +10,17 @@
             <h3 class="title"><a href="<%= service_path(id:service.id, url:service.url)%>" style="text-decoration: underline"><%= service.name.truncate(35) %></a></h3>
             <p style="color: #000;"><%=service.description.truncate(70)%></p>
             </div>
-            <div class="price" style="margin-bottom: 20px;">от <% if @prices[service.id] == nil %><%=service.price%><% else %><%=@prices[service.id].price%><% end %> <div class="rouble">Р</div></div>
+            <div class="price" style="margin-bottom: 20px;">от
+              <% if @prices[service.id] == nil %>
+                  <%=service.price%>
+              <% else %>
+                  <% if @prices[service.id].min_price.to_i > 0 %>
+                      <%=@prices[service.id].min_price.round%>
+                  <% else %>
+                      <%=@prices[service.id].price%>
+                  <% end %>
+              <% end %>
+              <div class="rouble">Р</div></div>
           </div>
         </div>
       </div>
