@@ -1,10 +1,6 @@
 <% if line.discount != nil && line.discount.to_i > 0%>
-    <s><%=line.price%> <span class="rouble">Р</span></s>
-    <%=line.price.to_i - ((line.price.to_i * line.discount.to_i)/100).round%> <span class="rouble">Р</span>
-    <%if line.is_new_only %>
-        <%@fl_new = true;%>
-        *
-    <% end %>
+    <nobr><s><%=line.price%> <span class="rouble">Р</span></s></nobr>
+    <nobr><%=line.price.to_i - ((line.price.to_i * line.discount.to_i)/100).round%> <span class="rouble">Р</span><%if line.is_new_only %><%@fl_new = true;%>*<% end %></nobr>
 <% else %>
-    <%=line.price%> <span class="rouble">Р</span>
+    <nobr><%=line.price%> <span class="rouble">Р</span></nobr>
 <% end %>

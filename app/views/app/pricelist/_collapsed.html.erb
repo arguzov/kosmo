@@ -1,7 +1,14 @@
+<%
+    prices = Price.where('parent_id = ?',service.id)
+    discount = prices.where('discount > 0')
+%>
 <div class="panel-heading" style="padding: 0px;margin: 1px;background-color: gray;border-bottom-width: 0px;">
   <h4 class="panel-title">
     <a data-toggle="collapse" style="background-color: #F5F5F5;margin:0px;color: #000;" data-parent="#global-pricelist" href="#collapse-s-<%=service.id%>">
       <%=('<i class="fa fa-caret-down"></i> ' + service.name).html_safe%>
+      <% if discount.count > 0  %>
+          <span class="label label-warning pull-right">Скидка <%=discount.first.discount%>%</span>
+      <% end %>
     </a>
   </h4>
 </div>
@@ -9,7 +16,7 @@
   <div class="panel-body">
     <% if browser.device.mobile? %>
         <table class="table table-striped">
-          <%Price.where('parent_id = ?',service.id).each do |line|%>
+          <%prices.each do |line|%>
               <tr>
                 <td>
                   <div><%=line.name%></div>
@@ -20,7 +27,7 @@
         </table>
     <% else %>
     <table class="table table-striped">
-      <%Price.where('parent_id = ?',service.id).each do |line|%>
+      <%prices.each do |line|%>
           <tr>
             <td width="80%"><%=line.name%></td>
             <td width="20%" class="text-right">
