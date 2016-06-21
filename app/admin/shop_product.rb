@@ -1,5 +1,5 @@
-ActiveAdmin.register Product do
-
+ActiveAdmin.register ShopProduct do
+    menu label: "Товары"
     permit_params :name, :collection_id, :url, :description, :title, :photo
 
     index do
@@ -13,8 +13,7 @@ ActiveAdmin.register Product do
     form do |f|
         f.inputs "Продукт" do
             f.input :name
-            f.input :title
-            f.input :collection_id, :label => 'Линия', :as => :select, :collection => Collection.all.map{|c| ["#{c.name}", c.id]}
+            f.input :category_id, :label => 'Линия', :as => :select, :collection => ShopCategory.all.map{|c| ["#{c.name}", c.id]}
             f.input :url
             f.input :photo, :as => :file, :hint => f.template.image_tag(f.object.photo.url(:thumb))
             f.input :description, input_html: {class: 'redactor'}

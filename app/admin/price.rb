@@ -1,4 +1,5 @@
 ActiveAdmin.register Price do
+    menu false
     permit_params :name, :service_id, :price
     controller do
         def scoped_collection

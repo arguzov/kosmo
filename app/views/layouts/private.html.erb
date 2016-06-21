@@ -2,31 +2,30 @@
 <html>
 <head>
   <%= metamagic %>
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-  <%= stylesheet_link_tag    "application", media: "all" %>
-  <%= javascript_include_tag "application" %>
+  <%= stylesheet_link_tag    "v3/controller/#{params[:controller]}", media: "all" %>
+  <%= javascript_include_tag "v3/controller/#{params[:controller]}" %>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <script type="text/javascript" src="//vk.com/js/api/openapi.js?116"></script>
+  <script type="text/javascript" src="//vk.com/js/api/openapi.js?121"></script>
 </head>
-<body>
-<%=render 'app/header'%>
-<%=render 'app/navbar'%>
-<div class="container-fluid" id="private-wrapper">
-  <div class="row">
-    <div class="col-md-12" style="padding-left: 0px;">
-      <table id="private">
-        <tr>
-          <td class="left">
-              <%=render :partial => 'app/private/menu'%>
-          </td>
-          <td class="main"><%= yield %></td>
-        </tr>
-      </table>
+<body class="no-trans">
+<div class="page-wrapper">
+  <%=render :partial => 'app/header'%>
+  <section class="main-container" style="padding-top: 0px;">
+    <div class="container">
+      <%=render :partial => 'shop/shared/cart_top'%>
+      <div class="row">
+        <div class="col-md-12" style="padding-left: 0px;">
+            <%= yield %>
+        </div>
+      </div>
     </div>
-  </div>
-  <%=render 'app/footer' %>
+  </section>
+  <%=render :partial => 'app/footer'%>
 </div>
-<noindex>
 <%=render :partial => 'app/modal/recall'%>
-</noindex>
 </body>
 </html>

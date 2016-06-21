@@ -2,16 +2,17 @@
    meta :title => @collection.name + ' - купить в Казани',
         :description => sanitize(@collection.description.truncate(250), :tags=>[])
 %>
+<h1>Коллекция <%=@collection.name.html_safe%></h1>
 <div class="row">
   <div class="col-md-12">
-    <div class="page-header" style="margin: 10px 0px;">
-        <h1>Коллекция <%=@collection.name.html_safe%></h1>
-    </div>
-    <div class="descr">
-      <%=@collection.description.html_safe%>
+    <div id="shop-collection">
+      <%=render :partial=>'shop/shared/products', :locals => {products: @products, unit_id: @collection.parent_id}%>
     </div>
   </div>
 </div>
-<div class="row" id="shop-collection" style="margin-top: 20px;">
-    <%=render :partial=>'shop/shared/products', :locals => {products: @products, unit_id: @collection.parent_id}%>
+<div class="row">
+  <div class="descr" style="padding: 0px 20px;">
+    <h2>Описание линии <%=@collection.name.html_safe%></h2>
+    <%=@collection.description.html_safe%>
+  </div>
 </div>

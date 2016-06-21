@@ -1,4 +1,5 @@
 ActiveAdmin.register Menu do
+    menu false
     permit_params :title, :url, :parent_id, :fl_type, :post_id, :category_id
     form do |f|
         f.inputs "Строка меню" do

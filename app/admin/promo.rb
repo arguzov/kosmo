@@ -1,4 +1,5 @@
 ActiveAdmin.register Promo do
+    menu label: "Акции"
 
     controller do
         def scoped_collection

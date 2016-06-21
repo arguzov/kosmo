@@ -1,6 +1,6 @@
 class ShopController < ApplicationController
     layout :resolve_layout
-    before_action :closed
+    #before_action :closed
     before_action :authenticate_user!, :only => [:orders,:order]
 
     def closed

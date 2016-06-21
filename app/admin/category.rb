@@ -1,4 +1,5 @@
 ActiveAdmin.register Category do
+    menu false
     permit_params :name, :fl_status, :fl_menu, :title, :description
     form do |f|
         f.inputs "Редактировать категорию" do

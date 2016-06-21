@@ -1,4 +1,6 @@
 ActiveAdmin.register Service do
+    menu label: "Услуги"
+
   permit_params :name, :anounce, :photo, :content, :price, :title, :description, :keys, :complements, :fl_show, :fl_publish, :pricelist,:parent_id,:url, :metrika_id, expert_ids: []
   #fdddsf
   index do

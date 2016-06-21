@@ -1,4 +1,5 @@
 ActiveAdmin.register Subscription do
+  menu false
 
   permit_params :name, :service_id, :preview, :content, :post_id, :price, :discount, :fl_status, :photo
 

@@ -1,9 +1,6 @@
 <%products.each do |product|%>
-    <div class="col-sm-6 col-md-4">
-      <div class="thumbnail" >
-        <div class="caption" style="text-align: center;text-decoration: underline;height: 60px;">
-          <%=link_to product.name.html_safe, shop_product_path({url: product.url})%>
-        </div>
+    <div class="col-sm-6 col-md-3">
+      <div class="thumbnail shop-product" >
         <%if product.photo? %>
             <%if product.parent_id == 39 %>
                <div class="img-wrapper">
@@ -15,17 +12,24 @@
                 </div>
             <% end %>
         <% else %>
-            <% if unit_id == 1 %>
+            <% if product.id < 161 %>
                 <%=image_tag "/data/products/#{product.id}.jpg"%>
             <% end %>
         <% end %>
-        <div class="caption">
-          <table class="table">
-            <tr>
-              <td style="font-size: 12px;text-decoration: underline"><%=link_to "Подробнее", shop_product_path({url: product.url})%></td>
-              <td style="text-align: right;background-color: #006699;color: #fff;vertical-align: middle;width: 100px;font-size: 12px;">от <%=product.prices%> руб.</td>
-            </tr>
-          </table>
+        <div class="product-name">
+          <%=link_to product.name.html_safe, shop_product_path({url: product.url})%>
+        </div>
+        <div class="product-descr">
+          <%= (strip_tags product.description).gsub('Описание:','').truncate(60) %>
+        </div>
+        <div class="product-price">
+           от <%=product.prices%> <i class="fa fa-rouble"></i>
+        </div>
+        <div class="product-existance">
+           в наличии
+        </div>
+        <div class="product-action">
+          <%=link_to "Подробнее", shop_product_path({url: product.url}), :class=>"btn btn-default btn-sm"%>
         </div>
       </div>
     </div>

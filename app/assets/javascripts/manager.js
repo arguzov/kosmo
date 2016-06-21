@@ -10,19 +10,25 @@
 //= require manager/plugins/dataTables/dataTables.bootstrap
 //= require manager/plugins/dataTables/dataTables.responsive
 //= require manager/plugins/dataTables/dataTables.tableTools.min
+//= require manager/plugins/jquery.synctranslit
 //= require manager/inspinia/inspinia
 //= require manager/inspinia/peity-demo
 //= require redactor-rails
 
 $(document).ready(function(){
     $('textarea').redactor();
+    if($('#shop_product_name').length > 0) {
+        $('#shop_product_name').syncTranslit({destination: "shop_product_url"});
+    }
     if($('#nestable').length > 0) {
         $('#nestable').nestable();
         $('.dd').nestable('collapseAll');
     }
+
     $('.dataTables-grid').dataTable({
         paging: true,
         responsive: true,
+        "pageLength": 50,
         /*"dom": 'T<"clear">lfrtip'*/
         "sDom": 'T<"clear">lfrtip',
         "oTableTools": {
@@ -55,6 +61,33 @@ $(document).ready(function(){
          "sSwfPath": "js/plugins/dataTables/swf/copy_csv_xls_pdf.swf"
          }*/
     });
+
+    $('.product-fl-show').click(function(){
+
+        var obj = $(this);
+        var id = obj.attr('data-id');
+        var fl = obj.find('i');
+        if(fl.size() > 0){
+            obj.html('');
+            var fl_show = 0;
+        }else{
+            obj.html('<i class="fa fa-check"></i>');
+            var fl_show = 1;
+        }
+        var url = '/manager/shop/products/update_fl_show';
+        var method = 'POST';
+        $.ajax({ url: url,
+            type: method,
+            beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+            data: {id: id, fl_show: fl_show},
+            success: function(response) {
+                if(response.status == 'ok'){
+                    //document.location.reload();
+                }
+            }
+        });
+    })
+
     $('#product-prices .do').click(function(){
         var tr = $(this).closest('tr');
         var id = tr.attr('data-id');

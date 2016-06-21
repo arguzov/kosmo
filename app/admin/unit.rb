@@ -1,4 +1,5 @@
 ActiveAdmin.register Unit do
+    menu false
 
     permit_params :name, :url, :description, :parent
 

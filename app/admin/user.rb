@@ -1,6 +1,7 @@
 ActiveAdmin.register User do
+    menu label: "Пользователи"
 
-    permit_params :name, :email, :phone, :admin, :discount
+    permit_params :name, :email, :phone, :admin, :discount, group_ids: []
 
     index do
         column :name
@@ -20,6 +21,10 @@ ActiveAdmin.register User do
             f.input :phone
             f.input :discount
             f.input :admin
+        end
+
+        f.inputs "Группы" do
+            f.input :groups, as: :check_boxes
         end
         f.actions
     end

@@ -1,4 +1,5 @@
 ActiveAdmin.register Issue do
+  menu false
   permit_params :name, :url, :content, :title, :description, :fl_show, :parent_id, service_ids: []
 
   index do

@@ -1,4 +1,6 @@
 ActiveAdmin.register Collection do
+    menu label: "Товары коллекции"
+
     permit_params :name, :fl_show, :url, :description, :title, :unit_id
 
     index do

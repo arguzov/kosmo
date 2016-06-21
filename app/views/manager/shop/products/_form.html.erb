@@ -8,5 +8,5 @@
         <div style="border:1px solid #ededed;padding: 10px;width: 120px;margin-bottom: 10px;"><img src="<%=@product.photo.url(:thumb)%>"></div>
         <%= f.file_field :photo%>
     </div>
-    <%= f.button :submit %>
+    <%= f.button :submit, :class => 'btn btn-default' %>
 <% end %>

@@ -1,17 +1,20 @@
 <div class="wrapper wrapper-content animated fadeInRight">
   <div class="ibox">
-    <div class="ibox-title">Список товаров</div>
+    <div class="ibox-title">
+      <div class="pull-left">Список товаров</div>
+      <div class="pull-right"><a href="/manager/shop/products/new" class="btn btn-success btn-sm">Новый товар</a></div>
+    </div>
     <div class="ibox-content">
-        <table class="table dataTables-grid">
+        <table class="table dataTables-grid" id="shop-products-list">
           <thead>
           <tr>
             <th>id</th>
             <th>Название</th>
             <th>Url</th>
             <th>Категория</th>
-            <th>Цена</th>
             <th>Активен</th>
-            <th>Действия</th>
+            <th></th>
+            <th></th>
           </tr>
           </thead>
           <tbody>
@@ -21,10 +24,11 @@
                 <td><%=product.name%></td>
                 <td><%=product.url%></td>
                 <td><%=product.shop_category.name%></td>
-                <td><input style="width:80px;" type="text" class="form-control"></td>
-                <td><% if product.fl_show %><%=fa_icon 'check'%><% end %></td>
+                <td class="product-fl-show" data-id="<%=product.id%>"><% if product.fl_show %><%=fa_icon 'check'%><% end %></td>
                 <td>
                   <%=link_to edit_manager_shop_product_path(product), :class=> 'btn btn-success btn-sm' do %><%=fa_icon 'edit'%><% end %>
+                </td>
+                <td>
                   <%=link_to manager_shop_product_path(product), :class=>'btn btn-danger btn-sm', :method => :delete do %><%=fa_icon 'times'%><% end %>
                 </td>
               </Tr>

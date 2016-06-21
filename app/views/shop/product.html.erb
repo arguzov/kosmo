@@ -3,17 +3,15 @@
    meta :title => title + ' - купить в Казани',
         :description => sanitize(@product.description.truncate(250), :tags=>[])
 %>
+<h1><%=@product.name.html_safe%></h1>
 <div class="row" id="product" data-id="<%=@product.id%>">
   <div class="col-md-12">
-    <div class="page-header" style="margin: 10px 0px;">
-      <h1><%=@product.name.html_safe%></h1>
-    </div>
     <div class="content">
       <div style="float: right;" style="margin-left: 10px;">
         <%if @product.photo? %>
             <%=image_tag @product.photo.url(:thumb)%>
         <% else %>
-            <% if @product.collection.parent_id == 1 %>
+            <% if @product.id < 161 %>
                 <%=image_tag "/data/products/#{@product.id}.jpg"%>
             <% end %>
         <% end %>
@@ -40,7 +38,7 @@
             <td style="text-align: center;"><%=item.volume%> мл.</td>
             <td style="text-align: center;">На складе</td>
             <td style="text-align: center;"><%=item.price%> руб.</td>
-            <td style="text-align: center"><button class="btn btn-primary btn-sm add-to-cart" data-item="<%=item.id%>"><i class="glyphicon glyphicon-shopping-cart"></i> в корзину</button></td>
+            <td style="text-align: center"><button class="btn btn-primary btn-sm add-to-cart" data-item="<%=item.id%>"><i class="fa fa-cart-plus"></i> &nbsp; в корзину</button></td>
           </tr>
       <% end %>
     </table>

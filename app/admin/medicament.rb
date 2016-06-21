@@ -1,4 +1,6 @@
 ActiveAdmin.register Medicament do
+    menu label: "Препараты"
+
     permit_params :name, :content, :anounce, :photo, :title, :description, :fl_show, :service_id
 
     index do

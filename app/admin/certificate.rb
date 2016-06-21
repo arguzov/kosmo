@@ -1,4 +1,5 @@
 ActiveAdmin.register Certificate do
+ menu false
 
   permit_params :name, :preview, :content, :price, :discount, :fl_status, :fl_type,  :photo, service_ids: []
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160524114653) do
+ActiveRecord::Schema.define(version: 20160619182807) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -116,6 +116,17 @@ ActiveRecord::Schema.define(version: 20160524114653) do
     t.datetime "photo_updated_at"
   end
 
+  create_table "groups", force: true do |t|
+    t.string "name"
+  end
+
+  create_table "groups_users", id: false, force: true do |t|
+    t.integer "user_id"
+    t.integer "group_id"
+  end
+
+  add_index "groups_users", ["user_id", "group_id"], name: "index_groups_users_on_user_id_and_group_id", using: :btree
+
   create_table "histories", force: true do |t|
     t.integer  "page_type"
     t.integer  "entity_id"
@@ -143,6 +154,14 @@ ActiveRecord::Schema.define(version: 20160524114653) do
   end
 
   add_index "issues_services", ["issue_id", "service_id"], name: "index_issues_services_on_issue_id_and_service_id", using: :btree
+
+  create_table "mail_templates", force: true do |t|
+    t.string  "name"
+    t.text    "preview"
+    t.text    "content"
+    t.boolean "fl_active"
+    t.integer "group_id"
+  end
 
   create_table "medicaments", force: true do |t|
     t.string   "name"

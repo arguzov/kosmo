@@ -1,4 +1,5 @@
 ActiveAdmin.register Widget do
+  menu label: "Виджеты"
 
   permit_params :header, :position_id, :content, :entity_id, :is_new, :is_only
 

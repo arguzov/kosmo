@@ -1,4 +1,5 @@
 ActiveAdmin.register Expert do
+    menu label: "Персонал"
 
   permit_params :name, :content, :profession, :photo, :education, :experience, :diploma, :fl_order, service_ids: []
 
