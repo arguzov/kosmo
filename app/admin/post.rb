@@ -31,6 +31,7 @@ ActiveAdmin.register Post do
         f.inputs "Специалисты" do
             f.input :experts, as: :check_boxes
         end
+        # fix
         f.inputs "Услуги" do
             f.input :services, as: :check_boxes
         end
