@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160619182807) do
+ActiveRecord::Schema.define(version: 20160622143341) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -225,6 +225,13 @@ ActiveRecord::Schema.define(version: 20160619182807) do
     t.datetime "photo_updated_at"
     t.string   "person"
   end
+
+  create_table "posts_services", id: false, force: true do |t|
+    t.integer "post_id"
+    t.integer "service_id"
+  end
+
+  add_index "posts_services", ["post_id", "service_id"], name: "index_posts_services_on_post_id_and_service_id", using: :btree
 
   create_table "prices", force: true do |t|
     t.integer "service_id"

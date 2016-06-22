@@ -5,6 +5,7 @@ class Post < ActiveRecord::Base
     belongs_to :category
     belongs_to :user
     has_and_belongs_to_many :experts
+    has_and_belongs_to_many :services
 
     def category_name
         if self.category

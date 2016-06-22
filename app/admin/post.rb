@@ -1,7 +1,7 @@
 ActiveAdmin.register Post do
     menu label: "Статьи"
 
-    permit_params :name, :user_id, :category_id, :anounce, :content, :fl_status, :fl_menu, :title, :description, :photo, :person, expert_ids: []
+    permit_params :name, :user_id, :category_id, :anounce, :content, :fl_status, :fl_menu, :title, :description, :photo, :person, expert_ids: [], service_ids: []
 
     index do
         column :name
@@ -30,6 +30,9 @@ ActiveAdmin.register Post do
         end
         f.inputs "Специалисты" do
             f.input :experts, as: :check_boxes
+        end
+        f.inputs "Услуги" do
+            f.input :services, as: :check_boxes
         end
         f.actions
     end
