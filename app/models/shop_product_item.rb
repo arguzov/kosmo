@@ -3,7 +3,7 @@ class ShopProductItem < ActiveRecord::Base
     belongs_to :shop_product, :foreign_key => :product_id, :primary_key => :id
 
     def unit_name
-        return ShopProductItem::UNITS[self.unit]
+        ShopProductItem::UNITS[self.unit]
     end
 
     def product

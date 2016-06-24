@@ -62,31 +62,15 @@ $(document).ready(function(){
          }*/
     });
 
-    $('.product-fl-show').click(function(){
-
+    $('#shop-products-list .changeable').change(function(){
         var obj = $(this);
-        var id = obj.attr('data-id');
-        var fl = obj.find('i');
-        if(fl.size() > 0){
-            obj.html('');
-            var fl_show = 0;
-        }else{
-            obj.html('<i class="fa fa-check"></i>');
-            var fl_show = 1;
-        }
-        var url = '/manager/shop/products/update_fl_show';
-        var method = 'POST';
-        $.ajax({ url: url,
-            type: method,
-            beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
-            data: {id: id, fl_show: fl_show},
-            success: function(response) {
-                if(response.status == 'ok'){
-                    //document.location.reload();
-                }
-            }
-        });
-    })
+        changeProductField(obj);
+    });
+
+    $('#shop-products-list .editable').click(function(){
+        var obj = $(this);
+        changeProductField(obj);
+    });
 
     $('#product-prices .do').click(function(){
         var tr = $(this).closest('tr');
@@ -154,5 +138,42 @@ $(document).ready(function(){
             }
         });
     })
+
+    function changeProductField(obj){
+        var id = obj.closest('tr').attr('data-id');
+        var name = obj.attr('data-name');
+        var value = null;
+        var url = null;
+        if(name == 'fl_show') {
+            var fl = obj.find('i');
+            if (fl.size() > 0) {
+                obj.html('');
+                value = 0;
+            } else {
+                obj.html('<i class="fa fa-check"></i>');
+                value = 1;
+            }
+            id = obj.attr('data-id');
+        }
+        if(name == 'category_id'){
+            value = obj.find('select').val();
+        }
+        if(name == 'price'){
+            value = obj.find('input').val();
+            id = obj.attr('data-id');
+        }
+        url = '/manager/shop/products/update_field';
+        var method = 'POST';
+        $.ajax({ url: url,
+            type: method,
+            beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+            data: {id: id, name: name, value: value},
+            success: function(response) {
+                if(response.status == 'ok'){
+                    //document.location.reload();
+                }
+            }
+        });
+    }
 
 })

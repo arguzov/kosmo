@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160622143341) do
+ActiveRecord::Schema.define(version: 20160624092325) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -378,6 +378,7 @@ ActiveRecord::Schema.define(version: 20160622143341) do
     t.integer "price"
     t.string  "color"
     t.integer "unit"
+    t.boolean "fl_show",    default: true
   end
 
   create_table "shop_products", force: true do |t|

@@ -2,7 +2,7 @@ class Manager::Shop::ProductsController < Manager::ShopController
     before_action :get_product, only: [:edit,:update]
 
     def index
-        @products = ShopProduct.all.order('id DESC')
+        @products = ShopProductItem.all.order('id DESC')
     end
 
     def new
@@ -17,11 +17,24 @@ class Manager::Shop::ProductsController < Manager::ShopController
         end
     end
 
-    def update_fl_show
-        @item = ShopProduct.find(params[:id])
-        @item.fl_show = params[:fl_show]
+    def update_field
+
+        if params[:name] == 'fl_show'
+            @item = ShopProductItem.find(params[:id])
+            @item.fl_show = params[:value]
+        elsif params[:name] == 'category_id'
+            @item = ShopProduct.find(params[:id])
+            @item.category_id = params[:value]
+        elsif params[:name] == 'price'
+            @item = ShopProductItem.find(params[:id])
+            @item.price = params[:value]
+        end
         @item.save
         render json: {:status=>'ok'}
+    end
+
+    def destroy
+       ShopProduct.find(params[:id]).destroy
     end
 
     private

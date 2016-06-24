@@ -6,33 +6,43 @@
       <div class="pull-right"><a href="/manager/shop/products/new" class="btn btn-success btn-sm">Новый товар</a></div>
     </div>
     <div class="ibox-content">
-        <table class="table dataTables-grid" id="shop-products-list">
+        <table class="table" id="shop-products-list">
           <thead>
           <tr>
             <th>id</th>
             <th>Название</th>
-            <th>Url</th>
+            <th>К-во</th>
             <th>Категория</th>
             <th>Активен</th>
+            <th>Цена</th>
             <th></th>
             <th></th>
           </tr>
           </thead>
           <tbody>
           <%@products.each do |product|%>
-              <Tr>
+              <% if product.shop_product != nil %>
+              <Tr data-id="<%=product.shop_product.id%>">
                 <td><%=product.id%></td>
-                <td><%=product.name%></td>
-                <td><%=product.url%></td>
-                <td><%=product.shop_category.name%></td>
-                <td class="product-fl-show" data-id="<%=product.id%>"><% if product.fl_show %><%=fa_icon 'check'%><% end %></td>
                 <td>
-                  <%=link_to edit_manager_shop_product_path(product), :class=> 'btn btn-success btn-sm' do %><%=fa_icon 'edit'%><% end %>
+                  <%=product.shop_product.name%>
+                </td>
+                <td><nobr><%=product.volume%> <%=product.unit_name%></nobr></td>
+                <td class="changeable" data-name="category_id">
+                  <%= collection_select(:shop_products, :category_id, ShopCategory.all, :id, :name, {:selected => product.shop_product.category_id}) %>
+                </td>
+                <td class="editable" data-name="fl_show" data-id="<%=product.id%>"><% if product.fl_show %><%=fa_icon 'check'%><% end %></td>
+                <td class="changeable" data-name="price" data-id="<%=product.id%>">
+                  <input type="text" value="<%=product.price%>" class="form-control" style="width:80px;text-align: right">
                 </td>
                 <td>
-                  <%=link_to manager_shop_product_path(product), :class=>'btn btn-danger btn-sm', :method => :delete do %><%=fa_icon 'times'%><% end %>
+                  <%=link_to edit_manager_shop_product_path(product.shop_product), :class=> 'btn btn-success btn-sm' do %><%=fa_icon 'edit'%><% end %>
+                </td>
+                <td>
+                  <%=link_to manager_shop_product_item_path(product), :class=>'btn btn-danger btn-sm', :method => :delete do %><%=fa_icon 'times'%><% end %>
                 </td>
               </Tr>
+              <% end %>
           <% end %>
           </tbody>
         </table>

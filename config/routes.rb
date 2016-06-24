@@ -63,7 +63,7 @@ Kosmo::Application.routes.draw do
       namespace :shop do
         resources :categories
         resources :products do
-          post :update_fl_show, on: :collection
+          post :update_field, on: :collection
         end
         namespace :product do
           resources :items
