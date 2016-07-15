@@ -10,7 +10,7 @@
         <td style="width:100px;">
           <select name="unit" class="form-control">
             <%ShopProductItem::UNITS.each do |index,unit|%>
-                <option value="index" <%if index == item.unit%>selected<% end %>><%=unit%></option>
+                <option value="<%=index%>" <%if index == item.unit%>selected<% end %>><%=unit%></option>
             <% end %>
           </select>
         </td>

@@ -9,12 +9,12 @@ class ShopController < ApplicationController
 
     def collection
         @collection = ShopCategory.where('url = ?',params[:url]).first
-        @products = ShopProduct.where('category_id = ?',@collection[:id])
+        @products = ShopProduct.active.where('category_id = ?',@collection[:id])
         @unit = ShopCategory.where('parent_id = ?',@collection.id)
     end
 
     def product
-        @product = ShopProduct.where('url = ?',params[:url]).first
+        @product = ShopProduct.active.where('url = ?',params[:url]).first
         @unit = @product.shop_category
         if cookies.has_key?('viewed')
             ids = cookies[:viewed].split(/,/)
@@ -31,7 +31,7 @@ class ShopController < ApplicationController
     def unit
         @unit = ShopCategory.where('url = ?',params[:url]).first
         @collections = ShopCategory.where('parent_id = ?',@unit.id)
-        @products = ShopProduct.where('parent_id IN (?)',@collections.map{|row| row.id}).order('RAND()')
+        @products = ShopProduct.active.where('parent_id IN (?)',@collections.map{|row| row.id}).order('RAND()')
     end
 
     def cart

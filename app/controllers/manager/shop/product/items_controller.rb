@@ -1,4 +1,4 @@
-class Manager::Shop::Product::ItemsController < Manager::Shop::ProductsController
+class Manager::Shop::Product::ItemsController < Manager::ShopController
     def create
         if params.has_key?(:volume)
             @item = ShopProductItem.new
@@ -34,7 +34,11 @@ class Manager::Shop::Product::ItemsController < Manager::Shop::ProductsControlle
 
     def destroy
         @item = ShopProductItem.find(params[:id])
+        @product = ShopProduct.find(@item.product_id)
         @item.destroy
+        if @product.items.count < 2
+            @product.destroy
+        end
         redirect_to :back
     end
 end
