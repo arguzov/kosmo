@@ -36,6 +36,9 @@ class Manager::Shop::ProductsController < Manager::ShopController
                 product.fl_show = 1
                 product.save
             end
+        elsif params[:name] == 'fl_best_seller'
+            @item = ShopProductItem.find(params[:id])
+            @item.fl_best_seller = params[:value]
         elsif params[:name] == 'category_id'
             @item = ShopProduct.find(params[:id])
             @item.category_id = params[:value]

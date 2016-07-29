@@ -3,6 +3,14 @@ class ShopController < ApplicationController
     #before_action :closed
     before_action :authenticate_user!, :only => [:orders,:order]
 
+    def main
+        @products = ShopProductItem.active.best_sellers
+    end
+
+    def best_sellers
+        @products = ShopProductItem.active.best_sellers
+    end
+
     def closed
         return render 'shop/closed'
     end

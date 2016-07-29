@@ -14,6 +14,7 @@
             <th>К-во</th>
             <th>Категория</th>
             <th>Активен</th>
+            <th>Бестселлер</th>
             <th>Цена</th>
             <th></th>
             <th></th>
@@ -32,6 +33,7 @@
                   <%= collection_select(:shop_products, :category_id, ShopCategory.all, :id, :name, {:selected => product.shop_product.category_id}) %>
                 </td>
                 <td class="editable" data-name="fl_show" data-id="<%=product.id%>"><% if product.fl_show %><%=fa_icon 'check'%><% end %></td>
+                <td class="editable" data-id="<%=product.id%>" data-name="fl_best_seller"><%if product.fl_best_seller%><%=fa_icon 'check'%><% end %></td>
                 <td class="changeable" data-name="price" data-id="<%=product.id%>">
                   <input type="text" value="<%=product.price%>" class="form-control" style="width:80px;text-align: right">
                 </td>

@@ -1,4 +1,9 @@
 <%products.each do |product|%>
+    <%
+        if defined?fl_items
+            product = product.product
+        end
+    %>
     <div class="col-sm-6 col-md-3">
       <div class="thumbnail shop-product" >
         <%if product.photo? %>

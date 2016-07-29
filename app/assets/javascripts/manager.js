@@ -144,7 +144,7 @@ $(document).ready(function(){
         var name = obj.attr('data-name');
         var value = null;
         var url = null;
-        if(name == 'fl_show') {
+        if(name == 'fl_show' || name == 'fl_best_seller') {
             var fl = obj.find('i');
             if (fl.size() > 0) {
                 obj.html('');

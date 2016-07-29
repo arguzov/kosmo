@@ -3,6 +3,7 @@ class ShopProductItem < ActiveRecord::Base
     belongs_to :shop_product, :foreign_key => :product_id, :primary_key => :id
 
     scope :active, -> {where('fl_show = 1')}
+    scope :best_sellers, -> {where('fl_best_seller = 1')}
 
     def unit_name
         ShopProductItem::UNITS[self.unit]

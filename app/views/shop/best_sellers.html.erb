@@ -4,13 +4,9 @@
 %>
 <div class="row">
   <div class="col-md-12">
-    <div class="page-header" style="margin: 0px 0px 10px 0px;padding: 0px;">
-      <h1 style="margin :0px;padding: 10px 0px;">Интернет магазин</h1>
+    <div class="page-header" style="margin :0px;padding: 0px;">
+      <h1 style="margin :0px;padding: 10px 0px;">Бестселлеры</h1>
     </div>
-    <div class="descr">
-        <%=Post.find(209).content.html_safe%>
-    </div>
-    <h2>Наши бестселлеры</h2>
     <div>
       <%=render :partial=>'shop/shared/products', :locals => {products: @products, fl_items: true}%>
     </div>

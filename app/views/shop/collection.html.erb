@@ -2,9 +2,11 @@
    meta :title => @collection.name + ' - купить в Казани',
         :description => sanitize(@collection.description.truncate(250), :tags=>[])
 %>
-<h1>Коллекция <%=@collection.name.html_safe%></h1>
 <div class="row">
   <div class="col-md-12">
+    <div class="page-header" style="margin :0px;padding: 0px;">
+      <h1 style="margin :0px;padding: 10px 0px;">Коллекция <%=@collection.name.html_safe%></h1>
+    </div>
     <div id="shop-collection">
       <%=render :partial=>'shop/shared/products', :locals => {products: @products, unit_id: @collection.parent_id}%>
     </div>
