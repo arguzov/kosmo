@@ -14,9 +14,11 @@
     </div>
     <div class="form-group">
       <% if from == 'cart'%>
+          <input type="hidden" name="order[type]" value="order">
           <label for="exampleInputText">Комментарий (не обязательно)</label>
          <textarea style="height: 100px;" class="form-control" id="exampleInputText" name="order[content]" placeholder="Любые комментарии к заказу"></textarea>
       <% else %>
+          <input type="hidden" name="order[type]" value="question">
           <label for="exampleInputText">Ваш вопрос</label>
           <textarea style="height: 100px;" class="form-control" id="exampleInputText" name="order[content]" placeholder=""></textarea>
       <% end %>

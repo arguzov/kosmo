@@ -17,6 +17,7 @@ class Manager::UsersController < ApplicationController
         @user = User.new(user_params)
         respond_to do |format|
             if @user.save
+                #SubscribeMailer.letter({template_id: 1,user_name: @user.name,user_email: @user.email}).deliver
                 format.html { redirect_to :manager_users, notice: 'Создан!' }
             else
                 format.html { render action: 'new' }

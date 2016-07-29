@@ -19,7 +19,19 @@ class OrdersController < ApplicationController
         end
         respond_to do |format|
             if @order.save
-                OrderMailer.recall(@params).deliver
+                if @params[:fl_type] == '2'
+                    data = {
+                        user_name: @order.user.name,
+                        user_email: @order.user.email,
+                        content: @order.content,
+                        qty: @order.qty,
+                        price: @order.price,
+                        comment: @params[:content]
+                    }
+                    OrderMailer.shop(data).deliver
+                else
+                    OrderMailer.recall(@params).deliver
+                end
                 format.html { redirect_to :back, notice: 'Order was created' }
                 format.json { render json: @order }
             else
