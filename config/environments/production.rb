@@ -77,8 +77,8 @@ Kosmo::Application.configure do
   config.action_mailer.smtp_settings = {
       address:              'smtp-pulse.com',
       port:                 465,
-      user_name:            'axxilius@gmail.com',
-      password:             'tDFkTktSeP',
+      user_name:            'feedback@kosmetologiya-kazan.ru',
+      password:             'k6PDddS5krn3k2',
       :authentication       => :login,
       :ssl                  => true,
       :tls                  => true,
