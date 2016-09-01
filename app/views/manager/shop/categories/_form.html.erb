@@ -1,7 +1,9 @@
 <%= simple_form_for [:manager,@category] do |f| %>
     <%= f.input :name %>
     <%= f.input :url %>
+    <%= f.association :parent_category %>
     <%= f.input :fl_show, as: :boolean %>
     <%= f.input :description, as: :text, :class=>'redactor' %>
     <%= f.button :submit %>
+    <%= link_to "Удалить", [:manager,@category], :confirm =>"Вы уверены?", :method => :delete, :class=> "btn btn-danger" %>
 <% end %>

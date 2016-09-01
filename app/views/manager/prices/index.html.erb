@@ -1,35 +1,51 @@
 <%previous_service_id = 0%>
 <div class="wrapper wrapper-content animated fadeInRight">
   <div class="ibox">
-    <div class="ibox-title">Список цен</div>
+    <div class="ibox-title">
+Список цен
+    </div>
     <div class="ibox-content">
       <input type="hidden" id="order-id" value="0">
       <table class="table" id="manager-prices">
-        <%@prices.each do |price|%>
-            <%if price.service_id != previous_service_id %>
-                <tr class="sh" data-id="<%=price.service_id%>">
-                  <th colspan="5"><label class="badge">+</label> <%=price.service.name%></th>
+        <%@services.each do |service|%>
+                <tr class="sh" data-id="<%=service.id%>">
+                  <th colspan="6">
+                    <label class="badge">+</label> <%=service.name%>
+                    <div class="pull-right"><a href="/manager/prices/new?service_id=<%=service.id%>" class="btn btn-success btn-sm">Добавить</a></div>
+                  </th>
                 </tr>
-                <%previous_service_id = price.service_id%>
-                <tr class="sr" data-id="<%=price.service_id%>">
+                <tr class="sr" data-id="<%=service.id%>">
                   <th></th>
                   <th>Название</th>
                   <th>Цена</th>
                   <th>Скидка (%)</th>
                   <th>Для новых</th>
+                  <th>Удалить</th>
                 </tr>
+            <%service.prices.where('parent_id = 0 AND price = 0').each do |price_depart|%>
+                <tr class="sr" data-id="<%=price_depart.service_id%>"><td></td><td colspan="6"><strong><%=price_depart.name%></strong></td></tr>
+                <%Price.where('parent_id = ?',price_depart).each do |price|%>
+                    <tr class="sr" data-id="<%=price.service_id%>" data-price_id="<%=price.id%>">
+                      <td></td>
+                      <td><%=price.name%></td>
+                      <td><input type="text" class="form-control" name="price" value="<%=price.price%>"></td>
+                      <td><input type="text" class="form-control" name="discount" value="<%=price.discount%>"></td>
+                      <td><input type="checkbox" name="is_new_only" <%if price.is_new_only %>checked="checked"<% end %>></td>
+                      <td><%= link_to "Удалить", [:manager,price], :confirm =>"Вы уверены?", :method => :delete, :class=> "btn btn-danger" %></td>
+                    </tr>
+                <% end %>
             <% end %>
-            <%if price.parent_id.to_i == 0 && price.price.to_i == 0%>
-                <tr class="sr" data-id="<%=price.service_id%>"><td></td><td colspan="4"><strong><%=price.name%></strong></td></tr>
-            <% else %>
-            <tr class="sr" data-id="<%=price.service_id%>" data-price_id="<%=price.id%>">
-              <td></td>
-              <td><%=price.name%></td>
-              <td><input type="text" class="form-control" name="price" value="<%=price.price%>"></td>
-              <td><input type="text" class="form-control" name="discount" value="<%=price.discount%>"></td>
-              <td><input type="checkbox" name="is_new_only" <%if price.is_new_only %>checked="checked"<% end %>></td>
-            </tr>
+            <%service.prices.where('parent_id = 0 AND price > 0').each do |price|%>
+                    <tr class="sr" data-id="<%=price.service_id%>" data-price_id="<%=price.id%>">
+                      <td></td>
+                      <td><%=price.name%></td>
+                      <td><input type="text" class="form-control" name="price" value="<%=price.price%>"></td>
+                      <td><input type="text" class="form-control" name="discount" value="<%=price.discount%>"></td>
+                      <td><input type="checkbox" name="is_new_only" <%if price.is_new_only %>checked="checked"<% end %>></td>
+                      <td><%= link_to "Удалить", [:manager,price], :confirm =>"Вы уверены?", :method => :delete, :class=> "btn btn-danger" %></td>
+                    </tr>
             <% end %>
+
         <% end %>
       </table>
     </div>

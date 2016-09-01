@@ -1,0 +1,9 @@
+<%= simple_form_for [:manager,@price] do |f| %>
+    <%= f.input :name %>
+    <%= f.association :service %>
+    <%= f.input :parent_id, as: :select, collection: @price.parent_prices %>
+    <%= f.input :price %>
+    <%= f.input :discount %>
+    <%= f.input :is_new_only, as: :boolean %>
+    <%= f.button :submit %>
+<% end %>

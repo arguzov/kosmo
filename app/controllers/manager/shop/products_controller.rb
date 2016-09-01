@@ -14,6 +14,11 @@ class Manager::Shop::ProductsController < Manager::ShopController
         @product = ShopProduct.new
     end
 
+    def create
+        @product = ShopProduct.create(product_params)
+        redirect_to  edit_manager_shop_product_path(@product)
+    end
+
     def update
         if @product.update(product_params)
             redirect_to :back
