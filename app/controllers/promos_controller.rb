@@ -1,6 +1,6 @@
 class PromosController < ApplicationController
     def index
-        @promos = Promo.where('fl_top = 1 and fl_active = 1').order('fl_order ASC')
+        @promos = Promo.where('fl_active = 1').order('fl_order ASC')
     end
 
     def show
