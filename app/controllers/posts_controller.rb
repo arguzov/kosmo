@@ -29,7 +29,13 @@ class PostsController < ApplicationController
         else
             order = ' created_at ASC'
         end
-        @reviews = Post.where('category_id = 31').order(order).paginate(:page => params[:page], :per_page => 10)
+        if params.has_key?('service_id')
+            @service = Service.find(params[:service_id])
+            ids = PostsService.where('service_id = ?',params[:service_id]).pluck(:post_id)
+            @reviews = Post.where('id IN (?)',ids).order(order).paginate(:page => params[:page], :per_page => 10)
+        else
+            @reviews = Post.where('category_id = 31').order(order).paginate(:page => params[:page], :per_page => 10)
+        end
     end
 
     def news
