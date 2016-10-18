@@ -24,6 +24,9 @@ class Manager::PricesController < ApplicationController
             if params[:field] == 'price'
                 @price.price = params[:value]
             end
+            if params[:field] == 'name'
+                @price.name = params[:value]
+            end
             if params[:field] == 'discount'
                 @price.discount = params[:value]
             end

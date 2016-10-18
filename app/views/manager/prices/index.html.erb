@@ -27,7 +27,7 @@
                 <%Price.where('parent_id = ?',price_depart).each do |price|%>
                     <tr class="sr" data-id="<%=price.service_id%>" data-price_id="<%=price.id%>">
                       <td></td>
-                      <td><%=price.name%></td>
+                      <td><input type="text" class="form-control" name="name" value="<%=price.name%>" style="width:400px;"></td>
                       <td><input type="text" class="form-control" name="price" value="<%=price.price%>"></td>
                       <td><input type="text" class="form-control" name="discount" value="<%=price.discount%>"></td>
                       <td><input type="checkbox" name="is_new_only" <%if price.is_new_only %>checked="checked"<% end %>></td>
@@ -38,7 +38,7 @@
             <%service.prices.where('parent_id = 0 AND price > 0').each do |price|%>
                     <tr class="sr" data-id="<%=price.service_id%>" data-price_id="<%=price.id%>">
                       <td></td>
-                      <td><%=price.name%></td>
+                      <td><input type="text" class="form-control" name="name" value="<%=price.name%>" style="width:400px;"></td>
                       <td><input type="text" class="form-control" name="price" value="<%=price.price%>"></td>
                       <td><input type="text" class="form-control" name="discount" value="<%=price.discount%>"></td>
                       <td><input type="checkbox" name="is_new_only" <%if price.is_new_only %>checked="checked"<% end %>></td>
