@@ -28,7 +28,7 @@
           <%= (strip_tags product.description).gsub('Описание:','').truncate(60) %>
         </div>
         <div class="product-price">
-           от <%=product.prices%> <i class="fa fa-rouble"></i>
+           <%=product.prices%> <i class="fa fa-rouble"></i>
         </div>
         <div class="product-existance">
            в наличии
