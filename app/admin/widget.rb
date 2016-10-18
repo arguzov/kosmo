@@ -1,7 +1,7 @@
 ActiveAdmin.register Widget do
   menu label: "Виджеты"
 
-  permit_params :header, :position_id, :content, :entity_id, :is_new, :is_only
+  permit_params :header, :position_id, :content, :entity_id, :is_new, :is_only, :button_name, :metrika_id
 
   index do
       column :id
@@ -21,6 +21,8 @@ ActiveAdmin.register Widget do
           f.input :entity_id
           f.input :is_new
           f.input :is_only
+          f.input :button_name
+          f.input :metrika_id
       end
       f.actions
   end
