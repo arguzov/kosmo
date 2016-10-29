@@ -4,6 +4,7 @@
         prices = prices.where('gender_id = ?',params[:gender_id])
     end
     discount = prices.where('discount > 0')
+    genders = ['','мужчины','женщины']
 %>
 <% if prices.length > 0 %>
 <div class="panel-heading" style="padding: 0px;margin: 1px;background-color: gray;border-bottom-width: 0px;">
@@ -23,7 +24,7 @@
           <%prices.each do |line|%>
               <tr>
                 <td>
-                  <div><%=line.name%></div>
+                  <div><%=line.name%> <% if line.gender_id < 3 %>(<%=genders[line.gender_id]%>) <% end %></div>
                   <div style="padding: 10px 0px;"><strong><%=render :partial => 'app/pricelist/pricerow', locals: {line: line}%></strong></div>
                 </td>
               </tr>
@@ -33,7 +34,7 @@
     <table class="table table-striped">
       <%prices.each do |line|%>
           <tr>
-            <td width="80%"><%=line.name%></td>
+            <td width="80%"><%=line.name%> <% if line.gender_id < 3 %>(<%=genders[line.gender_id]%>) <% end %></td>
             <td width="20%" class="text-right">
                 <%=render :partial => 'app/pricelist/pricerow', locals: {line: line}%>
             </td>
