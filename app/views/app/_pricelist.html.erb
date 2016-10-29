@@ -9,7 +9,9 @@
     <div class="panel" style="margin: 0px;" id="global-pricelist">
       <%prices.each do |service|%>
           <% if service.price > 0 %>
-              <%= render :partial => 'app/pricelist/plain', locals: {service: service}%>
+              <% unless params[:gender_id] && service.gender_id != params[:gender_id].to_i %>
+                   <%= render :partial => 'app/pricelist/plain', locals: {service: service}%>
+              <% end %>
           <% else %>
               <%= render :partial => 'app/pricelist/collapsed', locals: {service: service}%>
           <% end %>

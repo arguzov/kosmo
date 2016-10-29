@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160729155550) do
+ActiveRecord::Schema.define(version: 20161029175427) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -236,11 +236,12 @@ ActiveRecord::Schema.define(version: 20160729155550) do
   create_table "prices", force: true do |t|
     t.integer "service_id"
     t.integer "parent_id",   default: 0
-    t.string  "name"
+    t.string  "name",        default: "0"
     t.integer "price",       default: 0
     t.integer "old_price",   default: 0
     t.integer "discount"
     t.boolean "is_new_only"
+    t.integer "gender_id",   default: 3
   end
 
   create_table "products", force: true do |t|
@@ -260,24 +261,6 @@ ActiveRecord::Schema.define(version: 20160729155550) do
   end
 
   create_table "promos", force: true do |t|
-    t.string   "name"
-    t.text     "content"
-    t.text     "banner"
-    t.boolean  "fl_active"
-    t.boolean  "fl_top"
-    t.datetime "due"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "photo_file_name"
-    t.string   "photo_content_type"
-    t.integer  "photo_file_size"
-    t.datetime "photo_updated_at"
-    t.boolean  "fl_banner"
-    t.string   "more_link"
-    t.integer  "fl_order",           default: 99
-  end
-
-  create_table "promos_old", force: true do |t|
     t.string   "name"
     t.text     "content"
     t.text     "banner"

@@ -5,7 +5,11 @@ class Manager::PricesController < ApplicationController
 
     def index
         #@prices = Price.order('service_id')
-        @services = Service.all
+        if params[:service_id]
+            @services = Service.where('id = ?',params[:service_id])
+        else
+            @services = Service.all
+        end
     end
 
     def new
@@ -33,17 +37,22 @@ class Manager::PricesController < ApplicationController
             if params[:field] == 'is_new_only'
                 @price.is_new_only = params[:value]
             end
+            if params[:field] == 'gender_id'
+                @price.gender_id = params[:value]
+            end
             @price.save
             render json: {price: 'ok'}
         else
-            Price.create(price_params)
-            redirect_to manager_prices_path
+            price_row = Price.create(price_params)
+            redirect_to manager_prices_path({service_id: price_row.service_id})
         end
     end
 
     def destroy
-        Price.find(params[:id]).destroy
-        redirect_to manager_prices_path
+        price_row = Price.find(params[:id])
+        service_id = priceRow.service_id
+        price_row.destroy
+        redirect_to manager_prices_path({service_id: service_id})
     end
 
     private
@@ -56,7 +65,7 @@ class Manager::PricesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def price_params
-        params.require(:price).permit(:price, :name, :service_id, :parent_id, :discount, :is_new_only)
+        params.require(:price).permit(:price, :name, :service_id, :parent_id, :discount, :is_new_only, :gender_id)
     end
 
 end

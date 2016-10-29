@@ -139,6 +139,26 @@ $(document).ready(function(){
         });
     })
 
+    $('#manager-prices select').change(function(){
+        var id = $(this).closest('tr').attr('data-price_id');
+        var field = $(this).attr('name');
+        var val = $(this).val();
+        var url = '/manager/prices';
+        var method = 'POST';
+        $.ajax({ url: url,
+            type: method,
+            beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+            data: {id: id,
+                field: field,
+                value: val},
+            success: function(response) {
+                if(response.status == 'ok'){
+                    //document.location.reload();
+                }
+            }
+        });
+    })
+
     function changeProductField(obj){
         var id = obj.closest('tr').attr('data-id');
         var name = obj.attr('data-name');

@@ -1,7 +1,11 @@
 <%
     prices = Price.where('parent_id = ?',service.id)
+    if params[:gender_id]
+        prices = prices.where('gender_id = ?',params[:gender_id])
+    end
     discount = prices.where('discount > 0')
 %>
+<% if prices.length > 0 %>
 <div class="panel-heading" style="padding: 0px;margin: 1px;background-color: gray;border-bottom-width: 0px;">
   <h4 class="panel-title">
     <a data-toggle="collapse" style="background-color: #F5F5F5;margin:0px;color: #000;" data-parent="#global-pricelist" href="#collapse-s-<%=service.id%>">
@@ -39,3 +43,4 @@
     <% end %>
   </div>
 </div>
+<% end %>
