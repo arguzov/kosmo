@@ -5,6 +5,12 @@ class ServicesController < ApplicationController
     layout :resolve_layout
 
     def index
+        if params.has_key?(:q)
+            services = Service.where('name like ?','%'+params[:q]+'%')
+            if (services.length == 1)
+                return redirect_to service_path(url: services.first.url,id: services.first.id)
+            end
+        end
         @sections = Section.order('fl_order')
     end
 

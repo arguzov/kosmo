@@ -8,6 +8,19 @@
   <h1 class="page-title">Услуги Центра эпиляции и косметологии</h1>
   <div class="separator-2"></div>
   <div class="row">
+     <% if params.has_key?(:q)%>
+        <div class="col-md-12">
+          <%=render :partial => 'services/index/section', :locals => {section: Section.find(1)}%>
+          <%=render :partial => 'services/index/section', :locals => {section: Section.find(10)}%>
+          <%=render :partial => 'services/index/section', :locals => {section: Section.find(7)}%>
+          <%=render :partial => 'services/index/section', :locals => {section: Section.find(8)}%>
+          <%=render :partial => 'services/index/section', :locals => {section: Section.find(2)}%>
+          <%=render :partial => 'services/index/section', :locals => {section: Section.find(3)}%>
+          <%=render :partial => 'services/index/section', :locals => {section: Section.find(4)}%>
+          <%=render :partial => 'services/index/section', :locals => {section: Section.find(5)}%>
+          <%=render :partial => 'services/index/section', :locals => {section: Section.find(9)}%>
+        </div>
+     <% else %>
       <div class="col-md-4">
           <%=render :partial => 'services/index/section', :locals => {section: Section.find(1)}%>
           <%=render :partial => 'services/index/section', :locals => {section: Section.find(10)}%>
@@ -23,5 +36,6 @@
         <%=render :partial => 'services/index/section', :locals => {section: Section.find(5)}%>
         <%=render :partial => 'services/index/section', :locals => {section: Section.find(9)}%>
       </div>
+     <% end %>
   </div>
 </div>

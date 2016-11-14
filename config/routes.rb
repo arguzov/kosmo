@@ -58,6 +58,8 @@ Kosmo::Application.routes.draw do
   get 'shop/orders'=>'shop#orders', as: :shop_orders
   get 'shop/:url'=>'shop#unit', as: :shop_unit
 
+  get 'api/typehead/services'=>'services#typehead_list', as: :api_typehead_services
+
   namespace :manager do
       resources :orders
       resources :prices

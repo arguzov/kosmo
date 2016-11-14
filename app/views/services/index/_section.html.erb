@@ -1,6 +1,15 @@
-<h2 id="section_<%=section.id%>"><%=section.name%></h2>
-<ul>
-  <%section.services.where('fl_publish = 1').order('fl_order').each do |service|%>
-      <li><%=link_to service.name, service_path(id:service.id, url:service.url) %></li>
-  <% end %>
-</ul>
+<%
+  if params.has_key?(:q)
+      services = section.services.where('fl_publish = 1').where('name like ?','%'+params[:q]+'%').order('fl_order')
+  else
+      services = section.services.where('fl_publish = 1').order('fl_order')
+  end
+%>
+<% if services.length > 0 %>
+    <h2 id="section_<%=section.id%>"><%=section.name%></h2>
+    <ul>
+      <%services.each do |service|%>
+          <li><%=link_to service.name, service_path(id:service.id, url:service.url) %></li>
+      <% end %>
+    </ul>
+<% end %>
