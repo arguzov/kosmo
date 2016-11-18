@@ -50,7 +50,7 @@ class Manager::PricesController < ApplicationController
 
     def destroy
         price_row = Price.find(params[:id])
-        service_id = priceRow.service_id
+        service_id = price_row.service_id
         price_row.destroy
         redirect_to manager_prices_path({service_id: service_id})
     end
