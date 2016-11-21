@@ -52,6 +52,7 @@ class Manager::PricesController < ApplicationController
         price_row = Price.find(params[:id])
         service_id = price_row.service_id
         price_row.destroy
+        Price.where('parent_id = ?',params[:id]).update_all(parent_id: 0)
         redirect_to manager_prices_path({service_id: service_id})
     end
 
@@ -65,6 +66,12 @@ class Manager::PricesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def price_params
+        if params[:price][:parent_id].nil? || params[:price][:parent_id].empty?
+            params[:price][:parent_id] = 0
+        end
+        if params[:price][:price].nil? || params[:price][:price].empty?
+            params[:price][:price] = 0
+        end
         params.require(:price).permit(:price, :name, :service_id, :parent_id, :discount, :is_new_only, :gender_id)
     end
 

@@ -3,7 +3,12 @@
   <div class="ibox">
     <div class="ibox-title">
 Список цен
-      <% if params[:service_id]%><div class="pull-right"><a href="/manager/prices/new?service_id=<%=params[:service_id]%>" class="btn btn-success btn-sm">Добавить</a></div><% end %>
+      <% if params[:service_id]%>
+          <div class="pull-right">
+            <a href="/manager/prices/new?service_id=<%=params[:service_id]%>" class="btn btn-success btn-sm">Добавить цену</a>
+            <a href="/manager/prices/new?service_id=<%=params[:service_id]%>&fl_parent=true" class="btn btn-warning btn-sm">Добавить раздел</a>
+          </div>
+      <% end %>
     </div>
     <div class="ibox-content">
       <input type="hidden" id="order-id" value="0">
@@ -27,7 +32,11 @@
                   <th>Удалить</th>
                 </tr>
             <%service.prices.where('parent_id = 0 AND price = 0').each do |price_depart|%>
-                <tr <% unless params[:service_id] %>class="sr"<% end %> data-id="<%=price_depart.service_id%>"><td></td><td colspan="6"><strong><%=price_depart.name%></strong></td></tr>
+                <tr <% unless params[:service_id] %>class="sr"<% end %> data-id="<%=price_depart.service_id%>">
+                  <td></td>
+                  <td colspan="5"><strong><%=price_depart.name%></strong></td>
+                  <td><%= link_to "X", [:manager,price_depart], :confirm =>"Вы уверены?", :method => :delete, :class=> "btn btn-danger" %></td>
+                </tr>
                 <%Price.where('parent_id = ?',price_depart).each do |price|%>
                     <tr <% unless params[:service_id] %>class="sr"<% end %> data-id="<%=price.service_id%>" data-price_id="<%=price.id%>">
                       <td></td>
@@ -46,6 +55,10 @@
                     </tr>
                 <% end %>
             <% end %>
+            <tr>
+              <td></td>
+              <td colspan="6"><strong>Без раздела</strong></td>
+            </tr>
             <%service.prices.where('parent_id = 0 AND price > 0').each do |price|%>
                     <tr <% unless params[:service_id] %>class="sr"<% end %> data-id="<%=price.service_id%>" data-price_id="<%=price.id%>">
                       <td></td>

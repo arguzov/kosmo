@@ -1,10 +1,12 @@
 <%= simple_form_for [:manager,@price] do |f| %>
     <%= f.input :name %>
     <%= f.association :service %>
+    <% unless params[:fl_parent] %>
     <%= f.input :parent_id, as: :select, collection: @price.parent_prices %>
     <%= f.input :price %>
     <%= f.input :discount %>
     <%= f.input :gender_id, collection: [['Любой',3],['Жен',2],['Муж',1]] %>
     <%= f.input :is_new_only, as: :boolean %>
+    <% end %>
     <%= f.button :submit %>
 <% end %>
