@@ -1,9 +1,11 @@
 <%
+    css = ''
     if params[:gender_id]
         gender_id = params[:gender_id]
     end
     prices = Price.where('parent_id = ?',service.id)
     if defined?(gender_id) && gender_id.to_i > 0
+        css = gender_id
         prices = prices.where('gender_id = ?',gender_id)
     end
     discount = prices.where('discount > 0')
@@ -12,7 +14,7 @@
 <% if prices.length > 0 %>
 <div class="panel-heading" style="padding: 0px;margin: 1px;background-color: gray;border-bottom-width: 0px;">
   <h4 class="panel-title">
-    <a data-toggle="collapse" style="background-color: #F5F5F5;margin:0px;color: #000;" data-parent="#global-pricelist" href="#collapse-s-<%=service.id%>">
+    <a data-toggle="collapse" style="background-color: #F5F5F5;margin:0px;color: #000;" data-parent="#global-pricelist" href="#collapse-s-<%=service.id%>-<%=css%>">
       <%=('<i class="fa fa-caret-down"></i> ' + service.name).html_safe%>
       <% if discount.count > 0  %>
           <span class="label label-danger pull-right">Скидка <%=discount.first.discount%>%</span>
@@ -20,7 +22,7 @@
     </a>
   </h4>
 </div>
-<div id="collapse-s-<%=service.id%>" class="panel-collapse collapse">
+<div id="collapse-s-<%=service.id%>-<%=css%>" class="panel-collapse collapse">
   <div class="panel-body">
     <% if browser.device.mobile? %>
         <table class="table table-striped">

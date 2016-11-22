@@ -55,10 +55,6 @@
                     </tr>
                 <% end %>
             <% end %>
-            <tr>
-              <td></td>
-              <td colspan="6"><strong>Без раздела</strong></td>
-            </tr>
             <%service.prices.where('parent_id = 0 AND price > 0').each do |price|%>
                     <tr <% unless params[:service_id] %>class="sr"<% end %> data-id="<%=price.service_id%>" data-price_id="<%=price.id%>">
                       <td></td>
