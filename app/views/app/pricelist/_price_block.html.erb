@@ -1,0 +1,15 @@
+<%prices.each do |service|%>
+    <% if service.price > 0 %>
+        <% unless params[:gender_id] && service.gender_id != params[:gender_id].to_i %>
+            <% if !defined?(gender_id) || gender_id.to_i == service.gender_id.to_i %>
+                <%= render :partial => 'app/pricelist/plain', locals: {service: service}%>
+            <% end %>
+        <% end %>
+    <% else %>
+        <% if defined?(gender_id) %>
+            <%= render :partial => 'app/pricelist/collapsed', locals: {service: service, gender_id: gender_id}%>
+        <% else %>
+            <%= render :partial => 'app/pricelist/collapsed', locals: {service: service}%>
+        <% end %>
+    <% end %>
+<% end %>

@@ -1,7 +1,10 @@
 <%
-    prices = Price.where('parent_id = ?',service.id)
     if params[:gender_id]
-        prices = prices.where('gender_id = ?',params[:gender_id])
+        gender_id = params[:gender_id]
+    end
+    prices = Price.where('parent_id = ?',service.id)
+    if defined?(gender_id) && gender_id.to_i > 0
+        prices = prices.where('gender_id = ?',gender_id)
     end
     discount = prices.where('discount > 0')
     genders = ['','мужчины','женщины']

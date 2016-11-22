@@ -6,7 +6,7 @@
       <table class="table table-striped" style="padding: 0px;margin: 1px 0px;">
         <tr>
           <td>
-            <div><%=service.name%> <% if service.gender_id < 3 %>(<%=genders[service.gender_id]%>) <% end %></div>
+            <div><%=service.name%> </div>
             <div style="padding: 10px 0px;"><strong><%=render :partial => 'app/pricelist/pricerow', locals: {line: service}%></strong></div>
           </td>
         </tr>
@@ -14,7 +14,7 @@
   <% else %>
     <table class="table table-striped" style="padding: 0px;margin: 1px 0px;">
           <tr>
-            <td width="80%"><%=service.name%> <% if service.gender_id < 3 %>(<%=genders[service.gender_id]%>) <% end %></td>
+            <td width="80%"><%=service.name%></td>
             <td width="20%" class="text-right">
               <%=render :partial => 'app/pricelist/pricerow', locals: {line: service}%>
             </td>
