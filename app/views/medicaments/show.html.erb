@@ -9,7 +9,6 @@
       <%=@medicament.content.html_safe%>
     </div>
     <a name="h6"></a>
-    <h2>Прайс лист</h2>
     <%=render :partial => 'app/pricelist', :locals => {prices: @pricelist, collapsed: true}%>
     <%=render :partial => 'app/order', locals: {text: "Я хочу записаться на процедуру \"#{@medicament.name}\"  в ближайшее время. Перезвоните мне, пожалуйста, чтобы уточнить подробности"}%>
   </article>
