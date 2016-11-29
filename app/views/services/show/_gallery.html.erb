@@ -5,7 +5,7 @@
       <div class="image-box">
         <div class="overlay-container">
           <%= image_tag image.gsub('public','') %>
-          <%=link_to image.gsub('public','').gsub('th/','big/'), :class=> 'overlay small', :data => {:rel=>'photos'}, :target=>'_blank' do %>
+          <%=link_to image.gsub('public','').gsub('th/','big/'), :class=> 'overlay small popup-img', :data => {:rel=>'photos'}, :target=>'_blank' do %>
             <i class="fa fa-link"></i>
           <% end %>
         </div>
