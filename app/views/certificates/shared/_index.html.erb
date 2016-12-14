@@ -1,7 +1,9 @@
 <% if @certificates.length > 0 %>
+    <div class="masonry-grid-fitrows row grid-space-20">
     <%@certificates.each do |certificate|%>
         <%=render :partial => 'certificates/shared/newitem', locals: {certificate: certificate}%>
     <% end %>
+    </div>
 <% else %>
     <div class="well">Раздел находится в стадии заполения информацией</div>
 <% end %>

@@ -1,0 +1,32 @@
+<!-- Внимание! Это только пример. Для того, чтобы он работал,
+обязательно пропишите в нем shopId и scid, который мы присылаем в письме на ваш контактный e-mail. -->
+<form method="POST" action="https://money.yandex.ru/eshop.xml">
+
+  <!-- ОБЯЗАТЕЛЬНЫЕ ПОЛЯ -->
+  <input type="hidden" name="shopId" value="64136">
+  <input type="hidden" name="scid" value="59197">
+  <input type=hidden name="customerNumber" value="<%=@order.id%>">
+  <input type=hidden name="sum" id="sum" value="<%=@order.price%>">
+  <input type=hidden name="orderDetails" value="<%=details%>">
+  <input name="paymentType" value="" type="hidden"/>
+  <div class="form-group  has-feedback">
+    <label for="phone">Ваш контактный телефон</label>
+    <input type=text name="cps_phone" class="form-control" id="phone" size="64">
+  </div>
+  <div class="form-group  has-feedback">
+    <label for="phone">Ваш email</label>
+    <input type=text name="custEmail" class="form-control" id="phone" size="64">
+  </div>
+  <div class="form-group  has-feedback">
+    <label for="name">Вашe имя</label>
+    <input type=text name="custName" class="form-control" id="name" size="64">
+  </div>
+  <span id="delivery-flag" style="display: block;border-bottom: 1px dashed #000;width: 140px;cursor: pointer;margin-bottom: 10px;">Нужна доставка</span>
+  <div id="delivery-address" class="form-group  has-feedback hidden">
+    <label for="address">Адрес доставки:</label>
+    <input type=text name="custAddr" class="form-control" id="address">
+  </div>
+
+  <!-- Кнопка отправки платежа -->
+  <input type=submit class="btn btn-primary" value="Оплатить"><br>
+</form>

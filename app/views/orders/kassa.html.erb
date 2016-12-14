@@ -1,0 +1,38 @@
+<%
+  if @order.fl_type == 3
+      details = "Подарочный сертификат на сумму #{@order.price} рублей"
+  elsif @order.fl_type == 4
+      details = "Подарочный сертификат на косметологическую программу &laquo;#{@order.content}&raquo;"
+  end
+%>
+
+<div class="main col-md-12" id="news">
+  <!-- page-title start -->
+  <!-- ================ -->
+  <h1 class="page-title" style="padding-bottom: 0px;margin-bottom: 0px;">Форма заказа</h1>
+  <!-- page-title end -->
+  <div class="section">
+    <div class="row">
+      <div class="col-md-8">
+        <p>Здравствуйте, спасибо за желание заказать подарочный сертификат Центра эпиляции и косметологии</p>
+        <p>Остался всего один шаг до завершения процедуры оформления. Пожалуйста, заполните небольшую форму справа, после чего вы сможете оплатить заказ одним из множества удобных способов.</p>
+        <div style="background-image: url(<%=image_path('cert_sample.png')%>);height: 300px;width: 100%;background-repeat: no-repeat;padding: 40px 0px 0px 20px;">
+            <% if @order.fl_type == 3 %>
+                <%=render :partial => 'orders/kassa/sum'%>
+            <% elsif @order.fl_type == 4 %>
+                <%=render :partial => 'orders/kassa/set' %>
+            <% end %>
+        </div>
+        <%=render :partial => 'orders/kassa/faq'%>
+      </div>
+      <div class="col-md-4">
+        <div class="well">
+          <%=render :partial => 'orders/kassa/details', locals: {details: details}%>
+        </div>
+        <div class="well">
+          <%=render :partial => 'orders/kassa/form', locals: {details: details}%>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

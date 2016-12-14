@@ -1,12 +1,22 @@
 <div class="row call-to-action" style="background-color: #E9E9E9;margin-bottom: 20px;">
-  <div class="col-md-4">
+  <div class="col-md-12" style="background-color: #3F2021;text-align: left;color: #fff;font-size:1.2em;padding: 10px;">
+    <%=certificate.name%>
+    <div class="pull-right">
+      <%=certificate.price%> <div class="rouble">Р</div>
+    </div>
+  </div>
+  <div class="col-md-4" style="padding: 15px;">
     <img src="http://kosmetologiya-kazan.ru/<%=image_path certificate.photo.url%>">
   </div>
   <div class="col-md-8" style="padding-top: 15px;text-align: left;">
-    <h2><a style="text-decoration: underline" href="<%if certificate.fl_status == 2%>/certificates/group/<%=certificate.id%><% else %>/certificates/<%=certificate.id%><% end %>"><%=certificate.name%></a></h2>
-    <%=certificate.preview.html_safe%>
-    <div style="padding-top: 5px;">
-        <a href="<%if certificate.fl_status == 2%>/certificates/group/<%=certificate.id%><% else %>/certificates/<%=certificate.id%><% end %>" class="btn btn-md btn-default">Подробнее</a>
-    </div>
+    <%=simple_format(certificate.preview)%>
+    <%= form_for [Order.new] do |f| %>
+        <input type="hidden" name="order[content]" value="<%=certificate.name.gsub('Программа','').gsub('"','')%>">
+        <input type="hidden" name="order[contacts]" value="">
+        <input type="hidden" name="order[fl_type]" value="4">
+        <input type="hidden" name="order[url]" value="">
+        <input type="hidden" name="order[price]" value="<%=certificate.price%>">
+        <button type="submit" class="btn btn-primary">Заказать онлайн</button>
+    <% end %>
   </div>
 </div>

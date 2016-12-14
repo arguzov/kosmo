@@ -1,5 +1,10 @@
 class OrdersController < ApplicationController
     #dsfsdf
+
+    def kassa
+        @order = Order.find(params[:id])
+    end
+
     def create
         @params = order_params
         all_count = @params[:content].length
@@ -16,6 +21,9 @@ class OrdersController < ApplicationController
         @order.fl_type = @params[:fl_type]
         if @params[:fl_type] == '2'
             shop_order
+        elsif @params[:fl_type] == '3' || @params[:fl_type] == '4'
+            @order.fl_status = 9
+        else
         end
         respond_to do |format|
             if @order.save
@@ -29,6 +37,8 @@ class OrdersController < ApplicationController
                         comment: @params[:content]
                     }
                     OrderMailer.shop(data).deliver
+                elsif @params[:fl_type] == '3' || @params[:fl_type] == '4'
+                    return redirect_to("/orders/kassa/#{@order.id}")
                 else
                     OrderMailer.recall(@params).deliver
                 end
@@ -43,7 +53,7 @@ class OrdersController < ApplicationController
 
     private
     def order_params
-        params.require(:order).permit(:contacts, :content, :fl_type, :url)
+        params.require(:order).permit(:contacts, :content, :fl_type, :url, :price)
     end
 
     def shop_order

@@ -1,0 +1,58 @@
+<%
+   meta :title => "Сертификаты Центра эпиляци и косметологии",
+        :description => 'Сертификаты на услуги косметолога'
+%>
+<div class="main col-md-12" id="news">
+  <!-- page-title start -->
+  <!-- ================ -->
+  <h1 class="page-title">Сертификаты на сумму</h1>
+  <div class="separator-2"></div>
+  <!-- page-title end -->
+  <div class="section">
+      <p>Вы можете заказать подарочный сертификат на определённую сумму. Сертификатом можно польностью или частично оплатить любые услуги Центра эпиляции и косметологии.</p>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="well">
+          <%= form_for [Order.new] do |f| %>
+              <input type="hidden" name="order[content]" value="Сертификат на сумму">
+              <input type="hidden" name="order[contacts]" value="">
+              <input type="hidden" name="order[fl_type]" value="3">
+              <input type="hidden" name="order[url]" value="">
+              <div class="form-group  has-feedback">
+                <label for="exampleInputPhone">Выберите сумму</label>
+                <select class="form-control" name="order[price]">
+                  <option value="1000">1000 рублей</option>
+                  <option value="2000">2000 рублей</option>
+                  <option value="3000" selected>3000 рублей</option>
+                  <option value="4000">4000 рублей</option>
+                  <option value="5000">5000 рублей</option>
+                  <option value="7000">7000 рублей</option>
+                  <option value="10000">10000 рублей</option>
+                  <option value="15000">15000 рублей</option>
+                  <option value="20000">20000 рублей</option>
+                  <option value="25000">25000 рублей</option>
+                  <option value="30000">30000 рублей</option>
+                </select>
+              </div>
+
+          <button type="submit" class="btn btn-primary">Купить онлайн</button>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <img src="<%=image_path('cert_3000.jpg')%>" class="img-responsive">
+        </div>
+      </div>
+      <h2>Условия использования подарочного сертификата</h2>
+      <div class="separator-2"></div>
+      <ul>
+        <li>Подарочный сертификат может использовать любой человек: друг, родственник или коллега.</li>
+        <li>Сертификат можно обменять на любую услугу(процедуру), предоставляемую нашим Центром.</li>
+        <li>Сертификат нельзя обменять на денежный эквивалент, указанный в сертификате.</li>
+        <li>Утерянные подарочные сертификаты восстановлению не подлежат и их дубликаты не выдаются.</li>
+        <li>Если стоимость приобретаемых услуг(процедур) меньше указанной в сертификате, остаточная сумма не компенсируется.</li>
+        <li>Сертификат можно оплатить любым способом: наличным или безналичным расчетом.</li>
+        <li>У сертификата нет срока действия.</li>
+      </ul>
+  </div>
+</div>

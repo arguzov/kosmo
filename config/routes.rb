@@ -5,14 +5,17 @@ Kosmo::Application.routes.draw do
 
   resources :faqs
 
-  resources :orders
+  resources :orders do
+      get 'kassa/:id'=>'orders#kassa', on: :collection
+  end
   resources :promos
   resources :experts
   resources :subscriptions
   resources :medicaments
 
   resources :certificates do
-      get 'group/:group'=>'certificates#group', on: :collection
+      get 'set'=>'certificates#set', on: :collection
+      get 'sum'=>'certificates#sum', on: :collection
   end
 
   #resources :services do

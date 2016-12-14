@@ -1,0 +1,26 @@
+  <div class="col-md-4 col-sm-4 masonry-grid-item col-xs-12">
+    <div class="listing-item">
+      <div style="height: 240px;overflow: hidden!important;">
+        <div style="margin: 10px;height: 230px;overflow: hidden">
+          <img src="http://kosmetologiya-kazan.ru/<%=image_path certificate.photo.url%>" class="img-responsive">
+        </div>
+      </div>
+      <div class="listing-item-body clearfix" style="background-color: #FCF8E3;height: 180px;">
+        <h3 class="title"><%=link_to certificate.name, certificate_path(certificate)%></h3>
+        <p style="color: #000;"><%=certificate.preview.html_safe%></p>
+        <div class="pull-left">
+            <span class="price"><%=certificate.price%> <div class="rouble">Р</div></span>
+        </div>
+        <div class="elements-list pull-right" style="padding-bottom: 30px;">
+          <%= form_for [Order.new] do |f| %>
+              <input type="hidden" name="order[content]" value="<%=certificate.name.gsub('Программа','').gsub('"','')%>">
+              <input type="hidden" name="order[contacts]" value="">
+              <input type="hidden" name="order[fl_type]" value="4">
+              <input type="hidden" name="order[url]" value="">
+              <input type="hidden" name="order[price]" value="<%=certificate.price%>">
+              <button type="submit" class="btn btn-primary">Купить онлайн</button>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -8,7 +8,41 @@
   <h1 class="page-title">Подарочные сертификаты</h1>
   <div class="separator-2"></div>
   <!-- page-title end -->
-  <div class="section">
+  <!--<div class="section">
       <%=render :partial=>'certificates/shared/index'%>
+  </div>-->
+  <div class="masonry-grid-fitrows row grid-space-20">
+    <div class="col-md-4 col-sm-4 masonry-grid-item col-xs-12 col-md-offset-2">
+      <div class="listing-item">
+        <div style="height: 300px;overflow: hidden!important;">
+          <div style="margin: 20px;height: 290px;overflow: hidden">
+          <img src="<%=image_path('cert_service.jpg')%>" class="img-responsive">
+          </div>
+        </div>
+        <div class="listing-item-body clearfix" style="background-color: #FCF8E3;height: 160px;">
+          <div style="height: 100px;">
+            <h3 class="title text-center"><a href="/certificates/set" style="text-decoration: underline">На спа-программы</a></h3>
+            <p style="color: #000;text-align: center">
+              Подарочные сертификаты на уникальные спа-программы от Центра эпиляции и косметологии. Дарите уход, заботу и прекрасное настроение!
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 col-sm-4 masonry-grid-item col-xs-12">
+      <div class="listing-item">
+        <div style="height: 300px;overflow: hidden!important;">
+          <img src="<%=image_path('cert_sum.jpg')%>" class="img-responsive">
+        </div>
+        <div class="listing-item-body clearfix" style="background-color: #FCF8E3;height: 160px;">
+          <div style="height: 100px;">
+            <h3 class="title  text-center"><a href="/certificates/sum" style="text-decoration: underline">На сумму</a></h3>
+            <p style="color: #000;text-align: center">
+              Подарочные сертификаты номинированные в рублях. Оставьте в прошлом унылые белые конверты с деньгами, которые всё равно растворятся в быту.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

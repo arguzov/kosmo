@@ -11,11 +11,18 @@
   <!-- blogpost start -->
   <article class="clearfix full">
         <%=@certificate.content.html_safe%>
-        <div>
-          <%=render :partial => 'app/widgets/share'%>
-        </div>
   </article>
-  <%=render :partial => 'app/order', locals: {header:"Заказать сертификат",text: "Я хочу заказать подарочный сертификат. Перезвоните мне пожалуйста..."}%>
+  <div class="well">
+    <p><%=@certificate.preview.html_safe%></p>
+  <%= form_for [Order.new] do |f| %>
+      <input type="hidden" name="order[content]" value="<%=@certificate.name.gsub('Программа','').gsub('"','')%>">
+      <input type="hidden" name="order[contacts]" value="">
+      <input type="hidden" name="order[fl_type]" value="4">
+      <input type="hidden" name="order[url]" value="">
+      <input type="hidden" name="order[price]" value="<%=@certificate.price%>">
+      <button type="submit" class="btn btn-primary" style="margin: 0px;">Заказать онлайн</button>
+  <% end %>
+  </div>
 </div>
 <div class="col-md-3 col-md-offset-1">
   <%=render partial: 'app/widgets/right'%>

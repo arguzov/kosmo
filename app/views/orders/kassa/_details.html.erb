@@ -1,0 +1,15 @@
+<h3 style="margin: 0px;padding: 0px;padding-bottom: 20px;">Детали платежа</h3>
+<table class="table cart">
+  <tr>
+    <td class="product"><%=details.html_safe%></td>
+    <td class="price" id="product-price" data-price="<%=@order.price%>"><nobr><%=@order.price%> &#8381;</nobr></td>
+  </tr>
+  <tr id="delivery-row" class="hidden">
+    <td class="product">Доставка</td>
+    <td class="price"><span id="delivery-price">150</span> &#8381;</td>
+  </tr>
+  <tr>
+    <td class="product" style="background-color: #F3F3F3;text-align: right;padding-top: 10px;"><strong>Сумма к оплате:</strong></td>
+    <td class="product" style="background-color: #F3F3F3;padding-top: 10px;"><nobr><span id="total"><%=(@order.price)%></span> &#8381;</nobr></td>
+  </tr>
+</table>
