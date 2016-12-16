@@ -14,4 +14,12 @@ class Certificate < ActiveRecord::Base
     def type
         Subscription::STATUSES.invert[self.fl_type]
     end
+
+    def discount_price
+        if !discount.nil? && discount > 0
+            price - price * discount/100
+        else
+            price
+        end
+    end
 end

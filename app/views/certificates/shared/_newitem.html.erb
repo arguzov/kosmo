@@ -1,8 +1,8 @@
 <div class="row call-to-action" style="background-color: #E9E9E9;margin-bottom: 20px;">
   <div class="col-md-12" style="background-color: #3F2021;text-align: left;color: #fff;font-size:1.2em;padding: 10px;">
     <%=certificate.name%>
-    <div class="pull-right">
-      <%=certificate.price%> <div class="rouble">Р</div>
+    <div class="pull-right hidden-xs">
+        <%=render :partial => 'certificates/shared/price', :locals => {price: certificate.price, discount_price: certificate.discount_price}%>
     </div>
   </div>
   <div class="col-md-4" style="padding: 15px;">
@@ -10,6 +10,7 @@
   </div>
   <div class="col-md-8" style="padding-top: 15px;text-align: left;">
     <%=simple_format(certificate.preview)%>
+    <div class="hidden-lg hidden-md hidden-sm text-center" style="font-size:1.4em;">Цена: <%=render :partial => 'certificates/shared/price', :locals => {price: certificate.price, discount_price: certificate.discount_price}%></div>
     <%= form_for [Order.new] do |f| %>
         <input type="hidden" name="order[content]" value="<%=certificate.name.gsub('Программа','').gsub('"','')%>">
         <input type="hidden" name="order[contacts]" value="">
