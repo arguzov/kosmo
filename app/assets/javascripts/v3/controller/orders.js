@@ -4,7 +4,7 @@ $(document).ready(function() {
         var price = parseInt($('#product-price').attr('data-price'));
         var delivery_price = 0
         if ($(this).html() == 'Нужна доставка') {
-            if (price < 5000) {
+            if (price < 2399) {
                 delivery_price = 150;
             }
             $('#delivery-address').removeClass('hidden');

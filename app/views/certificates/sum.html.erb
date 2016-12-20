@@ -10,6 +10,7 @@
   <!-- page-title end -->
   <div class="section">
       <p>Вы можете заказать подарочный сертификат на определённую сумму. Сертификатом можно польностью или частично оплатить любые услуги Центра эпиляции и косметологии.</p>
+      <p>В текущий момент действует <strong>скидка 20%</strong> на подарочные сертификаты. Таким образом, к примеру, вы можете подарить сертификат на 5 000 рублей, оплатив всего 4 000 рублей.</p>
       <div class="row">
         <div class="col-md-6">
           <div class="well">
@@ -19,20 +20,13 @@
               <input type="hidden" name="order[fl_type]" value="3">
               <input type="hidden" name="order[url]" value="">
               <div class="form-group  has-feedback">
-                <label for="exampleInputPhone">Выберите сумму</label>
-                <select class="form-control" name="order[price]">
-                  <option value="1000">1000 рублей</option>
-                  <option value="2000">2000 рублей</option>
-                  <option value="3000" selected>3000 рублей</option>
-                  <option value="4000">4000 рублей</option>
-                  <option value="5000">5000 рублей</option>
-                  <option value="7000">7000 рублей</option>
-                  <option value="10000">10000 рублей</option>
-                  <option value="15000">15000 рублей</option>
-                  <option value="20000">20000 рублей</option>
-                  <option value="25000">25000 рублей</option>
-                  <option value="30000">30000 рублей</option>
+                <label for="exampleInputPhone">Выберите сумму сертификата</label>
+                <select class="form-control" id="cert_price" name="order[price]">
+                  <% [1000,2000,3000,4000,5000,7000,10000,15000,20000,25000,30000].each do |sum|%>
+                  <option value="<%=(sum - sum*0.2).round%>"><%=sum%> рублей</option>
+                  <% end %>
                 </select>
+                <div style="padding-top: 10px;">К оплате: <span id="forpay">800</span> рублей</div>
               </div>
 
           <button type="submit" class="btn btn-primary">Купить онлайн</button>
@@ -40,7 +34,7 @@
           </div>
         </div>
         <div class="col-md-6">
-          <img src="<%=image_path('cert_3000.jpg')%>" class="img-responsive">
+          <!--<img src="<%=image_path('cert_3000.jpg')%>" class="img-responsive">-->
         </div>
       </div>
       <h2>Условия использования подарочного сертификата</h2>
