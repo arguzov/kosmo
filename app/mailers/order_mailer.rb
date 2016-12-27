@@ -14,4 +14,11 @@ class OrderMailer < ActionMailer::Base
              subject: 'Заказ из интернет-магазина',
              template_path: 'orders/mailer')
     end
+
+    def certificate(data)
+        @data = data
+        mail(to: MANAGER_EMAIL,
+             subject: 'Заказ сертификата наличными курьеру',
+             template_path: 'orders/mailer')
+    end
 end

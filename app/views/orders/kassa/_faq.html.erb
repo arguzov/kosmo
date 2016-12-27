@@ -2,7 +2,9 @@
   <h3 style="padding: 0px;">Частые вопросы</h3>
 </div>
 <strong>Как происходит оплата заказа?</strong>
-<p>Оплата заказа производится в онлайн режиме через сервис <strong>Яндекс.Касса</strong>. Таким образом, безопасносное проведение платежей целиком берёт на себя лидер российской интернет отрасли компания Яндекс. Чтобы завершить оформление заказа и перейти к оплате, заполните форму в правой части страницы -></p>
+<p>Есть два варианта оплаты сертификата</p>
+<p>1. Оплата в онлайн режиме через сервис <strong>Яндекс.Касса</strong>. Таким образом, безопасносное проведение платежей целиком берёт на себя лидер российской интернет отрасли компания Яндекс. Чтобы завершить оформление заказа и перейти к оплате, заполните форму в правой части страницы -></p>
+<p>2. Оплата наличными курьеру. Чтобы выбрать этот вариант <a href="javascript://" data-toggle="modal" data-target="#cash-delivery">нажмите на эту ссылку</a> и укажите свой контактный телефон, после чего мы свяжемся с вами для уточнения времени и месте доставки.</p>
 <strong>Каким способом можно оплатить покупку через сервис Яндекс.Касса</strong>
 <p>
 <ul>
@@ -10,7 +12,6 @@
   <li>Электронные деньги: Webmoney,QIWI WALLET,Яндекс.Деньги</li>
   <li>Наличные: через салоны сотовой связи, терминалы оплаты, банкоматы и т.д.</li>
   <li>Интернет банки: АльфаБанк, Промсвязьбанк и др.</li>
-  <li>Наличные курьеру</li>
 </ul>
 </p>
 <strong>Как получить заказ</strong>
@@ -29,3 +30,25 @@
 </ul>
 <strong>У меня не получается оформить заказ!</strong>
 <p>Не беда, вы можете сделать это просто позвонив в наш Центр по телефонам <strong>+7(843)206-00-02, +7(843) 226-60-20, +7 (843) 2000-322</strong>. Менеджер примет заказ, а заодно и проконсультирует по вопросу выбора.</p>
+
+<div class="modal fade" id="cash-delivery" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Оплата наличными курьеру</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for @order do |f|%>
+            <input type="hidden" name="order[id]" value="<%=@order.id%>">
+            <input type="hidden" name="order[fl_status]" value="2">
+            <div class="form-group  has-feedback">
+              <label for="exampleInputPhone">Контактный телефон</label>
+              <input type="text" class="form-control" id="exampleInputPhone" required="required" name="order[contacts]">
+            </div>
+            <button type="submit" class="btn btn-default">Заказать сертификат</button>
+        <% end %>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

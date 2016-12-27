@@ -7,6 +7,7 @@ Kosmo::Application.routes.draw do
 
   resources :orders do
       get 'kassa/:id'=>'orders#kassa', on: :collection
+      get 'complete'=>'orders#complete', on: :collection
   end
   resources :promos
   resources :experts

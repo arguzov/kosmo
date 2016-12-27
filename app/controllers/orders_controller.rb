@@ -5,6 +5,10 @@ class OrdersController < ApplicationController
         @order = Order.find(params[:id])
     end
 
+    def complete
+
+    end
+
     def create
         @params = order_params
         all_count = @params[:content].length
@@ -51,9 +55,21 @@ class OrdersController < ApplicationController
         end
     end
 
+    def update
+        @order = Order.find(params[:id])
+        @order.update(order_params)
+        data = {
+            contacts: @order.contacts,
+            content: @order.content,
+            price: @order.price
+        }
+        OrderMailer.certificate(data).deliver
+        redirect_to '/orders/complete'
+    end
+
     private
     def order_params
-        params.require(:order).permit(:contacts, :content, :fl_type, :url, :price)
+        params.require(:order).permit(:contacts, :content, :fl_type, :url, :price, :fl_status)
     end
 
     def shop_order
