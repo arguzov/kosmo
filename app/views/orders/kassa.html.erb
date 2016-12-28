@@ -16,7 +16,7 @@
       <div class="col-md-8 hidden-xs">
         <p>Здравствуйте, спасибо за желание заказать подарочный сертификат Центра эпиляции и косметологии</p>
         <p>Остался всего один шаг до завершения процедуры оформления. Пожалуйста, заполните небольшую форму справа, после чего вы сможете оплатить заказ одним из множества удобных способов.</p>
-        <div style="height: 300px;width: 100%;background-repeat: no-repeat;padding: 40px 0px 0px 0px;">
+        <div style="background-image: url(<%=image_path('cert_bg.png')%>);height: 300px;width: 100%;background-repeat: repeat-x;padding: 40px 0px 0px 0px;">
             <% if @order.fl_type == 3 %>
                 <%=render :partial => 'orders/kassa/sum'%>
             <% elsif @order.fl_type == 4 %>
