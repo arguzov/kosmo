@@ -1,6 +1,6 @@
 <%
   if @order.fl_type == 3
-      details = "Подарочный сертификат на сумму #{(@order.price/0.8).round} рублей"
+      details = "Подарочный сертификат на сумму #{@order.price} рублей"
   elsif @order.fl_type == 4
       details = "Подарочный сертификат на косметологическую программу &laquo;#{@order.content}&raquo;"
   end

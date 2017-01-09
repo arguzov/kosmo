@@ -11,7 +11,9 @@ Kosmo::Application.routes.draw do
   end
   resources :promos
   resources :experts
-  resources :subscriptions
+  resources :subscriptions do
+      get 'section/:id'=>'subscriptions#section', on: :collection
+  end
   resources :medicaments
 
   resources :certificates do
