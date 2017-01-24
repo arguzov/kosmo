@@ -4,6 +4,7 @@ class Service < ActiveRecord::Base
     has_many :medicaments
     has_and_belongs_to_many :sections
     has_and_belongs_to_many :issues
+    has_and_belongs_to_many :posts
     has_and_belongs_to_many :experts
     has_and_belongs_to_many :promos
     has_and_belongs_to_many :certificates
@@ -17,5 +18,9 @@ class Service < ActiveRecord::Base
 
     def first_level_prices
         self.prices.first_level
+    end
+
+    def reviews
+        self.posts.where('category_id = 31')
     end
 end

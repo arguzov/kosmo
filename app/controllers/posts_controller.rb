@@ -31,8 +31,7 @@ class PostsController < ApplicationController
         end
         if params.has_key?('service_id')
             @service = Service.find(params[:service_id])
-            ids = PostsService.where('service_id = ?',params[:service_id]).pluck(:post_id)
-            @reviews = Post.where('id IN (?)',ids).order(order).paginate(:page => params[:page], :per_page => 10)
+            @reviews = @service.reviews.order(order).paginate(:page => params[:page], :per_page => 10)
         else
             @reviews = Post.where('category_id = 31').order(order).paginate(:page => params[:page], :per_page => 10)
         end

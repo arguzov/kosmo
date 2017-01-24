@@ -5,22 +5,15 @@
         more_link = subscription_path(subscription)
     end
 %>
-<div class="listing-item" style="padding-top: 0px;">
-  <h3 style="background-color: #f1f1f1;margin-top: 0px;padding: 10px;text-align: center;margin: 0px;">
-    <%=link_to subscription.name, more_link%>
-    <%if subscription.discount.to_i > 0%>
-        <div class="label label-danger pull-right">до - <%=subscription.discount%>%</div>
-    <% end %>
-  </h3>
-  <div class="overlay-container" style="margin: 0px;height: 250px;overflow: hidden;">
-    <img src="<%=image_path subscription.photo.url%>" style="width: 100%;">
+<div class="row call-to-action" style="background-color: #E9E9E9;margin-bottom: 20px;">
+  <div class="col-md-12" style="background-color: #3F2021;text-align: left;color: #fff;font-size:1.2em;padding: 10px;">
+    <%=subscription.name%>
   </div>
-  <div class="listing-item-body clearfix" style="background-color: #f1f1f1;height: 200px;">
-    <h3 class="title text-center"><span class="price">от <span style="color: #d33333"><%=subscription.price%> <div class="rouble">Р</div></span> за процедуру</span></h3>
-    <p style="color: #666;height: 50px;" class="text-center"><%=subscription.preview.html_safe%></p>
-
-    <div class="text-center">
-      <%=link_to 'Подробнее', more_link, :class=>'btn btn-default'%>
-    </div>
+  <div class="col-md-4" style="padding: 15px;">
+    <img src="<%=image_path subscription.photo.url%>" class="img-responsive">
+  </div>
+  <div class="col-md-8" style="padding-top: 15px;text-align: left;">
+    <%=subscription.preview.html_safe%>
+    <div style="padding: 10px;"><%=link_to 'Подробнее', more_link, :class=>'btn btn-primary'%></div>
   </div>
 </div>
