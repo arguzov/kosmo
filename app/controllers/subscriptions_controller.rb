@@ -25,4 +25,10 @@ class SubscriptionsController < ApplicationController
         @subscriptions = Subscription.find(params[:id])
     end
 
+    def send_mail
+        @user = User.find(params[:user_id])
+        SubscribeMailer.letter({template_id: 1,user_name: @user.name,user_email: @user.email}).deliver
+        render json: {status: 'ok'}
+    end
+
 end

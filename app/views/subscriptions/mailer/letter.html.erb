@@ -1,2 +1,9 @@
-<%=@data.content.html_safe%>
+<div style="max-width:600px;">
+  <a href="http://www.kosmetologiya-kazan.ru"><img src="http://kosmetologiya-kazan.ru/assets/xlogo-1a1a736320191311297c09ca1551e621.png.pagespeed.ic.vuf6c5jD98.png"></a>
+  <p>Здравствуйте, <%=@user_name%>!</p>
+  <%=@data.content.html_safe%>
+  <%=render :partial => 'subscriptions/mailer/promos'%>
+  <%=render :partial => 'subscriptions/mailer/addresses'%>
+  <%=render :partial => 'subscriptions/mailer/sign'%>
+</div>
 

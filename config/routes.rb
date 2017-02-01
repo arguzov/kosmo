@@ -13,6 +13,7 @@ Kosmo::Application.routes.draw do
   resources :experts
   resources :subscriptions do
       get 'section/:id'=>'subscriptions#section', on: :collection
+      get 'send'=>'subscriptions#send_mail', on: :collection
   end
   resources :medicaments
 

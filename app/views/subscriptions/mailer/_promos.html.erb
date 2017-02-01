@@ -1,0 +1,15 @@
+<%
+  @promos = Promo.where('fl_active = 1').order('fl_order ASC, created_at DESC').limit(2)
+
+%>
+<h2 style="text-align:center">Наши акции</h2>
+<table style="width:100%;margin-bottom: 20px;">
+  <tr>
+    <%@promos.each do |promo|%>
+    <td style="width:50%;text-align:center;">
+      <a href="http://www.kosmetologiya-kazan.ru<%if promo.more_link == nil || promo.more_link.gsub(' ','').length == 0%>/promos/<%=promo.id%><% else %><%=promo.more_link%><% end %>"><img src="http://www.kosmetologiya-kazan.ru/<%=promo.photo.url(:medium)%>" style="max-width:250px;"></a>
+      <h4><%=promo.name%></h4>
+    </td>
+    <% end %>
+  </tr>
+</table>
