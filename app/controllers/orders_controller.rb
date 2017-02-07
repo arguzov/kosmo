@@ -10,8 +10,13 @@ class OrdersController < ApplicationController
     end
 
     def create
+        if params[:order][:email].length > 0
+            return render text: 'Форма отправлена'
+        end
+
         @params = order_params
         all_count = @params[:content].length
+
         if @params.has_key?('fl_type') == false
             @params[:fl_type] = 1
         end
