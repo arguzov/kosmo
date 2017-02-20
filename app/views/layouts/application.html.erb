@@ -3,13 +3,10 @@
 <head>
   <%= metamagic %>
   <%= stylesheet_link_tag    "v3/controller/#{params[:controller]}", media: "all" %>
-  <%= javascript_include_tag "v3/controller/#{params[:controller]}" %>
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-  <script type="text/javascript" src="//vk.com/js/api/openapi.js?116"></script>
-  <script type="text/javascript" src="//vk.com/js/api/openapi.js?121"></script>
 </head>
 <body class="no-trans">
 <div class="page-wrapper">
@@ -22,6 +19,9 @@
       </div>
     </div>
   </section>
+  <%= javascript_include_tag "v3/controller/#{params[:controller]}" %>
+  <script type="text/javascript" src="//vk.com/js/api/openapi.js?116"></script>
+  <script type="text/javascript" src="//vk.com/js/api/openapi.js?121"></script>
   <%=render :partial => 'app/footer'%>
 </div>
 <%=render :partial => 'app/widgets/jivosite'%>
