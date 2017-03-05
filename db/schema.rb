@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161029175427) do
+ActiveRecord::Schema.define(version: 20170228142454) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -196,14 +196,15 @@ ActiveRecord::Schema.define(version: 20161029175427) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.integer  "fl_type",    default: 1
+    t.integer  "fl_type",       default: 1
     t.string   "items"
     t.integer  "qty"
     t.integer  "price"
-    t.integer  "fl_status",  default: 0
+    t.integer  "fl_status",     default: 0
     t.text     "comment"
-    t.integer  "manager_id", default: 0
+    t.integer  "manager_id",    default: 0
     t.string   "url"
+    t.string   "email_address"
   end
 
   create_table "posts", force: true do |t|
