@@ -38,10 +38,16 @@
         <strong>0% рассрочка!</strong> Наши услуги вы можете оплатить в рассрочку без процентов.<br><a target="_blank" href="/posts/198" style="text-decoration: underline;color: black;">Узнать подробности</a>
       </div>
     <%=render :partial => 'services/show/reviews'%>
-    <div class="comments-form">
-      <h2 class="title" id="booking">Записаться на процедуру онлайн</h2>
-      <% if @service.id == 79 %><p style="padding: 0px;margin: 0px 0px 10px 0px;"><sup style="color:red;">*</sup>Данная процедура проводится по адресу Спартаковская, д.2 к.1</p><% end %>
-      <%=render :partial => 'app/order/form', locals: {metrika_id: @service.metrika_id}%>
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Записаться на процедуру онлайн</h4>
+        </div>
+        <div class="modal-body">
+            <% if @service.id == 79 %><p style="padding: 0px;margin: 0px 0px 10px 0px;"><sup style="color:red;">*</sup>Данная процедура проводится по адресу Спартаковская, д.2 к.1</p><% end %>
+            <%=render :partial => 'app/order/form', locals: {metrika_id: @service.metrika_id}%>
+        </div>
+      </div>
     </div>
   </article>
 </div>

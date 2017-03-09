@@ -1,7 +1,7 @@
 ActiveAdmin.register Widget do
   menu label: "Виджеты"
 
-  permit_params :header, :position_id, :content, :entity_id, :is_new, :is_only, :button_name, :metrika_id
+  permit_params :header, :position_id, :content, :entity_id, :is_new, :is_only, :button_name, :metrika_id, :due_date
 
   index do
       column :id
@@ -10,6 +10,7 @@ ActiveAdmin.register Widget do
       column :header
       column :is_new
       column :is_only
+      column :due_date
       actions
   end
 
@@ -22,6 +23,7 @@ ActiveAdmin.register Widget do
           f.input :is_new
           f.input :is_only
           f.input :button_name
+          f.input :due_date, :label => 'Дата окончания'
           f.input :metrika_id
       end
       f.actions
