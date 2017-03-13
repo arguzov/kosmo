@@ -24,6 +24,6 @@
    end
 %>
 <% if whtml.length > 0 && parts.length < 2 %>
-    <%=whtml.safe%>
+    <%=whtml.html_safe%>
 <% end %>
 <%=content.html_safe%>
