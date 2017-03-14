@@ -6,7 +6,7 @@
   end
 %>
 <% if services.length > 0 %>
-    <h2 id="section_<%=section.id%>"><nobr><%=section.name%></nobr></h2>
+    <h2 id="section_<%=section.id%>"><%=section.name%></h2>
     <ul>
       <%services.each do |service|%>
           <li><%=link_to service.name, service_path(id:service.id, url:service.url) %></li>

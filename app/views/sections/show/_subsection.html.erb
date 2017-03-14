@@ -1,0 +1,16 @@
+<div class="main col-md-12" id="news">
+  <%Section.where('parent_id = ?',@section.id).each do |section|%>
+  <div class="row call-to-action" style="background-color: #E9E9E9;margin-bottom: 20px;">
+    <div class="col-md-12" style="background-color: #3F2021;text-align: left;color: #fff;font-size:1.2em;padding: 10px;">
+      <%=section.name%>
+    </div>
+    <div class="col-md-4" style="padding: 15px;">
+      <img src="<%=section.photo.url(:medium)%>" class="img-responsive">
+    </div>
+    <div class="col-md-8" style="padding-top: 15px;text-align: left;">
+      <%=section.content.html_safe%>
+      <div style="padding: 10px;"><a href="/section/<%=section.url%>.html" class="btn btn-primary">Выбрать услугу</a></div>
+    </div>
+  </div>
+  <% end %>
+</div>

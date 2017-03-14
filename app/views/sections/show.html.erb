@@ -4,7 +4,11 @@
 <div class="row">
 <div class="main col-md-9">
   <h1 class="page-title"><%=@section.name%></h1>
-  <%=render :partial => 'sections/show/services'%>
+  <% if Section.where('parent_id = ?',@section.id).count() > 0 %>
+      <%=render :partial => 'sections/show/subsection', :locals => {section: @section}%>
+  <% else %>
+      <%=render :partial => 'sections/show/services'%>
+  <% end %>
   <div style="border-left: 0px solid #ededed;padding-left: 20px;">
     <%=alt_tags(@section.content,@section.name).html_safe%>
   </div>

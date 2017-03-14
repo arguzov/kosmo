@@ -4,7 +4,7 @@ ActiveAdmin.register Section do
   # See permitted parameters documentation:
   # https://github.com/gregbell/active_admin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
-  permit_params :name, :url, :fl_order, :content, service_ids: []
+  permit_params :name, :url, :fl_order, :content, :photo, :parent_id, service_ids: []
   #
   # or
   #
@@ -17,7 +17,9 @@ ActiveAdmin.register Section do
       f.inputs "Данные раздела" do
           f.input :name
           f.input :url
+          f.input :photo, :as => :file, :hint => f.template.image_tag(f.object.photo.url(:thumb))
           f.input :content, input_html: {class: "redactor" }
+          f.input :parent_section
           f.input :fl_order
       end
       f.inputs "Сервисы" do
