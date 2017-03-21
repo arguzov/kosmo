@@ -1,11 +1,10 @@
-<div class="right-widget hidden-sm hidden-xs">
-  <div class="w-title">Быстрые действия</div>
+<div class="right-widget hidden-sm hidden-xs" style="border-top:2px solid #e0e0e0">
   <div class="w-body">
-      <a href="#pricelist" class="btn btn-md btn-primary">Цены</a>
+      <a href="javascript://" class="btn btn-md btn-primary"  data-toggle="modal" data-target="#service-prices">Цены</a>
     <% if defined?(@reviews) && @reviews != nil && @reviews.length > 0 %>
-        <a href="#testimonials" class="btn btn-md btn-primary">Отзывы</a>
+        <a href="javascript://" data-toggle="modal" data-target="#service-reviews" class="btn btn-md btn-primary">Отзывы</a>
     <% else %>
-        <a href="#experts" class="btn btn-md btn-danger">Специалисты</a>
+        <!--<a href="#experts" class="btn btn-md btn-danger">Специалисты</a>-->
     <% end %>
     <a href="javascript://" data-toggle="modal" data-target="#recall" class="btn btn-md btn-default">Записаться</a>
   </div>
