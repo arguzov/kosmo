@@ -1,0 +1,21 @@
+<div class="modal fade" id="service-prices" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Цены</h4>
+      </div>
+      <div class="modal-body">
+        <%=render :partial => 'app/pricelist', :locals => {:pricelist=>@pricelist,collapsed: 1}%>
+        <div class="alert alert-info" role="alert">
+          <strong>0% рассрочка!</strong> Наши услуги вы можете оплатить в рассрочку без процентов.<br><a target="_blank" href="/posts/198" style="text-decoration: underline;color: black;">Узнать подробности</a>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="text-center">
+          <a href="javascript://" class="btn btn-lg btn-default" data-toggle="modal" data-target="#recall">Записаться</a>
+        </div>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

@@ -4,7 +4,7 @@
             product = product.product
         end
     %>
-    <div class="col-sm-6 col-md-3">
+    <div class="col-sm-6 col-md-4">
       <div class="thumbnail shop-product" >
         <%if product.photo? %>
             <%if product.parent_id == 39 %>
@@ -21,7 +21,7 @@
                 <%=image_tag "/data/products/#{product.id}.jpg"%>
             <% end %>
         <% end %>
-        <div class="product-name">
+        <div class="product-name" style="height: 40px;">
           <%=link_to product.name.html_safe, shop_product_path({url: product.url})%>
         </div>
         <div class="product-descr">
@@ -29,12 +29,12 @@
         </div>
         <div class="product-price">
            <%=product.prices%> <i class="fa fa-rouble"></i>
+          <div class="product-action pull-right">
+            <%=link_to "Купить", shop_product_path({url: product.url}), :class=>"btn btn-default btn-sm"%>
+          </div>
         </div>
         <div class="product-existance">
            в наличии
-        </div>
-        <div class="product-action">
-          <%=link_to "Подробнее", shop_product_path({url: product.url}), :class=>"btn btn-default btn-sm"%>
         </div>
       </div>
     </div>

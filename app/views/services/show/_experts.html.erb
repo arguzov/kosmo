@@ -1,0 +1,9 @@
+<a name="experts"></a>
+<h2 id="experts">Наши специалисты</h2>
+<div class="row">
+  <% @service.experts.limit(3).each do |expert| %>
+      <div class="block clearfix col-md-4" style="padding-bottom: 0px;">
+        <%=render partial: 'experts/shared/portrait', :locals => {expert:expert}%>
+      </div>
+  <% end %>
+</div>

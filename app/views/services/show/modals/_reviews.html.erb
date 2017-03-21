@@ -1,0 +1,25 @@
+<% if defined?(@reviews) && @reviews != nil && @reviews.length > 0 %>
+    <div class="modal fade" id="service-reviews" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Отзывы о процедуре</h4>
+          </div>
+          <div class="modal-body">
+            <% @reviews.each do |review| %>
+                <blockquote class="margin-clear">
+                  <p style="margin-bottom: 0px;padding-bottom: 5px;"> <%=review.content.html_safe%></p>
+                  <footer><cite title="Source Title"><%=review.person%></cite></footer>
+                </blockquote>
+            <% end %>
+          </div>
+          <div class="modal-footer">
+            <div class="text-center">
+            <a class="btn btn-lg btn-default" href="/responces?service_id=<%=@service.id%>" style="font-size: .8em;text-decoration: underline">Посмотреть все отзывы</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<% end %>

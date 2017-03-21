@@ -19,36 +19,13 @@
     <div class="blogpost-content">
       <%=render :partial => 'services/widget/promo', locals: {position: 1}%>
       <%=render :partial => 'services/show/content'%>
-      <%=render :partial=> 'services/show/gallery'%>
-    </div>
-    <a name="experts"></a>
-    <h2 id="experts">Наши специалисты</h2>
-    <div class="row">
-      <% @service.experts.limit(3).each do |expert| %>
-          <div class="block clearfix col-md-4" style="padding-bottom: 0px;">
-            <%=render partial: 'experts/shared/portrait', :locals => {expert:expert}%>
-          </div>
-      <% end %>
     </div>
     <a name="h6"></a>
     <%=render :partial => 'services/widget/promo', locals: {position: 2}%>
-    <h2 id="pricelist">Цены на <%if @service.id == 79%>все зоны<%else%>процедуру<% end %></h2>
-      <%=render :partial => 'app/pricelist', :locals => {:pricelist=>@pricelist,collapsed: 1}%>
-      <div class="alert alert-info" role="alert">
-        <strong>0% рассрочка!</strong> Наши услуги вы можете оплатить в рассрочку без процентов.<br><a target="_blank" href="/posts/198" style="text-decoration: underline;color: black;">Узнать подробности</a>
-      </div>
-    <%=render :partial => 'services/show/reviews'%>
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">Записаться на процедуру онлайн</h4>
-        </div>
-        <div class="modal-body">
-            <% if @service.id == 79 %><p style="padding: 0px;margin: 0px 0px 10px 0px;"><sup style="color:red;">*</sup>Данная процедура проводится по адресу Спартаковская, д.2 к.1</p><% end %>
-            <%=render :partial => 'app/order/form', locals: {metrika_id: @service.metrika_id}%>
-        </div>
-      </div>
-    </div>
+    <%=render :partial=> 'services/show/buttons'%>
+    <%=render :partial=> 'services/show/gallery'%>
+    <%=render :partial => 'services/show/modals/prices'%>
+    <%=render :partial => 'services/show/modals/reviews'%>
   </article>
 </div>
 <aside class="col-md-3" style="padding-top:30px;">
