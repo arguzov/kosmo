@@ -38,6 +38,8 @@
       <%=render :partial => 'app/order', locals: {text: "Я хочу записаться на процедуру лазерной эпиляции со скидкой 50% по кодовому слову ЛАЗЕР 26. Перезвоните мне, пожалуйста, чтобы уточнить подробности"}%>
   <% elsif @promo.id == 18 %>
       <%=render :partial => 'app/order', locals: {text: "Я хочу записаться на вакуумно-роликовый массаж со скидкой 50% по кодовому слову СТАРВАК. Перезвоните мне, пожалуйста, чтобы уточнить подробности"}%>
+  <% elsif @promo.id == 132 %>
+      <%=render :partial => 'app/order', locals: {metrika_code: 'mezo-promo-zapis'}%>
   <% else %>
       <%=render :partial => 'app/order'%>
   <% end %>

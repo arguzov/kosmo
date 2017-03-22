@@ -3,6 +3,10 @@
     if @service != nil && @service.metrika_id != nil && !@service.metrika_id.empty?
         onsubmit = raw 'yaCounter28296001.reachGoal(\''+@service.metrika_id+'\'); return true;'
     end
+    if defined?(metrika_code) && !metrika_code.empty?
+        onsubmit = raw 'yaCounter28296001.reachGoal(\''+metrika_code+'\'); return true;'
+    end
+
 %>
 <% if flash[:notice] && flash[:notice] == 'Order was created' %>
     <div class="well" style="padding:20px;text-align: center" id="modal-show" data-id="recall">Заявка принята<br>Спасибо за обращение в Центр эпиляции и косметологии.<br>Наш менеджер скоро свяжется с вами для уточнения деталей.</div>
