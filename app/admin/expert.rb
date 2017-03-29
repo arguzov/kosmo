@@ -1,5 +1,5 @@
 ActiveAdmin.register Expert do
-    menu label: "Персонал"
+    menu :if => proc{ current_user.id < 3 }, label: "Персонал"
 
   permit_params :name, :content, :profession, :photo, :education, :experience, :diploma, :fl_order, service_ids: []
 

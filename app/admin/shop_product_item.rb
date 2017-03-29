@@ -1,5 +1,5 @@
 ActiveAdmin.register ShopProductItem do
-    menu label: "Товары цены"
+    menu :if => proc{ current_user.id < 3 }, label: "Товары цены"
 
     permit_params :product_id, :volume, :price, :color, :unit
 

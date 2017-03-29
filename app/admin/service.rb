@@ -1,5 +1,5 @@
 ActiveAdmin.register Service do
-    menu label: "Услуги"
+    menu :if => proc{ current_user.id < 3 }, label: "Услуги"
 
   permit_params :name, :anounce, :photo, :content, :price, :title, :description, :keys, :complements, :fl_show, :fl_publish, :pricelist,:parent_id,:url, :fl_order, :metrika_id, expert_ids: [], filial_ids: []
   #fdddsf

@@ -1,5 +1,5 @@
 ActiveAdmin.register Order do
-    menu label: "Заказы"
+    menu :if => proc{ current_user.id < 3 }, label: "Заказы"
 
     scope :requests, default: true
     scope :certificates

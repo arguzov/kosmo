@@ -1,5 +1,5 @@
 ActiveAdmin.register Group do
-    menu label: "Пользователи группы"
+    menu :if => proc{ current_user.id < 3 }, label: "Пользователи группы"
 
     permit_params :name, user_ids: []
 

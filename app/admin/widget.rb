@@ -1,5 +1,5 @@
 ActiveAdmin.register Widget do
-  menu label: "Виджеты"
+  menu :if => proc{ current_user.id < 3 }, label: "Виджеты"
 
   permit_params :header, :position_id, :content, :entity_id, :is_new, :is_only, :button_name, :metrika_id, :due_date
 

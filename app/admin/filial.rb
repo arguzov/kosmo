@@ -1,5 +1,5 @@
 ActiveAdmin.register Filial do
-    menu label: "Филиалы"
+    menu :if => proc{ current_user.id < 3 }, label: "Филиалы"
 
   permit_params :address, :phones, :email, :description, service_ids: []
   #fdddsf
