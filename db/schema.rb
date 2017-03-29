@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170314102316) do
+ActiveRecord::Schema.define(version: 20170329122730) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -115,6 +115,20 @@ ActiveRecord::Schema.define(version: 20170314102316) do
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
   end
+
+  create_table "filials", force: true do |t|
+    t.string "address"
+    t.string "phones"
+    t.string "email"
+    t.text   "description"
+  end
+
+  create_table "filials_services", id: false, force: true do |t|
+    t.integer "filial_id"
+    t.integer "service_id"
+  end
+
+  add_index "filials_services", ["filial_id", "service_id"], name: "index_filials_services_on_filial_id_and_service_id", using: :btree
 
   create_table "groups", force: true do |t|
     t.string "name"

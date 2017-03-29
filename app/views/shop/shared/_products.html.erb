@@ -22,7 +22,7 @@
             <% end %>
         <% end %>
         <div class="product-name" style="height: 40px;">
-          <%=link_to product.name.html_safe, shop_product_path({url: product.url})%>
+          <%=link_to product.name.truncate(45).html_safe, shop_product_path({url: product.url})%>
         </div>
         <div class="product-descr">
           <%= (strip_tags product.description).gsub('Описание:','').truncate(60) %>

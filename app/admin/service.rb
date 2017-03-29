@@ -1,7 +1,7 @@
 ActiveAdmin.register Service do
     menu label: "Услуги"
 
-  permit_params :name, :anounce, :photo, :content, :price, :title, :description, :keys, :complements, :fl_show, :fl_publish, :pricelist,:parent_id,:url, :fl_order, :metrika_id, expert_ids: []
+  permit_params :name, :anounce, :photo, :content, :price, :title, :description, :keys, :complements, :fl_show, :fl_publish, :pricelist,:parent_id,:url, :fl_order, :metrika_id, expert_ids: [], filial_ids: []
   #fdddsf
   index do
       column :name
@@ -34,6 +34,9 @@ ActiveAdmin.register Service do
       end
       f.inputs "Специалисты" do
           f.input :experts, as: :check_boxes
+      end
+      f.inputs "Филиалы" do
+          f.input :filials, as: :check_boxes
       end
       f.actions
   end

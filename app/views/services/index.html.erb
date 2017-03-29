@@ -21,22 +21,10 @@
           <%=render :partial => 'services/index/section', :locals => {section: Section.find(9)}%>
         </div>
      <% else %>
-      <div class="col-md-4">
-          <%=render :partial => 'services/index/section', :locals => {section: Section.find(1)}%>
-          <%=render :partial => 'services/index/section', :locals => {section: Section.find(15)}%>
-        <%=render :partial => 'services/index/section', :locals => {section: Section.find(7)}%>
-        <%=render :partial => 'services/index/section', :locals => {section: Section.find(8)}%>
-      </div>
-      <div class="col-md-4">
-          <%=render :partial => 'services/index/section', :locals => {section: Section.find(10)}%>
-        <%=render :partial => 'services/index/section', :locals => {section: Section.find(11)}%>
-        <%=render :partial => 'services/index/section', :locals => {section: Section.find(12)}%>
-      </div>
-      <div class="col-md-4">
-        <%=render :partial => 'services/index/section', :locals => {section: Section.find(4)}%>
-        <%=render :partial => 'services/index/section', :locals => {section: Section.find(5)}%>
-        <%=render :partial => 'services/index/section', :locals => {section: Section.find(13)}%>
-        <%=render :partial => 'services/index/section', :locals => {section: Section.find(14)}%>
+      <div class="col-md-12">
+          <%Section.where('fl_order > 0').order('fl_order').each do |section|%>
+          <%=render :partial => 'services/index/section', :locals => {section: section}%>
+          <% end %>
       </div>
      <% end %>
   </div>
