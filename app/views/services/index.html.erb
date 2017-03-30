@@ -1,11 +1,16 @@
 <%
    meta :title => 'Косметология Казань - наши услуги',
         :description => 'Подробный прайс лист на услуги по косметолгии в Казани'
+
+   sections = Section.where('fl_order > 0').order('fl_order')
+   count = (sections.count.to_f/3.to_f).ceil
+   i = 0
+   j = 0
 %>
 <div class="main col-md-12" id="news">
   <!-- page-title start -->
   <!-- ================ -->
-  <h1 class="page-title">Услуги Центра эпиляции и косметологии</h1>
+  <h1 class="page-title">Услуги Центра эпиляции и косметологии <%=count%></h1>
   <div class="separator-2"></div>
   <div class="row">
      <% if params.has_key?(:q)%>
@@ -21,9 +26,17 @@
           <%=render :partial => 'services/index/section', :locals => {section: Section.find(9)}%>
         </div>
      <% else %>
-      <div class="col-md-12">
-          <%Section.where('fl_order > 0').order('fl_order').each do |section|%>
+      <div class="col-md-4">
+          <%sections.each do |section|%>
+          <% if j < 2 && i == count %>
+              </div><div class="col-md-4">
+              <%
+                i = 0;
+                j = j + 1
+            %>
+          <% end %>
           <%=render :partial => 'services/index/section', :locals => {section: section}%>
+          <% i = i + 1 %>
           <% end %>
       </div>
      <% end %>
