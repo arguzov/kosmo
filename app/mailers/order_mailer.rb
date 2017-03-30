@@ -4,7 +4,7 @@ class OrderMailer < ActionMailer::Base
     def recall(data)
         @data = data
         mail(to: MANAGER_EMAIL,
-             subject: 'Заказ обратного звонка или услуги',
+             subject: "[#{@data[:filial_id]}] Заказ обратного звонка или услуги",
              template_path: 'orders/mailer')
     end
 

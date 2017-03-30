@@ -20,6 +20,7 @@
     <input type="text" name="order[email]" id="email-field">
     <i class="fa fa-phone form-control-feedback"></i>
   </div>
+  <%=render :partial => 'app/order/filial'%>
   <div class="form-group has-feedback">
     <label for="message4"><%if defined?(text) %>Текст заявки<% else %>Комментарий (не обязательно)<% end %></label>
     <textarea rows="4" class="form-control" id="message4" name="order[content]" <%if not defined?(text) %>placeholder="Напишите Ваши пожелания о времени звонка, дате посещения и любые другие вопросы. Или оставьте это поле пустым."<% end %>><%if defined?(text) %><%=text%><% end %></textarea>

@@ -4,6 +4,15 @@ ActiveAdmin.register Order do
     scope :requests, default: true
     scope :certificates
 
+    index do
+        column :created_at
+        column :order_type
+        column :contacts
+        column :content
+        column :url
+        column :filial
+        actions
+    end
   # See permitted parameters documentation:
   # https://github.com/gregbell/active_admin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #

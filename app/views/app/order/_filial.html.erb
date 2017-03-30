@@ -1,0 +1,23 @@
+<% if @service != nil %>
+    <%if @service.filials.count > 1%>
+        <div class="form-group has-feedback" style="width:60%;">
+          <label for="subject4">Выберите удобный филиал</label>
+          <select class="form-control" name="order[filial_id]">
+            <%@service.filials.order('id desc').each do |filial|%>
+                <option value="<%=filial.id%>"><%=filial.address%></option>
+            <% end %>
+          </select>
+        </div>
+    <% elsif @service.filials.count == 1%>
+        <input type="hidden" name="order[filial_id]" value="<%=@service.filials.first.address%>">
+    <% end %>
+<% else %>
+    <div class="form-group has-feedback" style="width:60%;">
+      <label for="subject4">Выберите удобный филиал</label>
+      <select class="form-control" name="order[filial_id]">
+        <%Filial.order('id desc').each do |filial|%>
+            <option value="<%=filial.id%>"><%=filial.address%></option>
+        <% end %>
+      </select>
+    </div>
+<% end %>
