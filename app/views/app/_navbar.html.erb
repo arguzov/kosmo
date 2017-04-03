@@ -29,16 +29,38 @@
               <li><a href="/posts/300">Обращение директора</a></li>
             </ul>
           </li>
-          <li class="dropdown">
+          <li class="dropdown mega-menu">
             <a href="/experts" class="dropdown-toggle" data-toggle="dropdown">Специалисты</a>
             <ul class="dropdown-menu">
-              <%Expert.order('fl_order,id').each do |expert|%>
-                  <li>
-                    <%=link_to expert_path(expert) do %><%=expert.name%><br>
-                    <span style="font-size: .8em;"><%=expert.profession%></span><% end %>
-                  </li>
-              <% end %>
-              <li><%=link_to 'Все специалисты', experts_path%></li>
+              <%
+                experts = Expert.order('fl_order,id')
+                count = (experts.count.to_f/3.to_f).ceil
+                i = 0
+                j = 0
+            %>
+              <li>
+                <div class="row">
+                  <div class="col-md-4 col-sm-12 col-xs-12">
+                    <ul>
+                      <%experts.each do |expert|%>
+                          <% if j < 2 && i == count %>
+                              </ul></div><div class="col-md-4 col-sm-12 col-xs-12"><ul>
+                      <%
+                        i = 0;
+                        j = j + 1
+                      %>
+                          <% end %>
+                          <li style="padding-bottom: 7px;">
+                            <%=link_to expert_path(expert) do %><%=expert.name%><% end %>
+                            <div><span style="font-size: .8em;"><%=expert.profession%></div>
+                          </li>
+                          <% i = i + 1 %>
+                      <% end %>
+                          <li><%=link_to 'Все специалисты', experts_path%></li>
+                      </ul>
+                      </div>
+                      </div>
+              </li>
             </ul>
           </li>
           <!-- mega-menu start -->
