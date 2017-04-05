@@ -14,7 +14,7 @@
 <div class="well">
     <%= form_for [Order.new], :html => { :onsubmit => onsubmit } do |f| %>
       <input type="hidden" name="order[url]" value="<%=request.original_url%>">
-  <div class="form-group has-feedback" style="width:60%;">
+  <div class="form-group has-feedback" <% unless browser.device.mobile? %>style="width:60%;"<% end %>>
     <label for="subject4">Ваш телефон или e-mail</label>
     <input type="text" class="form-control" id="subject4" placeholder="" name="order[contacts]" required>
     <input type="text" name="order[email]" id="email-field">
