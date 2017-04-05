@@ -1,6 +1,6 @@
 <div class="right-widget hidden-sm hidden-xs" style="border-top:2px solid #e0e0e0">
   <div class="w-body">
-      <a href="javascript://" class="btn btn-md btn-primary"  data-toggle="modal" data-target="#service-prices">Цены</a>
+      <a href="/services/prices?service_id=<%=@service.id%>" class="btn btn-md btn-primary">Цены</a>
     <% if defined?(@reviews) && @reviews != nil && @reviews.length > 0 %>
         <a href="javascript://" data-toggle="modal" data-target="#service-reviews" class="btn btn-md btn-primary">Отзывы</a>
     <% else %>

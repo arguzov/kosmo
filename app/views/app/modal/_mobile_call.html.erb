@@ -1,0 +1,19 @@
+<% if browser.device.mobile? %>
+<div class="modal fade" id="mobile_call" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3 class="modal-title text-center">Выберите филиал</h3>
+      </div>
+      <div class="modal-body text-center">
+          <a class="btn btn-lg btn-success" href="tel:+78432000322">Спартаковская, 2 к. 1</a>
+          <br>
+          <a class="btn btn-lg btn-success" href="tel:+78432266020">Ибрагимова, 54</a>
+          <br>
+          <a class="btn btn-lg btn-success" href="tel:+78432060002">Сибгата Хакима, 42</a>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<% end %>

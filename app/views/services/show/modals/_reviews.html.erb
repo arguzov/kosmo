@@ -7,7 +7,7 @@
             <h4 class="modal-title">Отзывы о процедуре</h4>
           </div>
           <div class="modal-body">
-            <% @reviews.each do |review| %>
+            <% @reviews.limit(5).each do |review| %>
                 <blockquote class="margin-clear">
                   <p style="margin-bottom: 0px;padding-bottom: 5px;"> <%=review.content.html_safe%></p>
                   <footer><cite title="Source Title"><%=review.person%></cite></footer>

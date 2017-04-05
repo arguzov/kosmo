@@ -47,11 +47,12 @@ new Image().src = "//counter.yadro.ru/hit?r"+
             <li style="width:365px;">
               <a href="javascript://" style="color:#7A5230;font-weight: bold;"><nobr><i class="fa fa-phone"></i> +7 (843) 2000-322, ул. Спартаковская, д. 2 к.1</nobr></a><br>
               <a href="javascript://" style="color:#7A5230;font-weight: bold;"><nobr><i class="fa fa-phone"></i> +7 (843) 226-60-20, пр. Ибрагимова, 54</nobr></a>
-              <a href="javascript://" style="color:#7A5230;font-weight: bold;"><nobr><i class="fa fa-phone"></i> +7(843)206-00-02 ул. Сибгата Хакима, 42</nobr></a>
+              <a href="javascript://" style="color:#7A5230;font-weight: bold;"><nobr><i class="fa fa-phone"></i> +7(843) 206-00-02 ул. Сибгата Хакима, 42</nobr></a>
             </li>
           </ul>
-          <div class="hidden-lg hidden-md hidden-sm text-center" style="font-size: 1.4em;padding: 5px;">
-            <a href="tel:+78432000322">Спартаковская, 2 к.1: (843) 2000-322</a><br><a href="tel:+79872925541">Ибрагимова, 54: (843) 226-60-20</a><br><a href="tel:+78432060002">Сибгата Хакима, 42: (843)206-00-02</a>
+          <div class="hidden-lg hidden-md hidden-sm text-center navbar-fixed-top" style="font-size: 1.4em;padding: 5px;background-color:#e0e0e0">
+            <!--Спартаковская, 2 к.1: <a href="tel:+78432000322" style="text-decoration: underline">2000-322</a><br><a href="tel:+79872925541">Ибрагимова, 54: 226-60-20</a><br><a href="tel:+78432060002">Сибгата Хакима, 42: 206-00-02</a>-->
+            <button class="btn btn-success" data-toggle="modal" data-target="#mobile_call">Позвонить</button>
           </div>
         </div>
         <!-- header-top-first end -->
@@ -79,7 +80,7 @@ new Image().src = "//counter.yadro.ru/hit?r"+
   </div>
 </div>
 
-<header class="header clearfix" <%if defined?(@service) && (@service.id == 79 || @service.id == 109 || @service.id == 74) %>style="border-bottom-width: 0px;"<% end %>>
+<header <% if browser.device.mobile? %>style="padding-top:100px;"<% end %> class="header clearfix" <%if defined?(@service) && (@service.id == 79 || @service.id == 109 || @service.id == 74) %>style="border-bottom-width: 0px;"<% end %>>
   <div class="container">
     <div class="row">
       <div class="col-md-3">

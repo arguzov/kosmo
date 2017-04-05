@@ -42,9 +42,12 @@
           <div class="panel-body">
             <%=render :partial=>'app/pricelist',:locals=>{prices:  service.first_level_prices, collapsed: false}%>
           </div>
-          <p style="font-size:13px;padding:10px;font-style: italic;text-decoration: underline!important">
-            <%=link_to "Прочитать подробнее об услуге", service_path(id:service.id, url:service.url) %>
-          </p>
+          <%=render :partial=> 'services/show/buttons', locals: {description: true,noprices: true,service: service}%>
+          <%
+            @reviews = service.reviews
+            @service = service
+         %>
+          <%=render :partial => 'services/show/modals/reviews'%>
         </div>
       </div>
   <% else %>

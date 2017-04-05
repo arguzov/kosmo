@@ -1,6 +1,6 @@
 <%
    if defined?@service
-    title = "Отзывы о процедуре #{@service.name} в Казани"
+    title = "#{@service.name} - отзывы клиентов в Казани"
     descr = "Отзывы клиентов о процедуре #{@service.name} проведённой в Казани"
  else
     title = "Отзывы о Центре эпиляции и косметологии в Казани"
@@ -11,10 +11,12 @@
 %>
 <div class="main col-md-9" id="news">
   <h1 class="page-title" style="font-size:2.0em;"><%=title%></h1>
+  <% unless defined?@service %>
   <div style="margin-bottom: 20px;margin-top: 20px;">
     Сортировать <select id="sort"><option value="asc" <%if !params.has_key?('sort') || params['sort'] == 'asc'%>selected<% end %>>в порядке добавления</option>
     <option value="desc" <%if params['sort'] == 'desc'%>selected<% end %>>сначала новые</option></select>
   </div>
+  <% end %>
   <table class="table">
     <%@reviews.each do |review|%>
         <tr>
@@ -34,10 +36,22 @@
     <% end %>
   </table>
   <%= will_paginate @reviews, renderer: BootstrapPagination::Rails %>
+  <% if defined?@service %>
+      <%=render :partial=> 'services/show/buttons', locals: {description: true,noreviews: true,service: @service}%>
+      <%=render :partial => 'services/show/modals/prices'%>
+  <% end %>
 </div>
-<div class="col-md-3">
+<div class="col-md-3 hidden-xs hidden-sm">
   <div style="padding-top: 30px;">
-    <%=render partial: 'app/widgets/vk_group'%>
-    <%=render partial: 'app/widgets/certificates', locals: {certificates: Certificate.order('RAND()').limit(1),mode: 'right'}%>
+    <h3 class="title text-center">Отзывы по услугам</h3>
+    <div class="separator"></div>
+    <div style="height:900px;overflow-y: scroll">
+    <ul>
+      <%ids = PostsService.group(:service_id).pluck(:service_id)%>
+      <%Service.where('id IN (?)',ids).order('name ASC').each do |service|%>
+          <li><%=link_to service.name, responces_path(service_id:service.id)%></li>
+      <% end %>
+    </ul>
+    </div>
   </div>
 </div>

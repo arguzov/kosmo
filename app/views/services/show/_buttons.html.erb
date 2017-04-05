@@ -1,10 +1,19 @@
 <div class="row well text-center" style="margin: 20px 0px;">
+  <% unless defined?noprices %>
   <div class="col-md-4">
     <a href="javascript://" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#service-prices">Цены</a>
   </div>
+  <% end %>
+  <% unless defined?noreviews %>
   <div class="col-md-4">
     <a href="javascript://" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#service-reviews">Отзывы</a>
   </div>
+  <% end %>
+  <% if defined?(service) && defined?(description) %>
+      <div class="col-md-4">
+        <a href="<%=service_path(id:service.id, url:service.url)%>" class="btn btn-lg btn-primary">Описание услуги</a>
+      </div>
+  <% end %>
   <div class="col-md-4">
     <a href="javascript://" class="btn btn-lg btn-default" data-toggle="modal" data-target="#recall">Записаться</a>
   </div>
