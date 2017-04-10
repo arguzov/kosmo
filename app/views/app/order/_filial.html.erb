@@ -9,7 +9,7 @@
           </select>
         </div>
     <% elsif @service.filials.count == 1%>
-        <input type="hidden" name="order[filial_id]" value="<%=@service.filials.first.address%>">
+        <input type="hidden" name="order[filial_id]" value="<%=@service.filials.first.id%>">
     <% end %>
 <% else %>
     <div class="form-group has-feedback" <% unless browser.device.mobile? %>style="width:60%;"<% end %>>
