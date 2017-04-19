@@ -1,6 +1,6 @@
 ActiveAdmin.register Issue do
-  menu false
-  permit_params :name, :url, :content, :title, :description, :fl_show, :parent_id, service_ids: []
+  menu :if => proc{ current_user.id < 3 }, label: "Проблемы"
+  permit_params :name, :url, :content, :title, :description, :fl_show, :parent_id, service_ids: [], shop_product_ids: []
 
   index do
       column :name
@@ -23,6 +23,9 @@ ActiveAdmin.register Issue do
         end
         f.inputs "Сервисы" do
             f.input :services, as: :check_boxes
+        end
+        f.inputs "Товары" do
+            f.input :shop_products, as: :check_boxes
         end
         f.actions
     end

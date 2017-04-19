@@ -3,6 +3,10 @@ class ShopProduct < ActiveRecord::Base
     validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
     belongs_to :shop_category, :foreign_key => :category_id, :primary_key => :id
     has_many :shop_product_items, :primary_key => :id, :foreign_key => :product_id
+    belongs_to :brand
+    has_and_belongs_to_many :services, :foreign_key => :product_id
+    has_and_belongs_to_many :issues, :foreign_key => :product_id
+    has_and_belongs_to_many :parts, :foreign_key => :product_id
 
     scope :active, -> {where('fl_show = 1')}
 

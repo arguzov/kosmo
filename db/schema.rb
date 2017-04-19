@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170330113744) do
+ActiveRecord::Schema.define(version: 20170419125805) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -27,6 +27,10 @@ ActiveRecord::Schema.define(version: 20170330113744) do
   add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
+
+  create_table "brands", force: true do |t|
+    t.string "name"
+  end
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -169,6 +173,13 @@ ActiveRecord::Schema.define(version: 20170330113744) do
 
   add_index "issues_services", ["issue_id", "service_id"], name: "index_issues_services_on_issue_id_and_service_id", using: :btree
 
+  create_table "issues_shop_products", id: false, force: true do |t|
+    t.integer "product_id"
+    t.integer "issue_id"
+  end
+
+  add_index "issues_shop_products", ["product_id", "issue_id"], name: "index_issues_shop_products_on_product_id_and_issue_id", using: :btree
+
   create_table "mail_templates", force: true do |t|
     t.string  "name"
     t.text    "preview"
@@ -221,6 +232,17 @@ ActiveRecord::Schema.define(version: 20170330113744) do
     t.string   "email_address"
     t.integer  "filial_id"
   end
+
+  create_table "parts", force: true do |t|
+    t.string "name"
+  end
+
+  create_table "parts_shop_products", id: false, force: true do |t|
+    t.integer "part_id"
+    t.integer "product_id"
+  end
+
+  add_index "parts_shop_products", ["product_id", "part_id"], name: "index_parts_shop_products_on_product_id_and_part_id", using: :btree
 
   create_table "photos", force: true do |t|
     t.string   "name"
@@ -382,6 +404,13 @@ ActiveRecord::Schema.define(version: 20170330113744) do
     t.integer "issue_id"
   end
 
+  create_table "services_shop_products", id: false, force: true do |t|
+    t.integer "product_id"
+    t.integer "service_id"
+  end
+
+  add_index "services_shop_products", ["product_id", "service_id"], name: "index_services_shop_products_on_product_id_and_service_id", using: :btree
+
   create_table "shop_categories", force: true do |t|
     t.string  "name"
     t.string  "url"
@@ -411,6 +440,7 @@ ActiveRecord::Schema.define(version: 20170330113744) do
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
     t.integer  "price"
+    t.integer  "brand_id"
   end
 
   create_table "subscriptions", force: true do |t|
