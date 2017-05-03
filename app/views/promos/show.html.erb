@@ -28,21 +28,14 @@
           <div class="submitted"><i class="fa fa-user pr-5"></i> от <a href="#">ЦЭиК</a></div>
         </header>
         <%=@promo.content.html_safe%>
-        <div>
-          <%=render :partial => 'app/widgets/share'%>
+        <div class="row well text-center" style="margin: 10px 0px;">
+          <div class="col-md-4">
+            <a href="javascript://" class="btn btn-lg btn-default" data-toggle="modal" data-target="#recall">Забронировать</a>
+          </div>
         </div>
       </div>
     </div>
   </article>
-  <% if @promo.id == 20 %>
-      <%=render :partial => 'app/order', locals: {text: "Я хочу записаться на процедуру лазерной эпиляции со скидкой 50% по кодовому слову ЛАЗЕР 26. Перезвоните мне, пожалуйста, чтобы уточнить подробности"}%>
-  <% elsif @promo.id == 18 %>
-      <%=render :partial => 'app/order', locals: {text: "Я хочу записаться на вакуумно-роликовый массаж со скидкой 50% по кодовому слову СТАРВАК. Перезвоните мне, пожалуйста, чтобы уточнить подробности"}%>
-  <% elsif @promo.id == 132 %>
-      <%=render :partial => 'app/order', locals: {metrika_code: 'mezo-promo-zapis'}%>
-  <% else %>
-      <%=render :partial => 'app/order'%>
-  <% end %>
 </div>
 <aside class="col-md-3 col-md-offset-1">
   <div class="sidebar">
