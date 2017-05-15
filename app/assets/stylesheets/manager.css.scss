@@ -53,6 +53,14 @@ button.DTTT_button:hover, div.DTTT_button:hover, a.DTTT_button:hover {
 
 }
 
+.dataTables_length {
+    float: left!important;
+}
+
+.dataTables_filter{
+    float: right!important;
+}
+
 #manager-prices{
     .sh{
         //background-color: #ededed;
