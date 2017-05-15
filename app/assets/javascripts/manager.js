@@ -33,7 +33,6 @@ $(document).ready(function(){
         "sDom": 'T<"clear">lfrtip',
         "oTableTools": {
             "aButtons": [
-                "print"
             ]
         },
         "language": {
