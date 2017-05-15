@@ -15,6 +15,13 @@ class ServicesController < ApplicationController
     end
 
     def show
+        unless browser.bot?
+            metrika = Metrika.new
+            metrika.service_id = @service.id
+            metrika.action_id = 1
+            metrika.ip = request.remote_ip
+            metrika.save
+        end
         @pricelist = @service.pricelist.split(/\n/)
         @children = Service.where('parent_id = ? AND fl_publish = 1',@service.id)
         if @service.medicaments

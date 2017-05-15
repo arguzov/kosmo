@@ -22,9 +22,7 @@ Kosmo::Application.routes.draw do
       get 'sum'=>'certificates#sum', on: :collection
   end
 
-  #resources :services do
-  #    get 'prices', on: :collection
-  #end
+  post 'api/metrika/register'=>'metrika#register', as: :metrika_register
   get 'services/:id-:url.html'=>'services#show', as: :service,  :constraints => {:id => /\d+/}
   get 'services'=>'services#index', as: :services
   get 'services/prices'=>'services#prices', as: :prices_services
@@ -55,6 +53,7 @@ Kosmo::Application.routes.draw do
   get 'gallery'=>'posts#gallery', as: :gallery
 
   get 'shop'=>'shop#main', as: :shop
+  get 'shop/search'=>'shop#search', as: :shop_search
   get 'shop/bestsellers'=>'shop#best_sellers', as: :shop_best_sellers
   #get 'shop'=>'shop#root', as: :shop_root
   get 'shop/collection/:url'=>'shop#collection', as: :shop_collection
@@ -71,6 +70,7 @@ Kosmo::Application.routes.draw do
       resources :orders
       resources :prices
       resources :users
+      resources :metrika
       namespace :shop do
         resources :categories
         resources :products do
@@ -110,55 +110,4 @@ Kosmo::Application.routes.draw do
   get '/biorevitalizatsiya.html', to: redirect('/services/15-biorevitalizacia.html')
   get '/massazh-tela.html', to: redirect('/services/38-massag-tela.html')
 
-
-
-
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
-
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
-
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
-  # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
-
-  # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
-
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
 end

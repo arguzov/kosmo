@@ -1,0 +1,48 @@
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="ibox">
+    <div class="ibox-title" style="height: 60px;">
+      <div class="pull-left">Воронка</div>
+      <div class="pull-right" style="">
+        <form class="form-inline">
+          <div class="form-group">
+            <label for="exampleInputName2">Даты</label>
+            <input type="date" class="form-control" name="start" <% if params.has_key?(:start)%>value="<%=params[:start]%>"<% end %>>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputName2"> - </label>
+            <input type="date" class="form-control" name="end" <% if params.has_key?(:end)%>value="<%=params[:end]%>"<% end %>>
+          </div>
+          <button type="submit" class="btn btn-default">Фильтровать</button>
+        </form>
+      </div>
+    </div>
+    <div class="ibox-content">
+      <table class="table dataTables-grid">
+        <thead>
+         <tr>
+           <th>Услуга</th>
+           <%(1..4).each do |i|%>
+               <th  class="text-center"><%=Metrika::ACTIONS[i]%></th>
+           <% end %>
+         </tr>
+         </thead>
+         <tbody>
+          <%Service.order('name').each do |service|%>
+              <tr>
+                <td><%=service.name%></td>
+                <% if @data.has_key?(service.id)%>
+                    <%(1..4).each do |i|%>
+                        <td  class="text-center"><%if @data[service.id].has_key?(i)%><%=@data[service.id][i]%><% else %>0<% end %></td>
+                    <% end %>
+                <% else %>
+                    <%(1..4).each do |i|%>
+                        <td class="text-center">0</td>
+                    <% end %>
+                <% end %>
+              </tr>
+          <% end%>
+          </tbody>
+      </table>
+    </div>
+  </div>
+</div>

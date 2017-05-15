@@ -32,4 +32,19 @@ $(document).ready(function(){
         var text = $(this).attr('data-title');
         $('#message4').val('Я хочу записаться по акции "' + text + '"');
     })
+
+    $('.m-act').click(function() {
+        var obj = $(this);
+        $.ajax({
+            url: '/api/metrika/register',
+            type: 'POST',
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
+            },
+            data: {
+                service_id: obj.attr('data-service'),
+                action_id: obj.attr('data-action')
+            }
+        });
+    });
 });

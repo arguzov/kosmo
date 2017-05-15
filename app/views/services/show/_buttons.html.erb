@@ -15,6 +15,6 @@
       </div>
   <% end %>
   <div class="col-md-4">
-    <a href="javascript://" class="btn btn-lg btn-default" data-toggle="modal" data-target="#recall">Записаться</a>
+    <a href="#" class="btn btn-lg btn-default <% if defined?(service) %>m-act<% end %>" <% if defined?(service) %>data-service="<%=service.id%>" data-action="2"<% end %> data-toggle="modal" data-target="#recall">Записаться</a>
   </div>
 </div>

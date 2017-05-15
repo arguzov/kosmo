@@ -7,12 +7,30 @@ class ShopController < ApplicationController
         @products = ShopProductItem.active.best_sellers
     end
 
+    def search
+        @products = ShopProduct.active
+        if params.has_key?(:brands)
+           @products = @products.where('brand_id IN (?)',params[:brands].keys)
+        end
+        ids = []
+        if params.has_key?(:issues)
+            ids = IssuesShopProduct.where('issue_id IN (?)',params[:issues].keys).pluck(:product_id)
+        end
+        if params.has_key?(:parts)
+            ids = ids + PartsShopProduct.where('part_id IN (?)',params[:parts].keys).pluck(:product_id)
+        end
+        if ids.length > 0
+            @products = @products.where('id IN (?)',ids)
+        end
+        @products = @products.limit(50)
+    end
+
     def best_sellers
         @products = ShopProductItem.active.best_sellers
     end
 
     def closed
-        return render 'shop/closed'
+        render 'shop/closed'
     end
 
     def collection

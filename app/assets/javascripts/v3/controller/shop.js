@@ -39,11 +39,11 @@ $(document).ready(function(){
                 viewed_html += '<a href="/shop/product/'+ row.url +'.html" title="'+row.name+'"><img alt="'+row.name+'" src="'+row.photo_url+'"></a>';
             })
             if(cart_html == ''){
-                cart_html = '<div class="empty"><a href="/shop"><i class="glyphicon glyphicon-plus"></i></a></div>';
+                cart_html = '<div class="emt"><a href="/shop">+</a></div>';
                 $('#cart-top .btn').attr('disabled','disabled');
             }
             if(viewed_html == ''){
-                viewed_html = '<div class="empty"><a href="/shop"><i class="glyphicon glyphicon-plus"></i></a></div>';
+                viewed_html = '<div class="emt"><a href="/shop"><i class="glyphicon glyphicon-plus"></i></a></div>';
             }
             $('#cart-wrapper').html(cart_html);
             $('#viewed-wrapper').html(viewed_html);

@@ -1,0 +1,16 @@
+<div class="panel panel-default shop-navigation">
+  <div class="panel-heading">
+    <h4 class="panel-title">
+      <a data-toggle="collapse" data-parent="#accordion" href="#">Бренд</a>
+    </h4>
+  </div>
+  <div id="collapse" class="panel-collapse collapse in">
+    <div class="panel-body" style="height:400px;overflow-y: scroll">
+      <ul style="margin-left: 0px;padding-left: 0px;">
+        <% Brand.all.each do |brand|%>
+            <li><input type="checkbox" name="brands[<%=brand.id%>]" <%if params[:brands] != nil && params[:brands].has_key?(brand.id.to_s)%>checked<% end %>> <%=brand.name%></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

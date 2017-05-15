@@ -1,0 +1,16 @@
+<div class="panel panel-default shop-navigation">
+  <div class="panel-heading">
+    <h4 class="panel-title">
+      <a data-toggle="collapse" data-parent="#accordion" href="#">Часть тела</a>
+    </h4>
+  </div>
+  <div id="collapse" class="panel-collapse collapse in">
+    <div class="panel-body">
+      <ul style="margin-left: 0px;padding-left: 0px;">
+        <% Part.all.each do |part|%>
+            <li><input type="checkbox" name="parts[<%=part.id%>]" <%if params[:parts] != nil && params[:parts].has_key?(part.id.to_s)%>checked<% end %>> <%=part.name%></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

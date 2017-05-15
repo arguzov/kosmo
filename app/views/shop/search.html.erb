@@ -1,0 +1,18 @@
+<%
+   meta :title => 'Поиск по магазину',
+        :description => 'Поиск по магазину'
+%>
+<div class="row">
+  <div class="col-md-12">
+    <div class="page-header" style="margin :0px;padding: 0px;">
+      <h1 style="margin :0px;padding: 10px 0px;">Поиск товаров</h1>
+    </div>
+    <div id="shop-collection" style="padding-top: 20px;">
+      <% if @products.length > 0%>
+         <%=render :partial=>'shop/shared/products', :locals => {products: @products, unit_id: 0}%>
+      <% else %>
+         <div class="well">К сожалению по вашему запросу не найдено товаров.</div>
+      <% end%>
+    </div>
+  </div>
+</div>
