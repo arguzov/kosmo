@@ -41,8 +41,10 @@ class ServicesController < ApplicationController
         expert_id = @service.content.scan(/<blockquote[^>]*id="([0-9]+)"[^>]*>/i)
         if expert_id[0] && expert_id[0][0]
             expert = Expert.find(expert_id[0][0])
-            @service.content = @service.content.gsub('<blockquote id="' + expert_id[0][0] + '">','<blockquote id="' + expert_id[0][0] + '">' + '<div class="pull-left" style="height:100px;overflow-y:hidden;margin-right:10px;"><img style="width:100px;" src="http://kosmetologiya-kazan.ru'+expert.photo.url(:medium)+'"></div>')
-            @service.content = @service.content.gsub('</blockquote>','<div style="clear:both;"></div></blockquote>')
+            unless expert == nil
+                @service.content = @service.content.gsub('<blockquote id="' + expert_id[0][0] + '">','<blockquote id="' + expert_id[0][0] + '">' + '<div class="pull-left" style="height:100px;overflow-y:hidden;margin-right:10px;"><img style="width:100px;" src="http://kosmetologiya-kazan.ru'+expert.photo.url(:medium)+'"></div>')
+                @service.content = @service.content.gsub('</blockquote>','<div style="clear:both;"></div></blockquote>')
+            end
         end
         @album = Dir.glob("public/data/services/#{@service.id}/th/*")
         if @service.complements != nil
