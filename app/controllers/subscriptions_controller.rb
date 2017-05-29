@@ -10,7 +10,7 @@ class SubscriptionsController < ApplicationController
             ids = [1,16,17,18]
         elsif params[:id].to_i == 2
             @title = 'Абонементы на косметологические услуги'
-            ids = [12,13,14,19,20]
+            ids = [12,13,14,19,21,20]
         elsif params[:id].to_i == 3
             @title = 'Абонементы на массаж и коррекцию фигуры'
             ids = [11]
@@ -18,7 +18,7 @@ class SubscriptionsController < ApplicationController
             @title = 'Абонементы на ногтевой сервис'
             ids = [15]
         end
-        @subscriptions = Subscription.where('id IN (?)',ids)
+        @subscriptions = Subscription.where('id IN (?)',ids).order("FIELD(id,'#{ids.join(',').to_s}')")
     end
 
     def show
