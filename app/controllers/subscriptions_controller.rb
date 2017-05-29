@@ -10,7 +10,7 @@ class SubscriptionsController < ApplicationController
             ids = [1,16,17,18]
         elsif params[:id].to_i == 2
             @title = 'Абонементы на косметологические услуги'
-            ids = [12,13,14,19,21,20]
+            ids = [12,13,14,21,19,20]
         elsif params[:id].to_i == 3
             @title = 'Абонементы на массаж и коррекцию фигуры'
             ids = [11]
