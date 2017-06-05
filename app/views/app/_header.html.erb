@@ -66,11 +66,20 @@ new Image().src = "//counter.yadro.ru/hit?r"+
 
           <!-- header top dropdowns start -->
           <!-- ================ -->
-            <div class="hidden-sm hidden-xs text-right" style="padding-top: 15px;">
+            <div class="hidden-sm hidden-xs text-right" style="padding-top: 5px;">
+              <div style="padding-top:-10px;">
               <a target="_blank" href="https://www.instagram.com/kosmetologiya_kazan/"><i class="fa fa-instagram" style="font-size: 2.4em;"></i></a> &nbsp;&nbsp;
               <a target="_blank" href="http://www.youtube.com/channel/UCMybbiz-6UAJyZW92GIynhw"><i class="fa fa-youtube-play" style="font-size: 2.4em;"></i></a> &nbsp;&nbsp;
               <a target="_blank" href="https://vk.com/kosmetologiya_kazan"><i class="fa fa-vk" style="font-size: 2.4em;"></i></a> &nbsp;&nbsp;
-              <button class="btn-lg btn-default dropdown-toggle" href="javascript://" data-toggle="modal" data-target="#recall" style="margin-top: -5px;font-size: 14px;"><i class="fa fa-phone"></i> обратный звонок</button>
+              <button class="btn-lg btn-default dropdown-toggle" href="javascript://" data-toggle="modal" data-target="#recall" style="font-size: 13px;height:30px;padding-top: 5px;"><i class="fa fa-phone"></i> обратный звонок</button>
+                </div>
+              <div>
+                <form role="search" class="search-box form-inline" action="/services">
+                  <div class="form-group has-feedback">
+                    <input type="text" name="q" class="form-control" placeholder="Поиск: введите название услуги" value="<%=params[:q]%>" style="width:280px;height:30px;">
+                  </div>
+                </form>
+              </div>
             </div>
           <!--  header top dropdowns end -->
 

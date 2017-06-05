@@ -1,15 +1,9 @@
+<% if current_layout == 'posts' %>
     <%=render :partial => 'app/banners/top'%>
     <div class="page-intro hidden-xs hidden-sm">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <div class="pull-left hidden-xs hidden-sm">
-              <form role="search" class="search-box form-inline" action="/services">
-                <div class="form-group has-feedback">
-                  <input type="text" name="q" class="form-control" placeholder="Введите название услуги" value="<%=params[:q]%>" style="width:300px;">
-                </div>
-              </form>
-            </div>
             <div class="pull-right" style="padding-top: 7px;">
               <a href="/shop" class="btn btn-default"><i class="fa fa-shopping-cart"></i> Интернет-магазин</a> &nbsp;
               <a href="/certificates" class="btn btn-default"><i class="fa fa-gift"></i> Подарочные сертификаты</a> &nbsp;
@@ -38,3 +32,4 @@
         </div>
       </div>
     </div>
+<% end %>

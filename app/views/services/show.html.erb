@@ -13,7 +13,7 @@
        @widgets = banners.first.widgets
    end
 %>
-<div class="main col-md-9 scrollit">
+<div class="main col-md-12 scrollit">
   <h1 class="page-title"><%=@service.name%></h1>
   <article class="">
     <div class="blogpost-content">
@@ -28,10 +28,3 @@
     <%=render :partial => 'services/show/modals/reviews'%>
   </article>
 </div>
-<aside class="col-md-3" style="padding-top:30px;">
-  <div class="sidebar" style="padding-top:0px;padding-left: 10px;">
-    <%=render partial: 'services/show/call_to_action'%>
-    <%=render partial: 'app/widgets/vk_contents'%>
-    <%=render partial: 'app/widgets/vk_instagram'%>
-  </div>
-</aside>

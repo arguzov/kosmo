@@ -15,7 +15,7 @@
    end
    months = %w(января февраля марта апреля мая июня июля августа сентября октября ноября декабря)
 %>
-<% if banners.length > 0 && !NO_TOP_BANNER_PAGES.include?(current_layout)%>
+<% if @service == nil && banners.length > 0 && !NO_TOP_BANNER_PAGES.include?(current_layout)%>
 <div class="section hidden-xs hidden-sm" id="top-promos">
   <div class="container">
     <div id="owl-top" class="owl-carousel owl-theme content-slider">
@@ -53,7 +53,7 @@
     </div>
   </div>
 </div>
-<% if current_layout == 'services' && @service != nil %>
+<% if 1 == 2 && current_layout == 'services' && @service != nil %>
 <div class="hidden-lg hidden-md">
   <div class="container">
     <div id="owl-top" class="owl-carousel owl-theme content-slider">
