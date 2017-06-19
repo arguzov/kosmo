@@ -2,7 +2,7 @@
    content = @service.content
    content = content.gsub(/<p>[^а-яА-Яa-zA-Z0-9]*\{alert ([^\}]+)\}[^<]*<\/p>/i,'<div class="alert alert-\\1">')
    content = content.gsub(/<p>[^а-яА-Яa-zA-Z0-9]*\{\/alert\}[^<]*<\/p>/i,'</div>')
-   widget = Widget.pos(3).entity(@service.id).where('due_date is null OR due_date > ?',Time.now).first
+   widget = Widget.pos(3).entity(@service.id).where('due_date > ?',Time.now).first
    whtml = ''
    parts = @service.content.scan(/(<h2[^>]*>([^<]*)<\/h2>)/i)
    if widget != nil
@@ -16,9 +16,22 @@
            whtml += '<div class="text-center">* действует на первое посещение</div>'
        end
        whtml += '</div>'
-       if parts.length > 1
-          content = content.gsub(parts[1][0],whtml + parts[1][0].to_s)
+   end
+   discount = Discount.alive.where('service_id = ?',@service.id).first
+   if discount != nil
+       whtml = '<div class="alert alert-warning text-center">'
+       whtml += '<div class="text-center">Только в этом месяце!</div>'
+       whtml += '<div style="font-size: 1.5em;margin-bottom: 10px;">'
+       whtml += '<p>Пройдите процедуру с '+discount.value.to_s+'% скидкой!</p>'
+       whtml += '</div>'
+       whtml += '<div style="margin-bottom: 10px;"><a href="#" data-toggle="modal" data-target="#recall" class="btn btn-md btn-danger m-act" data-service="'+@service.id.to_s+'" data-action="4">Записаться</a></div>'
+       if discount.fl_new
+           whtml += '<div class="text-center">* действует на первое посещение</div>'
        end
+       whtml += '</div>'
+   end
+   if parts.length > 1
+       content = content.gsub(parts[1][0],whtml + parts[1][0].to_s)
    end
 %>
 <% if whtml.length > 0 && parts.length < 2 %>

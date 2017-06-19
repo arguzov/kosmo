@@ -47,4 +47,17 @@ $(document).ready(function(){
             }
         });
     });
+
+    if ($('#global-pricelist').length > 0) {
+        $('.discount-row').each(function(){
+            var exists = [];
+            var id = $(this).attr('data-id');
+            if ($.inArray(id, exists) < 0) {
+                console.log($(this).attr('data-id'));
+                $('.discount-' + id).removeClass('hidden');
+                exists.push(id);
+            }
+        })
+    }
+
 });

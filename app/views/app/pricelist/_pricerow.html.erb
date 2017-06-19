@@ -1,6 +1,15 @@
-<% if line.discount != nil && line.discount.to_i > 0%>
-    <nobr><s><%=line.price%> <span class="rouble">Р</span></s></nobr>
-    <nobr><%=line.price.to_i - ((line.price.to_i * line.discount.to_i)/100).round%> <span class="rouble">Р</span><%if line.is_new_only %><%@fl_new = true;%>*<% end %></nobr>
-<% else %>
+<%
+  unless defined?(@service_discount)
+      @service_discount = {}
+  end
+  unless @service_discount.key?(line.service_id)
+      service = line.service
+      @service_discount[line.service_id] = service.discounts.first
+  end
+%>
+<% if @service_discount[line.service_id] == nil %>
     <nobr><%=line.price%> <span class="rouble">Р</span></nobr>
+<% else %>
+    <nobr><s><%=line.price%> <span class="rouble">Р</span></s>
+    <%=render :partial => 'app/pricelist/discount_row', locals: {price: line}%></nobr>
 <% end %>

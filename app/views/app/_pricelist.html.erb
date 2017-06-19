@@ -11,7 +11,7 @@
 
     <div class="panel" style="margin: 0px;" id="global-pricelist">
         <% if @service == nil %>
-            <%=render :partial => 'app/pricelist/price_block', locals: {prices: prices}%>
+            <%=render :partial => 'app/pricelist/price_block', locals: {prices: prices} %>
         <% else %>
             <% if prices_w.length > 0 %>
                 <h3>Женский прайс</h3>

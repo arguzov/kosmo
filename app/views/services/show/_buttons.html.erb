@@ -5,9 +5,11 @@
   </div>
   <% end %>
   <% unless defined?noreviews %>
-  <div class="col-md-4">
-    <a href="javascript://" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#service-reviews">Отзывы</a>
-  </div>
+      <% if defined?(service) && service.reviews.count > 0 %>
+          <div class="col-md-4">
+            <a href="javascript://" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#service-reviews">Отзывы</a>
+          </div>
+      <% end %>
   <% end %>
   <% if defined?(service) && defined?(description) %>
       <div class="col-md-4">

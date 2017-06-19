@@ -1,0 +1,2 @@
+<span class="discount-row" data-id="<%=price.service_id%>"><%=price.price.to_i - ((price.price.to_i * @service_discount[price.service_id].value.to_i)/100).round%> <span class="rouble">Р</span><%if @service_discount[price.service_id].fl_new %>*<% end %></span>
+

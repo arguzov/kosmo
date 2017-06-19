@@ -4,7 +4,7 @@ class Promo < ActiveRecord::Base
   has_and_belongs_to_many :services
   has_many :widgets, primary_key: :id, foreign_key: :entity_id
   accepts_nested_attributes_for :services, allow_destroy: true
-  default_scope where('due > ?',Time.now)
+  default_scope where('due > ?',Date.today)
 
   def is_alive
       self.due > Time.now

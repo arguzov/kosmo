@@ -26,24 +26,20 @@
                   <th></th>
                   <th>Название</th>
                   <th>Цена</th>
-                  <th>Скидка (%)</th>
-                  <th>Нов.</th>
                   <th>Пол</th>
                   <th>Удалить</th>
                 </tr>
             <%service.prices.where('parent_id = 0 AND price = 0').each do |price_depart|%>
                 <tr <% unless params[:service_id] %>class="sr"<% end %> data-id="<%=price_depart.service_id%>">
-                  <td></td>
-                  <td colspan="5"><strong><%=price_depart.name%></strong></td>
+                  <td>[<%=price_depart.id%>]</td>
+                  <td colspan="3"> <strong><%=price_depart.name%></strong></td>
                   <td><%= link_to "X", [:manager,price_depart], :confirm =>"Вы уверены?", :method => :delete, :class=> "btn btn-danger" %></td>
                 </tr>
                 <%Price.where('parent_id = ?',price_depart).each do |price|%>
                     <tr <% unless params[:service_id] %>class="sr"<% end %> data-id="<%=price.service_id%>" data-price_id="<%=price.id%>">
-                      <td></td>
+                      <td>[<%=price.id%>]</td>
                       <td><input type="text" class="form-control" name="name" value="<%=price.name%>" style="width:400px;"></td>
                       <td><input type="text" class="form-control" name="price" value="<%=price.price%>"></td>
-                      <td><input type="text" class="form-control" name="discount" value="<%=price.discount%>"></td>
-                      <td><input type="checkbox" name="is_new_only" <%if price.is_new_only %>checked="checked"<% end %>></td>
                       <td>
                         <select name="gender_id">
                           <option value="3" <%if price.gender_id == 3%>selected<% end %>>Любой</option>
@@ -60,8 +56,6 @@
                       <td></td>
                       <td><input type="text" class="form-control" name="name" value="<%=price.name%>" style="width:400px;"></td>
                       <td><input type="text" class="form-control" name="price" value="<%=price.price%>"></td>
-                      <td><input type="text" class="form-control" name="discount" value="<%=price.discount%>"></td>
-                      <td><input type="checkbox" name="is_new_only" <%if price.is_new_only %>checked="checked"<% end %>></td>
                       <td>
                         <select name="gender_id">
                           <option value="3" <%if price.gender_id == 3%>selected<% end %>>Любой</option>

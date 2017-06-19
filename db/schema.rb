@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170512115625) do
+ActiveRecord::Schema.define(version: 20170619063116) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -74,6 +74,18 @@ ActiveRecord::Schema.define(version: 20170512115625) do
     t.string   "title"
     t.boolean  "fl_show"
     t.integer  "unit_id"
+  end
+
+  create_table "discounts", force: true do |t|
+    t.integer  "price_id"
+    t.integer  "promo_id"
+    t.integer  "service_id"
+    t.date     "due_date"
+    t.integer  "value"
+    t.integer  "value_unit"
+    t.boolean  "fl_new"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "experts", force: true do |t|
@@ -336,6 +348,7 @@ ActiveRecord::Schema.define(version: 20170512115625) do
     t.boolean  "fl_banner"
     t.string   "more_link"
     t.integer  "fl_order",           default: 99
+    t.boolean  "fl_menu"
   end
 
   create_table "promos_services", id: false, force: true do |t|

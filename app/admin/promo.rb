@@ -7,29 +7,29 @@ ActiveAdmin.register Promo do
         end
     end
 
-    permit_params :name, :content, :banner, :fl_active, :fl_top, :fl_banner, :due, :more_link, :photo, service_ids: []
+    permit_params :name, :content, :banner, :fl_active, :fl_top, :fl_menu, :fl_banner, :due, :more_link, :photo, service_ids: []
 
     index do
         column :id
         column :name
         column :fl_active
         column :fl_top
-        column :fl_banner
+        column :fl_menu
         column :created_at
         actions
     end
 
     form do |f|
         f.inputs "Данные акции" do
-            f.input :name
+            f.input :name, :label => 'Название акции'
             f.input :content, input_html: {class: "redactor" }
             f.input :banner, input_html: {class: "redactor" }
             f.input :photo, :as => :file, :hint => f.template.image_tag(f.object.photo.url(:thumb))
-            f.input :fl_active
-            f.input :fl_top
-            f.input :fl_banner
-            f.input :due
-            f.input :more_link
+            f.input :fl_active, :label => 'Активный'
+            f.input :fl_top, :label => 'В карусели'
+            f.input :fl_menu, :label => 'В меню'
+            f.input :due, :label => 'Дата окончания'
+            f.input :more_link, :label => 'Ссылка на статью'
         end
         f.inputs "Сервисы" do
             f.input :services, as: :check_boxes

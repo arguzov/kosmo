@@ -68,6 +68,7 @@
                       <% if promos.count > 0 %>
                           <span class="label label-danger pull-right" style="cursor: pointer" onclick="document.location.href='/promos/<%=promos.first.id%>'">Акция!</span>
                       <% end %>
+                      <span class="label label-danger pull-right discount-<%=service.id%> hidden">Скидка</span>
                     </a>
                   </h4>
                 </div>

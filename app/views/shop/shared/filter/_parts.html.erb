@@ -7,7 +7,7 @@
   <div id="collapse" class="panel-collapse collapse in">
     <div class="panel-body">
       <ul style="margin-left: 0px;padding-left: 0px;">
-        <% Part.all.each do |part|%>
+        <% Part.order(:name).each do |part|%>
             <li><input type="checkbox" name="parts[<%=part.id%>]" <%if params[:parts] != nil && params[:parts].has_key?(part.id.to_s)%>checked<% end %>> <%=part.name%></li>
         <% end %>
       </ul>

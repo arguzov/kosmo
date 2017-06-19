@@ -8,7 +8,7 @@
   <h1 class="page-title">Акции Центра эпиляции и косметологии</h1>
   <div class="separator-2"></div>
   <div class="section">
-        <% @promos.each do |banner|%>
+        <% if @promos.each do |banner|%>
                 <div class="row call-to-action" style="background-color: #E9E9E9;margin-bottom: 20px;">
                   <div class="col-md-4">
                     <%=image_tag banner.photo.url(:medium), class: 'img-responsive'%>
@@ -22,6 +22,8 @@
                     </div>
                   </div>
                 </div>
+        <% end.empty? %>
+            <div class="text-center" style="padding: 50px;">К сожалению, в данный момент никаких акций не проводится</div>
         <% end %>
   </div>
 </div>

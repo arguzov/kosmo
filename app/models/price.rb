@@ -1,5 +1,6 @@
 class Price < ActiveRecord::Base
     belongs_to :service
+    has_many :discounts
     scope :with_price, -> {where('parent_id > 0')}
     scope :first_level, -> {where('parent_id = 0')}
 
