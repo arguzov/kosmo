@@ -5,6 +5,10 @@ class OrdersController < ApplicationController
         @order = Order.find(params[:id])
     end
 
+    def lazer
+
+    end
+
     def complete
 
     end

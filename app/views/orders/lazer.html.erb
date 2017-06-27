@@ -1,0 +1,42 @@
+<div class="main col-md-12" id="news">
+  <!-- page-title start -->
+  <!-- ================ -->
+  <h1 class="page-title" style="padding-bottom: 0px;margin-bottom: 0px;">Форма заказа</h1>
+  <!-- page-title end -->
+  <div class="section">
+      <div class="col-md-8 col-sm-12 col-xs-12">
+        <p>Уважаемый посетитель!</p>
+        <p>Для оформления и оплаты заказа заполните, пожалуйста, форму ниже</p>
+        <p><strong>Услуга:</strong> лазерная эпиляция</p>
+        <p><strong>Клиника:</strong> Центр эпиляции и косметологии г. Казань</p>
+        <p><strong>Цена: </strong> 990 руб.</p>
+        <p><strong>Форма оплаты:</strong> Банковская карта (через сервис Яндекс.Деньги)</p>
+        <div class="well col-md-8 col-sm-12 col-xs-12">
+          <form method="POST" action="https://money.yandex.ru/eshop.xml">
+
+            <!-- ОБЯЗАТЕЛЬНЫЕ ПОЛЯ -->
+            <input type="hidden" name="shopId" value="64136">
+            <input type="hidden" name="scid" value="59197">
+            <input type=hidden name="customerNumber" value="2124">
+            <input type=hidden name="sum" id="sum" value="990">
+            <input type=hidden name="orderDetails" value="Услуга: Лазерная эпиляция">
+            <input name="paymentType" value="" type="hidden"/>
+            <div class="form-group  has-feedback">
+              <label for="name">Вашe имя</label>
+              <input type=text name="custName" class="form-control" id="name" size="64">
+            </div>
+            <div class="form-group  has-feedback">
+              <label for="phone">Ваш контактный телефон</label>
+              <input type=text name="cps_phone" class="form-control" id="phone" size="64">
+            </div>
+            <div class="form-group  has-feedback">
+              <label for="phone">Ваш email</label>
+              <input type=text name="custEmail" class="form-control" id="phone" size="64">
+            </div>
+            <!-- Кнопка отправки платежа -->
+            <input type=submit class="btn btn-primary" value="Оплатить"><br>
+          </form>
+        </div>
+     </div>
+  </div>
+</div>
