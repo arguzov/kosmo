@@ -9,7 +9,7 @@
           <img src="http://www.kosmetologiya-kazan.ru<%=expert.photo.url(:medium)%>" alt="" style="margin: 10px auto 0px auto;">
          </div>
         <div class="image-box-body">
-          <h3 class="title text-center"><%=expert.name%></h3>
+          <h3 class="title text-center"><a href="/experts/<%=expert.id%>"><%=expert.name%></a></h3>
           <p class="text-center"><%=expert.profession%></p>
         </div>
       </div>
