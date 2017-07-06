@@ -1,13 +1,18 @@
 <%
-  unless defined?(@service_discount)
-      @service_discount = {}
-  end
-  unless @service_discount.key?(line.service_id)
-      service = line.service
-      @service_discount[line.service_id] = service.discounts.first
+  if line.discounts.count > 0
+      @price_discount = line.discounts.first
+  else
+      @price_discount = nil
+      unless defined?(@service_discount)
+          @service_discount = {}
+      end
+      unless @service_discount.key?(line.service_id)
+          service = line.service
+          @service_discount[line.service_id] = service.discounts.first
+      end
   end
 %>
-<% if @service_discount[line.service_id] == nil %>
+<% if @service_discount[line.service_id] == nil && @price_discount == nil %>
     <nobr><%=line.price%> <span class="rouble">Р</span></nobr>
 <% else %>
     <nobr><s><%=line.price%> <span class="rouble">Р</span></s>
