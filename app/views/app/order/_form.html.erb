@@ -26,6 +26,9 @@
     <textarea rows="4" class="form-control" id="message4" name="order[content]" <%if not defined?(text) %>placeholder="Напишите Ваши пожелания о времени звонка, дате посещения и любые другие вопросы. Или оставьте это поле пустым."<% end %>><%if defined?(text) %><%=text%><% end %></textarea>
     <i class="fa fa-envelope-o form-control-feedback"></i>
   </div>
+  <div class="form-group">
+    <input type="checkbox" name="agree" required="required" /> Я даю согласие на <a target="_blank" href="/posts/528" style="text-decoration: underline">обработку персональных данных</a>
+  </div>
   <input type="submit" value="Отправить заявку" class="btn btn-default">
     <% end %>
 </div>
