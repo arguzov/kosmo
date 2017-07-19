@@ -21,7 +21,7 @@
         <thead>
          <tr>
            <th>Услуга</th>
-           <%(1..4).each do |i|%>
+           <%(1..5).each do |i|%>
                <th  class="text-center"><%=Metrika::ACTIONS[i]%></th>
            <% end %>
          </tr>
@@ -29,13 +29,13 @@
          <tbody>
           <%Service.order('name').each do |service|%>
               <tr>
-                <td><%=service.name%></td>
+                <td><a href="/manager/metrika/service/<%=service.id%>"><%=service.name%></a></td>
                 <% if @data.has_key?(service.id)%>
-                    <%(1..4).each do |i|%>
+                    <%(1..5).each do |i|%>
                         <td  class="text-center"><%if @data[service.id].has_key?(i)%><%=@data[service.id][i]%><% else %>0<% end %></td>
                     <% end %>
                 <% else %>
-                    <%(1..4).each do |i|%>
+                    <%(1..5).each do |i|%>
                         <td class="text-center">0</td>
                     <% end %>
                 <% end %>

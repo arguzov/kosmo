@@ -1,0 +1,44 @@
+<%
+  result = Metrika.select('WEEK(created_at) as week, COUNT(id) AS cnt').where('service_id = ? AND action_id = ?',@service_id,index).group('WEEK(created_at)')
+  data = []
+  result.each do |row|
+      data[row.week] = row.cnt
+  end
+  current_week = Time.now.strftime('%W').to_i
+  begin_week = current_week - 7
+  weeks = begin_week..current_week
+%>
+<script>
+  var ctx = document.getElementById("myChart<%=index.to_s%>").getContext('2d');
+  var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: [
+        <%for week in weeks%>
+        "<%=week.to_s%>",
+        <% end %>
+      ],
+      datasets: [{
+        label: '',
+        data: [
+          <%for week in weeks%>
+            <% if data[week] %>
+                <%=data[week]%>,
+            <% else %>
+                0,
+            <% end %>
+          <% end %>
+        ]
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero:true
+          }
+        }]
+      }
+    }
+  });
+</script>

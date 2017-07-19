@@ -1,0 +1,7 @@
+<%
+    snippet = Snippet.where('service_id = ? AND block_id = ?',@service.id,block.id).first
+%>
+<% if snippet %>
+<h2><%=snippet.name%></h2>
+<%=snippet.content.html_safe%>
+<% end %>

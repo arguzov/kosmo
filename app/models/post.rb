@@ -6,6 +6,7 @@ class Post < ActiveRecord::Base
     belongs_to :user
     has_and_belongs_to_many :experts
     has_and_belongs_to_many :services
+    scope :opinions, -> {where('category_id = 35')}
 
     def category_name
         if self.category

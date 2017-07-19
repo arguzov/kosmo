@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170619063116) do
+ActiveRecord::Schema.define(version: 20170715173251) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -27,6 +27,19 @@ ActiveRecord::Schema.define(version: 20170619063116) do
   add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
+
+  create_table "blocks", force: true do |t|
+    t.string  "name"
+    t.integer "block_type"
+  end
+
+  create_table "blocks_services", id: false, force: true do |t|
+    t.integer "block_id"
+    t.integer "service_id"
+    t.integer "order_number", default: 0
+  end
+
+  add_index "blocks_services", ["block_id", "service_id"], name: "index_blocks_services_on_block_id_and_service_id", using: :btree
 
   create_table "brands", force: true do |t|
     t.string "name"
@@ -418,6 +431,7 @@ ActiveRecord::Schema.define(version: 20170619063116) do
     t.integer  "fl_order",           default: 0
     t.string   "complements"
     t.string   "metrika_id"
+    t.boolean  "is_structured",      default: false
   end
 
   create_table "services_issues", id: false, force: true do |t|
@@ -464,6 +478,15 @@ ActiveRecord::Schema.define(version: 20170619063116) do
     t.integer  "brand_id"
   end
 
+  create_table "snippets", force: true do |t|
+    t.string   "name"
+    t.integer  "service_id"
+    t.integer  "block_id"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "subscriptions", force: true do |t|
     t.string   "name"
     t.integer  "service_id",         default: 0
@@ -507,6 +530,15 @@ ActiveRecord::Schema.define(version: 20170619063116) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "videos", force: true do |t|
+    t.string   "name"
+    t.integer  "service_id"
+    t.boolean  "is_show_on_service_page"
+    t.text     "code"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "widgets", force: true do |t|
     t.string  "header"

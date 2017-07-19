@@ -13,7 +13,7 @@
       </div>
       <div class="modal-footer">
         <div class="text-center">
-          <a href="javascript://" class="btn btn-lg btn-default" data-toggle="modal" data-target="#recall">Записаться</a>
+          <a href="javascript://" class="btn btn-lg btn-default <% if defined?(service) %>m-act<% end %>" <% if defined?(service) %>data-service="<%=service.id%>" data-action="5"<% end %> data-toggle="modal" data-target="#recall">Записаться</a>
         </div>
       </div>
     </div><!-- /.modal-content -->

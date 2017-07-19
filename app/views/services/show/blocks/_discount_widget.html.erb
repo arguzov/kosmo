@@ -1,0 +1,27 @@
+<%
+  text = nil
+  fl_new = false
+  widget = Widget.pos(3).entity(@service.id).where('due_date > ?',Time.now).first
+  if widget != nil
+      text = widget.content
+      fl_new = widget.is_new
+  else
+      discount = Discount.alive.where('service_id = ?',@service.id).first
+      if discount != nil
+          text = 'Пройдите процедуру с ' + discount.value.to_s + '% скидкой!'
+          fl_new = discount.fl_new
+      end
+  end
+%>
+<% unless text.nil? %>
+    <div class="alert alert-warning text-center">
+      <div class="text-center">Только в этом месяце!</div>
+      <div style="font-size: 1.5em;margin-bottom: 10px;">
+        <p><%=text.html_safe%></p>
+      </div>
+      <div style="margin-bottom: 10px;"><a href="#" data-toggle="modal" data-target="#recall" class="btn btn-md btn-danger m-act" data-service="<%=@service.id.to_s%>" data-action="4">Записаться</a></div>
+      <% if fl_new %>
+          <div class="text-center">* действует на первое посещение</div>
+      <% end %>
+    </div>
+<% end %>

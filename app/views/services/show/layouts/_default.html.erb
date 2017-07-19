@@ -1,0 +1,26 @@
+<%
+  certificates = @service.certificates
+  mode = ''
+  if certificates.length == 0
+      certificates = Certificate.order('RAND()').limit(1)
+      mode = 'right'
+  end
+  banners = @service.promos.where('fl_top = 1 and fl_active = 1').order('fl_banner DESC')
+  if banners.length > 0 && banners.first.is_alive
+      @widgets = banners.first.widgets
+  end
+  @reviews = @service.reviews.order('id DESC').limit(5)
+%>
+<h1 class="page-title"><%=@service.name%></h1>
+<article class="">
+  <div class="blogpost-content">
+    <%=render :partial => 'services/widget/promo', locals: {position: 1}%>
+    <%=render :partial => 'services/show/content'%>
+  </div>
+  <a name="h6"></a>
+  <%=render :partial => 'services/widget/promo', locals: {position: 2}%>
+  <%=render :partial=> 'services/show/buttons', locals: {service: @service}%>
+  <%=render :partial=> 'services/show/gallery'%>
+  <%=render :partial => 'services/show/modals/prices'%>
+  <%=render :partial => 'services/show/modals/reviews'%>
+</article>

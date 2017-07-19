@@ -1,0 +1,25 @@
+<h1 class="page-title"><%=@service.name%></h1>
+<article class="">
+  <div class="blogpost-content">
+      <%@service.blocks.each do |block|%>
+          <% if block.block_type == 1 %>
+              <%=render :partial => 'services/show/blocks/snippet', locals: {block: block}%>
+          <% end %>
+          <% if block.block_type == 2 %>
+              <%=render :partial => 'services/show/blocks/discount_widget', locals: {block: block}%>
+          <% end %>
+          <% if block.block_type == 3 %>
+              <%=render :partial => 'services/show/blocks/video', locals: {block: block}%>
+          <% end %>
+          <% if block.block_type == 4 %>
+              <%=render :partial => 'services/show/blocks/subscriptions', locals: {block: block}%>
+          <% end %>
+          <% if block.block_type == 5 %>
+              <%=render :partial => 'services/show/blocks/reviews', locals: {block: block}%>
+          <% end %>
+          <% if block.block_type == 6 %>
+              <%=render :partial => 'services/show/blocks/expert_opinion', locals: {block: block}%>
+          <% end %>
+      <% end %>
+  </div>
+</article>

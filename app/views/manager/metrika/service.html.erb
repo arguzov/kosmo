@@ -1,0 +1,17 @@
+<div class="wrapper">
+  <div class="ibox">
+    <div class="ibox-title">
+      <div class="pull-left">История</div>
+    </div>
+    <div class="ibox-content">
+      <%for i in 1..5%>
+          <h2><%=Metrika::ACTIONS[i]%></h2>
+      <canvas id="myChart<%=i.to_s%>" width="400" height="70"></canvas>
+      <% end %>
+    </div>
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.min.js"></script>
+<%for i in 1..5%>
+<%=render :partial => 'manager/metrika/chart', locals: {index: i, legend: Metrika::ACTIONS[i]}%>
+<% end %>

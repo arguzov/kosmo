@@ -11,8 +11,6 @@
 //= require manager/plugins/dataTables/dataTables.responsive
 //= require manager/plugins/dataTables/dataTables.tableTools.min
 //= require manager/plugins/jquery.synctranslit
-//= require manager/inspinia/inspinia
-//= require manager/inspinia/peity-demo
 //= require redactor-rails
 
 $(document).ready(function(){

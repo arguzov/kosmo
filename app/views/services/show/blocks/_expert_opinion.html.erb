@@ -1,0 +1,18 @@
+<%
+
+    opinions = @service.posts.opinions
+    expert = nil
+    if opinions
+        opinion = opinions.first
+        if opinion.experts.count > 0
+            expert = opinion.experts.first
+        end
+    end
+%>
+<% if expert %>
+<h2>Мнение эксперта</h2>
+<blockquote>
+  <div class="pull-left" style="height:100px;overflow-y:hidden;margin-right:10px;"><img style="width:100px;" src="<%=expert.photo%>"></div>
+  <%=expert.profession%>, <%=expert.name%>: &laquo;<%=opinion.content.html_safe%>&raquo;
+  <div style="clear:both;"></div></blockquote>
+<% end %>

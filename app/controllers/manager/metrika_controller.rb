@@ -20,8 +20,8 @@ class Manager::MetrikaController < ApplicationController
         end
     end
 
-    def show
-
+    def service
+        @service_id = params[:service_id]
     end
 
 end

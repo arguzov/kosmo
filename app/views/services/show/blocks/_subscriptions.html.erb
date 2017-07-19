@@ -1,0 +1,14 @@
+<%
+    subscription = Subscription.where('service_id = ?',@service.id).first
+%>
+<% unless subscription.nil? %>
+<h2>Абонементы на процедуру</h2>
+<p><%=subscription.preview.html_safe%></p>
+<p>
+  <ul>
+    <li>Цена от <%=subscription.price%> руб. за сеанс</li>
+    <li>Скидка до <%=subscription.discount%>% за курс</li>
+  </ul>
+</p>
+<p><a target="_blank" href="/post/<%=subscription.post_id%>">Посмотреть абонементы</a></p>
+<% end %>

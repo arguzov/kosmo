@@ -52,7 +52,6 @@ class ServicesController < ApplicationController
         else
             @complements = nil
         end
-        @reviews = @service.reviews.order('id DESC').limit(5)
     end
 
     def prices
