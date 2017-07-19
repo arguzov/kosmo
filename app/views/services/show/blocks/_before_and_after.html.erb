@@ -1,0 +1,19 @@
+<%
+    photos_before = @service.photos.where('photo_type = 1')
+    photos_after = @service.photos.where('photo_type = 2')
+%>
+<% if photos_before %>
+    <h2>Фотографии до и после процедуры</h2>
+    <h4>До процедуры</h4>
+    <div style="padding-top: 10px;">
+    <%photos_before.each do |photo| %>
+        <img src="<%=photo.img%>" style="height: 150px;">
+    <% end %>
+    </div>
+    <h4>После процедуры</h4>
+    <div style="padding-top: 10px;">
+    <%photos_after.each do |photo| %>
+        <img src="<%=photo.img%>" style="height: 150px;">
+    <% end %>
+    </div>
+<% end %>

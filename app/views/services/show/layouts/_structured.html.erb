@@ -20,6 +20,9 @@
           <% if block.block_type == 6 %>
               <%=render :partial => 'services/show/blocks/expert_opinion', locals: {block: block}%>
           <% end %>
+          <% if block.block_type == 7 %>
+              <%=render :partial => 'services/show/blocks/before_and_after', locals: {block: block}%>
+          <% end %>
       <% end %>
   </div>
 </article>

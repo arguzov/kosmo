@@ -17,6 +17,7 @@ class Service < ActiveRecord::Base
     has_many :prices
     has_many :discounts
     has_many :videos
+    has_many :photos
     def self.for_select
         self.where('parent_id = 0').map{|c| ["#{c.name}", c.id]}.unshift(["Выбрать",0])
     end
