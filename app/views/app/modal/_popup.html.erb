@@ -1,0 +1,19 @@
+<% if cookies[:popup] == nil %>
+<div class="modal fade " id="popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+  <div class="modal-dialog modal-lg">
+    <div class="modal-header" style="margin-bottom: 5px;border-width: 0px;">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="background-color: #fff;padding: 0px 10px;"><span aria-hidden="true">&times;</span></button>
+    </div>
+    <div class="modal-content">
+        <a href="http://beautyseason.tilda.ws/"><img src="<%=image_path('okno_3.png')%>"></a>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<script>
+  setTimeout(function(){
+    $('#popup').modal();
+    var date = new Date(new Date().getTime() + 30 * 24 * 3600 * 1000);
+    document.cookie = "popup=shown; path=/; expires=" + date.toUTCString();
+  }, 10000);
+</script>
+<% end %>
