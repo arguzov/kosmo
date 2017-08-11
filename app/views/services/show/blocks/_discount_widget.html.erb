@@ -14,6 +14,15 @@
   end
 %>
 <% unless text.nil? %>
+    <%
+      unless browser.bot?
+          metrika = Metrika.new
+          metrika.service_id = @service.id
+          metrika.action_id = 6
+          metrika.ip = request.remote_ip
+          metrika.save
+      end
+    %>
     <div class="alert alert-warning text-center">
       <div class="text-center">Только в этом месяце!</div>
       <div style="font-size: 1.5em;margin-bottom: 10px;">

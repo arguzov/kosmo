@@ -24,4 +24,8 @@ class Manager::MetrikaController < ApplicationController
         @service_id = params[:service_id]
     end
 
+    def all
+
+    end
+
 end

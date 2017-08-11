@@ -1,11 +1,24 @@
 <%
-  result = Metrika.select('WEEK(created_at) as week, COUNT(id) AS cnt').where('service_id = ? AND action_id = ?',@service_id,index).group('WEEK(created_at)')
+  if defined?@service_id
+      result = Metrika.select('WEEK(created_at) as week, COUNT(id) AS cnt').where('service_id = ? AND action_id = ?',@service_id,index).group('WEEK(created_at)')
+  else
+      result = Metrika.select('WEEK(created_at) as week, COUNT(id) AS cnt').where('action_id = ?', index).group('WEEK(created_at)')
+  end
   data = []
   result.each do |row|
       data[row.week] = row.cnt
   end
+
+  depth = 7
+  if params[:depth]
+      depth = params[:depth]
+  end
+
   current_week = Time.now.strftime('%W').to_i
-  begin_week = current_week - 7
+  begin_week = current_week - depth.to_i
+  if begin_week < 0
+      begin_week = 0
+  end
   weeks = begin_week..current_week
 %>
 <script>

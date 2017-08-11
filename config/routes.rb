@@ -72,6 +72,7 @@ Kosmo::Application.routes.draw do
       resources :prices
       resources :users
       get 'metrika' => 'metrika#index'
+      get 'metrika/service/all' => 'metrika#all'
       get 'metrika/service/:service_id' => 'metrika#service'
       namespace :shop do
         resources :categories
