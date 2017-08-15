@@ -1,0 +1,9 @@
+<%
+    products = @service.shop_products.limit(3)
+%>
+<% if products.count > 0%>
+    <h2>Товары интернет магазина</h2>
+    <p>С данной процедурой хорошо сочетаются товары из нашего <a href="/shop">интернет-магазина</a></p>
+    <%=render :partial=>'shop/shared/products', :locals => {products: products}%>
+    <div style="clear:both"></div>
+<% end %>

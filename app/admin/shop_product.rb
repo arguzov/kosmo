@@ -1,6 +1,6 @@
 ActiveAdmin.register ShopProduct do
     menu :if => proc{ current_user.id < 3 }, label: "Товары"
-    permit_params :name, :collection_id, :url, :description, :title, :brand_id, :photo, service_ids: [], issue_ids: [], part_ids: []
+    permit_params :name, :collection_id, :category_id, :url, :description, :title, :brand_id, :photo, service_ids: [], issue_ids: [], part_ids: []
 
     index do
         column :name

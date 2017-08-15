@@ -23,6 +23,9 @@
           <% if block.block_type == 7 %>
               <%=render :partial => 'services/show/blocks/before_and_after', locals: {block: block}%>
           <% end %>
+          <% if block.block_type == 8 %>
+              <%=render :partial => 'services/show/blocks/shop', locals: {block: block}%>
+          <% end %>
       <% end %>
   </div>
 </article>
