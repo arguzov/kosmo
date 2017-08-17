@@ -32,6 +32,13 @@
    end
 
    if parts.length > 1
+       unless browser.bot?
+           metrika = Metrika.new
+           metrika.service_id = @service.id
+           metrika.action_id = 6
+           metrika.ip = request.remote_ip
+           metrika.save
+       end
        content = content.gsub(parts[1][0],whtml + parts[1][0].to_s)
    end
 %>
