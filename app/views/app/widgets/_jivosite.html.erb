@@ -1,16 +1,18 @@
-<% unless browser.device.mobile? %>
-<!-- BEGIN JIVOSITE CODE {literal} -->
-<script type='text/javascript'>
-  (function(){ var widget_id = 'B7gkMJxK7P';
-    var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = '//code.jivosite.com/script/widget/'+widget_id; var ss = document.getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss);})();</script>
-<!-- {/literal} END JIVOSITE CODE -->
-<!-- BEGIN JIVOSITE INTEGRATION WITH ROISTAT -->
-<script>
-  (function(w, d, s, h) {
-    var p = d.location.protocol == "https:" ? "https://" : "http://";
-    var u = "/static/marketplace/JivoSite/script.js";
-    var js = d.createElement(s); js.async = 1; js.src = p+h+u; var js2 = d.getElementsByTagName(s)[0]; js2.parentNode.insertBefore(js, js2);
-  })(window, document, 'script', 'cloud.roistat.com');
+<script id='chat-2-desk-widget-code' type="text/javascript">
+  function chat2deskWidgetRun() {
+    window['cha'+'t2d'+'e'+'skID'] = '29df77e7a7ebd816e45b187ffc5c7a87';
+    window.domain = 'https://chat2desk.com';
+    var sc = document.createElement('script');
+    sc.type = 'text/javascript';
+    sc.async = true;
+    sc.src = window.domain + '/js/widget/new/dist/widget.min.js';
+
+    var c = document['getElement'+'sByTagNa'+'me']('script')[0];
+    if ( c ) c['p'+'arent'+'Node']['inser'+'tB'+'efo'+'re'](sc, c);
+    else document['docu'+'me'+'ntEle'+'m'+'ent']['f'+'i'+'r'+'s'+'tChi'+'ld']['appe'+'nd'+'C'+'hild'](sc);
+  }
+  window.chat2deskWidgetCanRun = true;
+  if (window.chat2deskWidgetCanRun) {
+    chat2deskWidgetRun();
+  }
 </script>
-<!-- END JIVOSITE INTEGRATION WITH ROISTAT -->\
-<% end %>
