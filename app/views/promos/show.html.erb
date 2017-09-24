@@ -9,30 +9,11 @@
   <!-- page-title end -->
 
   <!-- blogpost start -->
-  <article class="clearfix blogpost full">
+  <article class="clearfix blogpost full" style="padding-top: 20px;">
     <div class="blogpost-body">
-      <div class="side">
-        <div class="post-info">
-        <% if @promo.due == nil %>
-            <span class="day"><%=@promo.created_at.strftime("%d")%></span>
-            <span class="month"><%=month(@promo.created_at.strftime("%m"))%></span>
-        <% else %>
-            <div class="month">До</div>
-            <span class="day"><%=@promo.due.strftime("%d")%></span>
-            <span class="month"><%=month(@promo.due.strftime("%m"))%></span>
-        <% end %>
-        </div>
-      </div>
       <div class="blogpost-content">
-        <header>
-          <div class="submitted"><i class="fa fa-user pr-5"></i> от <a href="#">ЦЭиК</a></div>
-        </header>
         <%=@promo.content.html_safe%>
-        <div class="row well text-center" style="margin: 10px 0px;">
-          <div class="col-md-4">
-            <a href="javascript://" class="btn btn-lg btn-default" data-toggle="modal" data-target="#recall">Забронировать</a>
-          </div>
-        </div>
+            <a href="javascript://" class="btn btn-lg btn-success" data-toggle="modal" data-target="#recall">Забронировать</a>
       </div>
     </div>
   </article>
