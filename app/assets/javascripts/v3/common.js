@@ -1,11 +1,4 @@
-//=require v3/base/jquery.min
-//=require v3/base/bootstrap.min
-//=require v3/base/template
-//=require v3/plugins/modernizr
-//=require v3/plugins/isotope/isotope.pkgd.min
-//=require v3/plugins/jquery.validate
 //=require v3/plugins/toastr/toastr.min
-//=require v3/plugins/owl-carousel/owl.carousel
 $(document).ready(function(){
     if($('#vk').length > 0) {
         $('#vk').modal();

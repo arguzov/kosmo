@@ -41,6 +41,8 @@
        end
        content = content.gsub(parts[1][0],whtml + parts[1][0].to_s)
    end
+
+   content = content.gsub(/<\/?span[^>]*>/i,'')
 %>
 <% if whtml.length > 0 && parts.length < 2 %>
     <%=whtml.html_safe%>

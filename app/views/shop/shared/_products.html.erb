@@ -21,16 +21,16 @@
                 <%=image_tag "/data/products/#{product.id}.jpg"%>
             <% end %>
         <% end %>
-        <div class="product-name" style="height: 40px;">
+        <div class="product-name" style="height: 50px;">
           <%=link_to product.name.truncate(45).html_safe, shop_product_path({url: product.url})%>
         </div>
         <div class="product-descr">
           <%= (strip_tags product.description).gsub('Описание:','').truncate(60) %>
         </div>
         <div class="product-price">
-           <%=product.prices%> <i class="fa fa-rouble"></i>
+           <%=product.prices%> &#8381;
           <div class="product-action pull-right">
-            <%=link_to "Купить", shop_product_path({url: product.url}), :class=>"btn btn-default btn-sm"%>
+            <%=link_to "Купить", shop_product_path({url: product.url}), :class=>"btn btn-primary btn-sm"%>
           </div>
         </div>
         <div class="product-existance">

@@ -7,10 +7,16 @@
    i = 0
    j = 0
 %>
-<div class="main col-md-12" id="news">
+<div class="tabs-style-2"  style="margin-top: 20px;">
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist" >
+    <li class="active"><a href="/services"><i class="fa fa-home pr-5"></i>Наши услуги</a></li>
+    <li><a href="/services/prices"><i class="fa fa-user pr-5"></i>Цены на услуги</a></li>
+  </ul>
+  <!-- Tab panes -->
+  <div class="tab-content">
   <!-- page-title start -->
   <!-- ================ -->
-  <h1 class="page-title">Услуги Центра эпиляции и косметологии</h1>
   <div class="separator-2"></div>
   <div class="row">
      <% if params.has_key?(:q)%>
@@ -41,4 +47,5 @@
       </div>
      <% end %>
   </div>
+</div>
 </div>

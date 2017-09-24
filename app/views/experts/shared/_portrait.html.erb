@@ -1,7 +1,7 @@
 <% if defined?(expert) && expert != nil %>
 <div class="image-box">
-  <div class="overlay-container" style="height:250px;">
-    <img src="<%=expert.photo%>">
+  <div class="overlay-container" style="height:320px;">
+    <img src="http://www.kosmetologiya-kazan.ru/<%=expert.photo%>" class="img-responsive">
     <div class="overlay">
       <div class="overlay-links">
         <%=link_to expert_path(expert) do %><i class="fa fa-link"></i><% end %>

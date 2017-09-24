@@ -6,7 +6,7 @@
   <div class="w-body" style="padding: 0px;">
       <div class="overlay-container" style="margin-bottom: 0px;">
         <% if post.photo_file_name %>
-            <%=image_tag post.photo.url%>
+            <%=image_tag post.photo.url, class: 'img-responsive'%>
         <% end %>
       </div>
       <div class="listing-item-body clearfix" style="text-align: left!important;padding: 10px 10px 0px 10px;">

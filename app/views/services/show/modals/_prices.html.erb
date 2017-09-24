@@ -7,13 +7,13 @@
       </div>
       <div class="modal-body">
         <%=render :partial => 'app/pricelist', :locals => {:pricelist=>@pricelist,collapsed: 1}%>
-        <div class="alert alert-info" role="alert">
+        <div class="alert alert-info" role="alert" style="margin-top: 10px;">
           <strong>0% рассрочка!</strong> Наши услуги вы можете оплатить в рассрочку без процентов.<br><a target="_blank" href="/posts/198" style="text-decoration: underline;color: black;">Узнать подробности</a>
         </div>
       </div>
       <div class="modal-footer">
         <div class="text-center">
-          <a href="javascript://" class="btn btn-lg btn-default <% if defined?(service) %>m-act<% end %>" <% if defined?(service) %>data-service="<%=service.id%>" data-action="5"<% end %> data-toggle="modal" data-target="#recall">Записаться</a>
+          <a href="javascript://" class="btn btn-lg btn-success <% if defined?(service) %>m-act<% end %>" <% if defined?(service) %>data-service="<%=service.id%>" data-action="5"<% end %> data-toggle="modal" data-target="#recall">Записаться</a>
         </div>
       </div>
     </div><!-- /.modal-content -->

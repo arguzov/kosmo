@@ -6,7 +6,11 @@
   <h1 class="page-title"><%=@expert.name%></h1>
   <%=render :partial=>'experts/show/gallery'%>
   <% if @expert.content.length > 0 %>
-      <%=@expert.content.html_safe%>
+      <%
+        content = @expert.content
+        content = content.gsub(/<\/?span[^>]*>/i,'')
+      %>
+      <%=content.html_safe%>
   <% end %>
   <%=render :partial => 'experts/show/diplomas'%>
   <%=render :partial => 'experts/show/reviews'%>

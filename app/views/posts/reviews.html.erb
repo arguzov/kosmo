@@ -13,8 +13,8 @@
   <h1 class="page-title" style="font-size:2.0em;"><%=title%></h1>
   <% unless defined?@service %>
   <div style="margin-bottom: 20px;margin-top: 20px;">
-    Сортировать <select id="sort"><option value="asc" <%if !params.has_key?('sort') || params['sort'] == 'asc'%>selected<% end %>>в порядке добавления</option>
-    <option value="desc" <%if params['sort'] == 'desc'%>selected<% end %>>сначала новые</option></select>
+    <select id="sort"><option value="asc" <%if !params.has_key?('sort') || params['sort'] == 'asc'%>selected<% end %>>показывать в порядке добавления</option>
+    <option value="desc" <%if params['sort'] == 'desc'%>selected<% end %>>показывать сначала новые</option></select>
   </div>
   <% end %>
   <table class="table">

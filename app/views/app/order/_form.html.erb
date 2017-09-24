@@ -11,7 +11,7 @@
 <% if flash[:notice] && flash[:notice] == 'Order was created' %>
     <div class="well" style="padding:20px;text-align: center" id="modal-show" data-id="recall">Заявка принята<br>Спасибо за обращение в Центр эпиляции и косметологии.<br>Наш менеджер скоро свяжется с вами для уточнения деталей.</div>
 <% else %>
-<div class="well">
+<div>
     <%= form_for [Order.new], :html => { :onsubmit => onsubmit } do |f| %>
       <input type="hidden" name="order[url]" value="<%=request.original_url%>">
   <div class="form-group has-feedback" <% unless browser.device.mobile? %>style="width:60%;"<% end %>>
@@ -29,7 +29,7 @@
   <div class="form-group">
     <input type="checkbox" name="agree" required="required" /> Я даю согласие на <a target="_blank" href="/posts/528" style="text-decoration: underline">обработку персональных данных</a>
   </div>
-  <input type="submit" value="Отправить заявку" class="btn btn-default">
+  <input type="submit" value="Отправить заявку" class="btn btn-success">
     <% end %>
 </div>
 <% end %>

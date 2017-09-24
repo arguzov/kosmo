@@ -1,26 +1,22 @@
-<div class="main col-md-9 col-xs-12" id="news">
+<div class="main col-md-12 col-xs-12" id="news">
   <!-- page-title start -->
   <!-- ================ -->
   <h1 class="page-title">Энциклопедия красоты</h1>
-  <div class="separator-2"></div>
-  <div class="masonry-grid-fitrows row grid-space-20">
+  <div class="masonry-grid-fitrows row grid-space-20" style="padding-top: 20px;">
     <%@fetch.each do |item|%>
-        <div class="col-md-4 col-sm-6 masonry-grid-item col-xs-12">
+        <div class="col-md-3 col-sm-6 masonry-grid-item col-xs-12">
           <div class="listing-item">
             <div style="height: 200px;overflow: hidden!important;">
-                <img src="<%=image_path item.photo.url%>" style="position: relative;height: 200px;">
+                <img src="http://www.kosmetologiya-kazan.ru/<%=image_path item.photo.url%>" style="position: relative;height: 200px;">
             </div>
-            <div class="listing-item-body clearfix" style="background-color: #FCF8E3;height: 160px;">
+            <div class="listing-item-body clearfix" style="height: 200px;">
               <div style="height: 100px;">
-                <h3 class="title"><a href="<%= faq_path(item)%>" style="text-decoration: underline"><%= item.name.truncate(40) %></a></h3>
-                <p style="color: #000;"><%=Sanitize.clean(item.question).truncate(70)%></p>
+                <h3 class="title"><a href="<%= faq_path(item)%>" style="text-decoration: underline"><%= item.name.truncate(35) %></a></h3>
+                <p style="color: #000;"><%=Sanitize.clean(item.question).truncate(60)%></p>
               </div>
             </div>
           </div>
         </div>
     <% end %>
   </div>
-</div>
-<div class="col-md-3 hidden-xs">
-  <%=render partial: 'app/widgets/right'%>
 </div>

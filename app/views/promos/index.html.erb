@@ -2,23 +2,23 @@
    meta :title => 'Акции Центра эпиляции и косметологии',
         :description => 'Текущие акции, скидки и специальные предложения от центра эпиляции и косметологии'
 %>
-<div class="main col-md-9" id="promos">
+<div class="main col-md-12" id="promos">
   <!-- page-title ddd start -->
   <!-- ================ -->
   <h1 class="page-title">Акции Центра эпиляции и косметологии</h1>
   <div class="separator-2"></div>
   <div class="section">
         <% if @promos.each do |banner|%>
-                <div class="row call-to-action" style="background-color: #E9E9E9;margin-bottom: 20px;">
+                <div class="row call-to-action" style="margin-top: 40px;border: 3px solid #f2dede;padding: 10px;">
                   <div class="col-md-4">
-                    <%=image_tag banner.photo.url(:medium), class: 'img-responsive'%>
+                    <%=image_tag 'http://kosmetologiya-kazan.ru/' + banner.photo.url(:medium), class: 'img-responsive'%>
                   </div>
                   <div class="col-md-8" style="padding-top: 15px;text-align: left;">
                     <%=banner.banner.html_safe%>
                     <div style="float: left;" class="btn-danger btn  btn-md">До <%=banner.due.strftime('%d.%m.%Y')%></div>
                     <div style="float: left;">
-                      <button data-toggle="modal" data-target="#online-order" class="btn btn-default btn-md">Записаться</button>
-                      <a href="<%if banner.more_link == nil || banner.more_link.length == 0%>/promos/<%=banner.id%><% else %><%=banner.more_link%><% end %>" class="btn btn-md" style="background-color: #fcf8e3;color: #000000 ">Подробнее</a>
+                      <button data-toggle="modal" data-target="#online-order" class="btn btn-success btn-md">Записаться</button>
+                      <a href="<%if banner.more_link == nil || banner.more_link.length == 0%>/promos/<%=banner.id%><% else %><%=banner.more_link%><% end %>" class="btn btn-warning btn-md" style="background-color: #fcf8e3;color: #000000 ">Подробнее</a>
                     </div>
                   </div>
                 </div>
@@ -26,7 +26,4 @@
             <div class="text-center" style="padding: 50px;">К сожалению, в данный момент никаких акций не проводится</div>
         <% end %>
   </div>
-</div>
-<div class="col-md-3">
-  <%=render partial: 'app/widgets/right'%>
 </div>

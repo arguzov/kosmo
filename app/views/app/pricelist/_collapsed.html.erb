@@ -12,9 +12,9 @@
     genders = ['','мужчины','женщины']
 %>
 <% if prices.length > 0 %>
-<div class="panel-heading" style="padding: 0px;margin: 1px;background-color: gray;border-bottom-width: 0px;">
+<div class="panel-heading" style="padding: 5px 0px 0px 0px;margin: 1px;border-bottom: 1px dashed #5c6469;">
   <h4 class="panel-title">
-    <a data-toggle="collapse" style="background-color: #F5F5F5;margin:0px;color: #000;" data-parent="#global-pricelist" href="#collapse-s-<%=service.id%>-<%=css%>">
+    <a data-toggle="collapse" style="margin:0px;color: #000;" data-parent="#global-pricelist" href="#collapse-s-<%=service.id%>-<%=css%>">
       <%=('<i class="fa fa-caret-down"></i> ' + service.name).html_safe%>
       <span class="label label-danger pull-right collapsed-discount hidden">Скидка</span>
     </a>

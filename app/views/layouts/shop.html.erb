@@ -1,30 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content=""/>
+  <meta property="og:title" content="">
+  <meta property="og:description" content="">
+  <meta property="og:image" content="">
+  <link href="http://beauty-season-center.ru/css/bootstrap.min.css" rel="stylesheet">
+  <%= stylesheet_link_tag    "bsc/style.min.css", media: "all" %>
+  <link rel="stylesheet" href="http://beauty-season-center.ru/css/animate.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://beauty-season-center.ru/js/bootstrap.min.js"></script>
+  <script src="http://beauty-season-center.ru/js/script.js?1505557285"></script>
   <%= metamagic %>
   <%= stylesheet_link_tag    "v3/controller/#{params[:controller]}", media: "all" %>
   <%= csrf_meta_tags %>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
-  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   <script type="text/javascript">(window.Image ? (new Image()) : document.createElement('img')).src = location.protocol + '//vk.com/rtrg?r=oDcsRbrtGtcCIxNtBTnYQsmfZSuIPLibWDtKrB5pelpwyXDs7KfcHnDVcyEhJGM3v0*ErTgfY1e6im8O3ToAfJ9q4vG3BdEYklz8HC*6JY8AI2yfl9tv6wYU82TOuDgZKFbjUp0ZQhGYUF78p5*Vpg83we/Ba2KfGp6QFRuPJwA-&pixel_id=1000087783';</script>
   <script>
-    (function(w, d, s, h, id) {
-      w.roistatProjectId = id; w.roistatHost = h;
-      var p = d.location.protocol == "https:" ? "https://" : "http://";
-      var u = /^.roistat_visit=[^;]+(.)?$/.test(d.cookie) ? "/dist/module.js" : "/api/site/1.0/"+id+"/init";
-      var js = d.createElement(s); js.async = 1; js.src = p+h+u; var js2 = d.getElementsByTagName(s)[0]; js2.parentNode.insertBefore(js, js2);
-    })(window, document, 'script', 'cloud.roistat.com', '01529747dadd912c0d828382331e0b11');
+      (function(w, d, s, h, id) {
+          w.roistatProjectId = id; w.roistatHost = h;
+          var p = d.location.protocol == "https:" ? "https://" : "http://";
+          var u = /^.roistat_visit=[^;]+(.)?$/.test(d.cookie) ? "/dist/module.js" : "/api/site/1.0/"+id+"/init";
+          var js = d.createElement(s); js.async = 1; js.src = p+h+u; var js2 = d.getElementsByTagName(s)[0]; js2.parentNode.insertBefore(js, js2);
+      })(window, document, 'script', 'cloud.roistat.com', '01529747dadd912c0d828382331e0b11');
   </script>
 </head>
-<body class="no-trans">
-<div class="page-wrapper">
-  <%=render :partial => 'app/header'%>
+
+<body>
+<%=render :partial => 'shared/bsc/header' %>
+<%=render :partial => 'shared/bsc/navbar' %>
   <section class="main-container" style="padding-top: 0px;">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12" style="padding-left: 0px;">
-          <%=render :partial => 'shop/shared/cart_top'%>
+    <div class="container" style="padding-left: 0px;">
+      <div class="row" style="padding-left: 0px;">
           <table id="shop">
             <tr>
               <td class="left" style="vertical-align: top">
@@ -35,16 +44,9 @@
               </td>
             </tr>
           </table>
-        </div>
       </div>
     </div>
   </section>
-  <%= javascript_include_tag "v3/controller/#{params[:controller]}" %>
-  <script type="text/javascript" src="//vk.com/js/api/openapi.js?116"></script>
-  <script type="text/javascript" src="//vk.com/js/api/openapi.js?121"></script>
-  <%=render :partial => 'app/footer'%>
-</div>
-<%=render :partial => 'app/widgets/jivosite'%>
+<%=render :partial => 'shared/bsc/footer' %>
 </body>
 </html>
-<!--sadasdassssd-->

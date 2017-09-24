@@ -9,14 +9,18 @@
           <div class="modal-body">
             <% @reviews.limit(5).each do |review| %>
                 <blockquote class="margin-clear">
-                  <p style="margin-bottom: 0px;padding-bottom: 5px;"> <%=review.content.html_safe%></p>
+                  <%
+                    content = review.content
+                    content = content.gsub(/<\/?span[^>]*>/i,'')
+                  %>
+                  <p style="margin-bottom: 0px;padding-bottom: 5px;"> <%=content.html_safe%></p>
                   <footer><cite title="Source Title"><%=review.person%></cite></footer>
                 </blockquote>
             <% end %>
           </div>
           <div class="modal-footer">
             <div class="text-center">
-            <a class="btn btn-lg btn-default" href="/responces?service_id=<%=@service.id%>" style="font-size: .8em;text-decoration: underline">Посмотреть все отзывы</a>
+            <a class="btn btn-lg btn-danger" href="/responces?service_id=<%=@service.id%>">Посмотреть все отзывы</a>
             </div>
           </div>
         </div>

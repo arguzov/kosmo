@@ -78,5 +78,49 @@
       </ul>
       </p>
       <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?sid=E4mJInlqU4s0dDRygyBpGEAYhBvpHD42&width=786&height=609&lang=ru_RU&sourceType=constructor&scroll=true"></script>
+  <% else %>
+      <div class="main col-md-12 col-xs-12" id="news">
+        <div class="masonry-grid-fitrows row grid-space-20" style="padding-top: 50px;">
+          <div class="col-md-4 col-sm-6 masonry-grid-item col-xs-12">
+            <div class="listing-item">
+              <div style="height: 220px;overflow: hidden">
+                <%=image_tag 'saloon2.jpg',:class=>"img-responsive"%>
+              </div>
+              <div class="listing-item-body clearfix" style="height: 160px;">
+                <div style="height: 100px;">
+                  <h3 class="title"><a href="/contacts/1" style="text-decoration: underline">Центр на Спартаковской</a></h3>
+                  <p style="color: #000;">Казань, Вахитовский район, ул.Спартаковская, 2 к.1 (ТЦ &laquo;Караван&raquo;)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 masonry-grid-item col-xs-12">
+            <div class="listing-item">
+              <div style="height: 220px;overflow: hidden">
+                <%=image_tag 'olymp2.png',:class=>"img-responsive"%>
+              </div>
+              <div class="listing-item-body clearfix" style="height: 160px;">
+                <div style="height: 100px;">
+                  <h3 class="title"><a href="/contacts/2" style="text-decoration: underline">Центр на Ибрагимова</a></h3>
+                  <p style="color: #000;">Казань, Московский район, пр. Ибрагимова, 54 (Фитнес центр &laquo;Олимп&raquo;)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 masonry-grid-item col-xs-12">
+            <div class="listing-item">
+              <div style="height: 220px;overflow: hidden">
+                <%=image_tag 'saloon_hakima.jpg',:class=>"img-responsive"%>
+              </div>
+              <div class="listing-item-body clearfix" style="height: 160px;">
+                <div style="height: 100px;">
+                  <h3 class="title"><a href="/contacts/3" style="text-decoration: underline">Центр на Сибгата Хакима</a></h3>
+                  <p style="color: #000;">Казань, Ново-Савиновский район, ул. Сибгата Хакима, 42 (напротив аквапарка &laquo;Ривьера&raquo;)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
   <% end %>
 </div>

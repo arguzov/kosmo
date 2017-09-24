@@ -49,6 +49,7 @@ Kosmo::Application.routes.draw do
   root 'posts#root'
   get 'responces'=>'posts#reviews', as: :responces
   get 'news'=>'posts#news', as: :news
+  get 'contacts'=>'posts#contacts', as: :contacts_index
   get 'contacts/:id'=>'posts#contacts', as: :contacts
   get 'thanks'=>'posts#thanks', as: :thanks
   get 'gallery'=>'posts#gallery', as: :gallery
@@ -64,6 +65,7 @@ Kosmo::Application.routes.draw do
   get 'shop/order/:id'=>'shop#order', as: :shop_order
   get 'shop/orders'=>'shop#orders', as: :shop_orders
   get 'shop/:url'=>'shop#unit', as: :shop_unit
+  get 'about'=>'posts#about', as: :about
 
   get 'api/typehead/services'=>'services#typehead_list', as: :api_typehead_services
 

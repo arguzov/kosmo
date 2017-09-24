@@ -9,6 +9,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link href="http://beauty-season-center.ru/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="http://beauty-season-center.ru/css/animate.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://beauty-season-center.ru/js/bootstrap.min.js"></script>
+  <script src="http://beauty-season-center.ru/js/script.js?1505557285"></script>
   <%= stylesheet_link_tag    "v3/controller/main", media: "all" %>
   <%= csrf_meta_tags %>
   <script type="text/javascript">(window.Image ? (new Image()) : document.createElement('img')).src = location.protocol + '//vk.com/rtrg?r=oDcsRbrtGtcCIxNtBTnYQsmfZSuIPLibWDtKrB5pelpwyXDs7KfcHnDVcyEhJGM3v0*ErTgfY1e6im8O3ToAfJ9q4vG3BdEYklz8HC*6JY8AI2yfl9tv6wYU82TOuDgZKFbjUp0ZQhGYUF78p5*Vpg83we/Ba2KfGp6QFRuPJwA-&pixel_id=1000087783';</script>
@@ -22,16 +27,9 @@
   </script>
 </head>
 <body class="no-trans">
-<div class="scrollToTop"><i class="icon-up-open-big"></i></div>
-<div class="page-wrapper">
-  <%=render :partial => 'app/header'%>
-  <%=render :partial => 'app/breadcrumbs'%>
-  <%=yield%>
-  <%= javascript_include_tag "v3/controller/main" %>
-  <%=render :partial => 'app/footer'%>
-</div>
-<%=render :partial => 'app/widgets/jivosite'%>
-<script type="text/javascript" src="//vk.com/js/api/openapi.js?116"></script>
-<script type="text/javascript" src="//vk.com/js/api/openapi.js?121"></script>
+<%=render :partial => 'shared/bsc/header' %>
+<%=render :partial => 'shared/bsc/navbar' %>
+<%=yield %>
+<%=render :partial => 'shared/bsc/footer' %>
 </body>
 </html>

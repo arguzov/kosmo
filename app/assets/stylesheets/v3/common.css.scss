@@ -1,11 +1,18 @@
-@import "v3/bootstrap/css/bootstrap.min";
-@import "font-awesome";
-@import "v3/layout/animate";
-@import "v3/layout/animations";
-@import "v3/layout/style";
-@import "v3/skins/brown";
+@import "style.min";
 @import "v3/plugins/toastr/toastr.min";
 @import "v3/plugins/owl/owl.carousel";
+@import "v3/bsc";
+#page-content{
+    h2{
+        font-size: 1.5em;
+    }
+    ul{
+        padding-left: 40px;
+    }
+}
+footer{
+    margin-top: 40px;
+}
 #top-promos{
     padding: 0px;
     /*background: image-url("bg/parallax-bg.jpg") no-repeat;*/

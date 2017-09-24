@@ -1,11 +1,11 @@
 <div class="right-widget hidden-sm hidden-xs" style="border-top:2px solid #e0e0e0">
   <div class="w-body">
-      <a href="/services/prices?service_id=<%=@service.id%>" class="btn btn-md btn-primary">Цены</a>
+      <a href="/services/prices?service_id=<%=@service.id%>" class="btn btn-md btn-success">Цены</a>
     <% if defined?(@reviews) && @reviews != nil && @reviews.length > 0 %>
-        <a href="javascript://" data-toggle="modal" data-target="#service-reviews" class="btn btn-md btn-primary">Отзывы</a>
+        <a href="javascript://" data-toggle="modal" data-target="#service-reviews" class="btn btn-md btn-danger">Отзывы</a>
     <% else %>
         <!--<a href="#experts" class="btn btn-md btn-danger">Специалисты</a>-->
     <% end %>
-    <a href="#" data-toggle="modal" data-target="#recall" class="btn btn-md btn-default m-act" data-service="<%=@service.id%>" data-action="3">Записаться</a>
+    <a href="#" data-toggle="modal" data-target="#recall" class="btn btn-md btn-success m-act" data-service="<%=@service.id%>" data-action="3">Записаться</a>
   </div>
 </div>

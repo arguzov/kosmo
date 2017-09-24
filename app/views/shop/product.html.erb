@@ -18,7 +18,10 @@
         <% end %>
         </div>
       </div>
-      <%=@product.description.html_safe%>
+      <%
+        content = @product.description.gsub(/<\/?span[^>]*>/i,'')
+      %>
+      <%=content.html_safe%>
     </div>
   </div>
 </div>
@@ -48,17 +51,15 @@
     </div>
   </div>
   <div class="row">
-     <div class="col-md-7">
-       <div style="background-color: #f0f0f0;padding: 10px;margin-top: 20px;">
-       <div class="page-header">
-         <h3 style="margin: 0px;padding: 0px;">Задавайте вопросы - мы поможем!</h3>
-       </div>
-       <%=render :partial => 'app/order/form', :locals => {:text=>''}%>
-       </div>
-     </div>
-     <div class="col-md-5">
+     <div class="col-md-6">
          <%=render :partial => 'shop/shared/faq'%>
      </div>
+    <div class="col-md-6">
+      <div class="page-header">
+        <h2 style="margin: 0px;padding: 0px;">Ваш вопрос</h2>
+      </div>
+      <%=render :partial => 'app/order/form', :locals => {:text=>''}%>
+    </div>
   </div>
 </div>
 <div style="height:20px;"></div>
