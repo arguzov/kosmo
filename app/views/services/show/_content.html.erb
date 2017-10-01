@@ -44,6 +44,14 @@
 
    content = content.gsub(/<\/?span[^>]*>/i,'')
 %>
+<style>
+  .alert-warning p{
+      color: #0b0b0b;
+  }
+  .alert-warning{
+      color: #0b0b0b;
+  }
+</style>
 <% if whtml.length > 0 && parts.length < 2 %>
     <%=whtml.html_safe%>
 <% end %>

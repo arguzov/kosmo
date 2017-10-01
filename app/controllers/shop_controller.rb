@@ -9,8 +9,10 @@ class ShopController < ApplicationController
 
     def search
         @products = ShopProduct.active
+        limit = 50
         if params.has_key?(:brands)
            @products = @products.where('brand_id IN (?)',params[:brands].keys)
+           limit = 1000
         end
         ids = []
         if params.has_key?(:issues)
@@ -22,7 +24,7 @@ class ShopController < ApplicationController
         if ids.length > 0
             @products = @products.where('id IN (?)',ids)
         end
-        @products = @products.limit(50)
+        @products = @products.limit(limit)
     end
 
     def best_sellers

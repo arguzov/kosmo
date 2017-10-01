@@ -7,6 +7,9 @@
       </div>
       <div class="modal-body">
         <%=render :partial => 'app/pricelist', :locals => {:pricelist=>@pricelist,collapsed: 1}%>
+        <div style="padding: 20px 0px 10px 0px;">
+          Цены, помеченные знаком *, указаны со скидкой для первичных клиентов
+        </div>
         <div class="alert alert-info" role="alert" style="margin-top: 10px;">
           <strong>0% рассрочка!</strong> Наши услуги вы можете оплатить в рассрочку без процентов.<br><a target="_blank" href="/posts/198" style="text-decoration: underline;color: black;">Узнать подробности</a>
         </div>

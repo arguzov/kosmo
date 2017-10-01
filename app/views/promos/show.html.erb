@@ -1,6 +1,9 @@
 <%
    meta :title => "Акция - #{@promo.name}",
         :description => Sanitize.clean(@promo.content).gsub("\n"," ").truncate(250)
+
+   content = @promo.content
+   content = content.gsub(/<\/?span[^>]*>/i,'')
 %>
 <div class="main col-md-8">
   <!-- page-title start -->
@@ -12,7 +15,7 @@
   <article class="clearfix blogpost full" style="padding-top: 20px;">
     <div class="blogpost-body">
       <div class="blogpost-content">
-        <%=@promo.content.html_safe%>
+        <%=content.html_safe%>
             <a href="javascript://" class="btn btn-lg btn-success" data-toggle="modal" data-target="#recall">Забронировать</a>
       </div>
     </div>
