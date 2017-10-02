@@ -4,6 +4,11 @@
         :keywords => @service.keys
 %>
 <div class="main col-md-12 scrollit">
+  <% if @service.css %>
+      <style>
+        <%=@service.css%>
+      </style>
+  <% end %>
     <% if @service.is_structured %>
         <%=render :partial => 'services/show/layouts/structured'%>
     <% else %>

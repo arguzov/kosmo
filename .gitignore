@@ -13,3 +13,4 @@
 /public/assets/
 /Gemfile
 /Gemfile.lock
+/test/tmp*

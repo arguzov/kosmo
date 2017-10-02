@@ -22,7 +22,8 @@ class ServicesController < ApplicationController
             metrika.ip = request.remote_ip
             metrika.save
         end
-        @pricelist = @service.pricelist.split(/\n/)
+        #@pricelist = @service.pricelist.split(/\n/)
+        @pricelist = ''
         @children = Service.where('parent_id = ? AND fl_publish = 1',@service.id)
         if @service.medicaments
             horizontal = render_to_string(:partial => 'medicaments/window/horizontal', :layout => false, :locals => {:medicaments => @service.medicaments})
