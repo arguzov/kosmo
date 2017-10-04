@@ -14,6 +14,23 @@ class ServicesController < ApplicationController
         @sections = Section.order('fl_order')
     end
 
+    def lazer
+     @myths = [
+        'Удалить можно только темные волосы',
+        'Волосы перед процедурой нужно долго отращивать',
+            'Лазерная эпиляция оставляет ожоги',
+            'Это очень больно — больнее, чем воском',
+            'После эпиляции нужно неделю сидеть дома',
+            'Удалить волосы можно один раз и навсегда',
+            'Лазерную эпиляцию нужно делать всю жизнь',
+            'Эпиляцию нельзя делать летом',
+            'После лазерной эпиляции нельзя загорать',
+            'Это дорого',
+            'Лазерную эпиляцию можно сделать дома',
+            'Мужчинам лазерная эпиляция не поможет'
+        ]
+    end
+
     def show
         unless browser.bot?
             metrika = Metrika.new
@@ -83,6 +100,11 @@ class ServicesController < ApplicationController
 
     private
     def resolve_layout
-        "application"
+        case action_name
+            when "lazer"
+                "wide"
+            else
+                "application"
+        end
     end
 end

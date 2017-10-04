@@ -69,6 +69,8 @@ Kosmo::Application.routes.draw do
 
   get 'api/typehead/services'=>'services#typehead_list', as: :api_typehead_services
 
+  get 'services/lazer.html' => 'services#lazer', as: :services_lazer
+
   namespace :manager do
       resources :orders
       resources :prices
