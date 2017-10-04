@@ -5,6 +5,7 @@
   .green-block .col-md-3{padding: 15px;}
   .green-block .col-md-9{padding: 15px;}
   .green-block .title{font-size: 1.5em}
+  .gray-block{background-color: #EAEAE8}
   #promo td{font-size:1.4em;vertical-align:middle}
   .myth{text-align: center;padding: 20px 0px;}
   .myth .name{color: #583E9B;font-size: 1.5em;padding: 10px;}
@@ -13,8 +14,9 @@
   .review .col-md-3{text-align: center;}
   .review .col-md-3 .name{text-align: center;font-size: 1.0em;color: #1a7bb9;padding-top: 5px;}
   .review .col-md-9 strong{font-size: 1.2em;color: #1a7bb9}
+  #lazer-description strong{color: #573D90}
 </style>
-<div class="container">
+<div class="container hidden-xs">
   <div class="row">
     <div class="col-md-12">
       <h2>САМЫЕ ВОСТРЕБОВАННЫЕ ЗОНЫ ДЛЯ ЛАЗЕРНОЙ ЭПИЛЯЦИИ СРЕДИ НАШИХ КЛИЕНТОВ И СТОИМОСТЬ СО СКИДКОЙ И БЕЗ</h2>
@@ -109,20 +111,33 @@
   </div>
 </div>
 <%=render :partial=>'services/lazer/hr'%>
-<div class="container">
+<div class="container" id="lazer-description">
   <div class="row">
     <div class="col-md-12">
       <h2>ТОЛЬКО У НАС 2 САМЫХ СОВРЕМЕННЫХ<br>ЛАЗЕРНЫХ АППАРАТА В КАЗАНИ</h2>
     </div>
   </div>
   <div class="row" style="margin: 20px;">
-    <div class="col-md-6 text-center">
-      <img src="http://www.kosmetologiya-kazan.ru/data/pictures/531/sloi_19.png.pagespeed.ce.nDwBWQ4nhQ.png" pagespeed_url_hash="2530857502"><br><br>
-      <img src="http://www.kosmetologiya-kazan.ru/data/pictures/557/lightsheer_duet_noveishee.png">
+    <div class="col-md-6">
+      <div class="text-center" style="margin-bottom: 10px;">
+          <img src="http://www.kosmetologiya-kazan.ru/data/pictures/531/sloi_19.png.pagespeed.ce.nDwBWQ4nhQ.png" class="img-responsive" pagespeed_url_hash="2530857502">
+      </div>
+      <p><strong>LightSheer Duet</strong> - новейшее оборудование последнего поколения, получившее сертификат Федеральной службы по надзору в сфере здравоохранения № 20020/13005 от 28.09.2012 и одобрение FDA от 7 апреля 2006 года.</p>
+      <ul>
+        <li>Диодный лазер LightSheer DUET эффективно работает со всеми цветотипами кожи.</li>
+        <li>Встроенная система вакуумного усиления, благодаря чему процедура на аппарате безболезненна.</li>
+        <li>Легко удаляются волосы с любых участков кожи.</li>
+      </ul>
     </div>
-    <div class="col-md-6 text-center">
-      <img src="http://www.kosmetologiya-kazan.ru/data/pictures/532/sloi_20.png.pagespeed.ce.m7k-ulBd4X.png" pagespeed_url_hash="889664169"><br><br>
-      <img src="http://www.kosmetologiya-kazan.ru/data/pictures/556/lazer_mediostar_next_pro_.png">
+    <div class="col-md-6">
+      <div class="text-center" style="margin-bottom: 10px;">
+          <img src="http://www.kosmetologiya-kazan.ru/data/pictures/532/sloi_20.png.pagespeed.ce.m7k-ulBd4X.png" class="img-responsive" pagespeed_url_hash="889664169">
+      </div>
+      <p><strong>Лазер MeDioStar NeXT PRO</strong> - высокомощный, диодный лазер производства немецкой лазерной компании «Asclepion Laser Technologies».</p>
+      <ul>
+        <li>Встроенная система охлаждения кожи «Пельтье», благодаря чему достигается эффект безболезненности процедуры.</li>
+        <li>Удаляются волосы любого цвета, любой толщины, со всех фототипов кожи, на любом участке тела.</li>
+      </ul>
     </div>
   </div>
 </div>
@@ -145,24 +160,40 @@
     </div>
   </div>
 </div>
-<div class="container">
+<div class="container hidden-xs">
   <div class="row">
     <div class="col-md-12">
       <h2>ПОЧЕМУ ЛАЗЕРНАЯ ЭПИЛЯЦИЯ САМАЯ ЭФФЕКТИВНАЯ ПРОЦЕДУРА ДЛЯ ДЛЯ УДАЛЕНИЯ НЕЖЕЛАТЕЛЬНЫХ ВОЛОС НАВСЕГДА?</h2>
-      <img src="http://www.kosmetologiya-kazan.ru/data/pictures/533/vektornyi_smart-obekt_2.png.pagespeed.ce.pxDU2OGjLL.png" class="" style="background-color: initial; font-family: Arial, Helvetica, Verdana, Tahoma, sans-serif; font-size: 15px;" pagespeed_url_hash="1744144278">
-    </div>
-  </div>
-  <div class="row" style="margin-top: 40px;">
-    <div class="col-md-5">
-      <img src="http://www.kosmetologiya-kazan.ru/data/pictures/535/xoie_er0dwo9NtXF9.png.pagespeed.ic.TqzFZk5Q_I.jpg" class="img-responsive" pagespeed_url_hash="1804186609">
-    </div>
-    <div class="col-md-7">
-      <h2 style="margin-top: 0px;">Особенно рекомендуем лазерную эпиляцию, если:</h2>
-      <img src="http://www.kosmetologiya-kazan.ru/data/pictures/534/vy_pereprobovali_raznye_v.png.pagespeed.ce.ZsZAKXEwHQ.png" class="img-responsive" pagespeed_url_hash="971083024">
+      <img src="http://www.kosmetologiya-kazan.ru/data/pictures/533/vektornyi_smart-obekt_2.png.pagespeed.ce.pxDU2OGjLL.png" class="img-responsive" style="background-color: initial; font-family: Arial, Helvetica, Verdana, Tahoma, sans-serif; font-size: 15px;" pagespeed_url_hash="1744144278">
     </div>
   </div>
 </div>
-<div class="row" style="background-image:url('http://www.kosmetologiya-kazan.ru/data/pictures/537/top_waves.png');background-position: bottom;background-repeat:no-repeat;background-size:contain;">
+<div class="row gray-block" style="margin-top: 40px;">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5 col-md-offset-1">
+        <img src="http://www.kosmetologiya-kazan.ru/data/pictures/535/xoie_er0dwo9NtXF9.png.pagespeed.ic.TqzFZk5Q_I.jpg" class="img-responsive" pagespeed_url_hash="1804186609">
+      </div>
+      <div class="col-md-5" style="padding-top: 20px;">
+        <h2 style="margin-top: 0px;">Особенно рекомендуем лазерную эпиляцию, если:</h2>
+        <!--<img src="http://www.kosmetologiya-kazan.ru/data/pictures/534/vy_pereprobovali_raznye_v.png.pagespeed.ce.ZsZAKXEwHQ.png" class="img-responsive" pagespeed_url_hash="971083024">-->
+        <ul>
+          <li>Вы перепробовали разные виды эпиляции, но волосы все равно остались, продолжают расти и нервировать.</li>
+          <li>Вы устали ходить записываться в салон на удаление волос и готовы решить этот вопрос раз и навсегда.</li>
+          <li>Вам надоело каждый месяц тратиться на эпиляцию воском или шугаринг.</li>
+          <li>Волосы на теле быстро отрастают, вы уже перестали мечтать о гладкой коже.</li>
+          <li>Бритвенный станок по утрам вызывает раздражение с первого взгляда.</li>
+          <li>Обычная эпиляция для вас болезненна, у вас очень низкий болевой порог.</li>
+          <li>Кожа у вас очень нежная и чувствительная, склонная к раздражениям.</li>
+          <li>После эпиляции воском или шугаринга у вас появились вросшие волосы, и они доставляют неудобство.</li>
+          <li>Вы страдаете от фолликулита — воспаления волосяных фолликулов.</li>
+          <li>Вы хотите в любой момент пойти в бассейн, спортзал, сауну или на пляж и не беспокоиться об отросших волосах.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row hidden-xs" style="background-image:url('http://www.kosmetologiya-kazan.ru/data/pictures/537/top_waves.png');background-position: bottom;background-repeat:no-repeat;background-size:contain;">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
