@@ -28,7 +28,7 @@
           <%= (strip_tags product.description).gsub('Описание:','').truncate(60) %>
         </div>
         <div class="product-price">
-           <%=product.prices%> &#8381;
+           <%=product.prices%> Р
           <div class="product-action pull-right">
             <%=link_to "Купить", shop_product_path({url: product.url}), :class=>"btn btn-primary btn-sm"%>
           </div>
