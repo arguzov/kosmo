@@ -18,21 +18,13 @@
         <%=content.html_safe%>
     <% else %>
     <div class="blogpost-body">
-      <div class="side">
-        <div class="post-info">
-          <span class="day"><%=@post.created_at.strftime("%d")%></span>
-          <span class="month"><%=@post.created_at.strftime("%m %Y")%></span>
-        </div>
-      </div>
-      <div class="blogpost-content">
-        <header>
-          <div class="submitted"><i class="fa fa-user pr-5"></i> от <a href="#">ЦЭиК</a></div>
-        </header>
+       <div style="padding-bottom:10px;">
+         <%=@post.created_at.strftime("%d.%m.%Y")%> <i class="fa fa-user pr-5"></i> от <a href="#">ЦЭиК</a>
+       </div>
         <% if @post.photo.exists? %>
         <p><%=image_tag @post.photo.url%></p>
         <% end %>
         <%=content.html_safe%>
-      </div>
     </div>
     <% end %>
     <div>

@@ -16,7 +16,7 @@
           <p class="phone_num">+7 (843) 2000-322</p>
           <img src="http://beauty-season-center.ru/img/place3.png" width="16" class="place_icon place3" alt="">
           <p class="medium">Казань, ул. Сибгата Хакима, 42</p>
-          <p class="add_desc">Ново-савиновский район, рядом пр. Амирхана, ул. Чистопольская</p>
+          <p class="add_desc">Ново-Савиновский район, рядом пр. Амирхана, ул. Чистопольская</p>
           <img src="http://beauty-season-center.ru/img/phone3.svg" width="14" class="place_icon phone3" alt="">
           <p class="phone_num">+7 (843) 2000-322</p>
         </div>
@@ -111,3 +111,12 @@
     (function(){ var widget_id = 'B7gkMJxK7P';var d=document;var w=window;function l(){
         var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = '//code.jivosite.com/script/widget/'+widget_id; var ss = document.getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss);}if(d.readyState=='complete'){l();}else{if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();</script>
 <!-- {/literal} END JIVOSITE CODE -->
+<script>
+  $(document).ready(function() {
+      $('.myth .more img').click(function () {
+          var id = $(this).attr('data-id');
+          $('.more-content').hide();
+          $('#myth' + id).show();
+      })
+  });
+</script>

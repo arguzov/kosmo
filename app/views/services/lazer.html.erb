@@ -15,6 +15,14 @@
   .review .col-md-3 .name{text-align: center;font-size: 1.0em;color: #1a7bb9;padding-top: 5px;}
   .review .col-md-9 strong{font-size: 1.2em;color: #1a7bb9}
   #lazer-description strong{color: #573D90}
+    .myth .more img {
+      cursor: pointer;
+    }
+    .more-content{
+      display: none;
+      padding-top: 10px;
+      text-align: left;
+    }
 </style>
 <div class="container hidden-xs">
   <div class="row">
@@ -322,7 +330,10 @@
        <div class="myth">
          <div class="label">Миф №<%=(index.to_i + 1).to_s%></div>
          <div class="name"><%=myth%></div>
-         <div class="more"><img src="http://www.kosmetologiya-kazan.ru/data/pictures/545/vektornyi_smart-obekt_kop_7.png"></div>
+         <div class="more"><img data-id="<%=index%>" src="http://www.kosmetologiya-kazan.ru/data/pictures/545/vektornyi_smart-obekt_kop_7.png"></div>
+         <div class="more-content" id="myth<%=index%>">
+           <%=@answers[index.to_i].html_safe%>
+         </div>
        </div>
        <% end %>
     </div>

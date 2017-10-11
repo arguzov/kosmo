@@ -1,22 +1,15 @@
 <div class="hidden-xs">
   <h2>Виды услуги</h2>
   <%services.each_with_index do |child,index|%>
-      <article class="clearfix blogpost">
-        <div class="overlay-container pull-right">
+      <article class="clearfix blogpost" style="padding: 10px 0px;">
+        <div class="pull-right">
           <%=image_tag child.photo.url(:medium) %>
-          <div class="overlay">
-            <div class="overlay-links">
-              <%=link_to service_path(id:child.id, url:child.url) do %><i class="fa fa-link"></i><% end %>
-            </div>
-          </div>
         </div>
         <div class="blogpost-body" style="padding:0px;margin: 0px;">
-          <div class="blogpost-content" style="padding: 0px;margin: 10px;">
             <header>
               <%=link_to child.name, service_path(id:child.id, url:child.url)%>
             </header>
             <%=child.anounce%>
-          </div>
         </div>
       </article>
   <% end %>

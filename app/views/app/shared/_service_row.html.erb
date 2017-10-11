@@ -1,11 +1,6 @@
-<article class="clearfix blogpost object-non-visible service-row" data-animation-effect="fadeInUpSmall" data-effect-delay="200" style="margin: 0px 0px 10px 0px">
-  <div class="overlay-container pull-right" style="height:180px;overflow: hidden;">
+<article class="service-row" style="padding: 10px 0px;">
+  <div class="pull-right" style="height:180px;overflow: hidden;">
     <%=image_tag service.photo.url(:medium) %>
-    <div class="overlay">
-      <div class="overlay-links">
-        <%=link_to service_path(id:service.id, url:service.url) do %><i class="fa fa-link"></i><% end %>
-      </div>
-    </div>
   </div>
   <div class="blogpost-body" style="padding:0px;margin: 0px;">
     <div class="blogpost-content" style="padding: 0px;margin: 10px;">

@@ -14,7 +14,7 @@
   is_new = line.is_new_only ? '*' : ''
 %>
 <% if @service_discount[line.service_id] == nil && @price_discount == nil %>
-    <nobr><%=line.price%><%=is_new%> <span class="rouble">Р</span></nobr>
+    <nobr><%=line.price%><span class="rouble">Р</span></nobr>
 <% else %>
     <nobr><s><%=line.price%><%=is_new%> <span class="rouble">Р</span></s>
     <%=render :partial => 'app/pricelist/discount_row', locals: {price: line}%></nobr>
