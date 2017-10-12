@@ -1,9 +1,8 @@
 <article class="service-row" style="padding: 10px 0px;">
-  <div class="pull-right" style="height:180px;overflow: hidden;">
-    <%=image_tag service.photo.url(:medium) %>
-  </div>
-  <div class="blogpost-body" style="padding:0px;margin: 0px;">
     <div class="blogpost-content" style="padding: 0px;margin: 10px;">
+      <div class="pull-right" style="height:180px;overflow: hidden;">
+        <%=image_tag 'http://www.kosmetologiya-kazan.ru' + service.photo.url(:medium) %>
+      </div>
       <header>
         <%=link_to service.name, service_path(id:service.id, url:service.url)%>
       </header>
@@ -12,5 +11,5 @@
         <%=link_to service_path(id:service.id, url:service.url), :class=>'btn btn-default' do %> от <%=service.price%> руб. <% end %>
       </div>
     </div>
-  </div>
 </article>
+<div style="clear:both"></div>

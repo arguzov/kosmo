@@ -5,8 +5,8 @@
           <div style="height: 200px;overflow: hidden">
             <img src="<%=service.photo.url(:medium)%>" style="height: 100%;-webkit-filter: sepia(15%);">
           </div>
-          <div class="listing-item-body clearfix" style="background-color: #FCF8E3;height: 180px;">
-            <div style="height: 100px;">
+          <div class="listing-item-body clearfix" style="background-color: #FCF8E3;height: 200px;padding-left:10px;">
+            <div style="height: 140px;">
             <h3 class="title"><a href="<%= service_path(id:service.id, url:service.url)%>" style="text-decoration: underline"><%= service.name.truncate(35) %></a></h3>
             <p style="color: #000;"><%=service.description.truncate(70)%></p>
             </div>
