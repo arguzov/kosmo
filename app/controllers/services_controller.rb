@@ -15,6 +15,7 @@ class ServicesController < ApplicationController
     end
 
     def lazer
+        @service = Service.find(79)
      @myths = [
         'Удалить можно только темные волосы',
         'Волосы перед процедурой нужно долго отращивать',

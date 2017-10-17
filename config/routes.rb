@@ -24,6 +24,7 @@ Kosmo::Application.routes.draw do
   end
 
   post 'api/metrika/register'=>'metrika#register', as: :metrika_register
+  get 'services/79-lasernaya-epilyaciya.html' => 'services#lazer', as: :lazerepil
   get 'services/:id-:url.html'=>'services#show', as: :service,  :constraints => {:id => /\d+/}
   get 'services'=>'services#index', as: :services
   get 'services/prices'=>'services#prices', as: :prices_services

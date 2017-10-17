@@ -1,18 +1,18 @@
 <div class="hidden-xs">
-<h2>Используемые препараты</h2>
+<% if @service && @service.id == 10%>
+  <h2>Виды пилингов</h2>
+<% else %>
+  <h2>Используемые препараты</h2>
+<% end %>
 <%medicaments.each_with_index do |medicament,index|%>
 
     <article class="clearfix blogpost">
-      <div class="overlay-container pull-right">
-        <%=image_tag medicament.photo.url(:medium) %>
-      </div>
       <div class="blogpost-body" style="padding:0px;margin: 0px;">
         <div class="blogpost-content" style="padding: 0px;margin: 10px;">
           <header>
             <%=link_to medicament.name,medicament_path(medicament)%>
           </header>
           <%=medicament.anounce%>
-          <p><a href="/medicaments/<%=medicament.id%>" style="text-decoration: underline">Подробнее</a></p>
         </div>
       </div>
     </article>

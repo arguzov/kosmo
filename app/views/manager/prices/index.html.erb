@@ -18,7 +18,8 @@
                 <tr class="sh" data-id="<%=service.id%>">
                   <th colspan="6">
                     <label class="badge">+</label> <%=service.name%>
-                    <div class="pull-right"><a href="/manager/prices/new?service_id=<%=service.id%>" class="btn btn-success btn-sm">Добавить</a></div>
+                    <div class="pull-right"><a href="/manager/prices/new?service_id=<%=service.id%>&fl_parent=true" class="btn btn-primary btn-sm">+ раздел</a></div>
+                    <div class="pull-right"><a href="/manager/prices/new?service_id=<%=service.id%>" class="btn btn-success btn-sm">+ цена</a></div>
                   </th>
                 </tr>
             <% end %>

@@ -51,11 +51,11 @@ new Image().src = "//counter.yadro.ru/hit?r"+
       </div>
     </div>
     <div class="col-lg-2 col-lg-offset-10 col-md-3 col-md-offset-9 hidden-sm">
-      <div class="soc_links">
-        <a href="https://vk.com/kosmetologiya_kazan" target="_blank" class="vk"></a>
-        <a href="https://www.instagram.com/beauty_season_center/" target="_blank" class="insta"></a>
-        <a href="https://www.youtube.com/channel/UCNfba3wYgoVGRYsACSGffag" target="_blank" class="youtube"></a>
-      </div>
+      <form role="search" class="search-box form-inline" action="/services">
+        <div class="form-group has-feedback">
+          <input type="text" name="q" class="form-control" placeholder="Поиск: введите название услуги" value="<%=params[:q]%>" style="width:280px;height:30px;">
+        </div>
+      </form>
     </div>
   </div>
 </header>

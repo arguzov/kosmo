@@ -396,4 +396,6 @@
         <p>Спасибо Центру эпиляции и косметологии за возможность пройти процедуры со скидкой. Значительная экономия денег. Все специалисты очень милые и отзывчивые.</p>
       </div>
   </div>
+  <%=render :partial=> 'services/show/buttons', locals: {service: @service, noreviews: true}%>
+  <%=render :partial => 'services/show/modals/prices'%>
 </div>

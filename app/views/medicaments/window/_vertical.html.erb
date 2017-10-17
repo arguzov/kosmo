@@ -1,10 +1,14 @@
 <div class="hidden-xs">
-<h2>Используемые препараты</h2>
+  <% if @service && @service.id == 10%>
+      <h2>Виды пилингов</h2>
+  <% else %>
+      <h2>Используемые препараты</h2>
+  <% end %>
 <div class="panel">
   <%medicaments.each_with_index do |medicament,index|%>
-      <div class="panel-heading" style="padding: 0px;margin: 1px;background-color: gray;border-bottom-width: 0px;">
+      <div class="panel-heading">
         <h4 class="panel-title">
-          <a data-toggle="collapse" style="background-color: #F5F5F5;margin:0px;color: #000;" data-parent="#global-pricelist" href="#collapse<%=medicament.id%>">
+          <a data-toggle="collapse" style="text-decoration: underline;" data-parent="#global-pricelist" href="#collapse<%=medicament.id%>">
             <%=('<i class="fa fa-caret-down"></i> ' + medicament.name).html_safe%>
           </a>
         </h4>
