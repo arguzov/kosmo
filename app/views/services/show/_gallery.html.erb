@@ -1,9 +1,9 @@
 <% if @album.count > 0 %>
     <h2>Фотографии процедуры &laquo;<%=@service.name%>&raquo;</h2>
-    <div class="owl-carousel carousel-autoplay popup-gallery-bottom" style="margin-bottom: 50px;">
+    <div class="row" style="margin-bottom: 50px;">
       <% @album.each do |image| %>
-      <div class="image-box">
-          <a href="<%=image.gsub('public','').gsub('th/','big/')%>"><%= image_tag image.gsub('public','') %></a>
+      <div class="col-md-2">
+          <a href="<%=image.gsub('public','').gsub('th/','big/')%>" target="_blank"><%= image_tag image.gsub('public',''), :class=> 'img-responsive'%></a>
       </div>
       <% end %>
     </div>
