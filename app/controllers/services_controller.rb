@@ -57,6 +57,9 @@ class ServicesController < ApplicationController
             metrika.ip = request.remote_ip
             metrika.save
         end
+        unless @service.fl_show
+            raise ActionController::RoutingError.new('Not Found')
+        end
         #@pricelist = @service.pricelist.split(/\n/)
         @pricelist = ''
         @children = Service.where('parent_id = ? AND fl_publish = 1',@service.id)
