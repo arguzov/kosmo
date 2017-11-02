@@ -1,5 +1,5 @@
 ActiveAdmin.register Post do
-    menu :if => proc{ current_user.id < 3 }, label: "Статьи"
+    menu :if => proc{ current_user.id < 5 }, label: "Статьи"
 
     permit_params :name, :user_id, :category_id, :anounce, :content, :fl_status, :fl_menu, :title, :description, :photo, :person, expert_ids: [], service_ids: []
 

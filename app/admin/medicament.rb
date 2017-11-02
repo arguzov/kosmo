@@ -1,5 +1,5 @@
 ActiveAdmin.register Medicament do
-    menu :if => proc{ current_user.id < 3 }, label: "Препараты"
+    menu :if => proc{ current_user.id < 5 }, label: "Препараты"
 
     permit_params :name, :content, :anounce, :photo, :title, :description, :fl_show, :service_id
 

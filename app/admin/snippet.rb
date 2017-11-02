@@ -1,5 +1,5 @@
 ActiveAdmin.register Snippet do
-    menu :if => proc{ current_user.id < 3 }, label: "Фрагменты"
+    menu :if => proc{ current_user.id < 5 }, label: "Фрагменты"
 
   permit_params :service_id, :block_id, :content, :name
   #fdddsf

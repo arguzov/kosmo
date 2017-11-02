@@ -1,5 +1,5 @@
 ActiveAdmin.register Issue do
-  menu :if => proc{ current_user.id < 3 }, label: "Проблемы"
+  menu :if => proc{ current_user.id < 5 }, label: "Проблемы"
   permit_params :name, :url, :content, :title, :description, :fl_show, :parent_id, service_ids: [], shop_product_ids: []
 
   index do

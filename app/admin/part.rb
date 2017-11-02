@@ -1,5 +1,5 @@
 ActiveAdmin.register Part do
-    menu :if => proc{ current_user.id < 3 }, label: "Части тела"
+    menu :if => proc{ current_user.id < 5 }, label: "Части тела"
 
   permit_params :name, shop_product_ids: []
   #fdddsf

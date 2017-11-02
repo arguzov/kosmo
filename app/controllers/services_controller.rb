@@ -85,6 +85,7 @@ class ServicesController < ApplicationController
                 @service.content = @service.content.gsub('</blockquote>','<div style="clear:both;"></div></blockquote>')
             end
         end
+        @service.content = @service.content.gsub('<iframe','<iframe width="560" height="315"')
         @album = Dir.glob("public/data/services/#{@service.id}/th/*")
         if @service.complements != nil
             @complements = Service.where('id IN (?) AND fl_publish = 1',@service.complements.split(','))

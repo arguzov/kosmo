@@ -1,5 +1,5 @@
 ActiveAdmin.register Promo do
-    menu :if => proc{ current_user.id < 3 }, label: "Акции"
+    menu :if => proc{ current_user.id < 5 }, label: "Акции"
 
     controller do
         def scoped_collection

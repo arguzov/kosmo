@@ -1,5 +1,5 @@
 ActiveAdmin.register MailTemplate do
-    menu :if => proc{ current_user.id < 3 }, label: "Рассылка"
+    menu :if => proc{ current_user.id < 5 }, label: "Рассылка"
 
     permit_params :name, :group_id, :preview, :content, :fl_active
 

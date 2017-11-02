@@ -1,5 +1,5 @@
 ActiveAdmin.register Section do
-    menu :if => proc{ current_user.id < 3 }, :label=>'Разделы'
+    menu :if => proc{ current_user.id < 5 }, :label=>'Разделы'
   
   # See permitted parameters documentation:
   # https://github.com/gregbell/active_admin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

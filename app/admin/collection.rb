@@ -1,5 +1,5 @@
 ActiveAdmin.register Collection do
-    menu :if => proc{ current_user.id < 3 }, :label=>'Коллекции'
+    menu :if => proc{ current_user.id < 5 }, :label=>'Коллекции'
 
     permit_params :name, :fl_show, :url, :description, :title, :unit_id
 

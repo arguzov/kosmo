@@ -1,5 +1,5 @@
 ActiveAdmin.register Photo do
-    menu :if => proc{ current_user.id < 3 }, label: "Фото"
+    menu :if => proc{ current_user.id < 5 }, label: "Фото"
     permit_params :name, :service_id, :photo_type, :photo_group, :description, :img
 
     index do

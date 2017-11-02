@@ -1,5 +1,5 @@
 ActiveAdmin.register Video do
-    menu :if => proc{ current_user.id < 3 }, label: "Видео"
+    menu :if => proc{ current_user.id < 5 }, label: "Видео"
 
   permit_params :name, :service_id, :is_show_on_service_page, :code
   index do

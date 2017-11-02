@@ -1,5 +1,5 @@
 ActiveAdmin.register User do
-    menu :if => proc{ current_user.id < 3 }, label: "Пользователи"
+    menu :if => proc{ current_user.id < 5 }, label: "Пользователи"
 
     permit_params :name, :email, :phone, :admin, :discount, group_ids: []
 
