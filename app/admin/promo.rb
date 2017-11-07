@@ -7,7 +7,7 @@ ActiveAdmin.register Promo do
         end
     end
 
-    permit_params :name, :content, :banner, :fl_active, :fl_top, :fl_menu, :fl_banner, :due, :more_link, :photo, service_ids: []
+    permit_params :name, :content, :banner, :fl_active, :fl_top, :fl_menu, :fl_banner, :fl_order, :due, :more_link, :photo, service_ids: []
 
     index do
         column :id
@@ -15,6 +15,7 @@ ActiveAdmin.register Promo do
         column :fl_active
         column :fl_top
         column :fl_menu
+        column :fl_order
         column :created_at
         actions
     end
@@ -26,8 +27,7 @@ ActiveAdmin.register Promo do
             f.input :banner, input_html: {class: "redactor" }
             f.input :photo, :as => :file, :hint => f.template.image_tag(f.object.photo.url(:thumb))
             f.input :fl_active, :label => 'Активный'
-            f.input :fl_top, :label => 'В карусели'
-            f.input :fl_menu, :label => 'В меню'
+            f.input :fl_order, :label => 'Порядок сортировки'
             f.input :due, :label => 'Дата окончания'
             f.input :more_link, :label => 'Ссылка на статью'
         end
