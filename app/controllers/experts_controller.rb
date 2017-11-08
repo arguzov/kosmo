@@ -9,7 +9,7 @@ class ExpertsController < ApplicationController
     def index
         i = 1
         @experts = {}
-        while i < 7
+        while i < 8
             @experts[i] = Expert.where('role_id = ?', i).order('fl_order,id')
             i += 1
         end
