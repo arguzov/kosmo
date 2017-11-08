@@ -1,13 +1,14 @@
 ActiveAdmin.register Expert do
     menu :if => proc{ current_user.id < 5 }, label: "Персонал"
 
-  permit_params :name, :content, :profession, :photo, :education, :experience, :diploma, :fl_order, service_ids: []
+  permit_params :name, :content, :profession, :photo, :education, :experience, :diploma, :fl_order, :role_id, service_ids: []
 
   index do
       column :id
       column :name
       column :profession
       column :fl_order
+      column :role
       column :created_at
       column :updated_at
       actions
@@ -22,6 +23,7 @@ ActiveAdmin.register Expert do
           f.input :education
           f.input :experience
           f.input :diploma
+          f.input :role, :label => 'Направление деятельности', :as => :select, :collection => Expert::ROLES.invert
           f.input :fl_order
       end
       f.inputs "Сервисы" do

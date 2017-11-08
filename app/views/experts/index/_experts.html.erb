@@ -1,0 +1,16 @@
+<%experts.each_with_index do |expert,index|%>
+    <div class="col-md-3 col-sm-6">
+      <div class="box-style-1 gray-bg team-member animated object-visible fadeInLeft" data-animation-effect="fadeInLeft" data-effect-delay="<%=700 - index.to_i*100%>" style="margin-bottom: 15px;">
+        <div class="overlay-container" style="height:320px;">
+          <img src="http://www.kosmetologiya-kazan.ru/<%=expert.photo%>" class="img-responsive">
+          <div class="overlay">
+            <ul class="social-links colored clearfix">
+              <li class="facebook"><%=link_to expert_path(expert) do %><%=fa_icon 'file-text-o'%><% end %></li>
+            </ul>
+          </div>
+        </div>
+        <h3><%=link_to expert.name, expert_path(expert)%></h3>
+        <%=expert.profession%>
+      </div>
+    </div>
+<% end %>
