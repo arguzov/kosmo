@@ -56,6 +56,7 @@ Kosmo::Application.routes.draw do
   get 'gallery'=>'posts#gallery', as: :gallery
 
   get 'shop'=>'shop#main', as: :shop
+  get 'store'=>'shop#index', as: :shop_index
   get 'shop/search'=>'shop#search', as: :shop_search
   get 'shop/bestsellers'=>'shop#best_sellers', as: :shop_best_sellers
   #get 'shop'=>'shop#root', as: :shop_root

@@ -3,6 +3,10 @@ class ShopController < ApplicationController
     #before_action :closed
     before_action :authenticate_user!, :only => [:orders,:order]
 
+    def index
+
+    end
+
     def main
         @products = ShopProductItem.active.best_sellers
     end
@@ -121,6 +125,8 @@ class ShopController < ApplicationController
                 'private'
             when 'cart'
                 'private'
+            when 'index'
+                'application'
             else
                 'shop'
         end
