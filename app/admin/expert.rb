@@ -23,7 +23,7 @@ ActiveAdmin.register Expert do
           f.input :education
           f.input :experience
           f.input :diploma
-          f.input :role, :label => 'Направление деятельности', :as => :select, :collection => Expert::ROLES.invert
+          f.input :role_id, :label => 'Направление деятельности', :as => :select, :collection => Expert::ROLES.invert
           f.input :fl_order
       end
       f.inputs "Сервисы" do
