@@ -1,11 +1,13 @@
 <% if @diplomas.length > 0 %>
     <h2 class="title">Дипломы и сертификаты</h2>
+      <div class="row">
       <% @diplomas.each do |image| %>
-          <div class="image-box pull-left">
+          <div class="col-md-3">
             <%= link_to image.gsub('public', '').gsub('th/', '') do %>
                 <%= image_tag image.gsub('public', '') %>
             <% end %>
           </div>
       <% end %>
+      </div>
      <div style="clear:both"></div>
 <% end %>
