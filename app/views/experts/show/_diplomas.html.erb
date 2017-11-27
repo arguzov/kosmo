@@ -2,7 +2,7 @@
     <h2 class="title">Дипломы и сертификаты</h2>
       <div class="row">
       <% @diplomas.each do |image| %>
-          <div class="col-md-3" style="height:150px;overflow-y: hidden">
+          <div class="col-md-3" style="height:150px;overflow-y: hidden;overflow-x: visible">
             <%= link_to image.gsub('public', '').gsub('th/', '') do %>
                 <%= image_tag image.gsub('public', '') %>
             <% end %>
