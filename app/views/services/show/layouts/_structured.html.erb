@@ -27,5 +27,9 @@
               <%=render :partial => 'services/show/blocks/shop', locals: {block: block}%>
           <% end %>
       <% end %>
+      <%=render :partial=> 'services/show/buttons', locals: {service: @service}%>
+      <%=render :partial=> 'services/show/gallery'%>
+      <%=render :partial => 'services/show/modals/prices'%>
+      <%=render :partial => 'services/show/modals/reviews'%>
   </div>
 </article>
