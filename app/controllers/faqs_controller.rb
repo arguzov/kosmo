@@ -1,7 +1,7 @@
 class FaqsController < ApplicationController
 
     def index
-        @fetch = Faq.where('fl_show = 1').order('created_at DESC')
+        @fetch = Faq.where('fl_show = 1 AND service_id is NULL').order('created_at DESC')
     end
 
     def show
