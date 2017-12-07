@@ -123,25 +123,25 @@
   <div class="row">
     <div class="col-sm-4">
       <div class="art_box art_box1">
-        <a href="http://www.kosmetologiya-kazan.ru/faqs/138" target="_blank"><div class="art_img"></div></a>
-        <a href="http://www.kosmetologiya-kazan.ru/faqs/138" target="_blank" class="art_title">Черные точки: как бороться дома, когда стоит идти к косметологу</a>
+        <a href="http://www.kosmetologiya-kazan.ru/services/6-chistka-lica.html" target="_blank"><div class="art_img"></div></a>
+        <a href="http://www.kosmetologiya-kazan.ru/services/6-chistka-lica.html" target="_blank" class="art_title">Черные точки как с ними бороться?</a>
         <p>Черные точки: откуда они берутся и как с ними бороться. Врачи Центра эпиляции и косметологии отвечают на самые распространенные вопросы.</p>
         <div class="waves1"></div>
       </div>
     </div>
     <div class="col-sm-4">
       <div class="art_box art_box2">
-        <a href="http://www.kosmetologiya-kazan.ru/faqs/32" target="_blank"><div class="art_img"></div></a>
-        <a href="http://www.kosmetologiya-kazan.ru/faqs/32" target="_blank" class="art_title">Сравнение способов эпиляции</a>
+        <a href="http://www.kosmetologiya-kazan.ru/services/79-lasernaya-epilyaciya.html" target="_blank"><div class="art_img"></div></a>
+        <a href="http://www.kosmetologiya-kazan.ru/services/79-lasernaya-epilyaciya.html" target="_blank" class="art_title">Какой самый эффективный способ избавления от волос навсегда?</a>
         <p>В чём основные плюсы и минусы различных видов эпиляции?</p>
         <div class="waves1"></div>
       </div>
     </div>
     <div class="col-sm-4">
       <div class="art_box art_box3">
-        <a href="http://www.kosmetologiya-kazan.ru/faqs/34" target="_blank"><div class="art_img"></div></a>
-        <a href="http://www.kosmetologiya-kazan.ru/faqs/34" target="_blank" class="art_title">Как правильно подобрать солнцезащитную косметику?</a>
-        <p>Как и чем лучше всего защищать кожу от ультрафиолета?</p>
+        <a href="http://www.kosmetologiya-kazan.ru/services/137-dot+rf-omolozhenie.html" target="_blank"><div class="art_img"></div></a>
+        <a href="http://www.kosmetologiya-kazan.ru/services/137-dot+rf-omolozhenie.html" target="_blank" class="art_title">Как продлить молодость кожи?</a>
+        <p>За одну процедуру устранить морщины, осветлить пигментацию, выровнить рельеф кожи</p>
         <div class="waves1"></div>
       </div>
     </div>
@@ -187,46 +187,15 @@
     <h2>Кто поможет Вам стать еще красивее</h2>
   </div>
   <div class="work_row">
+    <%Expert.where('id in (?)',[14, 33, 23, 12, 27]).each do |expert|%>
     <div class="work_box">
-      <img src="http://beauty-season-center.ru/img/worker1_lg.jpg" class="hidden-md hidden-sm" alt="">
-      <img src="http://beauty-season-center.ru/img/worker1_md.jpg" class="hidden-lg hidden-sm" alt="">
+      <img src="http://www.kosmetologiya-kazan.ru<%=expert.photo%>" class="img-responsive" alt="">
       <div class="work_info green_info text-center">
-        <p class="sm_bold"><a href="/experts/14" style="color:#fff;">Александрова Евгения Сергеевна</a></p>
-        <p class="medium">Врач-дерматолог</p>
+        <p class="sm_bold"><a href="/experts/<%=expert.id%>" style="color:#fff;"><%=expert.name%></a></p>
+        <p class="medium"><%=expert.profession%></p>
       </div>
     </div>
-    <div class="work_box">
-      <img src="http://www.kosmetologiya-kazan.ru/data/pictures/526/oie_IuGLT0ljNGih.jpg" class="hidden-md" alt="">
-      <img src="http://www.kosmetologiya-kazan.ru/data/pictures/526/oie_IuGLT0ljNGih.jpg" class="hidden-lg" alt="">
-      <div class="work_info violet_info text-center">
-        <p class="sm_bold"><a href="/experts/33" style="color:#fff;">Андреева Инна<br> Раифовна</a></p>
-        <p class="medium">Врач-дерматолог</p>
-      </div>
-    </div>
-    <div class="work_box">
-      <img src="http://beauty-season-center.ru/img/worker3_lg.jpg" class="hidden-md" alt="">
-      <img src="http://beauty-season-center.ru/img/worker3_md.jpg" class="hidden-lg" alt="">
-      <div class="work_info rose_info text-center">
-        <p class="sm_bold"><a href="/experts/23" style="color:#fff;">Файзуллина Лилия Искандаровна</a></p>
-        <p class="medium">Врач-трихолог</p>
-      </div>
-    </div>
-    <div class="work_box">
-      <img src="http://beauty-season-center.ru/img/worker4_lg.jpg" class="hidden-md" alt="">
-      <img src="http://beauty-season-center.ru/img/worker4_md.jpg" class="hidden-lg" alt="">
-      <div class="work_info green_info text-center">
-        <p class="sm_bold"><a href="/experts/12" style="color:#fff;">Алимова Лейла Джабраиловна</a></p>
-        <p class="medium">Врач-дерматолог</p>
-      </div>
-    </div>
-    <div class="work_box">
-      <img src="http://beauty-season-center.ru/img/worker5_lg.jpg" class="hidden-md" alt="">
-      <img src="http://beauty-season-center.ru/img/worker5_md.jpg" class="hidden-lg" alt="">
-      <div class="work_info violet_info text-center">
-        <p class="sm_bold"><a href="/experts/27" style="color:#fff;">Матвеева Оксана Викторовна</a></p>
-        <p class="medium">Врач-косметолог</p>
-      </div>
-    </div>
+    <% end %>
   </div>
 </div>
 <div class="modal fade bs-example-modal-sm1" id="order_modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
