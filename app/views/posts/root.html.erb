@@ -189,7 +189,7 @@
   <div class="work_row">
     <%Expert.where('id in (?)',[14, 33, 23, 12, 27]).each do |expert|%>
     <div class="work_box">
-      <img src="http://www.kosmetologiya-kazan.ru<%=expert.photo%>" class="img-responsive" alt="">
+      <div style="height:294px;overflow-y:hidden"><img src="http://www.kosmetologiya-kazan.ru<%=expert.photo%>" class="img-responsive" alt=""></div>
       <div class="work_info green_info text-center">
         <p class="sm_bold"><a href="/experts/<%=expert.id%>" style="color:#fff;"><%=expert.name%></a></p>
         <p class="medium"><%=expert.profession%></p>
