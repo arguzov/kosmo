@@ -27,6 +27,7 @@ ActiveAdmin.register Promo do
             f.input :banner, input_html: {class: "redactor" }
             f.input :photo, :as => :file, :hint => f.template.image_tag(f.object.photo.url(:thumb))
             f.input :fl_active, :label => 'Активный'
+            f.input :fl_menu, :label => 'Показывать в списке'
             f.input :fl_order, :label => 'Порядок сортировки'
             f.input :due, :label => 'Дата окончания'
             f.input :more_link, :label => 'Ссылка на статью'

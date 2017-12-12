@@ -1,7 +1,29 @@
 <%
-    snippet = Snippet.where('service_id = ? AND block_id = ?',@service.id,block.id).first
+  snippet = Snippet.where('service_id = ? AND block_id = ?', @service.id, block.id).first
+  if snippet
+      content = snippet.content
+      unless content.index('{medicaments') == nil
+          if @service.medicaments
+              horizontal = render :partial => 'medicaments/window/horizontal', :layout => false, :locals => {:medicaments => @service.medicaments}
+              vertical =  render :partial => 'medicaments/window/vertical', :layout => false, :locals => {:medicaments => @service.medicaments}
+              content = content.gsub('{medicaments}', vertical)
+              content = content.gsub('{medicaments:horizontal}', horizontal)
+              content = content.gsub('{medicaments:vertical}', vertical)
+          end
+      end
+      unless content.index('{children') == nil
+          @children = Service.where('parent_id = ? AND fl_publish = 1', @service.id)
+          if @children
+              horizontal = render :partial => 'services/window/horizontal', :layout => false, :locals => {:services => @children}
+              vertical =  render :partial => 'services/window/vertical', :layout => false, :locals => {:services => @children}
+              content = content.gsub('{children}', vertical)
+              content = content.gsub('{children:horizontal}', horizontal)
+              content = content.gsub('{children:vertical}', vertical)
+          end
+      end
+  end
 %>
 <% if snippet %>
-<h2><%=snippet.name%></h2>
-<%=snippet.content.html_safe%>
+    <h2><%= snippet.name %></h2>
+    <%= content.html_safe %>
 <% end %>
