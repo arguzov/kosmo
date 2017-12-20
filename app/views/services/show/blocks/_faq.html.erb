@@ -1,0 +1,12 @@
+<%
+  faqs = @service.faqs
+%>
+<% if faqs.count > 0%>
+    <h2>Часто задаваемые вопросы</h2>
+    <% faqs.each do |faq|%>
+        <div>
+        <h4><span style="border-bottom: 1px dashed blue;cursor:pointer;" onclick="$(this).closest('div').find('.content').first().toggle()"><%=faq.question%></span></h4>
+        <div style="display: none;" class="content"><%=faq.answer.html_safe%></div>
+        </div>
+    <% end %>
+<% end %>
