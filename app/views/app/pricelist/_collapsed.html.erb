@@ -1,50 +1,60 @@
 <%
-    css = ''
-    if params[:gender_id]
-        gender_id = params[:gender_id]
-    end
-    prices = Price.where('parent_id = ?',service.id)
-    if defined?(gender_id) && gender_id.to_i > 0
-        css = gender_id
-        prices = prices.where('gender_id = ?',gender_id)
-    end
-    discount = prices.where('discount > 0')
-    genders = ['','мужчины','женщины']
+  css = ''
+  if params[:gender_id]
+      gender_id = params[:gender_id]
+  end
+  prices = Price.where('parent_id = ?', service.id)
+  if defined?(gender_id) && gender_id.to_i > 0
+      css = gender_id
+      prices = prices.where('gender_id = ?', gender_id)
+  end
+  if service.discounts.count > 0
+      @price_discount = service.discounts.first
+  else
+      @price_discount = nil
+  end
+  #discount = prices.where('discount > 0')
+  genders = ['', 'мужчины', 'женщины']
 %>
 <% if prices.length > 0 %>
-<div class="panel-heading" style="padding: 5px 0px 0px 0px;margin: 1px;border-bottom: 1px dashed #5c6469;">
-  <h4 class="panel-title">
-    <a data-toggle="collapse" style="margin:0px;color: #000;" data-parent="#global-pricelist" href="#collapse-s-<%=service.id%>-<%=css%>">
-      <%=('<i class="fa fa-caret-down"></i> ' + service.name).html_safe%>
-      <span class="label label-danger pull-right collapsed-discount hidden">Скидка</span>
-    </a>
-  </h4>
-</div>
-<div id="collapse-s-<%=service.id%>-<%=css%>" class="panel-collapse collapse">
-  <div class="panel-body">
-    <% if browser.device.mobile? %>
-        <table class="table table-striped">
-          <%prices.each do |line|%>
-              <tr>
-                <td>
-                  <div><%=line.name%> <% if line.gender_id < 3 %>(<%=genders[line.gender_id]%>) <% end %></div>
-                  <div style="padding: 10px 0px;"><strong><%=render :partial => 'app/pricelist/pricerow', locals: {line: line}%></strong></div>
-                </td>
-              </tr>
-          <% end %>
-        </table>
-    <% else %>
-    <table class="table table-striped">
-      <%prices.each do |line|%>
-          <tr>
-            <td width="80%"><%=line.name%> <% if line.gender_id < 3 %>(<%=genders[line.gender_id]%>) <% end %></td>
-            <td width="20%" class="text-right">
-                <%=render :partial => 'app/pricelist/pricerow', locals: {line: line}%>
-            </td>
-          </tr>
-      <% end %>
-    </table>
-    <% end %>
-  </div>
-</div>
+    <div class="panel-heading" style="padding: 5px 0px 0px 0px;margin: 1px;border-bottom: 1px dashed #5c6469;">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" style="margin:0px;color: #000;" data-parent="#global-pricelist" href="#collapse-s-<%= service.id %>-<%= css %>">
+          <%= ('<i class="fa fa-caret-down"></i> ' + service.name).html_safe %>
+          <span class="label label-danger pull-right collapsed-discount hidden">Скидка</span>
+        </a>
+      </h4>
+    </div>
+    <div id="collapse-s-<%= service.id %>-<%= css %>" class="panel-collapse collapse">
+      <div class="panel-body">
+        <% if browser.device.mobile? %>
+            <table class="table table-striped">
+              <% prices.each do |line| %>
+                  <tr>
+                    <td>
+                      <div><%= line.name %>
+                        <% if line.gender_id < 3 %>(<%= genders[line.gender_id] %>)
+                        <% end %></div>
+                      <div style="padding: 10px 0px;">
+                        <strong><%= render :partial => 'app/pricelist/pricerow', locals: {line: line} %></strong></div>
+                    </td>
+                  </tr>
+              <% end %>
+            </table>
+        <% else %>
+            <table class="table table-striped">
+              <% prices.each do |line| %>
+                  <tr>
+                    <td width="80%"><%= line.name %>
+                      <% if line.gender_id < 3 %>(<%= genders[line.gender_id] %>)
+                      <% end %></td>
+                    <td width="20%" class="text-right">
+                      <%= render :partial => 'app/pricelist/pricerow', locals: {line: line} %>
+                    </td>
+                  </tr>
+              <% end %>
+            </table>
+        <% end %>
+      </div>
+    </div>
 <% end %>
