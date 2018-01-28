@@ -1,6 +1,9 @@
 <%
    meta :title => "Сертификаты Центра эпиляци и косметологии",
         :description => 'Сертификаты на услуги косметолога'
+
+   metrika_code = 'CERT-SUM'
+   onsubmit = raw 'yaCounter28296001.reachGoal(\''+metrika_code+'\'); return true;'
 %>
 <div class="main col-md-12" id="news">
   <!-- page-title start -->
@@ -13,7 +16,7 @@
       <div class="row">
         <div class="col-md-6">
           <div class="well">
-          <%= form_for [Order.new] do |f| %>
+          <%= form_for [Order.new], :html => { :onsubmit => onsubmit } do |f| %>
               <input type="hidden" name="order[content]" value="Сертификат на сумму">
               <input type="hidden" name="order[contacts]" value="">
               <input type="hidden" name="order[email]" value="">

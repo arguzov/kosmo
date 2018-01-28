@@ -1,12 +1,33 @@
 <%
     onsubmit = ''
-    if @service != nil && @service.metrika_id != nil && !@service.metrika_id.empty?
-        onsubmit = raw 'yaCounter28296001.reachGoal(\''+@service.metrika_id+'\'); return true;'
+    if @service != nil
+        if @service.id == 79
+            metrika_code = 'LAZER'
+        else
+            metrika_code = 'SERVICES'
+        end
     end
-    if defined?(metrika_code) && !metrika_code.empty?
-        onsubmit = raw 'yaCounter28296001.reachGoal(\''+metrika_code+'\'); return true;'
+    if request.fullpath == '/'
+        metrika_code = 'WANT'
+    end
+    if request.fullpath.index('experts') != nil
+        metrika_code = 'REQUEST'
+    end
+    if request.fullpath.index('promos') != nil
+        metrika_code = 'SPECIAL'
+    end
+    if request.fullpath.index('certificates/sum') != nil
+        metrika_code = 'CERT-SUM'
+    end
+    if @post != nil
+        if [260, 282, 283, 285, 278, 279, 280, 450, 506, 505, 277, 281].include?(@post.id)
+            metrika_code = 'LONG'
+        end
     end
 
+    if defined?(metrika_code) && metrika_code != nil && !metrika_code.empty?
+        onsubmit = raw 'yaCounter28296001.reachGoal(\''+metrika_code+'\'); return true;'
+    end
 %>
 <% if flash[:notice] && flash[:notice] == 'Order was created' %>
     <div class="well" style="padding:20px;text-align: center" id="modal-show" data-id="recall">Заявка принята<br>Спасибо за обращение в Центр эпиляции и косметологии.<br>Наш менеджер скоро свяжется с вами для уточнения деталей.</div>

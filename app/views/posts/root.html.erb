@@ -210,7 +210,7 @@
             <div class="right_side">
               <p class="text-center">Оставьте свои контакты, чтобы получить сертификат на <span>1000 руб. на любую процедуру</span> и <span>20 минут</span> бесплатной консультации специалиста</p>
               <div class="order_form">
-                  <%=render :partial=>'app/order/form'%>
+                  <%=render :partial=>'app/order/form', locals: {metrika_code: 'WANT'}%>
               </div>
               <p class="spam_p">* Сертификат действителен 7 дней</p>
               <p class="spam_p">* Сертификатом можно оплатить до 50% стоимости процедуры</p>
