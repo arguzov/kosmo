@@ -8,7 +8,7 @@
         <% reviews.each do |review| %>
             <div class="col-md-4">
               <div style="background-color: #fff;padding: 20px;margin-top:20px;font-size:.8em;height: 250px;border-top: 3px solid palevioletred;overflow: hidden">
-                <p style="margin-bottom: 0px;padding-bottom: 0px;"><%= strip_tags(review.content).truncate(350) %></p>
+                <p style="margin-bottom: 0px;padding-bottom: 0px;"><%= strip_tags(review.content).truncate(300) %></p>
                 <cite title="Source Title" style="float: right;display: block"><%= review.person %></cite>
               </div>
             </div>
