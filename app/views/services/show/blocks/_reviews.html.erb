@@ -1,7 +1,7 @@
 <%
   reviews = @service.reviews.order('id DESC').limit(6)
 %>
-<% if reviews %>
+<% if reviews.length > 0 %>
     <div class="row" style="background-color: #90C9C4">
       <h2 class="text-center">Клиенты говорят о нас:</h2>
       <div class="row">
