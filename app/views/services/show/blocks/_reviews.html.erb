@@ -1,15 +1,21 @@
 <%
-  reviews = @service.reviews.order('id DESC').limit(2)
+  reviews = @service.reviews.order('id DESC').limit(6)
 %>
 <% if reviews %>
-    <div class="block clearfix">
-      <h2>Отзывы о процедуре</h2>
-      <%reviews.each do |review|%>
-      <blockquote class="margin-clear">
-        <p style="margin-bottom: 0px;padding-bottom: 5px;"><%=review.content.html_safe%></p>
-        <footer><cite title="Source Title"><%=review.person%></cite></footer>
-      </blockquote>
-      <% end %>
-      <p style="padding-top: 20px;">Посмотреть другие <a target="_blank" href="/responces?service_id=<%=@service.id%>">отзывы о процедуре &laquo;<%=@service.name%>&raquo;</a></p>
+    <div class="row" style="background-color: #90C9C4">
+      <h2 class="text-center">Клиенты говорят о нас:</h2>
+      <div class="row">
+        <% reviews.each do |review| %>
+            <div class="col-md-4">
+              <div style="background-color: #fff;padding: 20px;margin-top:20px;font-size:.8em;height: 250px;border-top: 3px solid palevioletred;overflow: hidden">
+                <p style="margin-bottom: 0px;padding-bottom: 0px;"><%= strip_tags(review.content).truncate(350) %></p>
+                <cite title="Source Title" style="float: right;display: block"><%= review.person %></cite>
+              </div>
+            </div>
+        <% end %>
+      </div>
+      <p style="padding: 20px;text-align: center;">Посмотреть другие
+        <a target="_blank" href="/responces?service_id=<%= @service.id %>">отзывы о
+          процедуре &laquo;<%= @service.name %>&raquo;</a></p>
     </div>
 <% end %>
