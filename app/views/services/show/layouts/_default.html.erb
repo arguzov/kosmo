@@ -19,7 +19,7 @@
   </div>
   <a name="h6"></a>
   <%=render :partial => 'services/widget/promo', locals: {position: 2}%>
-  <%=render :partial=> 'services/show/buttons', locals: {service: @service}%>
+  <%=render :partial=> 'services/show/buttons', locals: {service: @service, noreviews: true}%>
   <%=render :partial=> 'services/show/gallery'%>
   <%=render :partial => 'services/show/modals/prices'%>
   <%=render :partial => 'services/show/modals/reviews'%>

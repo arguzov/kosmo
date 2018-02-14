@@ -54,7 +54,7 @@
             <% end %>
             <%service.prices.where('parent_id = 0 AND price > 0').each do |price|%>
                     <tr <% unless params[:service_id] %>class="sr"<% end %> data-id="<%=price.service_id%>" data-price_id="<%=price.id%>">
-                      <td></td>
+                      <td>[<%=price.id%>]</td>
                       <td><input type="text" class="form-control" name="name" value="<%=price.name%>" style="width:400px;"></td>
                       <td><input type="text" class="form-control" name="price" value="<%=price.price%>"></td>
                       <td>
