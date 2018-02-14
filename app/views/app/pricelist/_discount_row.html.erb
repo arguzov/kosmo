@@ -6,6 +6,9 @@
         discount = @price_discount
         is_single = true
     end
+    if @line_discount
+        @price_discount = nil
+    end
 %>
 <span class="discount-row" data-id="<%=price.service_id%>" <%if is_single %>data-single="true"<%else%>data-single="false"<% end %>>
   <% if discount.value_unit == 2%>

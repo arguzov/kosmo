@@ -1,10 +1,12 @@
 <%
+  @line_discount = false
   unless defined?(@service_discount)
       @service_discount = {}
   end
   if @price_discount == nil
       if line.discounts.count > 0
           @price_discount = line.discounts.first
+          @line_discount = true
       else
           @price_discount = nil
           unless @service_discount.key?(line.service_id)
