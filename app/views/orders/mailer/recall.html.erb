@@ -1,4 +1,4 @@
-Контакты: <%=@data[:contacts]%><br>
+Контакты: <%=@data[:contacts].gsub('+7','8')%><br>
 <% unless @data[:url] == nil %>
 Со страницы: <%=@data[:url]%><br><br>
 <% end %>
