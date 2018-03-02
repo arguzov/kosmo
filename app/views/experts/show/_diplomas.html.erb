@@ -1,8 +1,8 @@
 <% if @diplomas.length > 0 %>
     <h2 class="title">Дипломы и сертификаты</h2>
-      <div class="row">
+    <div class="owl-carousel owl-theme" style="margin-bottom: 10px;">
       <% @diplomas.each do |image| %>
-          <div class="col-md-3" style="height:150px;overflow-y: hidden;overflow-x: hidden">
+          <div class="item">
             <a href="<%=image.gsub('public', '').gsub('th/', '') %>" target="_blank">
                 <%= image_tag image.gsub('public', '') %>
             </a>

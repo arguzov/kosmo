@@ -1,12 +1,10 @@
 <% if @album.count > 0 %>
     <h2>Фотографии процедуры &laquo;<%=@service.name%>&raquo;</h2>
-    <div class="row" style="margin-bottom: 50px;">
+    <div class="owl-carousel owl-theme" style="margin-bottom: 50px;">
       <% @album.each do |image| %>
-      <div class="col-md-2">
-          <div class="thumbnail" style="height:145px;">
+          <div class="item">
               <a href="<%=image.gsub('public','').gsub('th/','big/')%>" target="_blank"><%= image_tag image.gsub('public',''), :class=> 'img-responsive'%></a>
           </div>
-      </div>
       <% end %>
     </div>
 <% end %>
