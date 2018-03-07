@@ -2,7 +2,7 @@
   photos_before = @service.photos.where('photo_type = 1')
   photos_after = @service.photos.where('photo_type = 2')
 %>
-<% if photos_before %>
+<% if photos_before.count > 0 %>
     <h2>Фотографии до и после процедуры</h2>
     <div class="row">
       <% photos_before.each do |photo| %>
