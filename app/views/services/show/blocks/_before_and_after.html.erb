@@ -4,18 +4,22 @@
 %>
 <% if photos_before %>
     <h2>Фотографии до и после процедуры</h2>
-    <table class="table">
-      <tr>
-        <td style="width:50px;">До: </td>
-        <% photos_before.each do |photo| %>
-            <td><img src="<%= photo.img %>" style="max-height: 150px;" class="img-responsive"></td>
-        <% end %>
-      </tr>
-      <tr>
-        <td style="width:50px;">После: </td>
-        <% photos_after.each do |photo| %>
-            <td><img src="<%= photo.img %>" style="max-height: 150px;" class="img-responsive"></td>
-        <% end %>
-      </tr>
-    </table>
+    <div class="row">
+      <% photos_before.each do |photo| %>
+          <div class="col-md-4">
+            <div class="img-compare">
+              <!-- The first div will be the front element, to prevent FOUC add a style="display: none;" -->
+              <div style="display: none;">
+                <span class="images-compare-label">До</span>
+                <img src="http://www.kosmetologiya-kazan.ru<%= photo.img %>" alt="Before" class="img-responsive">
+              </div>
+              <!-- This div will be the back element -->
+              <div>
+                <span class="images-compare-label">После</span>
+                <img src="http://www.kosmetologiya-kazan.ru<%= photos_after.pop.img %>" alt="After" class="img-responsive">
+              </div>
+            </div>
+          </div>
+      <% end %>
+    </div>
 <% end %>
