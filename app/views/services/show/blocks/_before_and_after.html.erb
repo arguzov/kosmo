@@ -1,6 +1,6 @@
 <%
-  photos_before = @service.photos.where('photo_type = 1').order('id desc')
-  photos_after = @service.photos.where('photo_type = 2').order('id desc')
+  photos_before = Photo.where('service_id = ? AND photo_type = 1', @service.id).order('id desc')
+  photos_after  = Photo.where('service_id = ? AND photo_type = 2', @service.id).order('id desc')
 %>
 <% if photos_before.count > 0 %>
     <h2>Фотографии до и после процедуры</h2>
@@ -16,7 +16,7 @@
               <!-- This div will be the back element -->
               <div>
                 <span class="images-compare-label">После</span>
-                <img src="http://www.kosmetologiya-kazan.ru<%= photos_after.pop.img %>" alt="After" class="img-responsive">
+                <img src="http://www.kosmetologiya-kazan.ru<%= photos_after.shift.img %>" alt="After" class="img-responsive">
               </div>
             </div>
           </div>
