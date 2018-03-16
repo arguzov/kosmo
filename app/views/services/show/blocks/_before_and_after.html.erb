@@ -1,6 +1,6 @@
 <%
-  photos_before = @service.photos.where('photo_type = 1')
-  photos_after = @service.photos.where('photo_type = 2')
+  photos_before = @service.photos.where('photo_type = 1').order('id desc')
+  photos_after = @service.photos.where('photo_type = 2').order('id desc')
 %>
 <% if photos_before.count > 0 %>
     <h2>Фотографии до и после процедуры</h2>
