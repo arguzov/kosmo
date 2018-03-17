@@ -11,6 +11,7 @@ Kosmo::Application.routes.draw do
       get 'complete'=>'orders#complete', on: :collection
   end
   resources :promos
+  resources :videos
   resources :experts
   resources :subscriptions do
       get 'section/:id'=>'subscriptions#section', on: :collection
