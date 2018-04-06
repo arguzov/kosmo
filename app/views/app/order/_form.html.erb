@@ -1,56 +1,69 @@
 <%
-    onsubmit = ''
-    if @service != nil
-        if @service.id == 79
-            metrika_code = 'LAZER'
-        else
-            metrika_code = 'SERVICES'
-        end
-    end
-    if request.fullpath == '/'
-        metrika_code = 'WANT'
-    end
-    if request.fullpath.index('experts') != nil
-        metrika_code = 'REQUEST'
-    end
-    if request.fullpath.index('promos') != nil
-        metrika_code = 'SPECIAL'
-    end
-    if request.fullpath.index('certificates/sum') != nil
-        metrika_code = 'CERT-SUM'
-    end
-    if @post != nil
-        if [260, 282, 283, 285, 278, 279, 280, 450, 506, 505, 277, 281].include?(@post.id)
-            metrika_code = 'LONG'
-        end
-    end
+  onsubmit = ''
+  if @service != nil
+      if @service.id == 79
+          metrika_code = 'LAZER'
+      else
+          metrika_code = 'SERVICES'
+      end
+  end
+  if request.fullpath == '/'
+      metrika_code = 'WANT'
+  end
+  if request.fullpath.index('experts') != nil
+      metrika_code = 'REQUEST'
+  end
+  if request.fullpath.index('promos') != nil
+      metrika_code = 'SPECIAL'
+  end
+  if request.fullpath.index('certificates/sum') != nil
+      metrika_code = 'CERT-SUM'
+  end
+  if @post != nil
+      if [260, 282, 283, 285, 278, 279, 280, 450, 506, 505, 277, 281].include?(@post.id)
+          metrika_code = 'LONG'
+      end
+  end
 
-    if defined?(metrika_code) && metrika_code != nil && !metrika_code.empty?
-        onsubmit = raw 'yaCounter28296001.reachGoal(\''+metrika_code+'\'); return true;'
-    end
+  if defined?(metrika_code) && metrika_code != nil && !metrika_code.empty?
+      onsubmit = raw 'yaCounter28296001.reachGoal(\''+metrika_code+'\'); return true;'
+  end
 %>
 <% if flash[:notice] && flash[:notice] == 'Order was created' %>
-    <div class="well" style="padding:20px;text-align: center" id="modal-show" data-id="recall">Заявка принята<br>Спасибо за обращение в Центр эпиляции и косметологии.<br>Наш менеджер скоро свяжется с вами для уточнения деталей.</div>
+    <div class="well" style="padding:20px;text-align: center" id="modal-show" data-id="recall">Заявка принята<br>Спасибо
+      за обращение в Центр эпиляции и косметологии.<br>Наш менеджер скоро свяжется с вами для уточнения деталей.
+    </div>
 <% else %>
-<div>
-    <%= form_for [Order.new], :html => { :onsubmit => onsubmit } do |f| %>
-      <input type="hidden" name="order[url]" value="<%=request.original_url%>">
-  <div class="form-group has-feedback" <% unless browser.device.mobile? %>style="width:60%;"<% end %>>
-    <label for="subject4">Ваш телефон или e-mail</label>
-    <input type="text" class="form-control" id="subject4" placeholder="" name="order[contacts]" required>
-    <input type="text" name="order[email]" id="email-field">
-    <i class="fa fa-phone form-control-feedback"></i>
-  </div>
-  <%=render :partial => 'app/order/filial'%>
-  <div class="form-group has-feedback">
-    <label for="message4"><%if defined?(text) %>Текст заявки<% else %>Комментарий (не обязательно)<% end %></label>
-    <textarea rows="4" class="form-control" id="message4" name="order[content]" <%if not defined?(text) %>placeholder="Напишите Ваши пожелания о времени звонка, дате посещения и любые другие вопросы. Или оставьте это поле пустым."<% end %>><%if defined?(text) %><%=text%><% end %></textarea>
-    <i class="fa fa-envelope-o form-control-feedback"></i>
-  </div>
-  <div class="form-group">
-    <input type="hidden" name="agree" value="1" />
-  </div>
-  <input type="submit" value="Отправить заявку" class="btn btn-primary">
-    <% end %>
-</div>
+    <div>
+      <%= form_for [Order.new], :html => {:onsubmit => onsubmit} do |f| %>
+          <input type="hidden" name="order[url]" value="<%= request.original_url %>">
+          <div class="form-group has-feedback"
+               <% unless browser.device.mobile? %>style="width:60%;"
+               <% end %>>
+            <label for="subject4">Ваш телефон</label>
+            <input class="form-control" id="subject4" type="tel" placeholder="7 999 9999999" name="order[contacts]" required>
+            <input type="text" name="order[email]" id="email-field">
+            <i class="fa fa-phone form-control-feedback"></i>
+          </div>
+          <%= render :partial => 'app/order/filial' %>
+          <div class="form-group has-feedback">
+            <label for="message4">
+              <% if defined?(text) %>Текст заявки
+              <% else %>Комментарий (не обязательно)
+              <% end %></label>
+            <textarea rows="4" class="form-control" id="message4" name="order[content]"
+                      <% if not defined?(text) %>placeholder="Напишите Ваши пожелания о времени звонка, дате посещения и любые другие вопросы. Или оставьте это поле пустым."<% end %>><% if defined?(text) %><%= text %><% end %></textarea>
+            <i class="fa fa-envelope-o form-control-feedback"></i>
+          </div>
+          <div class="form-group">
+            <input type="hidden" name="agree" value="1"/>
+          </div>
+          <input type="submit" value="Отправить заявку" class="btn btn-primary">
+      <% end %>
+    </div>
+    <script>
+        $(function () {
+            $("#subject4").mask("7(999) 999-9999");
+        });
+    </script>
 <% end %>

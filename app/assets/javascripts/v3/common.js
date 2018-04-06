@@ -1,4 +1,5 @@
 //=require v3/plugins/toastr/toastr.min
+//=require v3/plugins/jquery.maskedinput
 $(document).ready(function(){
     if($('#vk').length > 0) {
         $('#vk').modal();
