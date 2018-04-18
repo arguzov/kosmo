@@ -1,5 +1,6 @@
 //=require v3/plugins/toastr/toastr.min
 //=require v3/plugins/jquery.maskedinput
+//=require v3/plugins/ninja-slider
 $(document).ready(function(){
     if($('#vk').length > 0) {
         $('#vk').modal();

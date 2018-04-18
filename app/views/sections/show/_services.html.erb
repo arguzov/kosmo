@@ -1,6 +1,6 @@
 <div class="masonry-grid-fitrows row grid-space-20">
   <%@section.services.order('fl_order ASC').each do |service|%>
-      <div class="col-md-4 col-sm-6 masonry-grid-item col-xs-12">
+      <div class="col-md-4 col-sm-6 masonry-grid-item col-xs-12" style="margin-bottom: 20px;">
         <div class="listing-item">
           <div style="height: 200px;overflow: hidden">
             <img src="<%=service.photo.url(:medium)%>" style="height: 100%;-webkit-filter: sepia(15%);">
