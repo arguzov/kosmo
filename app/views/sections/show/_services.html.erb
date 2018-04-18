@@ -1,28 +1,25 @@
-<div class="masonry-grid-fitrows row grid-space-20">
-  <%@section.services.order('fl_order ASC').each do |service|%>
-      <div class="col-md-4 col-sm-6 masonry-grid-item col-xs-12" style="margin-bottom: 20px;">
-        <div class="listing-item">
-          <div style="height: 200px;overflow: hidden">
-            <img src="<%=service.photo.url(:medium)%>" style="height: 100%;-webkit-filter: sepia(15%);">
-          </div>
-          <div class="listing-item-body clearfix" style="background-color: #FCF8E3;height: 200px;padding-left:10px;">
-            <div style="height: 140px;">
-            <h3 class="title"><a href="<%= service_path(id:service.id, url:service.url)%>" style="text-decoration: underline"><%= service.name.truncate(35) %></a></h3>
-            <p style="color: #000;"><%=service.description.truncate(70)%></p>
-            </div>
-            <div class="price" style="margin-bottom: 20px;">от
-              <% if @prices[service.id] == nil %>
-                  <%=service.price%>
+<% if @section.services.order('fl_order ASC').each do |service| %>
+    <div class="row call-to-action" style="margin-top: 40px;border: 3px solid #f2dede;padding: 10px;">
+      <div class="col-md-4">
+        <%=image_tag 'http://kosmetologiya-kazan.ru/' + service.photo.url(:medium), class: 'img-responsive'%>
+      </div>
+      <div class="col-md-8" style="padding-top: 0px;text-align: left;">
+        <h3 class="title"><a href="<%= service_path(id:service.id, url:service.url)%>" style="text-decoration: underline"><%= service.name.truncate(35) %></a></h3>
+        <%=service.description.truncate(170)%>
+        <div class="price" style="margin: 20px 0px;font-weight: bold">от
+          <% if @prices[service.id] == nil %>
+              <%=service.price%>
+          <% else %>
+              <% if @prices[service.id].min_price.to_i > 0 %>
+                  <%=@prices[service.id].min_price.round%>
               <% else %>
-                  <% if @prices[service.id].min_price.to_i > 0 %>
-                      <%=@prices[service.id].min_price.round%>
-                  <% else %>
-                      <%=@prices[service.id].price%>
-                  <% end %>
+                  <%=@prices[service.id].price%>
               <% end %>
-              <div class="rouble">Р</div></div>
-          </div>
+          <% end %>
+          <div class="rouble">Р</div>
         </div>
       </div>
-  <% end %>
-</div>
+    </div>
+<% end.empty? %>
+    <div class="text-center" style="padding: 50px;">К сожалению, услуг по запросу не найдено</div>
+<% end %>

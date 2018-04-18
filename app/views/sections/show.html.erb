@@ -1,19 +1,23 @@
 <%
    meta :title => "#{@section.name} в Казани"
 %>
-<div class="row">
-<div class="main col-md-12">
+<div class="main col-md-12" id="promos">
+  <!-- page-title ddd start -->
+  <!-- ================ -->
   <h1 class="page-title"><%=@section.name%></h1>
-  <% if Section.where('parent_id = ?',@section.id).count() > 0 %>
-      <%=render :partial => 'sections/show/subsection', :locals => {section: @section}%>
-  <% else %>
-      <%=render :partial => 'sections/show/services'%>
-  <% end %>
-  <div style="border-left: 0px solid #ededed;padding-left: 20px;padding-top: 40px;">
-    <%=alt_tags(@section.content,@section.name).html_safe%>
+  <div class="separator-2"></div>
+  <div class="section">
+    <% if Section.where('parent_id = ?',@section.id).count() > 0 %>
+        <%=render :partial => 'sections/show/subsection', :locals => {section: @section}%>
+    <% else %>
+        <%=render :partial => 'sections/show/services'%>
+    <% end %>
+    <div style="border-left: 0px solid #ededed;padding-left: 20px;padding-top: 40px;">
+      <%=alt_tags(@section.content,@section.name).html_safe%>
+    </div>
   </div>
 </div>
-</div>
+
 <div class="row" style="margin-top: 20px;">
   <div class="col-md-3 hidden-sm hidden-xs">
     <div class="block clearfix" style="margin-top: 30px;">
