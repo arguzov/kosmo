@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 <style>
   .sections {
     padding: 60px 0px;
@@ -24,38 +25,88 @@
     text-align: right;
   }
 
+  #sections-right li a{
+    border-left-width: 4px;
+    border-left-style: solid;
+    padding-left: 10px;
+  }
+
+  #sections-right li p{
+    padding-left: 15px;
+  }
+
+  #sections-left li a{
+    border-right-width: 4px;
+    border-right-style: solid;
+    padding-right: 10px;
+  }
+
+  #sections-left li p{
+    padding-right: 15px;
+  }
+
+  .sections .green a{
+    border-color: #009791;
+  }
+
+  .sections .purple a{
+    border-color: #871A7A;
+  }
+
+  .sections .pink a{
+    border-color: #FF919E;
+  }
+
+  .sections .blue a{
+    border-color: #00539B;
+  }
+
   #sections-center li {
     text-align: center;
   }
+  .bx-wrapper {
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border: 0;
+  }
+  .bxslider li {
+    padding-top: 50px;
+  }
+  .bxslider h3{
+    color: #000;
+  }
 </style>
+<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+<script>
+  $(document).ready(function(){
+      $('.bxslider').bxSlider({
+          controls: false,
+          auto: true
+      });
+  })
+</script>
 <div class="container-fluid" style="background:url('http://kosmetologiya-kazan.ru/data/pictures/706/Layer_4_copy.png') bottom center no-repeat;background-color:transparent;background-size: 100% 40%;height:600px">
   <div class="row">
-    <div class="col-md-3 col-lg-offset-3">
-      <img src="http://www.kosmetologiya-kazan.ru/data/pictures/704/Layer_4.png" style="height:600px;" class="hidden-sm hidden-xs" alt="">
+    <div class="col-md-3 col-lg-offset-2 hidden-sm hidden-xs">
+      <img src="http://www.kosmetologiya-kazan.ru/data/pictures/704/Layer_4.png" style="height:600px;z-index: 9999" alt="">
     </div>
-    <div class="col-md-4" style="text-align: center;padding-top: 0px;color: #fff;">
-      <div id="ninja-slider" style="height: 400px;margin-top: 0px;">
-        <div class="slider-inner">
-          <ul>
+    <div class="col-md-6 col-sm-12 col-xs-12" style="text-align: center;padding-top: 0px;color: #fff;">
+          <ul class="bxslider">
             <% @promos.each do |banner| %>
                 <li>
-                  <div class="content">
                     <%= banner.banner.html_safe %>
                     <div class="pack_btn" style="margin: 0px;padding:0px;">
                       <a href="#order-modal" data-toggle="modal" data-target=".bs-example-modal-sm1" style="border: 2px solid #fff;color: #0b0b0b;margin: 0px;background-color: #009792;color: #fff;">Записаться</a>
                       <a href="<%if banner.more_link == nil || banner.more_link.length == 0%>/promos/<%=banner.id%><% else %><%=banner.more_link%><% end %>" style="border: 2px solid #fff;background-color: #840F7E;color: #fff;margin: 0px;">Подробнее</a>
                     </div>
-                  </div>
                 </li>
             <% end %>
           </ul>
-          <div class="fs-icon" title="Expand/Close"></div>
-        </div>
-      </div>
     </div>
   </div>
 </div>
-<div class="row hidden-sm hidden-md hidden-lg col-xs-12" style="background-color: #EFEEED">
+<div class="row hidden-md hidden-lg col-xs-12" style="background-color: #EFEEED">
   <div>
     <ul class="sections" id="sections-center">
       <li>
@@ -93,45 +144,45 @@
     </ul>
   </div>
 </div>
-<div class="row hidden-xs" style="background-color: #EFEEED">
-  <div class="col-md-3 col-lg-offset-2">
+<div class="row hidden-xs hidden-sm" style="background-color: #EFEEED">
+  <div class="col-md-4">
     <ul class="sections" id="sections-left">
-      <li>
+      <li class="green">
         <a href="/section/epilyaciya.html">Эпиляция</a>
         <p>Удаление нежелательных волос</p>
       </li>
-      <li>
+      <li class="blue">
         <a href="/section/kosmetology.html">Косметология</a>
         <p>Самый передовой опыт</p>
       </li>
-      <li>
+      <li class="pink">
         <a href="/section/dermatologiya.html">Дерматология</a>
         <p>Забота о вашей коже</p>
       </li>
-      <li>
+      <li class="purple">
         <a href="/section/trihologiay.html">Трихология</a>
         <p>Здоровье кожи головы</p>
       </li>
     </ul>
   </div>
-  <div class="col-md-2" style="text-align: center;padding: 70px 20px">
-    <img src="http://www.kosmetologiya-kazan.ru/data/pictures/707/tip-volos.png" class="img-responsive">
+  <div class="col-md-4" style="text-align: center;padding: 70px 20px;">
+    <img src="http://www.kosmetologiya-kazan.ru/data/pictures/707/tip-volos.png" class="img-responsive" style="margin: 0 auto">
   </div>
-  <div class="col-md-3">
+  <div class="col-md-4">
     <ul class="sections" id="sections-right">
-      <li>
-        <a href="/section/massage.html">Массаж</a>
+      <li class="green">
+        <a href="/section/massage.html" >Массаж</a>
         <p>Помогаем расслабиться всем телом</p>
       </li>
-      <li>
+      <li class="blue">
         <a href="/section/korrekciya-figuri.html">Коррекция фигуры</a>
         <p>Помогаем гордиться своим телом</p>
       </li>
-      <li>
+      <li class="pink">
         <a href="/section/manikur-i-pedikur.html">Ногтевой сервис</a>
         <p>Красота с медицинской точностью</p>
       </li>
-      <li>
+      <li class="purple">
         <a href="/section/piercing.html">Пирсинг</a>
         <p>Аккуратно и с минимальным риском</p>
       </li>
@@ -214,13 +265,25 @@
       <h2>Не знаете какая процедура подойдёт<br>именно вам?</h2>
     </div>
     <div class="row">
-      <div class="col-lg-10 col-lg-offset-1" style="background-color: #62357B;">
-        <div class="pack_btn" style="padding: 0px;margin: 0px;text-align: center;">
-          <a href="#order-modal" data-toggle="modal" data-target=".bs-example-modal-sm1" style="background-color: #FA98A3">Отправить
-            заявку</a>
-        </div>
-        <div style="font-size: 1.5em;color: #fff;text-align: center;margin-bottom: 30px;margin-top: 0px;">Мы вам
-          перезвоним и расскажем
+      <div class="col-lg-12" style="background-color: #FCC6CF;">
+        <div class="col-lg-6 col-lg-offset-3 text-center" style="padding: 40px 0px">
+          <%= form_for [Order.new], :html => {:class=> "form-inline"} do |f| %>
+              <input type="hidden" name="order[url]" value="<%= request.original_url %>">
+              <div class="form-group has-feedback">
+                <input class="form-control input-lg" id="subject4" type="tel" placeholder="Номер телефона" name="order[contacts]" required>
+                <input type="text" name="order[email]" id="email-field">
+                <i class="fa fa-phone form-control-feedback"></i>
+              </div>
+              <div class="form-group">
+                <input type="hidden" name="agree" value="1"/>
+                <input type="hidden" name="order[filial_id]" value="1"/>
+                <input type="hidden" name="order[content]" value="Заявка с главной страницы"/>
+              </div>
+              <input type="submit" value="Отправить заявку" class="btn btn-primary btn-md" style="height: 42px;">
+          <% end %>
+          <div style="font-size: 1.5em;color: #000;text-align: center;padding-top: 20px;">Мы вам
+            перезвоним и расскажем
+          </div>
         </div>
       </div>
     </div>
@@ -279,7 +342,7 @@
 </div>
 <div class="workers container hidden-sm hidden-xs">
   <div class="row text-center text-uppercase medium">
-    <h2>Кто поможет Вам стать еще красивее</h2>
+    <h2>Наша команда профессиональных косметологов</h2>
   </div>
   <div class="work_row">
     <% Expert.where('id in (?)', [14, 33, 23, 12, 27]).each do |expert| %>
@@ -287,7 +350,7 @@
           <div style="height:294px;overflow-y:hidden">
             <img src="http://www.kosmetologiya-kazan.ru<%= expert.photo %>" class="img-responsive" alt=""></div>
           <div class="work_info green_info text-center">
-            <p class="sm_bold"><a href="/experts/<%= expert.id %>" style="color:#fff;"><%= expert.name %></a></p>
+            <p class="sm_bold"><a href="/experts/<%= expert.id %>" style="color:#fff;"><%= expert.name.gsub('Инна Раифовна','Инна<br>Раифовна').html_safe %></a></p>
             <p class="medium"><%= expert.profession %></p>
           </div>
         </div>
@@ -304,14 +367,9 @@
           </div>
           <div class="l_col_0 col-lg-6 r_col_0 col-md-6">
             <div class="right_side">
-              <p class="text-center">Оставьте свои контакты, чтобы получить сертификат на
-                <span>1000 руб. на любую процедуру</span> и <span>20 минут</span> бесплатной консультации специалиста
-              </p>
-              <div class="order_form">
+              <div class="order_form" style="height:550px;">
                 <%= render :partial => 'app/order/form', locals: {metrika_code: 'WANT'} %>
               </div>
-              <p class="spam_p">* Сертификат действителен 7 дней</p>
-              <p class="spam_p">* Сертификатом можно оплатить до 50% стоимости процедуры</p>
             </div>
           </div>
         </div>

@@ -5,7 +5,7 @@ class PostsController < ApplicationController
         @experts = Expert.order('fl_order,id').limit(5)
         @saloon = Dir.glob("public/data/saloon/*")
         @reviews = Post.where('id IN (145,143)')
-        @promos = Promo.where('fl_active = 1 AND fl_menu = 1').order('fl_order ASC')
+        @promos = Promo.where('fl_active = 1 AND fl_menu = 1').order('fl_order ASC').limit(3)
         render 'root', :layout=>'main'
     end
 

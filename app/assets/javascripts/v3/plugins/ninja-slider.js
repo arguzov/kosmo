@@ -12,7 +12,7 @@ var nsOptions =
     shuffle: false,
     startSlideIndex: 0, //0-based
     navigateByTap: true,
-    pauseOnHover: false,
+    pauseOnHover: true,
     keyboardNav: true,
     before: null,
     m: false,
