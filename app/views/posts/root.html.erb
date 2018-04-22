@@ -82,7 +82,11 @@
   $(document).ready(function(){
       $('.bxslider').bxSlider({
           controls: false,
-          auto: true
+          auto: true,
+          onSliderLoad: function(){
+              console.log('asdasd');
+              $("#topslider").css('visibility', 'visible');
+          }
       });
   })
 </script>
@@ -92,7 +96,7 @@
       <img src="http://www.kosmetologiya-kazan.ru/data/pictures/704/Layer_4.png" style="height:600px;z-index: 9999" alt="">
     </div>
     <div class="col-md-6 col-sm-12 col-xs-12" style="text-align: center;padding-top: 0px;color: #fff;">
-          <ul class="bxslider">
+          <ul class="bxslider" id="topslider" style="visibility: hidden">
             <% @promos.each do |banner| %>
                 <li>
                     <%= banner.banner.html_safe %>
