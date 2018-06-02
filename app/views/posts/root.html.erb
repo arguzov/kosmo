@@ -1,4 +1,8 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.carousel.min.css" />
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.theme.default.min.css" />
+<%= stylesheet_link_tag    "v3/main", media: "all" %>
+
 <style>
   .sections {
     padding: 60px 0px;
@@ -64,52 +68,39 @@
   #sections-center li {
     text-align: center;
   }
-  .bx-wrapper {
-    -moz-box-shadow: none;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    border: 0;
-  }
-  .bxslider li {
-    padding-top: 50px;
-  }
-  .bxslider h3{
-    color: #000;
-  }
 </style>
-<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
-<script>
-  $(document).ready(function(){
-      $('.bxslider').bxSlider({
-          controls: false,
-          auto: true,
-          onSliderLoad: function(){
-              console.log('asdasd');
-              $("#topslider").css('visibility', 'visible');
-          }
-      });
-  })
-</script>
-<div class="container-fluid" style="background:url('http://kosmetologiya-kazan.ru/data/pictures/706/Layer_4_copy.png') bottom center no-repeat;background-color:transparent;background-size: 100% 40%;height:600px">
-  <div class="row">
-    <div class="col-md-3 col-lg-offset-2 hidden-sm hidden-xs">
-      <img src="http://www.kosmetologiya-kazan.ru/data/pictures/704/Layer_4.png" style="height:600px;z-index: 9999" alt="">
-    </div>
-    <div class="col-md-6 col-sm-12 col-xs-12" style="text-align: center;padding-top: 0px;color: #fff;">
-          <ul class="bxslider" id="topslider" style="visibility: hidden">
-            <% @promos.each do |banner| %>
-                <li>
-                    <%= banner.banner.html_safe %>
-                    <div class="pack_btn" style="margin: 0px;padding:0px;">
-                      <a href="#order-modal" data-toggle="modal" data-target=".bs-example-modal-sm1" style="border: 2px solid #fff;color: #0b0b0b;margin: 0px;background-color: #009792;color: #fff;">Записаться</a>
-                      <a href="<%if banner.more_link == nil || banner.more_link.length == 0%>/promos/<%=banner.id%><% else %><%=banner.more_link%><% end %>" style="border: 2px solid #fff;background-color: #840F7E;color: #fff;margin: 0px;">Подробнее</a>
-                    </div>
-                </li>
-            <% end %>
-          </ul>
-    </div>
+
+  <div class="banner owl-carousel" data-name="banner">
+    <% @promos.each_with_index do |banner, index| %>
+        <% key = index + 1 % 5 %>
+        <div class="banner__item <%if index % 2 == 0%>front<% else %>back<% end %>">
+          <div class="wave" style="background-image: url('http://io-team.com.xsph.ru/beauty/assets/images/wave-<%=key%>.png');"></div>
+          <div class="container absolute">
+            <div class="row">
+              <div class="col-lg-4 col-md-4 hidden-sm hidden-xs">
+                <img src="http://io-team.com.xsph.ru/beauty/assets/images/women-<%= key %>.png" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-6 col-md-7 col-sm-12 col-xs-12 col-lg-offset-1 col-md-offset-1 pull-right">
+                <div class="text">
+                  <%= banner.banner.html_safe %>
+                  <div class="pack_btn">
+                    <a href="#order-modal" data-toggle="modal" data-target=".bs-example-modal-sm1">Записаться</a>
+                    <a href="
+                      <% if banner.more_link == nil || banner.more_link.length == 0 %>/promos/<%= banner.id %>
+                      <% else %><%= banner.more_link %>
+                      <% end %>">Подробнее</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    <% end %>
   </div>
-</div>
 <div class="row hidden-md hidden-lg col-xs-12" style="background-color: #EFEEED">
   <div>
     <ul class="sections" id="sections-center">

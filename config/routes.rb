@@ -2,6 +2,7 @@ Kosmo::Application.routes.draw do
 
   # dsfsdfsdf
   get '/promos/58', to: redirect('/services/79-lasernaya-epilyaciya.html')
+  get '/promos/top_banner'=>'promos#top_banner'
 
   resources :faqs
 
