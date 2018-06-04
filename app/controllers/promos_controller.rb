@@ -1,5 +1,4 @@
 class PromosController < ApplicationController
-    layout 'banner'
     def index
         @promos = Promo.where('fl_active = 1 AND fl_menu = 1').order('fl_order ASC')
     end
